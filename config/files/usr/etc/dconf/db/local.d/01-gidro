@@ -1,3 +1,10 @@
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.png'
+picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.png'
+picture-options='stretched'
+primary-color='000000'
+secondary-color='FFFFFF'
+
 [org/gnome/desktop/interface]
 font-hinting='none'
 font-name='Nokia Pure Text 11'
