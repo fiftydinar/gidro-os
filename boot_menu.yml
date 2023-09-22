@@ -1,5 +1,5 @@
 ublue_variants:
-  - label: ublue-os/startingpoint
+  - label: fiftydinar/gidro-os
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: startingpoint
+      - label: gidro-os
