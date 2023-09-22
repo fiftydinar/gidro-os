@@ -21,6 +21,9 @@ remove-old-trash-files=true
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
 
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+
 [org/gnome/shell]
 enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com']
 
