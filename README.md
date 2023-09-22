@@ -76,9 +76,11 @@ Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Close button from windows removed (because I mapped the close button to special mouse key)
 - Set font hinting to "None"
+- Set Nokia Pure Text font as default
+- Set Serbian Latin language as the locale (display language remains English)
+- Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus
-- Set mouse acceleration to flat
-- Set Nokia Pure Text font as default 
+- Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 12, as default value is too strong & looks cheap imo
 - Set OpenWeather to top right, set condition to show on top bar, set arrows for wind direction & use mbar for pressure
 
