@@ -77,7 +77,7 @@ Settings applied by default:
 - Close button from windows removed (because I mapped the close button to special mouse key)
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
-- Set a beautiful Symbian Anna picture as a wallpaper as well
+- Set a beautiful Symbian^3 picture as a wallpaper as well
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus
