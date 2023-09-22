@@ -75,6 +75,7 @@ User flatpaks:
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Close button from windows removed (because I mapped the close button to special mouse key)
+- Enable touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper as well
