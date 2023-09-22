@@ -28,7 +28,7 @@ tap-to-click=true
 enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com']
 
 [org/gnome/shell/extensions/blur-my-shell]
-sigma=12
+sigma=7
 
 [org/gnome/shell/extensions/openweather]
 position-in-panel='right'

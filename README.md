@@ -83,7 +83,7 @@ Settings applied by default:
 - Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus
 - Set mouse acceleration to flat 
-- Set BlurMyShell sigma value to 12, as default value is too strong & looks cheap imo
+- Set BlurMyShell sigma value to 7, as default value is too strong & looks cheap imo
 - Set OpenWeather to top right, set condition to show on top bar, set arrows for wind direction & use mbar for pressure
 
 Additional configuration:
