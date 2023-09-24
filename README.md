@@ -21,6 +21,7 @@ Replaced packages (RPMs)/usecases:
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
 - DDC Control (for setting up screen controls through GUI in OS)
+- Extensions
 
 Added extensions:
 - Blur My Shell
@@ -32,7 +33,6 @@ Note: Flatpaks below are not separated in the system + user remote. This will ma
 
 System(ish) flatpaks (what I consider a must out-of-the-box):
 - Flatseal
-- Extension Manager
 - Easy Effects
 - Gnome Image Viewer (Loupe)
 - Gnome Snapshot
