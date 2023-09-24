@@ -6,7 +6,7 @@ Removed packages (RPMs):
 - Firefox
 - htop
 - nvtop
-- Gnome Software
+- Gnome Software rpm-ostree package (not needed since we use UblueOS updater)
 - Gnome classic session
 - Gnome Tour
 - Gnome System Monitor
@@ -15,7 +15,6 @@ Removed packages (RPMs):
 
 Replaced packages (RPMs)/usecases:
 - Ungoogled Chromium from Flathub instead of Firefox rpm
-- Flathub web shortcut from Ungoogled Chromium instead of Gnome Software for browsing & installing flatpaks
 - Mission Center from Flathub instead of Gnome System Monitor
 
 Installed packages (RPMs):
@@ -89,7 +88,7 @@ Settings applied by default:
 
 Additional configuration:
 - OBS distrobox, hide/unhide grub justfile
-- bling justfile (which I would remove, but just command won't work without it)
+- bling justfile
 
 ## Necessary Post-Setup
 Install & enable selected extensions in Extension Manager:

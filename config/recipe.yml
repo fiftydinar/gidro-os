@@ -43,7 +43,6 @@ modules:
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
       - htop
       - nvtop
-      - gnome-software
       - gnome-software-rpm-ostree
       - gnome-tour
       - gnome-system-monitor
