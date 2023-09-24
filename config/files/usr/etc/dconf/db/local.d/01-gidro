@@ -1,6 +1,6 @@
 [org/gnome/desktop/background]
-picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.png'
-picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.png'
+picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.jpg'
 picture-options='stretched'
 primary-color='000000'
 secondary-color='FFFFFF'
