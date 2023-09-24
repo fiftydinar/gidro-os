@@ -74,6 +74,7 @@ User flatpaks:
 
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
+- Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Close button from windows removed (because I mapped the close button to special mouse key)
 - Enable touchpad tap-to-click
 - Set font hinting to "None"
