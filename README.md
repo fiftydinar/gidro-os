@@ -21,6 +21,8 @@ Replaced packages (RPMs)/usecases:
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
 - DDC Control (for setting up screen controls through GUI in OS)
+- Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
+- Additional Game ROM Properties for Nautilus
 - Extensions
 
 Added extensions:
