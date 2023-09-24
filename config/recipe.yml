@@ -76,6 +76,7 @@ modules:
          - Discord: com.discordapp.Discord
          - Gradience: com.github.GradienceTeam.Gradience
          - Rnote: com.github.flxzt.rnote
+         - InkScape: org.inkscape.Inkscape
          - G4Music: com.github.neithern.g4music
          - Clapper: com.github.rafostar.Clapper
          - Flatseal: com.github.tchx84.Flatseal
