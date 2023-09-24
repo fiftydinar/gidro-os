@@ -13,7 +13,6 @@ clock-show-weekday=true
 
 [org/gnome/desktop/wm/preferences]
 title-bar-font='Nokia Pure Text Bold 11'
-button-layout='appmenu:'
 
 [org/gnome/desktop/privacy]
 remove-old-trash-files=true

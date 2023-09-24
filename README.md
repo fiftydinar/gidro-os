@@ -2,11 +2,11 @@
 
 My lightly customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project.
 
-Removed packages (RPMs), which I consider a bloat:
+Removed packages (RPMs):
 - Firefox
 - htop
 - nvtop
-- Gnome Software (not in the best state right now)
+- Gnome Software
 - Gnome classic session
 - Gnome Tour
 - Gnome System Monitor
@@ -31,9 +31,7 @@ Added extensions:
 - Caffeine
 - System76 Scheduler (needed for integration with Gnome)
 
-Note: Flatpaks below are not separated in the system + user remote. This will maybe get implemented in the future.
-
-System(ish) flatpaks (what I consider a must out-of-the-box):
+System(ish) flatpaks:
 - Flatseal
 - Easy Effects
 - Gnome Image Viewer (Loupe)
@@ -78,7 +76,6 @@ User flatpaks:
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
-- Close button from windows removed (because I mapped the close button to special mouse key)
 - Enable touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
@@ -94,25 +91,7 @@ Additional configuration:
 - OBS distrobox, hide/unhide grub justfile
 - bling justfile (which I would remove, but just command won't work without it)
 
-## Post-Setup
-- Install OBS distrobox container
-  ```
-  just install-obs-studio-portable
-  ```
-- Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming + AdwSteamGTK skin (enter commands one by one)
-  ```
-  just distrobox-bazzite
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
-  distrobox-enter -n bazzite-arch -- '  paru -S adwsteamgtk --noconfirm'
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app AdwSteamGtk'
-  ```
-- Hide GRUB
-  ```
-  just hide-grub
-  ```
-
-## Post-Setup which will get integrated into the image
+## Necessary Post-Setup
 Install & enable selected extensions in Extension Manager:
 - Quick Close in Overview
 - Rounded Window Corners
@@ -129,6 +108,30 @@ Config changes (one-liner command):
 Run this command after install until I implement this into the image:
   ```
 touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000
+  ```
+
+## Post-Setup (for special devices & special usecases)
+- Close button from windows removed (because I mapped the close button to special mouse key on Logitech G305)
+ ```
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
+ ```
+
+## Post-Setup (optional)
+- Install OBS distrobox container
+  ```
+  just install-obs-studio-portable
+  ```
+- Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming + AdwSteamGTK skin (enter commands one by one)
+  ```
+  just distrobox-bazzite
+  distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
+  distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
+  distrobox-enter -n bazzite-arch -- '  paru -S adwsteamgtk --noconfirm'
+  distrobox-enter -n bazzite-arch -- '  distrobox-export --app AdwSteamGtk'
+  ```
+- Hide GRUB
+  ```
+  just hide-grub
   ```
 
 ## Installation (ISO) [Recommended]
@@ -167,3 +170,16 @@ This repository builds date tags as well, so if you want to rebase to a particul
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230922
 ```
+
+## Plans for the future
+- Integrate necessary post-setup into the image
+(some extensions are not available in rpm & some dconfs are not applying on boot)
+- Integrate post-install commands into just, including revert commands
+- Integrate & separate image into triple-buffer & VRR variants
+- Integrate Davinci Resolve container into just
+- Use Extension Manager instead of Gnome Extensions
+(cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
+- Remove bloated bling justfile
+(can't currently remove it, because of the upstream issue, where just command wouldn't work without it)
+- Separate system & user remote flatpaks in yafti
+- Separate custom flatpaks into groups in yafti
