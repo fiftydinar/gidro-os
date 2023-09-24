@@ -1,7 +1,7 @@
 [org/gnome/desktop/background]
 picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
 picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
-picture-options='stretched'
+picture-options='zoom'
 primary-color='000000'
 secondary-color='FFFFFF'
 
