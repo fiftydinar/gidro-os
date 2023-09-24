@@ -56,6 +56,7 @@ User flatpaks:
 - Telegram Desktop
 - Discord
 - Rnote
+- InkScape
 - Fragments
 - FreeTube
 - ASCII Draw
