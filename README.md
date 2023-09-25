@@ -107,7 +107,7 @@ Config changes (one-liner command):
 
 Run this command after install until I implement this into the image:
   ```
-touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications && cd $HOME/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop && cd $HOME
+touch $HOME/Templates/Untitled\ Document && gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications && cd $HOME/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop && cd $HOME
   ```
 
 ## Post-Setup (for special devices & special usecases)
@@ -179,7 +179,8 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Integrate Davinci Resolve container into just
 - Use Extension Manager instead of Gnome Extensions
 (cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
-- Fix hide-grub & unhide-grub command not showing in just (it worked before, I'm not sure what happened)
 - Separate system & user remote flatpaks in yafti
 - Separate custom flatpaks into groups in yafti
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
+- Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview, Rounded Window Corners & GTK3 Theme Switcher
+
