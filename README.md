@@ -103,10 +103,11 @@ Config changes (one-liner command):
 - Set light & dark theme to AdwGtk3
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
+- Hide ROM Properties desktop shortcut
 
 Run this command after install until I implement this into the image:
   ```
-touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000
+touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop ~/.local/share/applications && cd ~/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
   ```
 
 ## Post-Setup (for special devices & special usecases)
@@ -182,3 +183,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 (can't currently remove it, because of the upstream issue, where just command wouldn't work without it)
 - Separate system & user remote flatpaks in yafti
 - Separate custom flatpaks into groups in yafti
+- Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
