@@ -175,7 +175,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Integrate necessary post-setup into the image
 (some extensions are not available in rpm & some dconfs are not applying on boot)
 - Integrate post-install commands into just, including revert commands
-- Fix Hide & unhide grub just command not working (upstream bug: custom.just is present, but not loaded)
+- Remove bloated bling justfile (upstream issue)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
 - Use Extension Manager instead of Gnome Extensions
