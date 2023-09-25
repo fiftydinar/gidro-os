@@ -25,15 +25,3 @@ unhide-grub:
   else
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
   fi
-
-# Install obs-studio-portable from wimpysworld, which bundles an extensive collection of 3rd party plugins 
-install-obs-studio-portable:
-  if grep -qz "obs-studio-portable" <<< $(distrobox list); then \
-    echo 'Removing existing obs-studio-portable install...' && \
-    distrobox rm obs-studio-portable --force; \
-  fi && \
-  echo 'Installing obs-studio-portable...' && \
-  distrobox create --no-entry --name obs-studio-portable --image ghcr.io/ublue-os/obs-studio-portable --nvidia --yes && \
-  distrobox-enter -n obs-studio-portable -- 'bash -c "distrobox-export --app obs"' && \
-  echo 'Install complete'
-
