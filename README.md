@@ -107,7 +107,7 @@ Config changes (one-liner command):
 
 Run this command after install until I implement this into the image:
   ```
-touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop #HOME/.local/share/applications && cd #HOME/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop && cd #HOME
+touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir ~/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications && cd $HOME/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop && cd $HOME
   ```
 
 ## Post-Setup (for special devices & special usecases)
