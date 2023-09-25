@@ -179,8 +179,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Integrate Davinci Resolve container into just
 - Use Extension Manager instead of Gnome Extensions
 (cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
-- Remove bloated bling justfile
-(can't currently remove it, because of the upstream issue, where just command wouldn't work without it)
+- Fix hide-grub & unhide-grub command not showing in just (it worked before, I'm not sure what happened)
 - Separate system & user remote flatpaks in yafti
 - Separate custom flatpaks into groups in yafti
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
