@@ -112,9 +112,9 @@ touch ~/Templates/Untitled\ Document && gsettings --schemadir ~/.local/share/gno
 
 ## Post-Setup (for special devices & special usecases)
 - Close button from windows removed (because I mapped the close button to special mouse key on Logitech G305)
- ```
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
- ```
+  ```
+  gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
+  ```
 
 ## Post-Setup (optional)
 - Install OBS distrobox container
