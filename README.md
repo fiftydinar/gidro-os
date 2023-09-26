@@ -71,6 +71,7 @@ User flatpaks:
 - ProtonPlus
 
 Settings applied by default:
+- Applied dynamic triple-buffering patch to mutter compositor (increases Shell performance, especially with Blur My Shell)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Enable touchpad tap-to-click
