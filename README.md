@@ -85,7 +85,7 @@ Settings applied by default:
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 
 Additional configuration:
-- OBS distrobox, hide/unhide grub justfile
+- hide/unhide grub justfile
 
 ## Necessary Post-Setup
 Install & enable selected extensions in Extension Manager:
