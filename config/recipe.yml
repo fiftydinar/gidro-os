@@ -30,7 +30,6 @@ modules:
       # - micro
       # - starship
          - gnome-shell-extension-caffeine
-         - gnome-shell-extension-openweather
          - gnome-shell-extension-blur-my-shell
          - gnome-shell-extension-system76-scheduler
          - ddccontrol-gtk

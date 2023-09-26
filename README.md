@@ -26,7 +26,6 @@ Installed packages (RPMs):
 
 Added extensions:
 - Blur My Shell
-- OpenWeather
 - Caffeine
 - System76 Scheduler (needed for integration with Gnome)
 
@@ -84,7 +83,6 @@ Settings applied by default:
 - Enable "Remove Old Trash files automatically" in Nautilus
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-- Set OpenWeather to top right, set condition to show on top bar, set arrows for wind direction & use mbar for pressure
 
 Additional configuration:
 - OBS distrobox, hide/unhide grub justfile
