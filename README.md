@@ -94,8 +94,6 @@ Install & enable selected extensions in Extension Manager:
 - Rounded Window Corners
 - GTK3 Theme Switcher
 
-Than apply "Enable Nautilus "Sort folders before files"" manually in Nautilus settings. (manually because command doesn't work right now)
-
 Config changes (one-liner command):
 - Add Nautilus "New Document" to context menu
 - Set light & dark theme to AdwGtk3
