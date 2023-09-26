@@ -2,6 +2,30 @@
 
 # Include some of your custom scripts here!
 
+# Necessary post-setup for Gidro-OS
+post-setup:
+  #!/usr/bin/env bash
+  touch $HOME/Templates/Untitled\ Document
+  gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3
+  gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark
+  gsettings set org.gnome.desktop.peripherals.keyboard delay 226
+  gsettings set org.gnome.mutter check-alive-timeout 20000
+  cd /usr/share/applications
+  cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications
+  cd $HOME/.local/share/applications
+  echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
+  cd $HOME
+  
+# Remove close button from windows (useful for Logitech G305)
+hide-close-button:
+  #!/usr/bin/env bash
+  gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
+  
+# Revert to include close button from windows (Default)
+unhide-close-button:
+  #!/usr/bin/env bash
+  gsettings reset org.gnome.desktop.wm.preferences button-layout
+
 # Set system to boot without showing the grub screen with options
 hide-grub:
   #!/usr/bin/env bash

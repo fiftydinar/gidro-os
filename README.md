@@ -105,13 +105,13 @@ Config changes (one-liner command):
 
 Run this command after install until I implement this into the image:
   ```
-touch $HOME/Templates/Untitled\ Document && gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3 && gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark && gsettings set org.gnome.desktop.peripherals.keyboard delay 226 && gsettings set org.gnome.mutter check-alive-timeout 20000 && cd /usr/share/applications && cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications && cd $HOME/.local/share/applications && echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop && cd $HOME
+just post-setup
   ```
 
 ## Post-Setup (for special devices & special usecases)
 - Close button from windows removed (because I mapped the close button to special mouse key on Logitech G305)
   ```
-  gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
+  just hide-close-button
   ```
 
 ## Post-Setup (optional)
@@ -172,7 +172,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 ## Plans for the future
 - Integrate necessary post-setup into the image
 (some extensions are not available in rpm & some dconfs are not applying on boot)
-- Integrate post-install commands into just, including revert commands
 - Remove bloated bling justfile (upstream issue)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
