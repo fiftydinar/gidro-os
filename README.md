@@ -94,8 +94,6 @@ Install & enable selected extensions in Extension Manager:
 - Quick Close in Overview
 - Rounded Window Corners
 
-Than apply "Enable Nautilus "Sort folders before files"" manually in Nautilus settings. (manually because command doesn't work right now)
-
 Config changes (one-liner command):
 - Add Nautilus "New Document" to context menu
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
