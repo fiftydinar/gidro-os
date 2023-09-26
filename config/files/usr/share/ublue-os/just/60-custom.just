@@ -6,8 +6,6 @@
 post-setup:
   #!/usr/bin/env bash
   touch $HOME/Templates/Untitled\ Document
-  gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher light adw-gtk3
-  gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/gtk3-theme-switcher@charlieqle/schemas/ set org.gnome.shell.extensions.gtk3-theme-switcher dark adw-gtk3-dark
   gsettings set org.gnome.desktop.peripherals.keyboard delay 226
   gsettings set org.gnome.mutter check-alive-timeout 20000
   cd /usr/share/applications

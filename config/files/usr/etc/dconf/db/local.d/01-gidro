@@ -10,6 +10,7 @@ font-hinting='none'
 font-name='Nokia Pure Text 11'
 document-font-name='Nokia Pure Text 11'
 clock-show-weekday=true
+gtk-theme='adw-gtk3'
 
 [org/gnome/desktop/wm/preferences]
 title-bar-font='Nokia Pure Text Bold 11'

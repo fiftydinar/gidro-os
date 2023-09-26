@@ -78,6 +78,7 @@ Settings applied by default:
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper as well
+- Set light & dark theme to AdwGtk3
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus
@@ -92,11 +93,9 @@ Additional configuration:
 Install & enable selected extensions in Extension Manager:
 - Quick Close in Overview
 - Rounded Window Corners
-- GTK3 Theme Switcher
 
 Config changes (one-liner command):
 - Add Nautilus "New Document" to context menu
-- Set light & dark theme to AdwGtk3
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
 - Hide ROM Properties desktop shortcut
@@ -178,5 +177,5 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Separate system & user remote flatpaks in yafti
 - Separate custom flatpaks into groups in yafti
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
-- Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview, Rounded Window Corners & GTK3 Theme Switcher
+- Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
 
