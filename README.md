@@ -88,9 +88,6 @@ Additional configuration:
 - hide/unhide grub justfile
 
 ## Necessary Post-Setup
-Install & enable selected extensions in Extension Manager:
-- Quick Close in Overview
-- Rounded Window Corners
 
 Config changes (one-liner command):
 - Enable Nautilus "Sort folders before files"
