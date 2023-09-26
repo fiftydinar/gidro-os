@@ -81,7 +81,7 @@ Settings applied by default:
 - Set light & dark theme to AdwGtk3
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
-- Enable "Remove Old Trash files automatically" in Nautilus
+- Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 
