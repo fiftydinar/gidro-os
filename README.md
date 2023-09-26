@@ -30,41 +30,40 @@ Added extensions:
 - System76 Scheduler (needed for integration with Gnome)
 
 System(ish) flatpaks:
-- Flatseal
-- Easy Effects
-- Gnome Image Viewer (Loupe)
-- Gnome Snapshot
-- Gnome Document Viewer
-- Gnome Text Editor
-- Sticky Notes
-- Secrets
-- Gradience
+- Gnome Boxes
 - Gnome Calculator
 - Gnome Calendar
+- Gnome Snapshot
+- Gnome Document Viewer
 - Gnome Maps
-- Gnome Boxes
-- Gnome Clocks
-- LibreOffice
+- Gnome Text Editor
 - G4Music
 - Clapper
+- Gnome Image Viewer (Loupe)
+- Secrets
+- Sticky Notes
+- Rnote
+- Flatseal
+- Gradience
+- Easy Effects
 - Bottles
 
 User flatpaks:
-- Dialect
-- Telegram Desktop
+- Thunderbird
 - Discord
-- Rnote
-- InkScape
-- Fragments
+- Telegram
 - FreeTube
+- Dialect
+- Fragments
 - ASCII Draw
+- InkScape
 - Mousai
 - NewsFlash
+- LibreOffice
 - Tagger
 - Parabolic
 - Nicotine+
 - Tenacity
-- Thunderbird
 - GitHub Desktop
 - PCSX2
 - Space Cadet Pinball
@@ -174,7 +173,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Use Extension Manager instead of Gnome Extensions
 (cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
 - Separate system & user remote flatpaks in yafti
-- Separate custom flatpaks into groups in yafti
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
 
