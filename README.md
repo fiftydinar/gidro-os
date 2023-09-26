@@ -73,7 +73,6 @@ User flatpaks:
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
-- Enabled Vulkan GPU driver for HD 7000 & HD 8000 GPUs
 - Enable touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
