@@ -173,6 +173,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Use Extension Manager instead of Gnome Extensions
 (cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
 - Separate system & user remote flatpaks in yafti
+- Set "Flathub (user)" remote as a default in Gnome Software
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
 
