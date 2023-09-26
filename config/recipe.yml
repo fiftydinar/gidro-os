@@ -79,4 +79,5 @@ modules:
       # this sets up the proper policy & signing files for signed images to work
       - signing.sh
       - reload-font-cache.sh
-      - enable-system76-scheduler-service.sh      
+      - enable-system76-scheduler-service.sh
+      - HD7000_8000-amdgpu.sh
