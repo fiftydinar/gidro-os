@@ -78,7 +78,7 @@ Settings applied by default:
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper
-- Set light & dark theme to AdwGtk3
+- Set light & dark theme to AdwGtk3 for GTK3 applications
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
