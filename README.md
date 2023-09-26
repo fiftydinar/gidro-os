@@ -87,7 +87,6 @@ Settings applied by default:
 
 Additional configuration:
 - OBS distrobox, hide/unhide grub justfile
-- bling justfile
 
 ## Necessary Post-Setup
 Install & enable selected extensions in Extension Manager:
