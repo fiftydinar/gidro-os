@@ -97,6 +97,8 @@ Config changes:
 - Hide ROM Properties desktop shortcut
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 
+Open Nautilus & let it stay there. (for some reason, 1st command applies only when you open Nautilus for the 1st time)
+
 Run this command after install until I implement this into the image:
   ```
 just post-setup
@@ -164,8 +166,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 ```
 
 ## Plans for the future
-- Integrate necessary post-setup into the image
-(some dconfs & flatpak configs need to be executed in post-setup)
+- Integrate necessary post-setup into the image (some dconfs & flatpak configs need to be executed in post-setup)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
 - Integrate system flatpaks into image
