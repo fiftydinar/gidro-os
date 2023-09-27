@@ -16,6 +16,8 @@ post-setup:
   cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
   echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile
   cd $HOME
+  cd /etc/fwupd/remotes.d
+  rm lvfs-testing.conf
   
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
