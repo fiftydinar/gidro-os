@@ -81,3 +81,4 @@ modules:
       - reload-font-cache.sh
       - enable-system76-scheduler-service.sh
       - gnome-extensions-uninstall.sh
+      - remove-fwupd-testing.sh
