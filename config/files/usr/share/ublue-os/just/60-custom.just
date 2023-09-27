@@ -18,6 +18,7 @@ post-setup:
   cd $HOME
   cd /etc/fwupd/remotes.d
   rm lvfs-testing.conf
+  cd $HOME
   
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
