@@ -165,6 +165,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 ## Plans for the future
 - Integrate necessary post-setup into the image
 (some extensions are not available in rpm & some dconfs are not applying on boot)
+- Integrate modified system flatpak defaults into post-setup (Text editor, don't restore session f.e. + more)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
 - Separate system & user remote flatpaks in yafti
