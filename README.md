@@ -89,7 +89,7 @@ Additional configuration:
 
 ## Necessary Post-Setup
 
-Config changes (one-liner command):
+Config changes:
 - Enable Nautilus "Sort folders before files"
 - Add Nautilus "New Document" to context menu
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
@@ -165,10 +165,11 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 
 ## Plans for the future
 - Integrate necessary post-setup into the image
-(some extensions are not available in rpm & some dconfs are not applying on boot)
+(some dconfs & flatpak configs need to be executed in post-setup)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
-- Separate system & user remote flatpaks in yafti
+- Integrate system flatpaks into image
+- Separate system & user remote flatpaks in yafti (until system flatpaks get integrated into image)
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
