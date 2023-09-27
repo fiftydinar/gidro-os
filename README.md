@@ -171,7 +171,8 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Integrate Davinci Resolve container into just
 - Integrate system flatpaks into image
 - Separate system & user remote flatpaks in yafti (until system flatpaks get integrated into image)
-- Set "Flathub (user)" remote as a default in Gnome Software
+- Set "Flathub (user)" remote as a default in Gnome Software (keep system remote on yafti install, then remove it on post-install)
+- Delete testing remotes of fwupd & Fedora Flatpak.
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
