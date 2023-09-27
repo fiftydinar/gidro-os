@@ -82,3 +82,4 @@ modules:
       - enable-system76-scheduler-service.sh
       - gnome-extensions-uninstall.sh
       - remove-fwupd-testing.sh
+      - rom-properties-shortcut-remove.sh

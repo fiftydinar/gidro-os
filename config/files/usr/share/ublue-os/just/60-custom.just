@@ -11,11 +11,6 @@ post-setup:
   pkill nautilus
   gsettings set org.gnome.desktop.peripherals.keyboard delay 226
   gsettings set org.gnome.mutter check-alive-timeout 20000
-  cd /usr/share/applications
-  cp com.gerbilsoft.rom-properties.rp-config.desktop $HOME/.local/share/applications
-  cd $HOME/.local/share/applications
-  echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
-  cd $HOME
   mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
   touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
   cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/

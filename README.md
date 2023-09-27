@@ -85,7 +85,9 @@ Settings applied by default:
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 
 Additional configuration:
-- hide/unhide grub justfile
+- Hide/unhide grub justfile
+- Hide ROM Properties desktop shortcut
+- Remove Fedora Flatpak & fwupd testing repo
 
 ## Necessary Post-Setup
 
@@ -94,7 +96,6 @@ Config changes:
 - Add Nautilus "New Document" to context menu
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
-- Hide ROM Properties desktop shortcut
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 
 You will see window flashing. That is automatic opening than closing Nautilus, which is needed for the 1st config to work.
