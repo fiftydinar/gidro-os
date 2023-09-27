@@ -173,4 +173,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
-
+- Switch from nokmods build to main again when Fedora 39 gets building, as they they will be the same, except nokmods will be removed
