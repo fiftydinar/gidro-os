@@ -12,6 +12,10 @@ post-setup:
   cd $HOME/.local/share/applications
   echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
   cd $HOME
+  touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
+  cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
+  echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='tango'" > keyfile
+  cd $HOME
   
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
