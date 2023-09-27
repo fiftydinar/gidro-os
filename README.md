@@ -87,7 +87,7 @@ Settings applied by default:
 Additional configuration:
 - Hide/unhide grub justfile
 - Hide ROM Properties desktop shortcut
-- Remove Fedora Flatpak testing repo (in yafti)
+- Remove Fedora Flatpak testing repo (in yafti) & fwupd testing repo (set a placeholder empty file)
 
 ## Necessary Post-Setup
 
@@ -97,7 +97,6 @@ Config changes:
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
-- Remove fwupd testing repo
 
 You will see window flashing. That is automatic opening than closing Nautilus, which is needed for the 1st config to work.
 
