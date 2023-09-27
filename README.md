@@ -97,7 +97,7 @@ Config changes:
 - Hide ROM Properties desktop shortcut
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 
-You will see window flashing. That is automatic opening than closing Nautilus, which is needed for the 1st command to work.
+You will see window flashing. That is automatic opening than closing Nautilus, which is needed for the 1st config to work.
 
 Run this command after install until I implement this into the image:
   ```
