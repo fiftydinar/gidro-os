@@ -1,11 +1,11 @@
-title: Welcome to uBlue
+title: Welcome to Gidro OS
 properties:
   mode: "run-on-change"
 screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to uBlue (Alpha)"
+      title: "Welcome to Gidro OS"
       icon: "/path/to/icon"
       description: |
         This guided installer will help you get started with your new system.
@@ -20,6 +20,8 @@ screens:
       actions:
         - run: flatpak remote-delete --system --force fedora
         - run: flatpak remote-delete --user --force fedora
+        - run: flatpak remote-delete --system --force fedora-testing
+        - run: flatpak remote-delete --user --force fedora-testing
         - run: flatpak remove --system --noninteractive --all
         - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
         - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
