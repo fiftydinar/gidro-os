@@ -22,7 +22,6 @@ Installed packages (RPMs):
 - DDC Control (for setting up screen controls through GUI in OS)
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
-- Extensions
 
 Added extensions:
 - Blur My Shell
@@ -44,6 +43,7 @@ System(ish) flatpaks:
 - Sticky Notes
 - Rnote
 - Flatseal
+- Extension Manager
 - Gradience
 - Easy Effects
 - Bottles
@@ -167,8 +167,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 (some extensions are not available in rpm & some dconfs are not applying on boot)
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate Davinci Resolve container into just
-- Use Extension Manager instead of Gnome Extensions
-(cannot remove Gnome Extensions because rpm-ostree doesn't recognize it as an installed package, which came from preinstalled extensions)
 - Separate system & user remote flatpaks in yafti
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software

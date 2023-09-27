@@ -77,6 +77,7 @@ screens:
           default: true
           packages:
             - Flatseal (Permission Manager): com.github.tchx84.Flatseal
+            - Extension Manager: com.mattjakeman.ExtensionManager
             - Gradience: com.github.GradienceTeam.Gradience
             - Easy Effects: com.github.wwmm.easyeffects
             - Bottles: com.usebottles.bottles         
