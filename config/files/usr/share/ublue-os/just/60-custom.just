@@ -4,7 +4,7 @@
 post-setup:
   #!/usr/bin/env bash
   touch $HOME/Templates/Untitled\ Document
-  nohup nautilus -w . > /dev/null &
+  nohup nautilus -w . &> /dev/null &
   sleep 1
   gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
   sleep 1
