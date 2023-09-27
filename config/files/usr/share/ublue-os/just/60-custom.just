@@ -4,7 +4,9 @@
 post-setup:
   #!/usr/bin/env bash
   touch $HOME/Templates/Untitled\ Document
+  nohup nautilus -w . > /dev/null &
   gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
+  pkill nautilus
   gsettings set org.gnome.desktop.peripherals.keyboard delay 226
   gsettings set org.gnome.mutter check-alive-timeout 20000
   cd /usr/share/applications
