@@ -3,67 +3,67 @@
 # Necessary post-setup for Gidro-OS
 post-setup:
   #!/usr/bin/env bash
-  touch $HOME/Templates/Untitled\ Document
-    echo '"New documents" context menu entry in Nautilus created.'
-  nohup nautilus -w . &> /dev/null &
-  sleep 0.5
-  gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
-  sleep 0.5
-  pkill nautilus
-    echo '"Sort folders first" setting in Nautilus applied.'  
-  gsettings set org.gnome.desktop.peripherals.keyboard delay 226
-    echo 'Lower keyboard delay when typing setting applied.'  
-  gsettings set org.gnome.mutter check-alive-timeout 20000
-    echo 'Extended Mutter "not responding" timeout setting applied.'    
-  FLATPAK=$(flatpak list)
-  if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
-  mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-  touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
-  cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-  echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile
-  cd $HOME
-    echo 'Gnome Text Editor pre-configured settings applied.'
-  else
-    echo 'Gnome Text Editor is not installed, settings not applied.'
-  fi
+  output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
+    output=`echo '"New documents" context menu entry in Nautilus created.' 2>&1` || echo $output && false
+  output=`nohup nautilus -w . & 2>&1` || echo $output && false
+  output=`sleep 0.5 2>&1` || echo $output && false
+  output=`gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true 2>&1` || echo $output && false
+  output=`sleep 0.5 2>&1` || echo $output && false
+  output=`pkill nautilus 2>&1` || echo $output && false
+    output=`echo '"Sort folders first" setting in Nautilus applied.' 2>&1` || echo $output && false  
+  output=`gsettings set org.gnome.desktop.peripherals.keyboard delay 226 2>&1` || echo $output && false
+    output=`echo 'Lower keyboard delay when typing setting applied.' 2>&1` || echo $output && false  
+  output=`gsettings set org.gnome.mutter check-alive-timeout 20000 2>&1` || echo $output && false
+    output=`echo 'Extended Mutter "not responding" timeout setting applied.' 2>&1` || echo $output && false    
+  output=`FLATPAK=$(flatpak list) 2>&1` || echo $output && false
+  output=`if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then 2>&1` || echo $output && false
+  output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile 2>&1` || echo $output && false
+  output=`cd $HOME 2>&1` || echo $output && false
+    output=`echo 'Gnome Text Editor pre-configured settings applied.' 2>&1` || echo $output && false
+  output=`else 2>&1` || echo $output && false
+    output=`echo 'Gnome Text Editor is not installed, settings not applied.' 2>&1` || echo $output && false
+  output=`fi 2>&1` || echo $output && false
 
   
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
   #!/usr/bin/env bash
-  gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
-    echo 'Remove close button from windows setting applied.'    
+  output=`gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:' 2>&1` || echo $output && false
+    output=`echo 'Remove close button from windows setting applied.' 2>&1` || echo $output && false    
   
 # Revert to include close button from windows (Default)
 unhide-close-button:
   #!/usr/bin/env bash
-  gsettings reset org.gnome.desktop.wm.preferences button-layout
-    echo 'Reverted setting "window close button" to defaults.'  
+  output=`gsettings reset org.gnome.desktop.wm.preferences button-layout 2>&1` || echo $output && false
+    output=`echo 'Reverted setting "window close button" to defaults.' 2>&1` || echo $output && false  
 
 # Set system to boot without showing the grub screen with options
 hide-grub:
   #!/usr/bin/env bash
-  sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
-  echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 1>/dev/null
-  echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 1>/dev/null
-  if [ -d /sys/firmware/efi ]; then
-    sudo grub2-mkconfig -o /etc/grub2-efi.cfg &> /dev/null
-        echo 'Hide UEFI GRUB logs during boot setting applied.'  
-  else
-    sudo grub2-mkconfig -o /etc/grub2.cfg &> /dev/null
-        echo 'Hide BIOS GRUB logs during boot setting applied.'   
-  fi
+  output=`sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub 2>&1` || echo $output && false
+  output=`echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
+  output=`echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
+  output=`if [ -d /sys/firmware/efi ]; then 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
+        output=`echo 'Hide UEFI GRUB logs during boot setting applied.' 2>&1` || echo $output && false  
+  output=`else 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
+        output=`echo 'Hide BIOS GRUB logs during boot setting applied.' 2>&1` || echo $output && false   
+  output=`fi 2>&1` || echo $output && false
 
 # Set system to boot with the grub screen showing options (Default)
 unhide-grub:
   #!/usr/bin/env bash
-  sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub
-  sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
-  sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub
-  if [ -d /sys/firmware/efi ]; then
-    sudo grub2-mkconfig -o /etc/grub2-efi.cfg &> /dev/null
-        echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  
-  else
-    sudo grub2-mkconfig -o /etc/grub2.cfg &> /dev/null
-        echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
-  fi
+  output=`sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub 2>&1` || echo $output && false
+  output=`sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub 2>&1` || echo $output && false
+  output=`sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub 2>&1` || echo $output && false
+  output=`if [ -d /sys/firmware/efi ]; then 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
+        output=`echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.' 2>&1` || echo $output && false  
+  output=`else 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
+        output=`echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.' 2>&1` || echo $output && false   
+  output=`fi 2>&1` || echo $output && false
