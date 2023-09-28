@@ -144,11 +144,11 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 ```
 
 ## Plans for the future
-- Integrate yafti setup into image
-- Integrate & separate image into triple-buffer & VRR variants
+- Integrate yafti necessary post-setup into image
+- Integrate system + core flatpaks into image
+- Separate system & user remote flatpaks in yafti (until system + core flatpaks get integrated into image)
 - Integrate Davinci Resolve container into just & yafti
-- Integrate system flatpaks into image
-- Separate system & user remote flatpaks in yafti (until system flatpaks get integrated into image)
+- Integrate & separate image into triple-buffer & VRR variants
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Remove fwupd testing remote
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
