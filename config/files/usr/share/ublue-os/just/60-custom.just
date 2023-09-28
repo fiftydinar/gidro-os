@@ -10,11 +10,7 @@ post-setup:
   output=`gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true 2>&1` || echo $output && false
   sleep 0.5
   output=`pkill nautilus 2>&1` || echo $output && false
-    echo '"Sort folders first" setting in Nautilus applied.'  
-  output=`gsettings set org.gnome.desktop.peripherals.keyboard delay 226 2>&1` || echo $output && false
-    echo 'Lower keyboard delay when typing setting applied.'  
-  output=`gsettings set org.gnome.mutter check-alive-timeout 20000 2>&1` || echo $output && false
-    echo 'Extended Mutter "not responding" timeout setting applied.'    
+    echo '"Sort folders first" setting in Nautilus applied.'
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -23,7 +19,11 @@ post-setup:
     echo 'Gnome Text Editor pre-configured settings applied.'
   else
     echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
-  fi
+  fi    
+  output=`gsettings set org.gnome.desktop.peripherals.keyboard delay 226 2>&1` || echo $output && false
+    echo 'Lower keyboard delay when typing setting applied.'  
+  output=`gsettings set org.gnome.mutter check-alive-timeout 20000 2>&1` || echo $output && false
+    echo 'Extended Mutter "not responding" timeout setting applied.'    
 
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
