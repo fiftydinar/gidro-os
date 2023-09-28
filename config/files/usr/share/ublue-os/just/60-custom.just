@@ -19,12 +19,10 @@ post-setup:
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
   output=`touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
-  cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-  echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile
-  cd $HOME
+  output=`echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     echo 'Gnome Text Editor pre-configured settings applied.'
   else
-    echo 'Error: Gnome Text Editor is not installed, settings not applied.' >&2
+    echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
   fi
 
 # Remove close button from windows (useful for Logitech G305)
