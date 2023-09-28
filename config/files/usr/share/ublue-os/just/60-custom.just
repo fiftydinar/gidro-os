@@ -27,7 +27,6 @@ post-setup:
     echo 'Error: Gnome Text Editor is not installed, settings not applied.' >&2
   fi
 
-  
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
   #!/usr/bin/env bash
