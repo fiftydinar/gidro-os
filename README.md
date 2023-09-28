@@ -32,7 +32,7 @@ System(ish) flatpaks:
 - Gnome Boxes
 - Gnome Calculator
 - Gnome Calendar
-- Gnome Snapshot
+- Gnome Camera
 - Gnome Contacts
 - Gnome Clocks
 - Gnome Document Viewer
