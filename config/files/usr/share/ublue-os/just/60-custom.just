@@ -19,9 +19,9 @@ post-setup:
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
   output=`touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
-  output=`cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  cd $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
   echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile
-  output=`cd $HOME 2>&1` || echo $output && false
+  cd $HOME
     echo 'Gnome Text Editor pre-configured settings applied.'
   else
     echo 'Error: Gnome Text Editor is not installed, settings not applied.' >&2
