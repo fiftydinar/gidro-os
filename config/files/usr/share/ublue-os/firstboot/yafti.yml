@@ -62,6 +62,8 @@ screens:
             - Calculator: org.gnome.Calculator
             - Calendar: org.gnome.Calendar
             - Camera: org.gnome.Snapshot
+            - Contacts: org.gnome.Contacts
+            - Clocks: org.gnome.clocks
             - Document Viewer: org.gnome.Evince
             - Maps: org.gnome.Maps
             - Text Editor: org.gnome.TextEditor

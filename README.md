@@ -33,6 +33,8 @@ System(ish) flatpaks:
 - Gnome Calculator
 - Gnome Calendar
 - Gnome Snapshot
+- Gnome Contacts
+- Gnome Clocks
 - Gnome Document Viewer
 - Gnome Maps
 - Gnome Text Editor
