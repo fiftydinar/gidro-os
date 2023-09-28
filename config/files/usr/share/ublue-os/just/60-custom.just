@@ -1,6 +1,6 @@
 # Include some of your custom scripts here!
 
-# Necessary post-setup for GidroOS
+# Necessary post-setup for Gidro-OS
 post-setup:
   #!/usr/bin/env bash
   touch $HOME/Templates/Untitled\ Document

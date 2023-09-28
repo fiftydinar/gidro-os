@@ -1,11 +1,11 @@
-title: Welcome to GidroOS
+title: Welcome to Gidro-OS
 properties:
   mode: "run-once"
 screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to GidroOS"
+      title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description: |
         This guided installer will help you get started with your new system.
@@ -112,15 +112,15 @@ screens:
             - Space Cadet Pinball: com.github.k4zmu2a.spacecadetpinball
             - Grapejuice (Roblox): net.brinkervii.grapejuice
             - ProtonPlus: com.vysp3r.ProtonPlus
-  configure-gidroos:
+  configure-gidro-os:
     source: yafti.screen.package
     values:
-      title: Additional GidroOS packages & configs
+      title: Additional Gidro-OS packages & configs
       show_terminal: true
       package_manager: yafti.plugin.run
       groups:
         Post-setup (DO NOT DISABLE):
-          description: Performs necessary post-setup for GidroOS.
+          description: Performs necessary post-setup for Gidro-OS.
           default: true
           packages:
           - Post-setup: just --unstable post-setup
@@ -151,4 +151,4 @@ screens:
         - "Website":
             run: /usr/bin/xdg-open https://github.com/fiftydinar/gidro-os
       description: |
-        Thanks for trying GidroOS, I hope you enjoy it!
+        Thanks for trying Gidro-OS, I hope you enjoy it!

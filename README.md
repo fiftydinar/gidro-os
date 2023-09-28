@@ -1,4 +1,4 @@
-# GidroOS
+# Gidro-OS
 
 My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project.
 
@@ -23,7 +23,7 @@ Installed packages (RPMs):
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
 
-Added extensions:
+Installed extensions:
 - Blur My Shell
 - Caffeine
 - System76 Scheduler (needed for integration with Gnome)
@@ -148,9 +148,9 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 - Integrate system + core flatpaks into image
 - Separate system & user remote flatpaks in yafti (until system + core flatpaks get integrated into image)
 - Integrate Davinci Resolve container into just & yafti
-- Integrate & separate image into triple-buffer & VRR variants
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Remove fwupd testing remote
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
+- Integrate & separate image into triple-buffer & VRR variants
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October. Same applies for post-install extensions: Quick Close in Overview & Rounded Window Corners
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
