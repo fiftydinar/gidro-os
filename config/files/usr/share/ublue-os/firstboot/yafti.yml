@@ -21,7 +21,6 @@ screens:
         - run: flatpak remote-delete --system --force fedora
         - run: flatpak remote-delete --user --force fedora
         - run: flatpak remote-delete --system --force fedora-testing
-        - run: flatpak remote-delete --user --force fedora-testing
         - run: flatpak remove --system --noninteractive --all
         - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
         - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -121,8 +120,6 @@ screens:
         - "Install More Applications":
             run: /usr/bin/gnome-software
         - "Website":
-            run: /usr/bin/xdg-open https://ublue.it
-        - "Join the Discord Community":
-            run: /usr/bin/xdg-open https://discord.gg/XjG48C7VHx
+            run: /usr/bin/xdg-open https://github.com/fiftydinar/gidro-os
       description: |
-        Thanks for trying uBlue, we hope you enjoy it!
+        Thanks for trying Gidro OS, I hope you enjoy it!
