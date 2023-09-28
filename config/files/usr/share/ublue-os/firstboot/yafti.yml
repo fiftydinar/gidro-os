@@ -1,6 +1,6 @@
 title: Welcome to Gidro OS
 properties:
-  mode: "run-on-change"
+  mode: "run-once"
 screens:
   first-screen:
     source: yafti.screen.title
@@ -112,7 +112,34 @@ screens:
             - Space Cadet Pinball: com.github.k4zmu2a.spacecadetpinball
             - Grapejuice (Roblox): net.brinkervii.grapejuice
             - ProtonPlus: com.vysp3r.ProtonPlus
-            
+  configure-gidroos:
+    source: yafti.screen.package
+    values:
+      title: Additional GidroOS packages & configs
+      show_terminal: true
+      package_manager: yafti.plugin.run
+      groups:
+        Post-setup (DO NOT DISABLE):
+          description: Performs necessary post-setup for GidroOS.
+          default: true
+          packages:
+          - Post-setup: just post-setup
+        OBS:
+          description: Installs advanced screen recorder with tons of plugins in distrobox container.
+          default: false
+          packages:
+          - OBS: just install-obs-studio-portable
+        Hide GRUB:
+          description: Hides GRUB text output on boot.
+          default: false
+          packages:
+          - Hide GRUB: just hide-grub
+        Remove window close button:
+          description: Removes window close button. Useful for mouses which have special button mapped for window closing.
+          default: false
+          packages:
+          - Remove window close button: just hide-close-button          
+         
   final-screen:
     source: yafti.screen.title
     values:

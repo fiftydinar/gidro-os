@@ -72,6 +72,10 @@ User flatpaks:
 - Grapejuice
 - ProtonPlus
 
+Additional packages:
+- OBS with big collection of plugins (in a distrobox container)
+- Hide Grub text output on boot
+
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
@@ -85,50 +89,22 @@ Settings applied by default:
 - Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-
-Additional configuration:
-- Hide/unhide grub justfile
-- Hide ROM Properties desktop shortcut
-- Remove Fedora Flatpak testing repo (in yafti)
-
-## Necessary Post-Setup
-
-Config changes:
 - Enable Nautilus "Sort folders before files"
 - Add Nautilus "New Document" to context menu
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
-
-You will see window flashing. That is automatic opening than closing Nautilus, which is needed for the 1st config to work.
-
-Run this command after install until I implement this into the image:
-  ```
-just post-setup
-  ```
-
-## Post-Setup (for special devices & special usecases)
-- Close button from windows removed (because I mapped the close button to special mouse key on Logitech G305)
-  ```
-  just hide-close-button
-  ```
+- Remove Fedora Flatpak testing repo
+- Hide ROM Properties desktop shortcut
 
 ## Post-Setup (optional)
-- Install OBS distrobox container
-  ```
-  just install-obs-studio-portable
-  ```
 - Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming (enter commands one by one)
   ```
   just distrobox-bazzite
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
   ```
-- Hide GRUB
-  ```
-  just hide-grub
-  ```
-
+  
 ## Installation (ISO) [Recommended]
 
 ISOs are online-based & are constantly upgraded. There is no need to worry about the version & the date of the ISO.
@@ -167,9 +143,9 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 ```
 
 ## Plans for the future
-- Integrate necessary post-setup into the image (some dconfs & flatpak configs need to be executed in post-setup)
+- Integrate yafti setup into image
 - Integrate & separate image into triple-buffer & VRR variants
-- Integrate Davinci Resolve container into just
+- Integrate Davinci Resolve container into just & yafti
 - Integrate system flatpaks into image
 - Separate system & user remote flatpaks in yafti (until system flatpaks get integrated into image)
 - Set "Flathub (user)" remote as a default in Gnome Software
