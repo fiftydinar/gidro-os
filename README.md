@@ -1,4 +1,4 @@
-# Gidro OS
+# GidroOS
 
 My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project.
 

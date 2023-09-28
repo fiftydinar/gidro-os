@@ -1,11 +1,11 @@
-title: Welcome to Gidro OS
+title: Welcome to GidroOS
 properties:
   mode: "run-once"
 screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to Gidro OS"
+      title: "Welcome to GidroOS"
       icon: "/path/to/icon"
       description: |
         This guided installer will help you get started with your new system.
@@ -151,4 +151,4 @@ screens:
         - "Website":
             run: /usr/bin/xdg-open https://github.com/fiftydinar/gidro-os
       description: |
-        Thanks for trying Gidro OS, I hope you enjoy it!
+        Thanks for trying GidroOS, I hope you enjoy it!
