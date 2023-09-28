@@ -23,9 +23,9 @@ post-setup:
   output=`echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 11'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" > keyfile 2>&1` || echo $output && false
   output=`cd $HOME 2>&1` || echo $output && false
     output=`echo 'Gnome Text Editor pre-configured settings applied.' 2>&1` || echo $output && false
-  output=`else 2>&1` || echo $output && false
-    echo 'Gnome Text Editor is not installed, settings not applied.' >&2
-  output=`fi 2>&1` || echo $output && false
+  else
+    echo 'Error: Gnome Text Editor is not installed, settings not applied.' >&2
+  fi
 
   
 # Remove close button from windows (useful for Logitech G305)
@@ -49,10 +49,10 @@ hide-grub:
   output=`if [ -d /sys/firmware/efi ]; then 2>&1` || echo $output && false
     output=`sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
         output=`echo 'Hide UEFI GRUB logs during boot setting applied.' 2>&1` || echo $output && false  
-  output=`else 2>&1` || echo $output && false
+  else
     output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         output=`echo 'Hide BIOS GRUB logs during boot setting applied.' 2>&1` || echo $output && false   
-  output=`fi 2>&1` || echo $output && false
+  fi
 
 # Set system to boot with the grub screen showing options (Default)
 unhide-grub:
@@ -63,7 +63,7 @@ unhide-grub:
   output=`if [ -d /sys/firmware/efi ]; then 2>&1` || echo $output && false
     output=`sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
         output=`echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.' 2>&1` || echo $output && false  
-  output=`else 2>&1` || echo $output && false
+  else
     output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         output=`echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.' 2>&1` || echo $output && false   
-  output=`fi 2>&1` || echo $output && false
+  fi
