@@ -123,22 +123,22 @@ screens:
           description: Performs necessary post-setup for GidroOS.
           default: true
           packages:
-          - Post-setup: just post-setup --unstable
+          - Post-setup: just --unstable post-setup
         OBS:
           description: Installs advanced screen recorder with tons of plugins in distrobox container.
           default: false
           packages:
-          - OBS: just install-obs-studio-portable --unstable
+          - OBS: just --unstable install-obs-studio-portable
         Hide GRUB:
           description: Hides GRUB text output on boot.
           default: false
           packages:
-          - Hide GRUB: just hide-grub --unstable
+          - Hide GRUB: just --unstable hide-grub
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false
           packages:
-          - Remove window close button: just hide-close-button --unstable   
+          - Remove window close button: just --unstable hide-close-button   
          
   final-screen:
     source: yafti.screen.title
