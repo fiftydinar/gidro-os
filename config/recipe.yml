@@ -26,6 +26,7 @@ modules:
          - https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-%OS_VERSION%/kylegospo-system76-scheduler-fedora-%OS_VERSION%.repo
          - https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/repo/fedora-%OS_VERSION%/kylegospo-hl2linux-selinux-fedora-%OS_VERSION%.repo
          - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
+         - https://copr.fedorainfracloud.org/coprs/nxmbit/gnome-perf-patched/repo/fedora-%OS_VERSION%/nxmbit-gnome-perf-patched-fedora-%OS_VERSION%.repo
     install:
       # - micro
       # - starship
@@ -52,6 +53,12 @@ modules:
       - gnome-shell-extension-window-list
       - gnome-classic-session
       - gnome-tweaks      
+
+  - type: rpm-replacer
+    reponame:
+         - nxmbit:gnome-perf-patched
+    packages:
+         - mutter
 
   - type: bling # configure what to pull in from ublue-os/bling
     install:
