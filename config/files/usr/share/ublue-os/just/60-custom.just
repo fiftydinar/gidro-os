@@ -24,7 +24,7 @@ post-setup:
   output=`cd $HOME 2>&1` || echo $output && false
     output=`echo 'Gnome Text Editor pre-configured settings applied.' 2>&1` || echo $output && false
   output=`else 2>&1` || echo $output && false
-    echo 'Gnome Text Editor is not installed, settings not applied. >&2
+    echo 'Gnome Text Editor is not installed, settings not applied.' >&2
   output=`fi 2>&1` || echo $output && false
 
   
