@@ -17,5 +17,6 @@ if [[ ${#REPONAME[@]} -gt 0 && ${#PACKAGES[@]} -gt 0 ]]; then
     echo "Replacing integrated RPMs"
     echo "Replacing: ${PACKAGES_STR[*]}"
     # Doing both actions in one command allows for replacing required packages with alternatives
+    rpm-ostree cliwrap install-to-root /
     rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:$REPONAME_STR $PACKAGES_STR
 fi
