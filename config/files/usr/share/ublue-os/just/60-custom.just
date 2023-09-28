@@ -5,7 +5,7 @@ post-setup:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
     output=`echo '"New documents" context menu entry in Nautilus created.' 2>&1` || echo $output && false
-  output=`nohup nautilus -w . & 2>&1` || echo $output && false
+  output=`nohup nautilus -w . 2>&1` || echo $output && false &
   output=`sleep 0.5 2>&1` || echo $output && false
   output=`gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true 2>&1` || echo $output && false
   output=`sleep 0.5 2>&1` || echo $output && false
