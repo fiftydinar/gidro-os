@@ -87,7 +87,7 @@ Settings applied by default:
 Additional configuration:
 - Hide/unhide grub justfile
 - Hide ROM Properties desktop shortcut
-- Remove Fedora Flatpak testing repo (in yafti) & fwupd testing repo (set a placeholder empty file)
+- Remove Fedora Flatpak testing repo (in yafti) & fwupd testing repo (integrated placeholder empty file)
 
 ## Necessary Post-Setup
 
