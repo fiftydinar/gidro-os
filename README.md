@@ -72,9 +72,10 @@ User flatpaks:
 - Grapejuice
 - ProtonPlus
 
-Additional packages:
+Additional packages & configs:
 - OBS with big collection of plugins (in a distrobox container)
-- Hide Grub text output on boot
+- Hide GRUB text output on boot
+- Hide close button from windows (useful for mouses which have a special key for closing applications window)
 
 Settings applied by default:
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
