@@ -118,13 +118,12 @@ just post-setup
   ```
   just install-obs-studio-portable
   ```
-- Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming + AdwSteamGTK skin (enter commands one by one)
+- Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming (enter commands one by one)
   ```
   just distrobox-bazzite
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
   distrobox-enter -n bazzite-arch -- '  paru -S adwsteamgtk --noconfirm'
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app AdwSteamGtk'
   ```
 - Hide GRUB
   ```
