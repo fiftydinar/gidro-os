@@ -123,7 +123,6 @@ just post-setup
   just distrobox-bazzite
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
   distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
-  distrobox-enter -n bazzite-arch -- '  paru -S adwsteamgtk --noconfirm'
   ```
 - Hide GRUB
   ```
