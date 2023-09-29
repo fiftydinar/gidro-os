@@ -123,6 +123,7 @@ Available for download in Releases page.
 To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
+
   AMD/Intel:
   ```
   sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
@@ -136,6 +137,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   systemctl reboot
   ```
 - Then rebase to the signed image, like so:
+
   AMD/Intel:
   ```
   sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
