@@ -1,6 +1,6 @@
 # Gidro-OS
 
-My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project.
+My lightly customized image, based on Fedora Silverblue, nokmods & nvidia edition, derived from UniversalBlue project.
 
 Removed packages (RPMs):
 - Firefox
