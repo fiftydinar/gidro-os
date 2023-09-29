@@ -1,5 +1,7 @@
 # Gidro-OS
 
+![](assets/bg.webp)
+
 My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project. Nvidia support is also included.
 
 Removed packages (RPMs):
