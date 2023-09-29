@@ -1,9 +1,9 @@
 ublue_variants:
   - label: fiftydinar/gidro-os
     ks: /kickstart/ublue-os.ks
+        subvariants:
+      - label: Standard image
+      - label: NVIDIA drivers included
+        suffix: -nvidia
     flavors:
       - label: gidro-os
-    subvariants:
-      - label: standard image
-      - label: NVIDIA drivers included
-        suffix: -nvidia      
