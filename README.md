@@ -18,6 +18,7 @@ Removed packages (RPMs):
 Replaced packages (RPMs)/usecases:
 - Ungoogled Chromium from Flathub instead of Firefox rpm
 - Mission Center from Flathub instead of Gnome System Monitor
+- Gnome Mutter VRR support (Variable Refresh Rate)
 
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
@@ -130,10 +131,18 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
   sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
+  AMD/Intel + VRR:
+  ```
+  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-vrr:latest
+  ```
   Nvidia:
   ```
   sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-nvidia:latest
   ```
+  Nvidia + VRR:
+  ```
+  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-nvidia-vrr:latest
+  ``` 
 - Reboot to complete the rebase:
   ```
   systemctl reboot
@@ -144,9 +153,17 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
   sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
   ```
+  AMD/Intel + VRR:
+  ```
+  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:latest
+  ```
   Nvidia:
   ```
   sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:latest
+  ```
+  Nvidia + VRR:
+  ```
+  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia-vrr:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -159,9 +176,17 @@ AMD/Intel:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
 ```
+AMD/Intel + VRR:
+```
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
+```
 Nvidia:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:20230930
+```
+Nvidia + VRR:
+```
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia-vrr:20230930
 ```
 
 ## Plans for the future

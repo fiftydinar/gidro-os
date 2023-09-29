@@ -1,0 +1,24 @@
+# image will be published to ghcr.io/<user>/<name>
+name: gidro-os-vrr
+# description will be included in the image's metadata
+description: My personalized custom OS image.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/silverblue-nokmods
+image-version: latest # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - from-file: module-shared-rpm-ostree.yml
+  - from-file: module-shared-files.yml
+  - from-file: module-shared-bling.yml
+  - from-file: module-shared-scripts.yml
+    
+  - type: rpm-ostree
+    repos: 
+    - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%OS_VERSION%/kylegospo-gnome-vrr-fedora-%OS_VERSION%.repo
+
+  - type: script
+    scripts:
+      - enable_vrr.sh

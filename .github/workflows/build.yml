@@ -41,6 +41,8 @@ jobs:
         recipe:
           - recipe.yml
           - recipe_nvidia.yml
+          - recipe_vrr.yml
+          - recipe_nvidia_vrr.yml
 # !!!
 
     steps:
