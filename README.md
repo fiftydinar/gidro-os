@@ -126,6 +126,9 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
   sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
+  ```
+  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-nvidia:latest
+  ```
 - Reboot to complete the rebase:
   ```
   systemctl reboot
@@ -133,6 +136,9 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 - Then rebase to the signed image, like so:
   ```
   sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
+  ```
+  ```
+  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -143,6 +149,9 @@ This repository builds date tags as well, so if you want to rebase to a particul
 
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
+```
+```
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:20230930
 ```
 
 ## Plans for the future
