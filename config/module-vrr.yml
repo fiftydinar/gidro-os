@@ -1,0 +1,7 @@
+type: rpm-ostree
+    repos: 
+    - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%OS_VERSION%/kylegospo-gnome-vrr-fedora-%OS_VERSION%.repo
+
+type: script
+    scripts:
+      - enable_vrr.sh
