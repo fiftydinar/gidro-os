@@ -96,6 +96,7 @@ Settings applied by default:
 - "Window not responding" dialog extended to 20s
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
+- Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Remove Fedora Flatpak testing repo
 - Hide ROM Properties desktop shortcut
 

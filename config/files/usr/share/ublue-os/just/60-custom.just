@@ -33,6 +33,15 @@ post-setup:
   else
     echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
   fi      
+  FLATPAK=$(flatpak list)
+  if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'" | tee -a $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Clapper (Videos) pre-configured settings applied.'
+  else
+    echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
+  fi   
   
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
