@@ -1,20 +1,24 @@
 ublue_variants:
   - label: fiftydinar/gidro-os
     ks: /kickstart/ublue-os.ks
-    subvariants:
-      - label: Gidro-OS
-      - label: Gidro-OS + VRR
-        suffix: -vrr
     flavors:
       - label: gidro-os
         info: Gidro-OS
 
+  - label: fiftydinar/gidro-os-vrr
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: gidro-os-vrr
+        info: Gidro-OS + VRR
+
   - label: fiftydinar/gidro-os-nvidia
     ks: /kickstart/ublue-os-nvidia.ks
-    subvariants:
-      - label: Gidro-OS + Nvidia
-      - label: Gidro-OS + Nvidia + VRR
-        suffix: -vrr    
     flavors:
       - label: gidro-os-nvidia
         info: Gidro-OS + Nvidia
+        
+  - label: fiftydinar/gidro-os-nvidia-vrr
+    ks: /kickstart/ublue-os-nvidia.ks
+    flavors:
+      - label: gidro-os-nvidia-vrr
+        info: Gidro-OS + Nvidia + VRR       
