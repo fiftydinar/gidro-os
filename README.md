@@ -153,9 +153,11 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 This repository builds date tags as well, so if you want to rebase to a particular day's build:
 
+AMD/Intel:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
 ```
+Nvidia:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:20230930
 ```
