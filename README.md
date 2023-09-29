@@ -95,6 +95,7 @@ Settings applied by default:
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
+- Set Calculator to separate thousands
 - Remove Fedora Flatpak testing repo
 - Hide ROM Properties desktop shortcut
 

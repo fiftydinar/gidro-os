@@ -11,6 +11,10 @@ post-setup:
   sleep 0.5
   output=`pkill nautilus 2>&1` || echo $output && false
     echo '"Sort folders first" setting in Nautilus applied.'
+  output=`gsettings set org.gnome.desktop.peripherals.keyboard delay 226 2>&1` || echo $output && false
+    echo 'Lower keyboard delay when typing setting applied.'  
+  output=`gsettings set org.gnome.mutter check-alive-timeout 20000 2>&1` || echo $output && false
+    echo 'Extended Mutter "not responding" timeout setting applied.'    
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -19,12 +23,17 @@ post-setup:
     echo 'Gnome Text Editor pre-configured settings applied.'
   else
     echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
-  fi    
-  output=`gsettings set org.gnome.desktop.peripherals.keyboard delay 226 2>&1` || echo $output && false
-    echo 'Lower keyboard delay when typing setting applied.'  
-  output=`gsettings set org.gnome.mutter check-alive-timeout 20000 2>&1` || echo $output && false
-    echo 'Extended Mutter "not responding" timeout setting applied.'    
-
+  fi
+  FLATPAK=$(flatpak list)
+  if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Gnome Calculator pre-configured settings applied.'
+  else
+    echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
+  fi      
+  
 # Remove close button from windows (useful for Logitech G305)
 hide-close-button:
   #!/usr/bin/env bash
