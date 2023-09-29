@@ -28,7 +28,6 @@ Installed packages (RPMs):
 Installed extensions:
 - Blur My Shell
 - Caffeine
-- Quick Close in Overview
 - System76 Scheduler (needed for integration with Gnome)
 
 System(ish) flatpaks:
@@ -174,5 +173,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Remove fwupd testing remote
 - Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Integrate & separate image into triple-buffer & VRR variants
-- Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October.
+- Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
+- Integrate "Quick Close in Overview" extension in an image as a rpm
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
