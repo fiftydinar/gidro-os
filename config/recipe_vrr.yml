@@ -11,10 +11,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: module-shared-rpm-ostree.yml
-  - from-file: module-shared-files.yml
-  - from-file: module-shared-bling.yml
-  - from-file: module-shared-scripts.yml
-    
+      
   - type: rpm-ostree
     repos: 
     - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%OS_VERSION%/kylegospo-gnome-vrr-fedora-%OS_VERSION%.repo
@@ -22,3 +19,8 @@ modules:
   - type: script
     scripts:
       - enable_vrr.sh
+      
+  - from-file: module-shared-files.yml
+  - from-file: module-shared-bling.yml
+  - from-file: module-shared-scripts.yml
+
