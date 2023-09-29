@@ -4,8 +4,9 @@ ublue_variants:
     flavors:
       - label: gidro-os
         info: Gidro-OS
+        
   - label: fiftydinar/gidro-os-nvidia
     ks: /kickstart/ublue-os-nvidia.ks
     flavors:
       - label: gidro-os-nvidia
-        info: Gidro-OS (for Nvidia GPUs)       
+        info: Gidro-OS + Nvidia GPU driver
