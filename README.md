@@ -1,5 +1,8 @@
 # Gidro-OS
 
+> **Warning**
+> This image is still in development & it's not ready yet until Fedora 39 official announcment!
+
 ![](assets/bg.webp)
 
 My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project. Nvidia support is also included.
