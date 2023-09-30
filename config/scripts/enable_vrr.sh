@@ -3,4 +3,3 @@ set -oue pipefail
 
 rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter mutter-common gnome-control-center gnome-control-center-filesystem xorg-x11-server-Xwayland
 echo "MUTTER_DEBUG_FORCE_KMS_MODE=simple" >> /usr/etc/environment
-echo -e "\n[org/gnome/mutter]\nexperimental-features="['variable-refresh-rate']"" | tee -a usr/etc/dconf/db/local.d/01-gidro

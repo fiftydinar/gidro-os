@@ -21,7 +21,11 @@ modules:
       - enable_vrr.sh
       
   - from-file: module-shared-files.yml
+  
+  - type: script
+    scripts:
+      - enable_vrr_2.sh  
+      
   - from-file: module-shared-bling.yml
   - from-file: module-shared-yafti.yml  
   - from-file: module-shared-scripts.yml
-
