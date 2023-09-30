@@ -1,7 +1,7 @@
 # Gidro-OS
 
 > **Warning**
-> This image is still in development & it's not ready yet until Fedora 39 official announcment!
+> This image is still in development & it's not ready yet until Fedora 39 official announcement!
 
 ![](assets/bg.webp)
 
