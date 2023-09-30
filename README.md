@@ -50,6 +50,7 @@ System(ish) flatpaks:
 - Secrets
 - Sticky Notes
 - Rnote
+- Warp
 - Flatseal
 - Extension Manager
 - Gradience

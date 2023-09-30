@@ -75,6 +75,7 @@ screens:
             - Secrets: org.gnome.World.Secrets
             - Sticky Notes: com.vixalien.sticky
             - Paint: com.github.flxzt.rnote
+            - Warp: app.drey.Warp
         System Apps:
           description: System applications as an additional toolkit for improving user experience.
           default: true
