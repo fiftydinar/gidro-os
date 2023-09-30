@@ -23,7 +23,7 @@ jobs:
         with:
           image-name: ${{ github.event.repository.name }}
           installer-repo: releases
-          installer-major-version: 39
+          installer-major-version: 38
           boot-menu-path: boot_menu.yml
       - name: install github CLI
         run: |
