@@ -12,6 +12,9 @@ document-font-name='Nokia Pure Text 11'
 clock-show-weekday=true
 gtk-theme='adw-gtk3'
 
+[org/gnome/desktop/peripherals/keyboard]
+delay=uint32 226
+
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
 
@@ -37,3 +40,6 @@ download-updates-notify=false
 
 [system/locale]
 region='sr_RS.UTF-8@latin'
+
+[org/gnome/mutter]
+check-alive-timeout=uint32 20000
