@@ -5,3 +5,4 @@ scripts:
   - enable-system76-scheduler-service.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
+  - gnome_askpass.sh
