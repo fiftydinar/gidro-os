@@ -5,4 +5,3 @@ scripts:
   - enable-system76-scheduler-service.sh
   - gnome-extensions-uninstall.sh
   - rom-properties-shortcut-remove.sh
-  - disable-third-party-repos-prompt.sh
