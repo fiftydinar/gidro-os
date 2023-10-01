@@ -45,8 +45,10 @@ post-setup:
 
   output=`sudo -A /usr/lib/fedora-third-party/fedora-third-party-opt-out 2>&1` || echo $output && false
   output=`sudo /usr/bin/fedora-third-party disable 2>&1` || echo $output && false
+  echo 'Third-party repo prompt in Gnome Software removed.'
   
   output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
+  echo 'Fwupd testing repo deleted.'
 
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
