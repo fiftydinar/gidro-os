@@ -14,8 +14,7 @@ post-setup-root:
 # Necessary post-setup for Gidro-OS (user)
 post-setup-user
   #!/usr/bin/env bash
-  cd $HOME/Templates
-  touch "Untitled Document.txt"
+  touch $HOME/Templates/Untitled\ Document
     echo '"New documents" context menu entry in Nautilus created.'
     
   nohup nautilus -w . &> /dev/null &
