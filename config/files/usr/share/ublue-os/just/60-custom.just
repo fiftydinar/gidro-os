@@ -3,7 +3,7 @@
 # Necessary post-setup for Gidro-OS
 post-setup:
   #!/usr/bin/env bash
-  output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
+  output=`touch ~/Templates/Untitled\ Document 2>&1` || echo $output && false
     echo '"New documents" context menu entry in Nautilus created.'
     
   nohup nautilus -w . &> /dev/null &
@@ -47,7 +47,7 @@ post-setup:
   echo 'Fwupd testing repo deleted.'
 
   output=`gnome-software --quit 2>&1` || echo $output && false
-  output=`sudo /usr/lib/fedora-third-party/fedora-third-party-opt-out 2>&1` || echo $output && false
+  sudo /usr/lib/fedora-third-party/fedora-third-party-opt-out &> /dev/null
   output=`sudo /usr/bin/fedora-third-party disable 2>&1` || echo $output && false
   echo 'Gnome Software third-party repo prompt disabled.'
 
