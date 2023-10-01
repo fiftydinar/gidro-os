@@ -42,12 +42,8 @@ post-setup:
   else
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
-
-  output=`sudo -A /usr/lib/fedora-third-party/fedora-third-party-opt-out 2>&1` || echo $output && false
-  output=`sudo /usr/bin/fedora-third-party disable 2>&1` || echo $output && false
-  echo 'Third-party repo prompt in Gnome Software removed.'
   
-  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
+  output=`sudo -A rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
   echo 'Fwupd testing repo deleted.'
 
 # Remove close button from windows (useful for Logitech G305 mouse)
@@ -65,7 +61,7 @@ unhide-close-button:
 # Set system to boot without showing the grub screen with options
 hide-grub:
   #!/usr/bin/env bash
-  output=`sudo -A sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub 2>&1` || echo $output && false
+  output=`sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub 2>&1` || echo $output && false
   output=`echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
   output=`echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
   if [ -d /sys/firmware/efi ]; then
