@@ -1,5 +1,20 @@
 # Include some of your custom scripts here!
 
+# Necessary workaround Gnome Software post-setup for Gidro-OS
+post-setup-gnome-software:
+  #!/usr/bin/env bash
+  gnome-software --quit
+
+# Necessary root post-setup for Gidro-OS
+post-setup-root:
+  #!/usr/bin/env bash
+  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
+  echo 'Fwupd testing repo deleted.'
+
+  sudo /usr/lib/fedora-third-party/fedora-third-party-opt-out &> /dev/null
+  sudo /usr/bin/fedora-third-party disable &> /dev/null
+  echo 'Gnome Software third-party repo prompt disabled.'
+
 # Necessary user post-setup for Gidro-OS
 post-setup-user:
   #!/usr/bin/env bash
@@ -43,17 +58,6 @@ post-setup-user:
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
   
-# Necessary root post-setup for Gidro-OS
-post-setup-root:
-  #!/usr/bin/env bash
-  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
-  echo 'Fwupd testing repo deleted.'
-
-  gnome-software --quit
-  sudo /usr/lib/fedora-third-party/fedora-third-party-opt-out &> /dev/null
-  sudo /usr/bin/fedora-third-party disable &> /dev/null
-  echo 'Gnome Software third-party repo prompt disabled.'
-
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
   #!/usr/bin/env bash

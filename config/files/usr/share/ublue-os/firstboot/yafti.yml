@@ -121,15 +121,20 @@ screens:
       package_manager: yafti.plugin.run
       groups:
         Post-setup 1 (DO NOT DISABLE):
+          description: Performs workaround Gnome Software post-setup for Gidro-OS.
+          default: true
+          packages:
+          - Post-setup 1: just --unstable post-setup-gnome-software      
+        Post-setup 2 (DO NOT DISABLE):
           description: Performs necessary root post-setup for Gidro-OS.
           default: true
           packages:
-          - Post-setup 1: sudo -A just --unstable post-setup-root
-        Post-setup 2 (DO NOT DISABLE):
+          - Post-setup 2: sudo -A just --unstable post-setup-root
+        Post-setup 3 (DO NOT DISABLE):
           description: Performs necessary user post-setup for Gidro-OS.
           default: true
           packages:
-          - Post-setup 2: just --unstable post-setup-user          
+          - Post-setup 3: just --unstable post-setup-user          
         OBS:
           description: Installs advanced screen recorder with tons of plugins in distrobox container.
           default: false
