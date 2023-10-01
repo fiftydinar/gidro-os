@@ -59,20 +59,20 @@ unhide-close-button:
 hide-grub:
   #!/usr/bin/env bash
   output=`sudo -A sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub 2>&1` || echo $output && false
-  output=`echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo -A tee -a /etc/default/grub 2>&1` || echo $output && false
-  output=`echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo -A tee -a /etc/default/grub 2>&1` || echo $output && false
+  output=`echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
+  output=`echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1` || echo $output && false
   if [ -d /sys/firmware/efi ]; then
-    output=`sudo -A grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1` || echo $output && false
         echo 'Hide UEFI GRUB logs during boot setting applied.'  
   else
-    output=`sudo -A grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
+    output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         echo 'Hide BIOS GRUB logs during boot setting applied.'   
   fi
 
 # Set system to boot with the grub screen showing options (Default)
 unhide-grub:
   #!/usr/bin/env bash
-  output=`sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub 2>&1` || echo $output && false
+  output=`sudo -A sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub 2>&1` || echo $output && false
   output=`sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub 2>&1` || echo $output && false
   output=`sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub 2>&1` || echo $output && false
   if [ -d /sys/firmware/efi ]; then
