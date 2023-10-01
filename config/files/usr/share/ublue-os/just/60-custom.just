@@ -42,7 +42,12 @@ post-setup:
   else
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
+
+  output=`sudo -A /usr/lib/fedora-third-party/fedora-third-party-opt-out 2>&1` || echo $output && false
+  output=`sudo /usr/bin/fedora-third-party disable 2>&1` || echo $output && false
   
+  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
+
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
   #!/usr/bin/env bash
