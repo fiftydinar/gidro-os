@@ -11,7 +11,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:      
   - type: rpm-ostree
-  repos:      
+repos:      
   - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%OS_VERSION%/kylegospo-gnome-vrr-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-%OS_VERSION%/kylegospo-system76-scheduler-fedora-%OS_VERSION%.repo  
   - https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/repo/fedora-%OS_VERSION%/kylegospo-hl2linux-selinux-fedora-%OS_VERSION%.repo
@@ -56,7 +56,7 @@ remove:
   
   - from-file: module-shared-bling.yml
   - from-file: module-shared-yafti.yml
-type: script
+- type: script
 scripts:
   - signing.sh
   - reload-font-cache.sh
