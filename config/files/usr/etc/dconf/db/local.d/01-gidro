@@ -1,15 +1,15 @@
 [org/gnome/desktop/background]
+picture-options='zoom'
 picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
 picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
-picture-options='zoom'
 primary-color='000000'
 secondary-color='FFFFFF'
 
 [org/gnome/desktop/interface]
+clock-show-weekday=true
+document-font-name='Nokia Pure Text 11'
 font-hinting='none'
 font-name='Nokia Pure Text 11'
-document-font-name='Nokia Pure Text 11'
-clock-show-weekday=true
 gtk-theme='adw-gtk3'
 
 [org/gnome/desktop/peripherals/keyboard]
