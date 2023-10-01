@@ -5,12 +5,14 @@ post-setup:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
     echo '"New documents" context menu entry in Nautilus created.'
+    
   nohup nautilus -w . &> /dev/null &
   sleep 0.5
   output=`gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true 2>&1` || echo $output && false
   sleep 0.5
   output=`pkill nautilus 2>&1` || echo $output && false
-    echo '"Sort folders first" setting in Nautilus applied.'   
+    echo '"Sort folders first" setting in Nautilus applied.'
+    
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -20,6 +22,7 @@ post-setup:
   else
     echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
   fi
+  
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -28,7 +31,8 @@ post-setup:
     echo 'Gnome Calculator pre-configured settings applied.'
   else
     echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
-  fi      
+  fi
+  
   FLATPAK=$(flatpak list)
   if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -39,7 +43,7 @@ post-setup:
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
   
-# Remove close button from windows (useful for Logitech G305)
+# Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
   #!/usr/bin/env bash
   output=`gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:' 2>&1` || echo $output && false
