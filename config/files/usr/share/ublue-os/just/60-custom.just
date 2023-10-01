@@ -43,7 +43,7 @@ post-setup:
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
   
-  output=`sudo -A rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
+  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
   echo 'Fwupd testing repo deleted.'
 
 # Remove close button from windows (useful for Logitech G305 mouse)
@@ -75,7 +75,7 @@ hide-grub:
 # Set system to boot with the grub screen showing options (Default)
 unhide-grub:
   #!/usr/bin/env bash
-  output=`sudo -A sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub 2>&1` || echo $output && false
+  output=`sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub 2>&1` || echo $output && false
   output=`sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub 2>&1` || echo $output && false
   output=`sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub 2>&1` || echo $output && false
   if [ -d /sys/firmware/efi ]; then

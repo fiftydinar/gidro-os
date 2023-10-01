@@ -124,7 +124,7 @@ screens:
           description: Performs necessary post-setup for Gidro-OS.
           default: true
           packages:
-          - Post-setup: just --unstable post-setup
+          - Post-setup: sudo -A just --unstable post-setup
         OBS:
           description: Installs advanced screen recorder with tons of plugins in distrobox container.
           default: false
@@ -134,7 +134,7 @@ screens:
           description: Hides GRUB text output on boot.
           default: false
           packages:
-          - Hide GRUB: just --unstable hide-grub
+          - Hide GRUB: sudo -A just --unstable hide-grub
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false
