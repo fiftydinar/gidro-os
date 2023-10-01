@@ -4,4 +4,4 @@ scripts:
   - reload-font-cache.sh
   - enable-system76-scheduler-service.sh
   - gnome-extensions-uninstall.sh
-  - rom-properties-shortcut-remove.sh
+  - desktop-shortcut-remover.sh

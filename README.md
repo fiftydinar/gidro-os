@@ -28,6 +28,7 @@ Installed packages (RPMs):
 - DDC Control (for setting up screen controls through GUI in OS)
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
+- Gnome SSH askpass
 
 Installed extensions:
 - Blur My Shell

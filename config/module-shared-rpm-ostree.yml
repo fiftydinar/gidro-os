@@ -13,6 +13,7 @@ install:
   - ddccontrol
   - hl2linux-selinux
   - rom-properties-gtk3
+  - gnome-ssh-askpass
 
 remove:
   - firefox
