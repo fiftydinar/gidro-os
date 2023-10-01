@@ -200,7 +200,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate Davinci Resolve container into just & yafti
 - Set "Flathub (user)" remote as a default in Gnome Software
 - Remove fwupd testing remote
-- Disable "Enable 3rd party repos?" first-run prompt in Gnome Software
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
