@@ -197,8 +197,8 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 
 ## Plans for the future
 - Integrate yafti necessary post-setup into image
-- Integrate system + core flatpaks into image
-- Separate system & user remote flatpaks in yafti (until system + core flatpaks get integrated into image)
+- Integrate system + core flatpaks into image with future ublue-flatpak-installer
+- Remove system + core flatpaks in yafti & only install user flatpaks there
 - Integrate Davinci Resolve container into just & yafti
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate "Quick Close in Overview" extension in an image as a rpm
