@@ -20,14 +20,7 @@ post-setup-user:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
     echo '"New documents" context menu entry in Nautilus created.'
-    
-  nohup nautilus -w . &> /dev/null &
-  sleep 0.5
-  output=`gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true 2>&1` || echo $output && false
-  sleep 0.5
-  output=`pkill nautilus 2>&1` || echo $output && false
-    echo '"Sort folders first" setting in Nautilus applied.'
-    
+        
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
   output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false

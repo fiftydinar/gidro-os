@@ -99,14 +99,15 @@ Settings applied by default:
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Enable Nautilus "Sort folders before files"
-- Add Nautilus "New Document" to context menu
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
+- Add Nautilus "New Document" to context menu
+- Set Gnome Software to use Flathub-user remote by default
+- Hide ROM Properties desktop shortcut
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Remove Fedora Flatpak testing repo
-- Hide ROM Properties desktop shortcut
 
 ## Post-Setup (optional)
 - Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming (enter commands one by one)
@@ -199,7 +200,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate system + core flatpaks into image
 - Separate system & user remote flatpaks in yafti (until system + core flatpaks get integrated into image)
 - Integrate Davinci Resolve container into just & yafti
-- Set "Flathub (user)" remote as a default in Gnome Software
 - Integrate & separate image into triple-buffer & VRR variants
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
