@@ -204,4 +204,3 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Find replacement for non-fuctioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
-- Fix "Japanese/Chinese fonts are displayed with unknown characters when using default Nokia Pure Text font"
