@@ -135,11 +135,11 @@ screens:
           default: true
           packages:
           - Post-setup 3: just --unstable post-setup-user          
-        OBS:
-          description: Installs advanced screen recorder with tons of plugins in distrobox container.
+        OBS Studio:
+          description: Installs advanced screen recorder with tons of useful plugins in distrobox container.
           default: false
           packages:
-          - OBS: just --unstable install-obs-studio-portable
+          - OBS Studio: just --unstable install-obs-studio-portable
         Hide GRUB:
           description: Hides GRUB text output on boot.
           default: false
