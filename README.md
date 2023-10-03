@@ -21,7 +21,8 @@ Removed packages (RPMs):
 Replaced packages (RPMs)/usecases:
 - Ungoogled Chromium from Flathub instead of Firefox rpm
 - Mission Center from Flathub instead of Gnome System Monitor
-- Gnome Mutter VRR support (Variable Refresh Rate)
+- Gnome Mutter "dynamic triple-buffering" support (for improved Gnome Shell performance)
+- Gnome Mutter "Variable Refresh Rate" support (only available as a separate image, as it conflicts with dynamic triple-buffering)
 
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
@@ -200,7 +201,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate system + core flatpaks into image with future ublue-flatpak-installer
 - Remove system + core flatpaks in yafti & only install user flatpaks there
 - Integrate Davinci Resolve container into just & yafti
-- Integrate & separate image into triple-buffer & VRR variants
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Find replacement for non-functioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
+- Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
