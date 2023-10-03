@@ -4,6 +4,9 @@ sort-directories-first=true
 [org/gtk/settings/file-chooser]
 sort-directories-first=true
 
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'gddccontrol.desktop', 'com.github.wwmm.easyeffects.desktop', 'com.github.tchx84.Flatseal.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'com.github.GradienceTeam.Gradience.desktop', 'com.usebottles.bottles.desktop']
+
 [org/gnome/desktop/background]
 picture-options='zoom'
 picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
