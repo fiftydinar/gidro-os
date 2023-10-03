@@ -35,6 +35,7 @@ title-bar-font='Nokia Pure Text Bold 11'
 
 [org/gnome/shell]
 enabled-extensions=['caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com']
+favorite-apps=['com.github.Eloston.UngoogledChromium.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org/gnome/shell/extensions/blur-my-shell]
 sigma=5
