@@ -5,7 +5,7 @@
 
 ![](assets/bg.webp)
 
-My lightly customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project. Nvidia support is also included.
+My customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project. Nvidia support is also included.
 
 Removed packages (RPMs):
 - Firefox
@@ -82,7 +82,7 @@ User flatpaks:
 - ProtonPlus
 
 Additional packages & configs:
-- OBS with big collection of plugins (in a distrobox container)
+- OBS Studio with big collection of plugins (in a distrobox container)
 - Hide GRUB text output on boot
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
 
