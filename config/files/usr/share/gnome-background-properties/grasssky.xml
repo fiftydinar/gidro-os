@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
 <wallpapers>
-    <wallpaper>
+    <wallpaper deleted="false">
         <name>Grass and Sky</name>
         <filename>/usr/share/backgrounds/grasssky.webp</filename>
         <options>zoom</options>
