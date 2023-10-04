@@ -2,8 +2,8 @@
 <!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
 <wallpapers>
     <wallpaper>
-        <name>Grass-Sky</name>
-        <filename>/usr/share/backgrounds/Grass-Sky.webp</filename>
+        <name>Grass and Sky</name>
+        <filename>/usr/share/backgrounds/grasssky.webp</filename>
         <options>zoom</options>
         <shade_type>solid</shade_type>
         <pcolor>#000000</pcolor>
