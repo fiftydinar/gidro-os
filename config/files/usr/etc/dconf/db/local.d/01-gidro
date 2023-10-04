@@ -6,8 +6,8 @@ sort-directories-first=true
 
 [org/gnome/desktop/background]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
-picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass&Sky.webp'
+picture-uri='file:///usr/share/backgrounds/nokia/Grass-Sky.webp'
+picture-uri-dark='file:///usr/share/backgrounds/nokia/Grass-Sky.webp'
 primary-color='000000'
 secondary-color='FFFFFF'
 
