@@ -1,0 +1,52 @@
+# Set folders first lock
+/org/gtk/gtk4/settings/file-chooser/sort-directories-first
+/org/gtk/settings/file-chooser/sort-directories-first
+
+# Default wallpaper lock
+/org/gnome/desktop/background/picture-options
+/org/gnome/desktop/background/picture-uri
+/org/gnome/desktop/background/picture-uri-dark
+/org/gnome/desktop/background/primary-color
+/org/gnome/desktop/background/secondary-color
+
+# Font settings lock
+/org/gnome/desktop/interface/clock-show-weekday
+/org/gnome/desktop/interface/document-font-name
+/org/gnome/desktop/interface/font-hinting
+/org/gnome/desktop/interface/font-name
+/org/gnome/desktop/interface/gtk-theme
+
+# Keyboard settings lock
+/org/gnome/desktop/peripherals/keyboard/delay
+
+# Mouse settings lock
+/org/gnome/desktop/peripherals/mouse/accel-profile
+
+# Touchpad settings lock
+/org/gnome/desktop/peripherals/touchpad/tap-to-click
+
+# Remove old trash files setting lock
+/org/gnome/desktop/privacy/remove-old-trash-files
+
+# Titlebar font setting lock
+/org/gnome/desktop/wm/preferences/title-bar-font
+
+# Extensions & dash setting lock
+/org/gnome/shell/enabled-extensions
+/org/gnome/shell/favorite-apps
+
+# Blur My Shell setting lock
+/org/gnome/shell/extensions/blur-my-shell/sigma
+
+# Gnome Software settings lock
+/org/gnome/software/allow-updates
+/org/gnome/software/download-updates
+/org/gnome/software/download-updates-notify
+/org/gnome/software/packaging-format-preference
+
+# System locale setting lock
+/system/locale/region
+
+# Mutter settings lock
+/org/gnome/mutter/check-alive-timeout
+/org/gnome/mutter/experimental-features
