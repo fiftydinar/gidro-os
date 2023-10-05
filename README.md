@@ -55,7 +55,6 @@ System(ish) flatpaks:
 - Warp
 - Flatseal
 - Extension Manager
-- Gradience
 - Easy Effects
 - Bottles
 
