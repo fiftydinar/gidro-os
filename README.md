@@ -86,6 +86,7 @@ Additional packages & configs:
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
 
 Settings applied by default:
+- Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Enable touchpad tap-to-click
