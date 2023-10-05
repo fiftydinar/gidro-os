@@ -88,10 +88,9 @@ Additional packages & configs:
 Settings applied by default:
 - Enable Vulkan support for AMD HD 7000/8000 series GPU
 - Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
-- Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows
+- Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
- them to run & not crash)
 - Enable touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
