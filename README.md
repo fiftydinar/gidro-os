@@ -84,6 +84,7 @@ Additional packages & configs:
 - OBS Studio with big collection of plugins (in a distrobox container)
 - Hide GRUB text output on boot
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
+- Enable amd_pstate=active CPU scaling driver for undetected Zen 2+ CPUs (CPUs which don't report CPPC as supported, but still work with amd_pstate)
 
 Settings applied by default:
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
