@@ -1,0 +1,12 @@
+[Unit]
+Description=Enable amd-pstate for uncofigured Zen 2+ hardware
+After=hardware-setup.service
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/amd-pstate
+
+[Install]
+WantedBy=multi-user.target

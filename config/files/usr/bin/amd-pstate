@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# GLOBAL
+KARGS=$(rpm-ostree kargs)
+NEEDED_KARGS=""
+echo "Current kargs: $KARGS"
+
+# KERNEL ARGUMENTS
+if [[ ! $KARGS =~ "amd_pstate" ]]; then
+  echo "Enabling amd-pstate driver"
+  NEEDED_KARGS="$NEEDED_KARGS --append=amd_pstate=active"
+fi
+
+if [[ -n "$NEEDED_KARGS" ]]; then
+  echo "Found needed karg changes, applying the following: $NEEDED_KARGS"
+  rpm-ostree kargs ${NEEDED_KARGS} --reboot || exit 1
+else
+  echo "No karg changes needed, applying pstate power preference"
+  sudo cpupower frequency-set -g powersave
+  echo power | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+fi

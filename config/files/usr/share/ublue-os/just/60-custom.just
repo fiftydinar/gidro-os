@@ -90,3 +90,13 @@ unhide-grub:
     output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
   fi
+  
+# Use amd-pstate active for Zen 2+ CPUs, which work properly with it, but are not detected as amd-pstate compatible
+enable-amd-pstate:
+  #!/usr/bin/env bash
+  systemctl enable amd-pstate.service
+  
+# Revert amd-pstate active CPU scaling to acpi-cpufreq (Default)
+disable-amd-pstate:
+  #!/usr/bin/env bash
+  systemctl disable amd-pstate.service  
