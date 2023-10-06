@@ -16,6 +16,4 @@ if [[ -n "$NEEDED_KARGS" ]]; then
   rpm-ostree kargs ${NEEDED_KARGS} --reboot || exit 1
 else
   echo "No karg changes needed, applying pstate power preference"
-  sudo cpupower frequency-set -g powersave
-  echo power | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 fi
