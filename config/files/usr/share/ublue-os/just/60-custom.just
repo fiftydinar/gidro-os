@@ -99,4 +99,5 @@ enable-amd-pstate:
 # Revert amd-pstate active CPU scaling to acpi-cpufreq (Default)
 disable-amd-pstate:
   #!/usr/bin/env bash
-  systemctl disable amd-pstate.service  
+  systemctl disable amd-pstate.service
+  rpm-ostree kargs --delete=amd_pstate=active
