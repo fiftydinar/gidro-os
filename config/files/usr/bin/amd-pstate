@@ -15,5 +15,5 @@ if [[ -n "$NEEDED_KARGS" ]]; then
   echo "Found needed karg changes, applying the following: $NEEDED_KARGS"
   rpm-ostree kargs ${NEEDED_KARGS} --reboot || exit 1
 else
-  echo "No karg changes needed, applying pstate power preference"
+  echo "No karg changes needed"
 fi
