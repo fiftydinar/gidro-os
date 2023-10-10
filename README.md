@@ -30,6 +30,7 @@ Installed packages (RPMs):
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
 - Gnome SSH askpass
+- BetterFonts (proprietary font substitute, for better website font rendering)
 
 Installed extensions:
 - Blur My Shell
