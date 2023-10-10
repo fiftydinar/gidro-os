@@ -211,3 +211,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Find replacement for non-functioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
 - Switch from nokmods build to main again when Fedora 39 gets building, as they will be the same, except nokmods will be removed
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
+- Revert amd_pstate justfile & service, if 6.6 kernel contains finished work of auto-setting amd_pstate for unrecognized AMD CPPC CPUs
