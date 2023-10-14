@@ -100,4 +100,4 @@ enable-amd-pstate:
 disable-amd-pstate:
   #!/usr/bin/env bash
   systemctl disable amd-pstate.service
-  rpm-ostree kargs --delete=amd_pstate=active
+  rpm-ostree kargs --delete-if-present=amd_pstate=active
