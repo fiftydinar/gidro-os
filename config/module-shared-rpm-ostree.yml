@@ -25,6 +25,7 @@ remove:
   - nvtop
   - gnome-software-rpm-ostree
   - gnome-tour
+  - gnome-initial-setup
   - gnome-system-monitor
   - gnome-shell-extension-apps-menu
   - gnome-shell-extension-background-logo
