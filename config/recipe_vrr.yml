@@ -16,6 +16,7 @@ modules:
         - https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-%OS_VERSION%/kylegospo-system76-scheduler-fedora-%OS_VERSION%.repo  
         - https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/repo/fedora-%OS_VERSION%/kylegospo-hl2linux-selinux-fedora-%OS_VERSION%.repo
         - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
+        - https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/repo/fedora-%OS_VERSION%/hyperreal-better_fonts-fedora-%OS_VERSION%.repo  
     install:
         - gnome-shell-extension-caffeine
         - gnome-shell-extension-blur-my-shell
@@ -26,6 +27,7 @@ modules:
         - hl2linux-selinux
         - rom-properties-gtk3
         - openssh-askpass
+        - fontconfig-font-replacements 
     remove:
         - firefox
         - firefox-langpacks
@@ -33,6 +35,7 @@ modules:
         - nvtop
         - gnome-software-rpm-ostree
         - gnome-tour
+        - gnome-initial-setup 
         - gnome-system-monitor
         - gnome-shell-extension-apps-menu
         - gnome-shell-extension-background-logo
@@ -63,3 +66,4 @@ modules:
         - gnome-extensions-uninstall.sh
         - desktop-shortcut-remover.sh
         - gnome_askpass.sh
+        - enable-hardware-setup.sh
