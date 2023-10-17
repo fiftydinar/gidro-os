@@ -128,7 +128,7 @@ screens:
           description: Performs necessary root post-setup for Gidro-OS.
           default: true
           packages:
-          - Post-setup 2: sudo -A just --unstable post-setup-root
+          - Post-setup 2: pkexec just --justfile /usr/share/ublue-os/justfile --unstable post-setup-root
         Post-setup 3 (DO NOT DISABLE):
           description: Performs necessary user post-setup for Gidro-OS.
           default: true
@@ -143,7 +143,7 @@ screens:
           description: Hides GRUB text output on boot.
           default: false
           packages:
-          - Hide GRUB: sudo -A just --unstable hide-grub
+          - Hide GRUB: pkexec just --justfile /usr/share/ublue-os/justfile --unstable hide-grub
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false

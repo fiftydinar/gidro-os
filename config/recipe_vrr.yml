@@ -26,7 +26,6 @@ modules:
         - ddccontrol
         - hl2linux-selinux
         - rom-properties-gtk3
-        - openssh-askpass
         - fontconfig-font-replacements
         - nautilus-python 
     remove:
