@@ -32,6 +32,7 @@ Installed packages (RPMs):
 - Additional Game ROM Properties for Nautilus
 - Gnome SSH askpass
 - BetterFonts (proprietary font substitute, for better website font rendering)
+- Nautilus Python (for Python Nautilus extensions)
 
 Installed extensions:
 - Blur My Shell
