@@ -5,7 +5,7 @@
 
 ![](assets/bg.webp)
 
-My customized image, based on Fedora Silverblue, nokmods edition, derived from UniversalBlue project. Nvidia support is also included.
+My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project. Nvidia support is also included.
 
 Removed packages (RPMs):
 - Firefox
