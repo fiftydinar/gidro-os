@@ -203,6 +203,10 @@ Nvidia + VRR:
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia-vrr:20230930
 ```
 
+## Credits
+- Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
+- PopOS (for System76 scheduler & storage I/O udev rule)
+
 ## Plans for the future
 - Integrate yafti necessary post-setup into image
 - Integrate system + core flatpaks into image with future ublue-flatpak-installer
