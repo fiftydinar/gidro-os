@@ -91,6 +91,7 @@ Additional packages & configs:
 Settings applied by default:
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
 - Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
+- ZTSD I/O scheduler for ZRAM & better ZRAM values suited for desktop (avoids OOM situations better & it also improves responsiveness under I/O load)
 - Applied fix for non-working trim for LUKS partitions
 - Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
@@ -205,7 +206,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 
 ## Credits
 - Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
-- PopOS (for System76 scheduler & storage I/O udev rule)
+- PopOS (for System76 scheduler, storage I/O udev rule & ZRAM tweaks)
 
 ## Plans for the future
 - Integrate yafti necessary post-setup into image
