@@ -30,7 +30,6 @@ Installed packages (RPMs):
 - DDC Control (for setting up screen controls through GUI in OS)
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
-- BetterFonts (proprietary font substitute, for better website font rendering)
 - Nautilus Python (for Python Nautilus extensions)
 
 Installed extensions:
