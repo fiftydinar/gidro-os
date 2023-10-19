@@ -1,59 +1,11 @@
 #!/usr/bin/env bash
 
 # GLOBAL
-GPU_ID=$(lspci -k | grep -A 3 -E "(VGA|3D)")
-KARGS=$(rpm-ostree kargs)
 INITRAMFS=$(rpm-ostree initramfs)
-NEEDED_KARGS=""
-echo "Current kargs: $KARGS"
 
-# KERNEL ARGUMENTS
-if [[ ! $KARGS =~ "modprobe.blacklist=sp5100_tco" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=modprobe.blacklist=sp5100_tco"
-fi
-
-if [[ ! $KARGS =~ "modprobe.blacklist=iTCO_wdt" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=modprobe.blacklist=iTCO_wdt"
-fi
-
-if grep -qz "Kernel driver in use: radeon" <<< $GPU_ID; then
-  echo "Legacy AMD hardware detected, enabling CIK and SI support in AMDGPU"
-  if [[ ! $KARGS =~ "radeon.si_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=radeon.si_support=0"
-  fi
-
-  if [[ ! $KARGS =~ "radeon.cik_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=radeon.cik_support=0"
-  fi
-
-  if [[ ! $KARGS =~ "amdgpu.si_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=amdgpu.si_support=1"
-  fi
-
-  if [[ ! $KARGS =~ "amdgpu.cik_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=amdgpu.cik_support=1"
-  fi
-fi
-
-if [[ $KARGS =~ "nomodeset" ]]; then
-  echo "Removing nomodeset"
-  NEEDED_KARGS="$NEEDED_KARGS --delete-if-present=nomodeset"
-fi
-
-if [[ ! $KARGS =~ "rd.luks.options" ]]; then
-  NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=rd.luks.options=discard"
-fi
-
+# Regenerate initramfs for module blacklists to work & apply LUKS partition trim fix
 if [[ $INITRAMFS =~ "disabled" ]]; then
   echo "Found needed initramfs changes, applying."
   plymouth display-message --text="Updating initramfs - Please wait" || true
   rpm-ostree initramfs --enable --arg=-I --arg=/etc/crypttab
-fi
-
-if [[ -n "$NEEDED_KARGS" ]]; then
-  echo "Found needed karg changes, applying the following: $NEEDED_KARGS"
-  plymouth display-message --text="Updating kargs - Please wait" || true
-  rpm-ostree kargs ${NEEDED_KARGS} --reboot || exit 1
-else
-  echo "No karg changes needed"
 fi
