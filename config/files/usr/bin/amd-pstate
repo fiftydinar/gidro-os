@@ -8,7 +8,7 @@ echo "Current kargs: $KARGS"
 # KERNEL ARGUMENTS
 if [[ ! $KARGS =~ "amd_pstate" ]]; then
   echo "Enabling amd-pstate driver"
-  NEEDED_KARGS="$NEEDED_KARGS --append=amd_pstate=active"
+  NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=amd_pstate=active"
 fi
 
 if [[ -n "$NEEDED_KARGS" ]]; then

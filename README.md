@@ -91,9 +91,10 @@ Settings applied by default:
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
 - Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
 - ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop (avoids OOM situations better & it also improves responsiveness under I/O load)
-- Applied fix for non-working trim for LUKS partitions
 - Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
+- Disable kernel split-lock mitigate (for restoring performance of affected games)
+- Applied fix for non-working trim for LUKS partitions
 - Disabled kernel watchdog (logger), for improved performance & battery life
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Enable touchpad tap-to-click

@@ -8,38 +8,30 @@ NEEDED_KARGS=""
 echo "Current kargs: $KARGS"
 
 # KERNEL ARGUMENTS
-if [[ ! $KARGS =~ "nowatchdog" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=nowatchdog"
-fi
-
-if [[ ! $KARGS =~ "nmi_watchdog" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=nmi_watchdog=0"
-fi
-
 if [[ ! $KARGS =~ "modprobe.blacklist=sp5100_tco" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=modprobe.blacklist=sp5100_tco"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=modprobe.blacklist=sp5100_tco"
 fi
 
 if [[ ! $KARGS =~ "modprobe.blacklist=iTCO_wdt" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=modprobe.blacklist=iTCO_wdt"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=modprobe.blacklist=iTCO_wdt"
 fi
 
 if grep -qz "Kernel driver in use: radeon" <<< $GPU_ID; then
   echo "Legacy AMD hardware detected, enabling CIK and SI support in AMDGPU"
   if [[ ! $KARGS =~ "radeon.si_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=radeon.si_support=0"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=radeon.si_support=0"
   fi
 
   if [[ ! $KARGS =~ "radeon.cik_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=radeon.cik_support=0"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=radeon.cik_support=0"
   fi
 
   if [[ ! $KARGS =~ "amdgpu.si_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=amdgpu.si_support=1"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=amdgpu.si_support=1"
   fi
 
   if [[ ! $KARGS =~ "amdgpu.cik_support" ]]; then
-    NEEDED_KARGS="$NEEDED_KARGS --append=amdgpu.cik_support=1"
+    NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=amdgpu.cik_support=1"
   fi
 fi
 
@@ -49,7 +41,7 @@ if [[ $KARGS =~ "nomodeset" ]]; then
 fi
 
 if [[ ! $KARGS =~ "rd.luks.options" ]]; then
-  NEEDED_KARGS="$NEEDED_KARGS --append=rd.luks.options=discard"
+  NEEDED_KARGS="$NEEDED_KARGS --append-if-missing=rd.luks.options=discard"
 fi
 
 if [[ $INITRAMFS =~ "disabled" ]]; then
