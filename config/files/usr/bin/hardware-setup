@@ -7,5 +7,5 @@ INITRAMFS=$(rpm-ostree initramfs-etc)
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
   echo "Found needed initramfs changes, applying."
   plymouth display-message --text="Updating initramfs - Please wait" || true
-  rpm-ostree initramfs-etc --track /etc/crypttab --track /etc/modprobe.d/amdgpu.conf /etc/modprobe.d/blacklist.conf --force-sync --reboot
+  rpm-ostree initramfs-etc --track /etc/crypttab --track /etc/modprobe.d/amdgpu.conf --track /etc/modprobe.d/blacklist.conf --force-sync --reboot
 fi
