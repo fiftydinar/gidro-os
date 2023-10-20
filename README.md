@@ -22,6 +22,7 @@ Removed packages (RPMs):
 Replaced packages (RPMs)/usecases:
 - Ungoogled Chromium from Flathub instead of Firefox rpm
 - Mission Center from Flathub instead of Gnome System Monitor
+- System76-Power instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated at the moment)
 - Gnome Mutter "dynamic triple-buffering" support (for improved Gnome Shell performance)
 - Gnome Mutter "Variable Refresh Rate" support (only available as a separate image, as it conflicts with dynamic triple-buffering)
 
