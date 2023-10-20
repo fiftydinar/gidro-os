@@ -207,7 +207,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 
 ## Credits
 - Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
-- PopOS (for System76 scheduler, storage I/O udev rule & ZRAM tweaks)
+- PopOS (for System76 scheduler, System76-Power, storage I/O udev rule & ZRAM tweaks)
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
@@ -220,3 +220,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Revert amd_pstate justfile & service, if 6.6 kernel contains finished work of auto-setting amd_pstate for unrecognized AMD CPPC CPUs
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts is causing font-hinting issues, so other solution is needed)
+- Update System76-Power to latest version
