@@ -211,10 +211,10 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
 - Automatically install system + core flatpaks into image with future ublue-flatpak-installer
-- Remove system + core flatpaks in yafti & only allow install of user flatpaks there
+- Remove system + core flatpaks, flathub setup & post-setup justs related to it in yafti when previous plan is merged
 - Integrate Davinci Resolve container into just & yafti
 - Integrate "Quick Close in Overview" extension in an image as a rpm
-- Find replacement for non-functioning OpenWeather extension for Fedora 39/Gnome 45, which comes around 17th October
+- Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Switch to main build for Nvidia images & include Nvidia akmod + config manually
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Revert amd_pstate justfile & service, if 6.6 kernel contains finished work of auto-setting amd_pstate for unrecognized AMD CPPC CPUs
