@@ -218,3 +218,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Switch to main build for Nvidia images & include Nvidia akmod + config manually
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Revert amd_pstate justfile & service, if 6.6 kernel contains finished work of auto-setting amd_pstate for unrecognized AMD CPPC CPUs
+- Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts is causing font-hinting issues, so other solution is needed)
