@@ -9,6 +9,41 @@ screens:
       icon: "/path/to/icon"
       description: |
         This guided installer will help you get started with your new system.
+  can-we-modify-your-flatpaks:
+    source: yafti.screen.consent
+    values:
+      title: Welcome, Traveler!
+      condition:
+        run: flatpak remotes --columns=name | grep fedora
+      description: |
+        We have detected the limited, Fedora-provided Flatpak remote on your system, whose applications are usually missing important codecs and other features. This step will therefore remove all basic Fedora Flatpaks from your system! We will instead switch all core Flatpak applications over to the vastly superior, unfiltered Flathub. If you don't want to do this, simply exit this installer.
+      actions:
+        - run: flatpak remote-delete --system --force fedora
+        - run: flatpak remote-delete --user --force fedora
+        - run: flatpak remote-delete --system --force fedora-testing
+        - run: flatpak remove --system --noninteractive --all
+        - run: flatpak remote-add --if-not-exists --system --title="Flathub (System)" flathub-system https://flathub.org/repo/flathub.flatpakrepo
+        - run: flatpak remote-add --if-not-exists --user --title="Flathub" flathub-user https://flathub.org/repo/flathub.flatpakrepo
+  check-system-flathub:
+    source: yafti.screen.consent
+    values:
+      title: Missing Flathub Repository (System)
+      condition:
+        run: flatpak remotes --system --columns=name | grep flathub | wc -l | grep '^0$'
+      description: |
+        We have detected that you don't have Flathub's repository on your system. We will now add that repository to your system-wide list.
+      actions:
+        - run: flatpak remote-add --if-not-exists --system --title="Flathub (System)" flathub-system https://flathub.org/repo/flathub.flatpakrepo
+  check-user-flathub:
+    source: yafti.screen.consent
+    values:
+      title: Missing Flathub Repository (User)
+      condition:
+        run: flatpak remotes --user --columns=name | grep flathub | wc -l | grep '^0$'
+      description: |
+        We have detected that you don't have Flathub's repository on your current user account. We will now add that repository to your account.
+      actions:
+        - run: flatpak remote-add --if-not-exists --user --title="Flathub" flathub-user https://flathub.org/repo/flathub.flatpakrepo
   applications:
     source: yafti.screen.package
     values:
@@ -16,9 +51,39 @@ screens:
       show_terminal: true
       package_manager: yafti.plugin.flatpak
       package_manager_defaults:
-        user: true
-        system: false
+        user: false
+        system: true
       groups:
+        Core Apps:
+          description: Core applications for the GNOME desktop environment.
+          default: true
+          packages:
+            - Boxes: org.gnome.Boxes
+            - Calculator: org.gnome.Calculator
+            - Calendar: org.gnome.Calendar
+            - Camera: org.gnome.Snapshot
+            - Contacts: org.gnome.Contacts
+            - Clocks: org.gnome.clocks
+            - Document Viewer: org.gnome.Evince
+            - Maps: org.gnome.Maps
+            - Text Editor: org.gnome.TextEditor
+            - Music: com.github.neithern.g4music
+            - Videos: com.github.rafostar.Clapper
+            - Images: org.gnome.Loupe
+            - Web: com.github.Eloston.UngoogledChromium
+            - System Monitor: io.missioncenter.MissionCenter
+            - Secrets: org.gnome.World.Secrets
+            - Sticky Notes: com.vixalien.sticky
+            - Paint: com.github.flxzt.rnote
+            - Warp: app.drey.Warp
+        System Apps:
+          description: System applications as an additional toolkit for improving user experience.
+          default: true
+          packages:
+            - Flatseal (Permission Manager): com.github.tchx84.Flatseal
+            - Extension Manager: com.mattjakeman.ExtensionManager
+            - Easy Effects: com.github.wwmm.easyeffects
+            - Bottles: com.usebottles.bottles         
         User Apps:
           description: User applications which are generally used.
           default: false
@@ -54,11 +119,21 @@ screens:
       show_terminal: true
       package_manager: yafti.plugin.run
       groups:
-        Post-setup (DO NOT DISABLE):
+        Post-setup 1 (DO NOT DISABLE):
+          description: Performs workaround Gnome Software post-setup for Gidro-OS.
+          default: true
+          packages:
+          - Post-setup 1: just --unstable post-setup-gnome-software      
+        Post-setup 2 (DO NOT DISABLE):
+          description: Performs necessary root post-setup for Gidro-OS.
+          default: true
+          packages:
+          - Post-setup 2: pkexec just --justfile /usr/share/ublue-os/justfile --unstable post-setup-root
+        Post-setup 3 (DO NOT DISABLE):
           description: Performs necessary user post-setup for Gidro-OS.
           default: true
           packages:
-          - Post-setup 3: just --unstable post-setup          
+          - Post-setup 3: just --unstable post-setup-user          
         OBS Studio:
           description: Installs advanced screen recorder with tons of useful plugins in distrobox container.
           default: false
