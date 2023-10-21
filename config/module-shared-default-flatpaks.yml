@@ -1,4 +1,4 @@
-- type: default-flatpaks
+type: default-flatpaks
   system:
     # If no repo information is specified, Flathub will be used by default
     repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
