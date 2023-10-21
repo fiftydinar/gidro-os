@@ -38,7 +38,7 @@ Installed extensions:
 - Caffeine
 - System76 Scheduler (needed for integration with Gnome)
 
-System(ish) flatpaks:
+Installed System flatpaks:
 - Gnome Boxes
 - Gnome Calculator
 - Gnome Calendar
