@@ -1,22 +1,7 @@
 # Include some of your custom scripts here!
 
-# Necessary workaround Gnome Software post-setup for Gidro-OS
-post-setup-gnome-software:
-  #!/usr/bin/env bash
-  gnome-software --quit
-
-# Necessary root post-setup for Gidro-OS
-post-setup-root:
-  #!/usr/bin/env bash
-  output=`sudo rm /etc/fwupd/remotes.d/lvfs-testing.conf 2>&1` || echo $output && false
-  echo 'Fwupd testing repo deleted.'
-
-  sudo /usr/lib/fedora-third-party/fedora-third-party-opt-out &> /dev/null
-  sudo /usr/bin/fedora-third-party disable &> /dev/null
-  echo 'Gnome Software third-party repo prompt disabled.'
-
-# Necessary user post-setup for Gidro-OS
-post-setup-user:
+# Necessary post-setup for Gidro-OS
+post-setup:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
     echo '"New documents" context menu entry in Nautilus created.'

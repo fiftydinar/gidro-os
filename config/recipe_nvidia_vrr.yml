@@ -57,6 +57,7 @@ modules:
   
   - from-file: module-shared-bling.yml
   - from-file: module-shared-yafti.yml
+  - from-file: module-shared-default-flatpaks.yml
   
   - type: script
     scripts:
