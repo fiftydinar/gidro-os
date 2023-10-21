@@ -2,10 +2,37 @@
 
 # GLOBAL
 INITRAMFS=$(rpm-ostree initramfs-etc)
+NEEDED_INITRAMFS=("/etc/crypttab")
+NEEDS_INITRAMFS_APPLICATION=false
 
-# Apply initramfs-etc for module blacklists to work & apply LUKS partition trim fix
+# INITRAMFS
+echo "Current initramfs: $INITRAMFS"
+
+NEEDED_INITRAMFS+=("/etc/modprobe.d/amdgpu.conf")
+NEEDED_INITRAMFS+=("/etc/modprobe.d/blacklist.conf")
+
+for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
+  if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
+    NEEDS_INITRAMFS_APPLICATION=true
+  fi
+done
+
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
-  echo "Found needed initramfs changes, applying."
+  echo "No initramfs changes needed"
+else
+  if $NEEDS_INITRAMFS_APPLICATION; then
+    echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
+    plymouth display-message --text="Updating initramfs - Please wait, this may take a while" || true
+    rpm-ostree initramfs-etc "--track ${NEEDED_INITRAMFS[*]}"
+  else
+    echo "No initramfs changes needed"
+  fi
+fi
+
+if [[ $INITRAMFS =~ "No tracked files." ]]; then
+  echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
-  rpm-ostree initramfs-etc --track /etc/crypttab --track /etc/modprobe.d/amdgpu.conf --track /etc/modprobe.d/blacklist.conf --force-sync --reboot
+  rpm-ostree initramfs-etc "--track ${NEEDED_INITRAMFS[*]}" --force-sync --reboot
+else
+  echo "No initramfs changes needed"
 fi
