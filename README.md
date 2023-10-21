@@ -117,7 +117,6 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
-- Remove Fedora Flatpak testing repo
 
 ## Post-Setup (optional)
 - Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming (enter commands one by one)
@@ -211,8 +210,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
-- Automatically install system + core flatpaks on post-setup with future ublue-flatpak-installer
-- Remove system + core flatpaks, flathub setup & post-setup justs related to it in yafti when previous plan is merged
 - Integrate Davinci Resolve container into just & yafti
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
