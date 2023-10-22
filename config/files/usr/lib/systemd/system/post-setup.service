@@ -4,6 +4,7 @@ After=system-flatpak-setup.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=true
 ExecStart=/usr/bin/post-setup
 
 [Install]
