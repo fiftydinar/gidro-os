@@ -8,4 +8,3 @@ scripts:
   - desktop-shortcut-remover.sh
   - mutter-triple-buffer.sh
   - enable-hardware-setup.sh
-  - enable-post-setup.sh

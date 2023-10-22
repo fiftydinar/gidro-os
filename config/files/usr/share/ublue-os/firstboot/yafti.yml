@@ -8,7 +8,7 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description: |
-        This guided installer will help you get started with your new system.
+        DO NOT PROCEED UNTIL CLAPPER, TEXT EDITOR & CALCULATOR ARE INSTALLED! This guided installer will help you get started with your new system.
   applications:
     source: yafti.screen.package
     values:
@@ -53,7 +53,12 @@ screens:
       title: Additional Gidro-OS packages & configs
       show_terminal: true
       package_manager: yafti.plugin.run
-      groups:          
+      groups:
+        Post Setup (DO NOT DISABLE):
+          description: Performs necessary post-setup for Gidro-OS.
+          default: false
+          packages:
+          - Post Setup: just --unstable post-setup          
         OBS Studio:
           description: Installs advanced screen recorder with tons of useful plugins in distrobox container.
           default: false
