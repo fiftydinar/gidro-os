@@ -5,6 +5,7 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/repo/fedora-%OS_VERSION%/kylegospo-hl2linux-selinux-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-%OS_VERSION%/szydell-system76-fedora-%OS_VERSION%.repo
+
 install:
   - gnome-shell-extension-caffeine
   - gnome-shell-extension-blur-my-shell
@@ -16,6 +17,7 @@ install:
   - rom-properties-gtk3
   - nautilus-python
   - system76-power
+
 remove:
   - firefox
   - firefox-langpacks

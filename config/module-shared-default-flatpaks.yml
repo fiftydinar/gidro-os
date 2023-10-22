@@ -1,32 +1,33 @@
 type: default-flatpaks
 system:
+# If no repo information is specified, Flathub will be used by default
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-system
-  repo-title: Flathub (System)
+  repo-title: "Flathub (System)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
   install:
-    - org.gnome.Boxes
-    - org.gnome.Calculator
-    - org.gnome.Calendar
-    - org.gnome.Snapshot
-    - org.gnome.Contacts
-    - org.gnome.clocks
-    - org.gnome.Evince
-    - org.gnome.Maps
-    - org.gnome.TextEditor
-    - com.github.neithern.g4music
-    - com.github.rafostar.Clapper
-    - org.gnome.Loupe
-    - com.github.Eloston.UngoogledChromium
-    - io.missioncenter.MissionCenter
-    - org.gnome.World.Secrets
-    - com.vixalien.sticky
-    - com.github.flxzt.rnote
-    - app.drey.Warp
-    - com.github.tchx84.Flatseal
-    - com.mattjakeman.ExtensionManager
-    - com.github.wwmm.easyeffects
-    - com.usebottles.bottles
+  - org.gnome.Boxes 
+  - org.gnome.Calculator
+  - org.gnome.Calendar
+  - org.gnome.Snapshot
+  - org.gnome.Contacts
+  - org.gnome.clocks
+  - org.gnome.Evince
+  - org.gnome.Maps
+  - org.gnome.TextEditor
+  - com.github.neithern.g4music
+  - com.github.rafostar.Clapper
+  - org.gnome.Loupe
+  - com.github.Eloston.UngoogledChromium
+  - io.missioncenter.MissionCenter
+  - org.gnome.World.Secrets
+  - com.vixalien.sticky
+  - com.github.flxzt.rnote
+  - app.drey.Warp
+  - com.github.tchx84.Flatseal
+  - com.mattjakeman.ExtensionManager
+  - com.github.wwmm.easyeffects
+  - com.usebottles.bottles         
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user
-  repo-title: Flathub
+  repo-title: "Flathub"
