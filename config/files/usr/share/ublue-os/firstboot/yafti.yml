@@ -7,8 +7,8 @@ screens:
     values:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
-      description: |
-        DO NOT PROCEED UNTIL CLAPPER, TEXT EDITOR & CALCULATOR ARE INSTALLED! This guided installer will help you get started with your new system.
+      description:
+        This guided installer will help you get started with your new system.
   applications:
     source: yafti.screen.package
     values:
@@ -56,7 +56,7 @@ screens:
       groups:
         Post Setup (DO NOT DISABLE):
           description: Performs necessary post-setup for Gidro-OS.
-          default: false
+          default: true
           packages:
           - Post Setup: just --unstable post-setup          
         OBS Studio:
