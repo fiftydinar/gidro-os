@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+  output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
+    echo '"New documents" context menu entry in Nautilus created.'
+        
+  FLATPAK=$(flatpak list)
+  if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Gnome Text Editor pre-configured settings applied.'
+  else
+    echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
+  fi
+  
+  FLATPAK=$(flatpak list)
+  if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Gnome Calculator pre-configured settings applied.'
+  else
+    echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
+  fi
+  
+  FLATPAK=$(flatpak list)
+  if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'" | tee -a $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Clapper (Videos) pre-configured settings applied.'
+  else
+    echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
+  fi   

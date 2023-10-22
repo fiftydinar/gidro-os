@@ -8,7 +8,7 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description: |
-        PLEASE WAIT UNTIL YOU GET A NOTIFICATION THAT SYSTEM FLATPAKS ARE INSTALLED. This guided installer will help you get started with your new system.
+        This guided installer will help you get started with your new system.
   applications:
     source: yafti.screen.package
     values:
@@ -53,12 +53,7 @@ screens:
       title: Additional Gidro-OS packages & configs
       show_terminal: true
       package_manager: yafti.plugin.run
-      groups:
-        Post-setup (DO NOT DISABLE):
-          description: Performs necessary user post-setup for Gidro-OS.
-          default: true
-          packages:
-          - Post-setup: just --unstable post-setup          
+      groups:          
         OBS Studio:
           description: Installs advanced screen recorder with tons of useful plugins in distrobox container.
           default: false

@@ -1,0 +1,10 @@
+[Unit]
+Description=Configure Gidro-OS post-setup
+After=system-flatpak-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/post-setup
+
+[Install]
+WantedBy=multi-user.target

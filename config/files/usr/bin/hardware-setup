@@ -4,12 +4,28 @@
 INITRAMFS=$(rpm-ostree initramfs-etc)
 NEEDED_INITRAMFS=("--track /etc/crypttab")
 NEEDS_INITRAMFS_APPLICATION=false
+KARGS=$(rpm-ostree kargs)
+NEEDED_KARGS=()
+CPU_ID=(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
+CPU_FAMILY=(lscpu | grep 'CPU family' | cut -f 2 -d ":" | awk '{$1=$1}1')
 
-# INITRAMFS
+# INITRAMFS & KARGS
 echo "Current initramfs: $INITRAMFS"
 
 NEEDED_INITRAMFS+=("--track /etc/modprobe.d/amdgpu.conf")
 NEEDED_INITRAMFS+=("--track /etc/modprobe.d/blacklist.conf")
+
+if [[ ":AMD:" =~ ":$CPU_ID:" ]] && [[ ":23:" =~ ":$CPU_FAMILY:" ]] || [[ ":25:" =~ ":$CPU_FAMILY:" ]]; then
+  echo "Applying Zen 2+ amd-pstate active workaround"
+  if [[ ! $KARGS =~ "amd_pstate" ]]; then
+    NEEDED_KARGS+=("--append-if-missing=amd_pstate=active")
+  fi
+fi
+
+if [[ $KARGS =~ "nomodeset" ]]; then
+  echo "Removing nomodeset"
+  NEEDED_KARGS+=("--delete-if-present=nomodeset")
+fi
 
 for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
   if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
@@ -27,6 +43,14 @@ else
   else
     echo "No initramfs changes needed"
   fi
+fi
+
+if [[ -n "$NEEDED_KARGS" ]]; then
+  echo "Found needed karg changes, applying the following: ${NEEDED_KARGS[*]}"
+  plymouth display-message --text="Updating kargs - Please wait, this may take a while" || true
+  rpm-ostree kargs ${NEEDED_KARGS[*]} || exit 1
+else
+  echo "No karg changes needed"
 fi
 
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
