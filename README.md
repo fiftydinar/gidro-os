@@ -88,7 +88,6 @@ Additional packages & configs:
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
 
 Settings applied by default:
-- Enable amd_pstate=active CPU scaling driver for undetected Zen 2+ CPUs (CPUs which don't report CPPC as supported, but still work with amd_pstate)
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
 - Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
 - ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop (avoids OOM situations better & it also improves responsiveness under I/O load)
@@ -214,6 +213,5 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
-- Revert amd_pstate service, if 6.6 kernel contains finished work of auto-setting amd_pstate for unrecognized AMD CPPC CPUs
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts is causing font-hinting issues, so other solution is needed)
 - Update System76-Power to latest version
