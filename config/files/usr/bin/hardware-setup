@@ -32,7 +32,7 @@ fi
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
   echo "Found needed initramfs reboot changes, applying the following: ${NEEDED_INITRAMFS[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
-  rpm-ostree initramfs-etc "--track ${NEEDED_INITRAMFS[*]}" --force-sync --reboot
+  rpm-ostree initramfs-etc "${NEEDED_INITRAMFS[*]}" --force-sync --reboot
 else
   echo "Immediate system reboot is not needed for initramfs changes"
 fi
