@@ -8,7 +8,7 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description: |
-        This guided installer will help you get started with your new system.
+        PLEASE WAIT UNTIL YOU GET A NOTIFICATION THAT SYSTEM FLATPAKS ARE INSTALLED. This guided installer will help you get started with your new system.
   applications:
     source: yafti.screen.package
     values:

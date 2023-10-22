@@ -2,14 +2,14 @@
 
 # GLOBAL
 INITRAMFS=$(rpm-ostree initramfs-etc)
-NEEDED_INITRAMFS=("/etc/crypttab")
+NEEDED_INITRAMFS=("--track /etc/crypttab")
 NEEDS_INITRAMFS_APPLICATION=false
 
 # INITRAMFS
 echo "Current initramfs: $INITRAMFS"
 
-NEEDED_INITRAMFS+=("/etc/modprobe.d/amdgpu.conf")
-NEEDED_INITRAMFS+=("/etc/modprobe.d/blacklist.conf")
+NEEDED_INITRAMFS+=("--track /etc/modprobe.d/amdgpu.conf")
+NEEDED_INITRAMFS+=("--track /etc/modprobe.d/blacklist.conf")
 
 for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
   if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
@@ -18,21 +18,21 @@ for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
 done
 
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
-  echo "No initramfs changes needed"
+  echo "Immediate system reboot is needed for initramfs changes to apply"
 else
   if $NEEDS_INITRAMFS_APPLICATION; then
     echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
     plymouth display-message --text="Updating initramfs - Please wait, this may take a while" || true
-    rpm-ostree initramfs-etc "--track ${NEEDED_INITRAMFS[*]}"
+    rpm-ostree initramfs-etc "${NEEDED_INITRAMFS[*]}"
   else
     echo "No initramfs changes needed"
   fi
 fi
 
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
-  echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
+  echo "Found needed initramfs reboot changes, applying the following: ${NEEDED_INITRAMFS[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
   rpm-ostree initramfs-etc "--track ${NEEDED_INITRAMFS[*]}" --force-sync --reboot
 else
-  echo "No initramfs changes needed"
+  echo "Immediate system reboot is not needed for initramfs changes"
 fi
