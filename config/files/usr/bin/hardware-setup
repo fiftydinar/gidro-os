@@ -17,22 +17,10 @@ for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
   fi
 done
 
-if [[ $INITRAMFS =~ "No tracked files." ]]; then
-  echo "Immediate system reboot is needed for initramfs changes to apply"
-else
-  if $NEEDS_INITRAMFS_APPLICATION; then
-    echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
-    plymouth display-message --text="Updating initramfs - Please wait, this may take a while" || true
-    rpm-ostree initramfs-etc "${NEEDED_INITRAMFS[*]}"
-  else
-    echo "No initramfs changes needed"
-  fi
-fi
-
-if [[ $INITRAMFS =~ "No tracked files." ]]; then
-  echo "Found needed initramfs reboot changes, applying the following: ${NEEDED_INITRAMFS[*]}"
+if $NEEDS_INITRAMFS_APPLICATION; then
+  echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
   rpm-ostree initramfs-etc "${NEEDED_INITRAMFS[*]}" --force-sync --reboot
 else
-  echo "Immediate system reboot is not needed for initramfs changes"
+  echo "No initramfs changes needed"
 fi
