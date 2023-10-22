@@ -15,7 +15,7 @@ echo "Current initramfs: $INITRAMFS"
 NEEDED_INITRAMFS+=("--track /etc/modprobe.d/amdgpu.conf")
 NEEDED_INITRAMFS+=("--track /etc/modprobe.d/blacklist.conf")
 
-if [[ ":AMD:" =~ ":$CPU_ID:" ]] && [[ ":23:" =~ ":$CPU_FAMILY:" ]] || [[ ":25:" =~ ":$CPU_FAMILY:" ]]; then
+if [[ ":AMD:" =~ ":$CPU_ID:" && ":23:" =~ ":$CPU_FAMILY:" || ":25:" =~ ":$CPU_FAMILY:" ]]; then
   echo "Applying Zen 2+ amd-pstate active workaround"
   if [[ ! $KARGS =~ "amd_pstate" ]]; then
     NEEDED_KARGS+=("--append-if-missing=amd_pstate=active")
@@ -57,7 +57,7 @@ else
   fi
 fi
 
-if [[ $INITRAMFS =~ "No tracked files." ]] && [[ -n "$NEEDED_KARGS" ]]; then
+if [[ $INITRAMFS =~ "No tracked files." && -n "$NEEDED_KARGS" ]]; then
   echo "Found needed karg changes, applying the following: ${NEEDED_KARGS[*]}"
   plymouth display-message --text="Updating kargs - System will reboot" || true
   rpm-ostree kargs ${NEEDED_KARGS[*]} || exit 1
