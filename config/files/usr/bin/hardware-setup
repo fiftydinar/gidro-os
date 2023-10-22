@@ -34,6 +34,18 @@ for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
 done
 
 if [[ $INITRAMFS =~ "No tracked files." ]]; then
+  echo "Immediate system reboot is needed for karg changes to apply"
+else
+  if [[ -n "$NEEDED_KARGS" ]]; then
+    echo "Found needed karg changes, applying the following: ${NEEDED_KARGS[*]}"
+    plymouth display-message --text="Updating kargs - Please wait, this may take a while" || true
+    rpm-ostree kargs ${NEEDED_KARGS[*]} || exit 1
+  else
+    echo "No karg changes needed"
+  fi
+fi
+
+if [[ $INITRAMFS =~ "No tracked files." ]]; then
   echo "Immediate system reboot is needed for initramfs changes to apply"
 else
   if $NEEDS_INITRAMFS_APPLICATION; then
@@ -45,7 +57,7 @@ else
   fi
 fi
 
-if [[ -n "$NEEDED_KARGS" ]]; then
+if [[ $INITRAMFS =~ "No tracked files." ]] && [[ -n "$NEEDED_KARGS" ]]; then
   echo "Found needed karg changes, applying the following: ${NEEDED_KARGS[*]}"
   plymouth display-message --text="Updating kargs - Please wait, this may take a while" || true
   rpm-ostree kargs ${NEEDED_KARGS[*]} || exit 1
