@@ -9,6 +9,7 @@ NEEDS_INITRAMFS_APPLICATION=false
 echo "Current initramfs: $INITRAMFS"
 
 NEEDED_INITRAMFS+=("/etc/modprobe.d/amdgpu.conf")
+NEEDED_INITRAMFS+=("/etc/modprobe.d/blacklist.conf")
 
 for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
   if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
