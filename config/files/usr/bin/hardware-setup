@@ -8,8 +8,7 @@ NEEDS_INITRAMFS_APPLICATION=false
 # INITRAMFS
 echo "Current initramfs: $INITRAMFS"
 
-NEEDED_INITRAMFS+=("/etc/modprobe.d/amdgpu-gidro.conf")
-NEEDED_INITRAMFS+=("/etc/modprobe.d/blacklist-gidro.conf")
+NEEDED_INITRAMFS+=("/etc/modprobe.d/gidro-modprobe.conf")
 
 for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
   if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
