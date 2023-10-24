@@ -11,7 +11,7 @@ Removed packages (RPMs):
 - Firefox
 - htop
 - nvtop
-- Gnome Software rpm-ostree package (not needed since we use UblueOS updater)
+- Gnome Software rpm-ostree package (not needed since we use rpm-ostree auto-updater)
 - Gnome classic session
 - Gnome Tour
 - Gnome Initial Setup
