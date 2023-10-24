@@ -67,4 +67,4 @@ modules:
         - system76-power.sh
         - gnome-extensions-uninstall.sh
         - desktop-shortcut-remover.sh
-        - enable-hardware-setup.sh
+        - initramfs-etc.sh

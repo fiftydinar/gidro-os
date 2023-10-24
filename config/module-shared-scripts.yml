@@ -7,4 +7,4 @@ scripts:
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
   - mutter-triple-buffer.sh
-  - enable-hardware-setup.sh
+  - initramfs-etc.sh
