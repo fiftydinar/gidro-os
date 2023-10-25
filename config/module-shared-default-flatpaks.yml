@@ -24,6 +24,7 @@ system:
   - com.github.flxzt.rnote
   - app.drey.Warp
   - com.github.tchx84.Flatseal
+  - io.github.flattool.Warehouse
   - com.mattjakeman.ExtensionManager
   - com.github.wwmm.easyeffects
   - com.usebottles.bottles         

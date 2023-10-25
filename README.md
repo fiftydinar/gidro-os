@@ -56,6 +56,7 @@ Installed System flatpaks:
 - Rnote
 - Warp
 - Flatseal
+- Warehouse
 - Extension Manager
 - Easy Effects
 - Bottles
