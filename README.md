@@ -61,7 +61,7 @@ Installed System flatpaks:
 - Easy Effects
 - Bottles
 
-User flatpaks:
+User flatpaks (optional):
 - Thunderbird
 - Discord
 - Telegram
@@ -78,10 +78,11 @@ User flatpaks:
 - Nicotine+
 - Tenacity
 - GitHub Desktop
+- Steam
+- ProtonPlus (Steam Proton Manager)
 - PCSX2
 - Space Cadet Pinball
-- Grapejuice
-- ProtonPlus
+- Grapejuice (Roblox)
 
 Additional packages & configs:
 - OBS Studio with big collection of plugins (in a distrobox container)
@@ -117,14 +118,6 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
-
-## Post-Setup (optional)
-- Install Bazzite-arch distrobox container, which includes Steam & Lutris for gaming (enter commands one by one)
-  ```
-  just distrobox-bazzite
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app steam'
-  distrobox-enter -n bazzite-arch -- '  distrobox-export --app lutris'
-  ```
   
 ## Installation (ISO) [Recommended]
 
