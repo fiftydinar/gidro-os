@@ -28,6 +28,7 @@ modules:
         - rom-properties-gtk3
         - nautilus-python 
         - system76-power
+        - python3-icoextract
     remove:
         - firefox
         - firefox-langpacks
@@ -68,3 +69,4 @@ modules:
         - gnome-extensions-uninstall.sh
         - desktop-shortcut-remover.sh
         - enable-hardware-setup.sh
+        - python3-icoextract.sh

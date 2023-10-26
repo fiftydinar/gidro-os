@@ -17,6 +17,7 @@ install:
   - rom-properties-gtk3
   - nautilus-python
   - system76-power
+  - python3-icoextract
 
 remove:
   - firefox

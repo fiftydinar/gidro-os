@@ -32,6 +32,7 @@ Installed packages (RPMs):
 - Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
 - Additional Game ROM Properties for Nautilus
 - Nautilus Python (for Python Nautilus extensions)
+- Python3-icoextract (for .exe icons thumbnailing support)
 
 Installed extensions:
 - Blur My Shell
