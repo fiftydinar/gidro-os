@@ -52,6 +52,7 @@ Installed System flatpaks:
 - G4Music
 - Clapper
 - Gnome Image Viewer (Loupe)
+- Kooha (Screen Recorder)
 - Secrets
 - Sticky Notes
 - Rnote
@@ -85,8 +86,7 @@ User flatpaks (optional):
 - Space Cadet Pinball
 - Grapejuice (Roblox)
 
-Additional packages & configs:
-- OBS Studio with big collection of plugins (in a distrobox container)
+Optional config:
 - Hide GRUB text output on boot
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
 
