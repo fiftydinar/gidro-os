@@ -23,7 +23,7 @@ system:
   - org.gnome.World.Secrets
   - com.vixalien.sticky
   - com.github.flxzt.rnote
-  - app.drey.Warp
+  - org.localsend.localsend_app
   - com.github.tchx84.Flatseal
   - io.github.flattool.Warehouse
   - com.mattjakeman.ExtensionManager

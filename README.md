@@ -56,7 +56,7 @@ Installed System flatpaks:
 - Secrets
 - Sticky Notes
 - Rnote
-- Warp
+- LocalSend
 - Flatseal
 - Warehouse
 - Extension Manager
