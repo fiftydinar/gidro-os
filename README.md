@@ -39,7 +39,7 @@ Installed extensions:
 - Caffeine
 - System76 Scheduler (needed for integration with Gnome)
 
-Installed System flatpaks:
+Installed flatpaks:
 - Gnome Boxes
 - Gnome Calculator
 - Gnome Calendar
@@ -62,7 +62,7 @@ Installed System flatpaks:
 - Easy Effects
 - Bottles
 
-User flatpaks (optional):
+Optional flatpaks:
 - Thunderbird
 - Discord
 - Telegram

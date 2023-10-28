@@ -1,9 +1,8 @@
 type: default-flatpaks
-system:
-# If no repo information is specified, Flathub will be used by default
+user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-  repo-name: flathub-system
-  repo-title: "Flathub (System)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+  repo-name: flathub-user
+  repo-title: "Flathub"
   install:
   - org.gnome.Boxes 
   - org.gnome.Calculator
@@ -27,8 +26,4 @@ system:
   - io.github.flattool.Warehouse
   - com.mattjakeman.ExtensionManager
   - com.github.wwmm.easyeffects
-  - com.usebottles.bottles         
-user:
-  repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-  repo-name: flathub-user
-  repo-title: "Flathub"
+  - com.usebottles.bottles
