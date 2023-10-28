@@ -210,5 +210,5 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
-- Find updated & more capable font, which is similar to Nokia Pure font (currently, Nokia Pure can look off in some cases, especially when : symbol is used)
+- Find updated & more capable font, which is similar to Nokia Pure font (Nokia Pure can look off in some cases, especially when : symbol is used & g symbol can get cut off in some cases too)
 - Update System76-Power to latest version
