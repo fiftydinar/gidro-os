@@ -64,6 +64,7 @@ Installed flatpaks:
 
 Optional flatpaks:
 - Warp
+- OBS Studio
 - Thunderbird
 - Discord
 - Telegram

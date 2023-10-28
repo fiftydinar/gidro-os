@@ -24,6 +24,7 @@ screens:
           default: false
           packages:
              - Warp (Global File Sharing): app.drey.Warp
+             - OBS: com.obsproject.Studio
              - Thunderbird: org.mozilla.Thunderbird
              - Discord: com.discordapp.Discord
              - Telegram: org.telegram.desktop
