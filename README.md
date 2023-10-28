@@ -202,11 +202,14 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 - Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
 - PopOS (for System76 scheduler, System76-Power, storage I/O udev rule & ZRAM tweaks)
 
+## Hard-to-fix/unfixable issues
+- Nokia Pure font can look off in some edge cases, especially when : symbol is involved (glyph support issues, which can be seen in Kooha app's timer)
+
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
 - Integrate Davinci Resolve container into just & yafti
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
-- Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts is causing font-hinting issues, so other solution is needed)
+- Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
 - Update System76-Power to latest version
