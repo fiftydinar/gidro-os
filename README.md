@@ -52,7 +52,6 @@ Installed System flatpaks:
 - G4Music
 - Clapper
 - Gnome Image Viewer (Loupe)
-- Kooha (Screen Recorder)
 - Secrets
 - Sticky Notes
 - Rnote

@@ -17,7 +17,6 @@ system:
   - com.github.neithern.g4music
   - com.github.rafostar.Clapper
   - org.gnome.Loupe
-  - io.github.seadve.Kooha
   - com.github.Eloston.UngoogledChromium
   - io.missioncenter.MissionCenter
   - org.gnome.World.Secrets
