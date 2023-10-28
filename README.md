@@ -63,6 +63,7 @@ Installed flatpaks:
 - Bottles
 
 Optional flatpaks:
+- Warp
 - Thunderbird
 - Discord
 - Telegram

@@ -23,6 +23,7 @@ screens:
           description: User applications which are generally used.
           default: false
           packages:
+             - Warp (Global File Sharing): app.drey.Warp
              - Thunderbird: org.mozilla.Thunderbird
              - Discord: com.discordapp.Discord
              - Telegram: org.telegram.desktop
