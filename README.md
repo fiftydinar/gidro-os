@@ -5,7 +5,7 @@
 
 ![](assets/bg.webp)
 
-My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project. Nvidia support is also included.
+My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project.
 
 Removed packages (RPMs):
 - Firefox
@@ -145,14 +145,6 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
   sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-vrr:latest
   ```
-  Nvidia:
-  ```
-  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-nvidia:latest
-  ```
-  Nvidia + VRR:
-  ```
-  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-nvidia-vrr:latest
-  ``` 
 - Reboot to complete the rebase:
   ```
   systemctl reboot
@@ -166,14 +158,6 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   AMD/Intel + VRR:
   ```
   sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:latest
-  ```
-  Nvidia:
-  ```
-  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:latest
-  ```
-  Nvidia + VRR:
-  ```
-  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia-vrr:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -189,14 +173,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:
 AMD/Intel + VRR:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
-```
-Nvidia:
-```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia:20230930
-```
-Nvidia + VRR:
-```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-nvidia-vrr:20230930
 ```
 
 ## Credits

@@ -10,15 +10,3 @@ ublue_variants:
     flavors:
       - label: gidro-os-vrr
         info: Gidro-OS + VRR
-
-  - label: fiftydinar/gidro-os-nvidia
-    ks: /kickstart/ublue-os-nvidia.ks
-    flavors:
-      - label: gidro-os-nvidia
-        info: Gidro-OS + Nvidia
-        
-  - label: fiftydinar/gidro-os-nvidia-vrr
-    ks: /kickstart/ublue-os-nvidia.ks
-    flavors:
-      - label: gidro-os-nvidia-vrr
-        info: Gidro-OS + Nvidia + VRR       
