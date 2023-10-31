@@ -9,3 +9,4 @@ scripts:
   - mutter-triple-buffer.sh
   - enable-hardware-setup.sh
   - python3-icoextract.sh
+  - force-vsync.sh

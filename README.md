@@ -98,6 +98,7 @@ Settings applied by default:
 - Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Disable kernel split-lock mitigate (for restoring performance of affected games)
+- Force Vsync for all OpenGL & Vulkan applications
 - Applied fix for non-working trim for LUKS partitions
 - Disabled kernel watchdog (logger), for improved performance & battery life
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
