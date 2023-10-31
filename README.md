@@ -33,6 +33,7 @@ Installed packages (RPMs):
 - Additional Game ROM Properties for Nautilus
 - Nautilus Python (for Python Nautilus extensions)
 - Python3-icoextract (for .exe icons thumbnailing support)
+- Gnome-randr-rust (xrandr equivalent for Gnome Wayland)
 
 Installed extensions:
 - Blur My Shell
@@ -192,4 +193,3 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-
 Issues to fix:
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
 - Find updated & more capable font, which is similar to Nokia Pure font (Nokia Pure can look off in some cases, especially when : symbol is used & g symbol can get cut off in some cases too)
-
