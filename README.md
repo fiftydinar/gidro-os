@@ -177,6 +177,15 @@ AMD/Intel + VRR:
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
 ```
 
+## Repos used for some installed RPM packages
+- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/nxmbit/gnome-perf-patched/)
+- [Gnome VRR](https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/)
+- [System76-Power](https://copr.fedorainfracloud.org/coprs/szydell/system76/)
+- [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
+- [HL2Selinux](https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/)
+- [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
+- [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
+
 ## Credits
 - Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
 - PopOS (for System76 scheduler, System76-Power, storage I/O udev rule & ZRAM tweaks)
