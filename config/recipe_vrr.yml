@@ -29,6 +29,7 @@ modules:
         - rom-properties-gtk3
         - nautilus-python 
         - system76-power
+        - system76-scheduler
         - python3-icoextract
         - gnome-randr-rust
     remove:
