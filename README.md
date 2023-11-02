@@ -140,11 +140,11 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 
   AMD/Intel:
   ```
-  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
   AMD/Intel + VRR:
   ```
-  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-vrr:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-vrr:latest
   ```
 - Reboot to complete the rebase:
   ```
@@ -154,11 +154,11 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 
   AMD/Intel:
   ```
-  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
   ```
   AMD/Intel + VRR:
   ```
-  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -169,11 +169,11 @@ This repository builds date tags as well, so if you want to rebase to a particul
 
 AMD/Intel:
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
 ```
 AMD/Intel + VRR:
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
 ```
 
 ## Repos used for some installed RPM packages
