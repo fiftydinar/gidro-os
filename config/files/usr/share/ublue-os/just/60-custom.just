@@ -1,6 +1,7 @@
 # Include some of your custom scripts here!
 
 # Necessary post-setup for Gidro-OS
+[private]
 post-setup:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
