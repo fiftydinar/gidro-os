@@ -50,13 +50,13 @@ modules:
 
   - type: script
     scripts:
-        - enable_vrr.sh
+        - vrr.sh
         
   - from-file: module-shared-files.yml
   
   - type: script
     scripts:
-        - enable_vrr_2.sh    
+        - vrr_2.sh    
   
   - from-file: module-shared-bling.yml
   - from-file: module-shared-yafti.yml
@@ -66,9 +66,9 @@ modules:
     scripts:
         - signing.sh
         - reload-font-cache.sh
-        - enable-system76-scheduler-service.sh
+        - system76-scheduler.sh
         - system76-power.sh
         - gnome-extensions-uninstall.sh
         - desktop-shortcut-remover.sh
-        - enable-hardware-setup.sh
+        - hardware-setup.sh
         - python3-icoextract.sh

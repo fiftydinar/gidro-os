@@ -196,7 +196,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Update System76-Power to latest version
-- Merge this change when Linux 6.6 kernel gets into Fedora repo: https://github.com/ublue-os/bazzite/commit/84348917a3593a2021cefc7ca247c651b0310644
 
 Issues to fix:
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)

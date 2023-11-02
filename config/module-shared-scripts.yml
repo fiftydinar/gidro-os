@@ -2,10 +2,10 @@ type: script
 scripts:
   - signing.sh
   - reload-font-cache.sh
-  - enable-system76-scheduler-service.sh
+  - system76-scheduler.sh
   - system76-power.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
   - mutter-triple-buffer.sh
-  - enable-hardware-setup.sh
+  - hardware-setup.sh
   - python3-icoextract.sh
