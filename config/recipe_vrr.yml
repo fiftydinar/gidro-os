@@ -21,6 +21,7 @@ modules:
     install:
         - gnome-shell-extension-caffeine
         - gnome-shell-extension-blur-my-shell
+        - system76-scheduler
         - gnome-shell-extension-system76-scheduler
         - ddccontrol-gtk
         - ddccontrol-db
