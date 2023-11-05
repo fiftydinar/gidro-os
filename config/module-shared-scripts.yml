@@ -9,3 +9,4 @@ scripts:
   - mutter-triple-buffer.sh
   - hardware-setup.sh
   - python3-icoextract.sh
+  - morewaita.sh

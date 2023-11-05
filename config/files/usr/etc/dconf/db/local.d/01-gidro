@@ -17,6 +17,7 @@ document-font-name='Nokia Pure Text 11'
 font-hinting='none'
 font-name='Nokia Pure Text 11'
 gtk-theme='adw-gtk3'
+icon-theme='MoreWaita'
 
 [org/gnome/desktop/peripherals/keyboard]
 delay=uint32 226
