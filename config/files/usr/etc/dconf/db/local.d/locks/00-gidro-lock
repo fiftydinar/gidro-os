@@ -2,12 +2,13 @@
 /org/gtk/gtk4/settings/file-chooser/sort-directories-first
 /org/gtk/settings/file-chooser/sort-directories-first
 
-# Font settings lock
+# Font & theme settings lock
 /org/gnome/desktop/interface/clock-show-weekday
 /org/gnome/desktop/interface/document-font-name
 /org/gnome/desktop/interface/font-hinting
 /org/gnome/desktop/interface/font-name
 /org/gnome/desktop/interface/gtk-theme
+/org/gnome/desktop/interface/icon-theme
 
 # Keyboard settings lock
 /org/gnome/desktop/peripherals/keyboard/delay
