@@ -1,4 +1,5 @@
 type: default-flatpaks
+system:
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user
@@ -27,4 +28,3 @@ user:
   - com.mattjakeman.ExtensionManager
   - com.github.wwmm.easyeffects
   - com.usebottles.bottles
-system:
