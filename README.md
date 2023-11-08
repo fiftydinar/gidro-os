@@ -38,6 +38,7 @@ Installed packages (RPMs):
 Installed extensions:
 - Blur My Shell
 - Caffeine
+- Quick Close in Overview
 - System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
@@ -185,6 +186,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 - [HL2Selinux](https://copr.fedorainfracloud.org/coprs/kylegospo/hl2linux-selinux/)
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
+- [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
 
 ## Credits
 - Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
@@ -193,8 +195,8 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
 - Integrate Davinci Resolve container into just & yafti
-- Integrate "Quick Close in Overview" extension in an image as a rpm
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
+- Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Update System76-Power to latest version
 
 Issues to fix:
