@@ -200,4 +200,3 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 
 Issues to fix:
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
-- Find updated & more capable font, which is similar to Nokia Pure font (Nokia Pure can look off in some cases, especially when : symbol is used & g symbol can get cut off in some cases too)
