@@ -194,7 +194,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
-- Integrate Davinci Resolve container into just & yafti
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
 - Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Update System76-Power to latest version
