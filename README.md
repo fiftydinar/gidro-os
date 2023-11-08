@@ -178,7 +178,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 ```
 
 ## Repos used for some installed RPM packages
-- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/nxmbit/gnome-perf-patched/)
+- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/eliasofwaffle/mutter-dynamic-triplebuffer/)
 - [Gnome VRR](https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/)
 - [System76-Power](https://copr.fedorainfracloud.org/coprs/szydell/system76/)
 - [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
@@ -195,7 +195,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 - Integrate Davinci Resolve container into just & yafti
 - Integrate "Quick Close in Overview" extension in an image as a rpm
 - Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
-- Switch from nxmbit dynamic triple-buffering repo to another one if it doesn't gain Fedora 39 support
 - Update System76-Power to latest version
 
 Issues to fix:
