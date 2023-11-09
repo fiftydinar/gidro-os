@@ -1,7 +1,7 @@
 # Gidro-OS
 
 > **Warning**
-> This image is still in development & it's not ready yet until Fedora 39 & Linux 6.6 kernel official release land!
+> This image is still in development & it's not ready yet until Linux 6.6 kernel official release land!
 
 ![](assets/bg.webp)
 
@@ -189,7 +189,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
 
 ## Credits
-- Bazzite (for hardware-setup service, some performance tweaks, bazzite-arch & some other stuff)
+- Bazzite (for hardware-setup service, some performance tweaks & some other stuff)
 - PopOS (for System76 scheduler, System76-Power, storage I/O udev rule & ZRAM tweaks)
 
 ## Plans for the future
