@@ -20,7 +20,7 @@ user:
   - com.github.neithern.g4music
   - com.github.rafostar.Clapper
   - org.gnome.Loupe
-  - com.github.Eloston.UngoogledChromium
+  - org.gnome.Epiphany
   - io.missioncenter.MissionCenter
   - org.gnome.World.Secrets
   - com.vixalien.sticky
