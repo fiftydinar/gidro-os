@@ -28,6 +28,8 @@ user:
   - org.localsend.localsend_app
   - com.github.tchx84.Flatseal
   - io.github.flattool.Warehouse
+  - io.github.fabrialberio.pinapp
+  - page.codeberg.JakobDev.jdSimpleAutostart
   - com.mattjakeman.ExtensionManager
   - com.github.wwmm.easyeffects
   - com.usebottles.bottles
