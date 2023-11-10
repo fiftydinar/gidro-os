@@ -1,8 +1,5 @@
 # Gidro-OS
 
-> **Warning**
-> This image is still in development & it's not ready yet until Linux 6.6 kernel official release land!
-
 ![](assets/bg.webp)
 
 My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project.
@@ -173,11 +170,11 @@ This repository builds date tags as well, so if you want to rebase to a particul
 
 AMD/Intel:
 ```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20230930
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231011
 ```
 AMD/Intel + VRR:
 ```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20230930
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20231011
 ```
 
 ## Repos used for some installed RPM packages
