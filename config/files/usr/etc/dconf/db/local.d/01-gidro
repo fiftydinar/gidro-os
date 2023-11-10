@@ -41,6 +41,14 @@ favorite-apps=['com.github.Eloston.UngoogledChromium.desktop', 'org.gnome.Nautil
 [org/gnome/shell/extensions/blur-my-shell]
 sigma=5
 
+[org/gnome/shell/extensions/openweather]
+use-system-icons=false
+pressure-unit='mbar'
+position-in-panel='right'
+show-comment-in-panel=true
+wind-direction=true
+decimal-places=0
+
 [org/gnome/software]
 allow-updates=false
 download-updates=false
