@@ -92,6 +92,7 @@ Optional flatpaks:
 Optional config:
 - Hide GRUB text output on boot
 - Hide close button from windows (useful for mouses which have a special key for closing applications window)
+- Steam silent auto-start
 
 Settings applied by default:
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
