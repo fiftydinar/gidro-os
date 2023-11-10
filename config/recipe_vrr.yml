@@ -19,7 +19,7 @@ modules:
         - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
         - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/repo/fedora-%OS_VERSION%/fiftydinar-gnome-randr-rust-fedora-%OS_VERSION%.repo
         - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-middleclickclose-git-fedora-%OS_VERSION%.repo
-        - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweather-toppk/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-openweather-toppk-fedora-%OS_VERSION%.repo
+        - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-openweather-toppk-fedora-%OS_VERSION%.repo
     install:
         - gnome-shell-extension-caffeine
         - gnome-shell-extension-blur-my-shell
