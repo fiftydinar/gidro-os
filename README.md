@@ -39,6 +39,7 @@ Installed extensions:
 - Blur My Shell
 - Caffeine
 - Quick Close in Overview
+- OpenWeather
 - System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
@@ -114,6 +115,7 @@ Settings applied by default:
 - Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
+- Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure & show wind arrows in m/s
 - Enable Nautilus "Sort folders before files"
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
@@ -187,6 +189,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
+- [OpenWeather](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweather-git/)
 
 ## Credits
 - Bazzite (for hardware-setup service, some performance tweaks & some other stuff)
@@ -194,7 +197,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
-- Integrate "OpenWeather" extension in an image as a rpm (currently use fork, as official is not ready)
+- Maintain current fork of OpenWeather from unmerged changes, as it looks like it is abandoned (separate extension reborn project is needed)
 - Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Update System76-Power to latest version
 
