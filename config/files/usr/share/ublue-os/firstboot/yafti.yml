@@ -8,11 +8,7 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description:
-        Please wait for current flatpaks to get installed before proceeding.
-        You will notice new apps appearing in your app drawer &
-        you will get the notification when that process is finished.
-
-        This guided installer will help you get started with your new system.
+        Please wait for notification of finished flatpaks installation before proceeding to installer.
   applications:
     source: yafti.screen.package
     values:
