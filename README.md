@@ -132,6 +132,7 @@ Settings applied by default:
 ## Installation (ISO) [Recommended]
 
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
+
 ISOs are online-based & are constantly upgraded. There is no need to worry about the version & the date of the ISO.
 Just download, install & enjoy!
 
