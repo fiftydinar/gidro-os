@@ -126,6 +126,7 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
+- Gnome Web "Restore Tabs on Startup" disabled
   
 ## Installation (ISO) [Recommended]
 

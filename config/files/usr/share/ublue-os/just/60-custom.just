@@ -37,6 +37,16 @@ post-setup:
     echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
   fi   
 
+  FLATPAK=$(flatpak list)
+  if grep -q 'org.gnome.Epiphany' <<< ${FLATPAK}; then
+  output=`mkdir -p $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/ 2>&1` || echo $output && false
+  output=`touch $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+  output=`echo -e "[org/gnome/epiphany]\nrestore-session-policy='crashed'" | tee -a $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    echo 'Gnome Web pre-configured settings applied.'
+  else
+    echo 'ERROR: Gnome Web is not installed, settings not applied.' >&2
+  fi   
+
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
   #!/usr/bin/env bash
