@@ -141,6 +141,8 @@ Available for download in Releases page.
 > **Warning**
 > [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) and should not be used in production, try it in a VM for a while!
 
+Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
+
 To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
