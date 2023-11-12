@@ -56,6 +56,7 @@ Installed flatpaks:
 - Sticky Notes
 - Rnote
 - LocalSend
+- GPU Screen Recorder
 - Flatseal
 - Warehouse
 - PinApp
