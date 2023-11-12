@@ -205,7 +205,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
 - Maintain current fork of OpenWeather from unmerged changes, as it looks like it is abandoned (separate extension reborn project is needed)
-- Switch to git version of OpenWeather fork when it gains proper Gnome 45 support
 - Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Update System76-Power to latest version
 
