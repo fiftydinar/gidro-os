@@ -187,7 +187,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:2
 ```
 
 ## Repos used for some installed RPM packages
-- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/eliasofwaffle/mutter-dynamic-triplebuffer/)
+- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/trixieua/mutter-patched/)
 - [Gnome VRR](https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/)
 - [System76-Power](https://copr.fedorainfracloud.org/coprs/szydell/system76/)
 - [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
