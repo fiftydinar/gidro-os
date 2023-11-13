@@ -113,7 +113,7 @@ Settings applied by default:
 - Set top bar to show weekday too in all languages
 - Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
-- Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
+- Set BlurMyShell sigma value to 2, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
 - Enable Nautilus "Sort folders before files"
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
