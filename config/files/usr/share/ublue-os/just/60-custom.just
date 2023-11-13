@@ -100,7 +100,7 @@ revert-steam-silent-autostart:
     echo 'Reverted setting "Steam silent autostart" to defaults.' 
     
 # Set Discord silent autostart on boot
-steam-discord-autostart:
+discord-silent-autostart:
   #!/usr/bin/env bash
   sudo sed -i 's/Hidden=true/Hidden=false/g' /etc/xdg/autostart/Discord-gidro.desktop
     echo 'Discord silent autostart on boot setting applied.' 
