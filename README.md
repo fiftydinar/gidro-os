@@ -92,8 +92,8 @@ Optional flatpaks:
 Optional config:
 - Hide GRUB text output on boot (available in yafti & just)
 - Hide close button from windows - useful for mouses which have a special key for closing applications window (available in yafti & just)
-- Steam silent auto-start on boot (can be enabled in jdSimpleAutostart)
-- Discord silent auto-start on boot (can be enabled in jdSimpleAutostart)
+- Steam silent auto-start on boot (can be enabled by inputting just command)
+- Discord silent auto-start on boot (can be enabled by inputting just command)
 
 Settings applied by default:
 - Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
