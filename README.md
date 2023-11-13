@@ -60,7 +60,6 @@ Installed flatpaks:
 - Flatseal
 - Warehouse
 - PinApp
-- jdSimpleAutostart
 - Extension Manager
 - Easy Effects
 - Bottles

@@ -86,3 +86,27 @@ unhide-grub:
     output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
   fi
+
+# Set Steam silent autostart on boot
+steam-silent-autostart:
+  #!/usr/bin/env bash
+  sudo sed -i 's/Hidden=true/Hidden=false/g' /etc/xdg/autostart/Steam-gidro.desktop
+    echo 'Steam silent autostart on boot setting applied.' 
+
+# Revert Steam silent autostart on boot (Default)
+revert-steam-silent-autostart:
+  #!/usr/bin/env bash
+  sudo sed -i 's/Hidden=false/Hidden=true/g' /etc/xdg/autostart/Steam-gidro.desktop
+    echo 'Reverted setting "Steam silent autostart" to defaults.' 
+    
+# Set Discord silent autostart on boot
+steam-discord-autostart:
+  #!/usr/bin/env bash
+  sudo sed -i 's/Hidden=true/Hidden=false/g' /etc/xdg/autostart/Discord-gidro.desktop
+    echo 'Discord silent autostart on boot setting applied.' 
+
+# Revert Discord silent autostart on boot (Default)
+revert-discord-silent-autostart:
+  #!/usr/bin/env bash
+  sudo sed -i 's/Hidden=false/Hidden=true/g' /etc/xdg/autostart/Discord-gidro.desktop
+    echo 'Reverted setting "Discord silent autostart" to defaults.' 
