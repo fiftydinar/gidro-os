@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Discord
+Comment=Discord silent autostart
+Icon=com.discordapp.Discord
+Exec=flatpak run com.discordapp.Discord --start-minimized
