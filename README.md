@@ -67,29 +67,30 @@ Installed flatpaks:
 - Bottles
 
 Optional flatpaks:
-- Warp
-- OBS Studio
-- Thunderbird
+- Warp (Global File Sharing)
+- OBS Studio (Screen Recorder)
+- Thunderbird (Email)
 - Discord
 - Telegram
-- FreeTube
-- Dialect
-- Fragments
+- FreeTube (YouTube alt.)
+- Dialect (Translator)
+- Fragments (Torrent)
 - ASCII Draw
 - InkScape
-- Mousai
+- Mousai (Shazam alt.)
 - NewsFlash
 - LibreOffice
 - Tagger
-- Parabolic
-- Nicotine+
-- Tenacity
+- Parabolic (YouTube Downloader)
+- Nicotine+ (Soulseek alt.)
+- Tenacity (Audacity alt.)
 - GitHub Desktop
 - Steam
 - ProtonPlus (Steam Proton Manager)
-- PCSX2
+- PCSX2 (PS2 Emulator)
 - Space Cadet Pinball
 - Grapejuice (Roblox)
+- Cartridges (Universal Game Launcher)
 
 Optional config:
 - Hide GRUB text output on boot (available in yafti & just)
