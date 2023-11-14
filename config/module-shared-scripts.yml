@@ -6,7 +6,7 @@ scripts:
   - system76-power.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
-  - mutter-triple-buffer.sh
+  - vrr.sh
   - hardware-setup.sh
   - python3-icoextract.sh
   - morewaita.sh

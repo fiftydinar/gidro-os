@@ -23,8 +23,7 @@ Replaced packages (RPMs)/usecases:
 - Gnome Web from Flathub instead of Firefox rpm
 - Mission Center from Flathub instead of Gnome System Monitor
 - System76-Power instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
-- Gnome Mutter "dynamic triple-buffering" support (for improved Gnome Shell performance)
-- Gnome Mutter "Variable Refresh Rate" support (only available as a separate image, as it conflicts with dynamic triple-buffering)
+- Gnome Mutter "Variable Refresh Rate" support
 
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
@@ -142,36 +141,21 @@ Available for download in Releases page.
 
 ## Installation (Rebase)
 
-> **Warning**
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) and should not be used in production, try it in a VM for a while!
-
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
 
-To rebase an existing Silverblue/Kinoite installation to the latest build:
+To rebase an existing Silverblue installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
-
-  AMD/Intel:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
-  ```
-  AMD/Intel + VRR:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os-vrr:latest
   ```
 - Reboot to complete the rebase:
   ```
   systemctl reboot
   ```
 - Then rebase to the signed image, like so:
-
-  AMD/Intel:
   ```
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
-  ```
-  AMD/Intel + VRR:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -180,17 +164,11 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 This repository builds date tags as well, so if you want to rebase to a particular day's build:
 
-AMD/Intel:
 ```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231011
-```
-AMD/Intel + VRR:
-```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os-vrr:20231011
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231115
 ```
 
 ## Repos used for some installed RPM packages
-- [Gnome dynamic triple-buffering](https://copr.fedorainfracloud.org/coprs/trixieua/mutter-patched/)
 - [Gnome VRR](https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/)
 - [System76-Power](https://copr.fedorainfracloud.org/coprs/szydell/system76/)
 - [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
