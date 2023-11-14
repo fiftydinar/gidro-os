@@ -6,6 +6,14 @@ post-setup:
   #!/usr/bin/env bash
   output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
     echo '"New documents" context menu entry in Nautilus created.'
+
+  FLATPAK=$(flatpak list)
+  if grep -q 'com.usebottles.bottles' <<< ${FLATPAK}; then
+    flatpak override --filesystem=home com.usebottles.bottles
+    echo 'Bottles filesystem sandbox relax applied.'
+  else
+    echo 'ERROR: Bottles is not installed, filesystem sandbox relax not applied.' >&2
+  fi
         
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
