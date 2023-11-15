@@ -104,7 +104,8 @@ Settings applied by default:
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Disable kernel split-lock mitigate (for restoring performance of affected games)
 - Applied fix for non-working trim for LUKS partitions
-- Disabled kernel watchdog (logger), for improved performance & battery life
+- Disabled kernel watchdog (for improved performance & battery life)
+- Increase inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Enable touchpad tap-to-click
 - Set font hinting to "None"
