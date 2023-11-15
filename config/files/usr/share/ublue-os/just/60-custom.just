@@ -5,7 +5,7 @@
 post-setup-root:
   FLATPAK=$(flatpak list)
   if grep -q 'com.usebottles.bottles' <<< ${FLATPAK}; then
-    flatpak override --filesystem=home com.usebottles.bottles
+  flatpak override --filesystem=home com.usebottles.bottles
     echo 'Bottles filesystem sandbox relax applied.'
   else
     echo 'ERROR: Bottles is not installed, filesystem sandbox relax not applied.' >&2
