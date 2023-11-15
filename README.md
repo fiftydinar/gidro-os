@@ -102,12 +102,12 @@ Settings applied by default:
 - ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop (avoids OOM situations better & it also improves responsiveness under I/O load)
 - Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
-- Disable kernel split-lock mitigate (for restoring performance of affected games)
+- Disabled kernel split-lock mitigate (for restoring performance of affected games)
 - Applied fix for non-working trim for LUKS partitions
 - Disabled kernel watchdog (for improved performance & battery life)
-- Increase inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
+- Increased inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
-- Enable touchpad tap-to-click
+- Enabled touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper
@@ -115,11 +115,11 @@ Settings applied by default:
 - Use MoreWaita icon pack (to extend Adwaita icon language)
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
-- Enable "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
+- Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
-- Enable Nautilus "Sort folders before files"
+- Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much faster, as Gnome defaults are too slow
 - "Window not responding" dialog extended to 20s
 - Add Nautilus "New Document" to context menu
@@ -144,6 +144,8 @@ Available for download in Releases page.
 ## Installation (Rebase)
 
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
+
+Rebasing is only supported from Fedora Silverblue edition.
 
 To rebase an existing Silverblue installation to the latest build:
 
@@ -179,10 +181,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
 - [OpenWeather](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/)
-
-## Credits
-- Bazzite (for hardware-setup service, some performance tweaks & some other stuff)
-- PopOS (for System76 scheduler, System76-Power, storage I/O udev rule & ZRAM tweaks)
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
