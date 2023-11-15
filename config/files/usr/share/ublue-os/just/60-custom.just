@@ -1,12 +1,8 @@
 # Include some of your custom scripts here!
 
-# Necessary post-setup for Gidro-OS
+# Necessary root post-setup for Gidro-OS
 [private]
-post-setup:
-  #!/usr/bin/env bash
-  output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
-    echo '"New documents" context menu entry in Nautilus created.'
-
+post-setup-root:
   FLATPAK=$(flatpak list)
   if grep -q 'com.usebottles.bottles' <<< ${FLATPAK}; then
     flatpak override --filesystem=home com.usebottles.bottles
@@ -14,6 +10,13 @@ post-setup:
   else
     echo 'ERROR: Bottles is not installed, filesystem sandbox relax not applied.' >&2
   fi
+
+# Necessary user post-setup for Gidro-OS
+[private]
+post-setup-user:
+  #!/usr/bin/env bash
+  output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
+    echo '"New documents" context menu entry in Nautilus created.'
         
   FLATPAK=$(flatpak list)
   if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then

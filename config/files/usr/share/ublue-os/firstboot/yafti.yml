@@ -62,7 +62,7 @@ screens:
           description: Performs necessary post-setup for Gidro-OS.
           default: true
           packages:
-          - Post Setup: pkexec ujust post-setup          
+          - Post Setup: ujust post-setup-user && pkexec ujust post-setup-root         
         Hide GRUB:
           description: Hides GRUB text output on boot.
           default: false
