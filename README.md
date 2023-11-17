@@ -107,6 +107,7 @@ Settings applied by default:
 - Disabled kernel watchdog (for improved performance & battery life)
 - Increased inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
+- Fixed caps-lock delay, which is present in all other Linux distributions
 - Enabled touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default

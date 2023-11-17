@@ -11,6 +11,9 @@ picture-uri-dark='file:///usr/share/backgrounds/nokia/grasssky.webp'
 primary-color='000000'
 secondary-color='FFFFFF'
 
+[org/gnome/desktop/input-sources]
+xkb-options=['caps:ctrl_modifier']
+
 [org/gnome/desktop/interface]
 clock-show-weekday=true
 document-font-name='Nokia Pure Text 11'
