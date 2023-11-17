@@ -6,9 +6,9 @@ post-setup-root:
   FLATPAK=$(flatpak list)
   if grep -q 'com.usebottles.bottles' <<< ${FLATPAK}; then
   flatpak override --filesystem=home com.usebottles.bottles
-    echo 'Bottles filesystem sandbox relax applied.'
+  echo 'Bottles filesystem sandbox relax applied.'
   else
-    echo 'ERROR: Bottles is not installed, filesystem sandbox relax not applied.' >&2
+  echo 'ERROR: Bottles is not installed, filesystem sandbox relax not applied.' >&2
   fi
 
 # Necessary user post-setup for Gidro-OS
