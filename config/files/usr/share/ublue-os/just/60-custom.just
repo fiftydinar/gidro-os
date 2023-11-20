@@ -103,6 +103,7 @@ unhide-grub:
 factory-reset:
   #!/usr/bin/env bash
   sudo dconf reset -f /
+  echo 'Factory-reset of all Gidro-OS settings completed.'
   
 # Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
 factory-reset-keep:
@@ -119,4 +120,4 @@ factory-reset-keep:
   gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
   gsettings reset-recursively org.gnome.shell.extensions.openweather
   gsettings reset system.locale region
-  echo 'Reseted all config/dconf settings to defaults.'
+  echo 'Factory-reset of Gidro-OS settings only completed.'
