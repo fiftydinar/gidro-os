@@ -12,6 +12,7 @@ primary-color='000000'
 secondary-color='FFFFFF'
 
 [org/gnome/desktop/input-sources]
+sources=[('xkb', 'rs+latinyz')]
 xkb-options=['caps:ctrl_modifier']
 
 [org/gnome/desktop/interface]
