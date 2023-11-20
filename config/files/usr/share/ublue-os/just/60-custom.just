@@ -99,8 +99,13 @@ unhide-grub:
         echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
   fi
   
-# Reset all config/dconf settings to defaults
-reset-config:
+# Factory-reset all Gidro-OS configuration, including Gnome defaults
+factory-reset:
+  #!/usr/bin/env bash
+  sudo dconf reset -f /
+  
+# Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
+factory-reset-keep:
   #!/usr/bin/env bash
   gsettings reset org.gnome.desktop.background picture-options
   gsettings reset org.gnome.desktop.background picture-uri
