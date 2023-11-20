@@ -130,6 +130,7 @@ Settings applied by default:
 - Hide ROM Properties desktop shortcut
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
+- Telegram silent auto-start on boot enabled (if app is installed)
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
