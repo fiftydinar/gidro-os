@@ -15,6 +15,7 @@ secondary-color='FFFFFF'
 xkb-options=['caps:ctrl_modifier']
 
 [org/gnome/desktop/interface]
+show-battery-percentage=true
 clock-show-weekday=true
 document-font-name='Nokia Pure Text 11'
 font-hinting='none'
@@ -36,6 +37,9 @@ remove-old-trash-files=true
 
 [org/gnome/desktop/wm/preferences]
 title-bar-font='Nokia Pure Text Bold 11'
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='interactive'
 
 [org/gnome/shell]
 enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com']

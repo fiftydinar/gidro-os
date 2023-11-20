@@ -116,6 +116,8 @@ Settings applied by default:
 - Use MoreWaita icon pack (to extend Adwaita icon language)
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
+- Show battery percentage in top bar
+- Power button powers off PC instead of suspending it
 - Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
