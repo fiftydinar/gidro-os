@@ -2,6 +2,9 @@
 /org/gtk/gtk4/settings/file-chooser/sort-directories-first
 /org/gtk/settings/file-chooser/sort-directories-first
 
+# Lock caps-lock fix setting
+/org/gnome/desktop/input-sources/xkb-options
+
 # Font & theme settings lock
 /org/gnome/desktop/interface/clock-show-weekday
 /org/gnome/desktop/interface/document-font-name

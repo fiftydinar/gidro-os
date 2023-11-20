@@ -98,3 +98,20 @@ unhide-grub:
     output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
         echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
   fi
+  
+# Reset all config/dconf settings to defaults
+reset-config:
+  #!/usr/bin/env bash
+  gsettings reset org.gnome.desktop.background picture-options
+  gsettings reset org.gnome.desktop.background picture-uri
+  gsettings reset org.gnome.desktop.background picture-uri-dark
+  gsettings reset org.gnome.desktop.background primary-color
+  gsettings reset org.gnome.desktop.background secondary-color
+  gsettings reset org.gnome.desktop.interface show-battery-percentage
+  gsettings reset org.gnome.settings-daemon.plugins.power power-button-action
+  gsettings reset org.gnome.shell enabled-extensions
+  gsettings reset org.gnome.shell favorite-apps
+  gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
+  gsettings reset-recursively org.gnome.shell.extensions.openweather
+  gsettings reset system.locale region
+  echo 'Reseted all config/dconf settings to defaults.'
