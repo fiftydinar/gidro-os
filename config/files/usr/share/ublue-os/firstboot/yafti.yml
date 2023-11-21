@@ -30,7 +30,7 @@ screens:
              - Telegram: org.telegram.desktop
              - FreeTube (YouTube alt.): io.freetubeapp.FreeTube
              - Dialect (Translator): app.drey.Dialect
-             - Fragments (Torrent): de.haeckerfelix.Fragments
+             - Deluge (Torrent): org.deluge_torrent.deluge
              - ASCII Draw: io.github.nokse22.asciidraw
              - InkScape: org.inkscape.Inkscape
              - Mousai (Shazam alt.): io.github.seadve.Mousai

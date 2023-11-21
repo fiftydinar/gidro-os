@@ -74,7 +74,7 @@ Optional flatpaks:
 - Telegram
 - FreeTube (YouTube alt.)
 - Dialect (Translator)
-- Fragments (Torrent)
+- Deluge (Torrent)
 - ASCII Draw
 - InkScape
 - Mousai (Shazam alt.)
