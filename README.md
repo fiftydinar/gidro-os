@@ -131,6 +131,7 @@ Settings applied by default:
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
 - Telegram silent auto-start on boot enabled (if app is installed)
+- Deluge auto-start on boot enabled (if app is installed)
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
