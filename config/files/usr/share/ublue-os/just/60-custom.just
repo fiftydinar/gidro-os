@@ -125,6 +125,7 @@ factory-reset-keep:
 # Delete old Proton-GE versions, keep the latest one
 delete-old-protonge:
     #!/usr/bin/env bash
-    cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam
+    cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
     ls -d GE-Proton* | head -n -1 | xargs -r rm -r
-      echo 'Old Proton-GE versions deleted.'  
+      echo 'Old Proton-GE versions deleted.'
+    cd $HOME
