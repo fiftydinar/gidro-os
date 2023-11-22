@@ -129,3 +129,20 @@ delete-old-protonge:
     ls -d -v GE-Proton* | head -n -1 | xargs -r rm -r
       echo 'Old Proton-GE versions deleted.'
     cd $HOME
+
+# Install Proton-GE runner for Steam
+install-protonge:
+    #!/usr/bin/env bash
+    FLATPAK=$(flatpak list)
+    if grep -q 'com.valvesoftware.Steam' <<< ${FLATPAK}; then
+    cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam
+    if [ ! -d "compatibilitytools.d" ]; then
+        echo "--> Creating folder for Steam compatibility tools..."
+        mkdir "compatibilitytools.d"
+    fi
+    cd "compatibilitytools.d"
+    cp -r /usr/share/ProtonGE-gidro/*  $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
+      echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
+    else
+      echo 'Proton-GE cannot be installed because Steam is not installed.'
+    fi
