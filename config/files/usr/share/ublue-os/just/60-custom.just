@@ -18,7 +18,7 @@ post-setup-user:
     #!/usr/bin/env bash
     output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
       echo '"New documents" context menu entry in Nautilus created.'
-        
+
     FLATPAK=$(flatpak list)
     if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
     output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -28,7 +28,7 @@ post-setup-user:
     else
       echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
     fi
-  
+
     FLATPAK=$(flatpak list)
     if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
     output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -38,7 +38,7 @@ post-setup-user:
     else
       echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
     fi
-  
+
     FLATPAK=$(flatpak list)
     if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
     output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -64,7 +64,7 @@ hide-close-button:
     #!/usr/bin/env bash
     output=`gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:' 2>&1` || echo $output && false
       echo 'Remove close button from windows setting applied.'    
-  
+
 # Revert to include close button from windows (Default)
 unhide-close-button:
     #!/usr/bin/env bash
@@ -98,13 +98,13 @@ unhide-grub:
       output=`sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1` || echo $output && false
           echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
     fi
-  
+
 # Factory-reset all Gidro-OS configuration, including Gnome defaults
 factory-reset:
     #!/usr/bin/env bash
     dconf reset -f /
       echo 'Factory-reset of all Gidro-OS settings completed.'
-  
+
 # Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
 factory-reset-keep:
     #!/usr/bin/env bash
@@ -121,11 +121,10 @@ factory-reset-keep:
     gsettings reset-recursively org.gnome.shell.extensions.openweather
     gsettings reset system.locale region
       echo 'Factory-reset of Gidro-OS settings only completed.'
-  
+
 # Delete old Proton-GE versions, keep the latest one
 delete-old-protonge:
     #!/usr/bin/env bash
     cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam
     ls -d GE-Proton* | head -n -1 | xargs -r rm -r
       echo 'Old Proton-GE versions deleted.'  
-
