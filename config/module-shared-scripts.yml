@@ -8,5 +8,6 @@ scripts:
   - desktop-shortcut-remover.sh
   - vrr.sh
   - hardware-setup.sh
+  - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
