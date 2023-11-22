@@ -2,4 +2,4 @@
 
 set -oue pipefail
 
-systemctl enable proton-ge-updater.service
+systemctl enable --global proton-ge-updater.service
