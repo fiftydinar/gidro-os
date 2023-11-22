@@ -16,9 +16,6 @@ install:
   - gnome-shell-extension-system76-scheduler
   - gnome-shell-extension-middleclickclose-git
   - gnome-shell-extension-openweather-toppk
-  - ddccontrol-gtk
-  - ddccontrol-db
-  - ddccontrol
   - hl2linux-selinux
   - rom-properties-gtk3
   - nautilus-python
