@@ -9,4 +9,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/proton-ge-updater
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
