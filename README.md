@@ -106,6 +106,7 @@ Settings applied by default:
 - Applied fix for non-working trim for LUKS partitions
 - Disabled kernel watchdog (for improved performance & battery life)
 - Increased inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
+- Increased file nolimits to prevent non-working Esync
 - BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
 - Fixed caps-lock delay, which is present in all other Linux distributions
 - Enabled touchpad tap-to-click
