@@ -121,3 +121,10 @@ factory-reset-keep:
   gsettings reset-recursively org.gnome.shell.extensions.openweather
   gsettings reset system.locale region
   echo 'Factory-reset of Gidro-OS settings only completed.'
+  
+# Delete old Proton-GE versions, keep the latest one
+delete-old-protonge:
+  #!/usr/bin/env bash
+  cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam
+  ls -d GE-Proton* | head -n -1 | xargs -r rm -r
+  echo 'Old Proton-GE versions deleted.'  

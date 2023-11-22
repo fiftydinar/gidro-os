@@ -63,9 +63,8 @@ install() {
         fi
         echo "--> Extracting $filename..."
         tar -xf "$filename"
-        echo "--> Removing the compressed archive & older versions of Proton-GE..."
+        echo "--> Removing the compressed archive..."
         rm "$filename"
-        ls -d GE-Proton* | head -n -2 | xargs -r rm -r
         echo "--> Done. Please check the command line for errors and restart Steam for the changes to take effect."
         return 0
     fi
@@ -86,3 +85,4 @@ if [ -d "$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam" ] || [ -d "$
 else
     echo "--> Steam does not seem to be installed as Flatpak. No changes were made."
 fi
+
