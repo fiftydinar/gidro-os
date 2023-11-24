@@ -125,10 +125,16 @@ factory-reset-keep:
 # Delete old Proton-GE versions, keep the latest one
 delete-old-protonge:
     #!/usr/bin/env bash
+    FLATPAK=$(flatpak list)
+    if grep -q 'com.valvesoftware.Steam' <<< ${FLATPAK}; then
     cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
     ls -d -v GE-Proton* | head -n -1 | xargs -r rm -r
       echo 'Old Proton-GE versions deleted.'
+    cd $HOME  
+    else
+      echo 'Cannot delete old Proton-GE when Steam is not installed.'
     cd $HOME
+    fi
 
 # Install Proton-GE runner for Steam
 install-protonge:
