@@ -22,6 +22,9 @@ install:
   - system76-power
   - python3-icoextract
   - gnome-randr-rust
+  - gamescope
+  - mangohud
+  - vkBasalt
 
 remove:
   - firefox
