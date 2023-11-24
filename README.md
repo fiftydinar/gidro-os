@@ -32,8 +32,6 @@ Installed packages (RPMs):
 - Nautilus Python (for Python Nautilus extensions)
 - Python3-icoextract (for .exe icons thumbnailing support)
 - Gnome-randr-rust (xrandr equivalent for Gnome Wayland)
-- MangoHud (overlay used for showing useful gaming information like framerate, CPU, GPU usage etc.)
-- vkBasalt (post-processing layer used for SMAA antialiasing to games & some other related stuff)
 
 Installed extensions:
 - Blur My Shell
@@ -131,7 +129,6 @@ Settings applied by default:
 - Set Gnome Software to use Flathub-user remote by default
 - Hide ROM Properties desktop shortcut
 - Include Proton-GE with auto-updates support for Steam
-- Enable MangoHud for all Vulkan + some OpenGL apps & trigger it manually with keyboard shortcut by default
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
 - Telegram silent auto-start on boot enabled (if app is installed)

@@ -11,4 +11,3 @@ scripts:
   - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
-  - mangohud.sh
