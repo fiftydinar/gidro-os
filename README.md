@@ -32,7 +32,6 @@ Installed packages (RPMs):
 - Nautilus Python (for Python Nautilus extensions)
 - Python3-icoextract (for .exe icons thumbnailing support)
 - Gnome-randr-rust (xrandr equivalent for Gnome Wayland)
-- Gamescope (micro-compositor used for gaming, useful for better handling of windowed apps, FSR 1 upscaling, SuperSampling Anti-Aliasing etc.)
 - MangoHud (overlay used for showing useful gaming information like framerate, CPU, GPU usage etc.)
 - vkBasalt (post-processing layer used for SMAA antialiasing to games & some other related stuff)
 
