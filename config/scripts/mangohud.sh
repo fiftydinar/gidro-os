@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-MANGOHUD=1
-MANGOHUD_CONFIG=no_display
+echo "MANGOHUD=1" >> /usr/etc/environment
+echo "MANGOHUD_CONFIG=no_display" >> /usr/etc/environment
