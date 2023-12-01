@@ -1,8 +1,5 @@
 # Gidro-OS
 
-> [!WARNING]  
-> This image is not ready yet as it's prone to architectural & testing changes. It will be ready around Linux 6.6 kernel land.
-
 ![](assets/bg.webp)
 
 My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project.
