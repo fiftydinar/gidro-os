@@ -192,7 +192,4 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231
 - Integrate all post-setup into image as much as possible
 - Maintain current fork of OpenWeather from unmerged changes, as it looks like it is abandoned (separate extension reborn project is needed)
 - Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
-- Update System76-Power to latest version
-
-Issues to fix:
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
