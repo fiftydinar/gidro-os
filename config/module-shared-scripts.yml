@@ -6,7 +6,6 @@ scripts:
   - system76-power.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
-  - vrr.sh
   - hardware-setup.sh
   - proton-ge-updater.sh
   - python3-icoextract.sh

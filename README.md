@@ -20,7 +20,6 @@ Replaced packages (RPMs)/usecases:
 - Gnome Web from Flathub instead of Firefox rpm
 - Mission Center from Flathub instead of Gnome System Monitor
 - System76-Power instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
-- Gnome Mutter "Variable Refresh Rate" support
 
 Installed packages (RPMs):
 - System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
