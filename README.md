@@ -133,6 +133,7 @@ Settings applied by default:
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Gnome Web "Restore Tabs on Startup" disabled
+- G4Music background playback enabled
   
 ## Installation (ISO) [Recommended]
 

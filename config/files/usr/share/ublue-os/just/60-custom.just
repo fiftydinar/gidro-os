@@ -59,6 +59,16 @@ post-setup-user:
       echo 'ERROR: Gnome Web is not installed, settings not applied.' >&2
     fi   
 
+    FLATPAK=$(flatpak list)
+    if grep -q 'com.github.neithern.g4music' <<< ${FLATPAK}; then
+    output=`mkdir -p $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/ 2>&1` || echo $output && false
+    output=`touch $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    output=`echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+      echo 'G4Music pre-configured settings applied.'
+    else
+      echo 'ERROR: G4Music is not installed, settings not applied.' >&2
+    fi
+
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
     #!/usr/bin/env bash
