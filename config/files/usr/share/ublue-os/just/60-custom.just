@@ -118,7 +118,7 @@ unhide-grub:
 factory-reset:
     #!/usr/bin/env bash
     dconf reset -f /
-      echo 'Factory-reset of all Gidro-OS settings completed.'
+      echo 'Factory-reset of all Gidro-OS settings completed. Please reboot your system.'
 
 # Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
 factory-reset-keep:
