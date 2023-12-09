@@ -21,6 +21,7 @@ post-setup-user:
 
     FLATPAK=$(flatpak list)
     if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
+    rm -f $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     output=`echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
@@ -31,6 +32,7 @@ post-setup-user:
 
     FLATPAK=$(flatpak list)
     if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
+    rm -f $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     output=`echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
@@ -41,6 +43,7 @@ post-setup-user:
 
     FLATPAK=$(flatpak list)
     if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
+    rm -f $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     output=`echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'" | tee -a $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
@@ -51,6 +54,7 @@ post-setup-user:
 
     FLATPAK=$(flatpak list)
     if grep -q 'org.gnome.Epiphany' <<< ${FLATPAK}; then
+    rm -f $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     output=`echo -e "[org/gnome/epiphany]\nrestore-session-policy='crashed'" | tee -a $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
@@ -61,6 +65,7 @@ post-setup-user:
 
     FLATPAK=$(flatpak list)
     if grep -q 'com.github.neithern.g4music' <<< ${FLATPAK}; then
+    rm -f $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
     output=`echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
