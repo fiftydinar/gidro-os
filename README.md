@@ -131,7 +131,7 @@ Settings applied by default:
 - Deluge auto-start on boot enabled (if app is installed)
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
-- Set Clapper (Videos) to use Nokia Pure font for subtitles
+- Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
 - Gnome Web "Restore Tabs on Startup" disabled
 - G4Music background playback enabled
   

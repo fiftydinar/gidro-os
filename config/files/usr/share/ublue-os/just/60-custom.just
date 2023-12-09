@@ -46,7 +46,7 @@ post-setup-user:
     rm -f $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
     output=`touch $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
-    output=`echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'" | tee -a $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
+    output=`echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'\nvolume-custom=true\nvolume-value=100\nafter-playback=2" | tee -a $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1` || echo $output && false
       echo 'Clapper (Videos) pre-configured settings applied.'
     else
       echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
