@@ -99,6 +99,7 @@ Settings applied by default:
 - Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - Disabled kernel split-lock mitigate (for restoring performance of affected games)
 - Applied fix for non-working trim for LUKS partitions
+- Applied fix for keyboard language on LUKS unlock screen
 - Disabled kernel watchdog (for improved performance & battery life)
 - Increased inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - Increased file nolimits to prevent non-working Esync
