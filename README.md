@@ -17,113 +17,113 @@ Removed packages (RPMs):
 - Gnome Tweaks
 
 Replaced packages (RPMs)/usecases:
-- Gnome Web from Flathub instead of Firefox rpm
-- Mission Center from Flathub instead of Gnome System Monitor
-- System76-Power instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
+- [Gnome Web](https://wiki.gnome.org/Apps/Web) from Flathub instead of Firefox
+- [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
+- [System76-Power](https://github.com/pop-os/system76-power) instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
 
 Installed packages (RPMs):
-- System76 Scheduler (for performance improvement by adequately adjusting process priorities in realtime)
-- Team Fortress 2 SELinux rule (for preventing "no certain sounds" issue)
-- Additional Game ROM Properties for Nautilus
-- Nautilus Python (for Python Nautilus extensions)
-- Python3-icoextract (for .exe icons thumbnailing support)
-- Gnome-randr-rust (xrandr equivalent for Gnome Wayland)
+- [System76 Scheduler](https://github.com/pop-os/system76-scheduler) (for performance improvement by adequately adjusting process priorities in realtime)
+- [Team Fortress 2 SELinux rule](https://github.com/kylegospo/hl2linux-selinux) (for preventing "no certain sounds" issue)
+- [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
+- [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
+- [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
+- [Gnome-randr-rust](https://github.com/maxwellainatchi/gnome-randr-rust) (xrandr equivalent for Gnome Wayland)
 
 Installed akmods (kernel modules):
-- V4L2loopback (Allows creation of "virtual video devices")
-- WineSync (Support for Winesync/Fastsync/NTSync primitives)
-- OpenRazer (Additional features for Razer hardware)
-- OpenRGB (Installed i2c-nct6775 and patched i2c-piix4 sensor for use with OpenRGB)
-- NCT6687D (Enablement of Nuvoton NCT6687-R sensor found on AMD B550 chipset motherboards)
-- Gasket (Coral Gasket Driver, allowing usage of the Coral EdgeTPU on Linux systems)
-- GCAdapter_OC (Overclock of Nintendo Wii U/Mayflash GameCube adapter)
-- Ryzen-SMU (Exposure to the SMU - System Management Unit for certain AMD Ryzen Processors)
-- XOne (Xbox One controller USB wired/RF driver)
-- XpadNeo (Xbox One controller bluetooth driver)
-- Xpad-NoOne (Xbox/Xbox 360 controller driver)
+- [V4L2loopback](https://github.com/umlaeute/v4l2loopback) (Allows creation of "virtual video devices")
+- [WineSync](https://lkml.org/lkml/2021/1/17/312) (Support for Winesync/Fastsync/NTSync primitives)
+- [OpenRazer](https://openrazer.github.io/) (Additional features for Razer hardware)
+- [OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB/-/raw/master/OpenRGB.patch) (Installed i2c-nct6775 and patched i2c-piix4 sensor for use with OpenRGB)
+- [NCT6687D](https://github.com/Fred78290/nct6687d) (Enablement of Nuvoton NCT6687-R sensor found on AMD B550 chipset motherboards)
+- [Gasket](https://github.com/google/gasket-driver) (Coral Gasket Driver, allowing usage of the Coral EdgeTPU on Linux systems)
+- [GCAdapter_OC](https://github.com/hannesmann/gcadapter-oc-kmod) (Overclock of Nintendo Wii U/Mayflash GameCube adapter)
+- [Ryzen-SMU](https://gitlab.com/leogx9r/ryzen_smu) (Exposure to the SMU - System Management Unit for certain AMD Ryzen Processors)
+- [XOne](https://github.com/medusalix/xone) (Xbox One controller USB wired/RF driver)
+- [XpadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controller bluetooth driver)
+- [Xpad-NoOne](https://github.com/ublue-os/xpad-noone) (Xbox/Xbox 360 controller driver)
 
 Installed extensions:
-- Blur My Shell
-- Caffeine
-- Quick Close in Overview
-- OpenWeather
+- [Blur My Shell](https://github.com/aunetx/blur-my-shell)
+- [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
+- [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
+- [OpenWeather](https://github.com/toppk/gnome-shell-extension-openweather)
 - System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
-- Gnome Boxes
-- Gnome Calculator
-- Gnome Calendar
-- Gnome Camera
-- Gnome Contacts
-- Gnome Clocks
-- Gnome Document Viewer
-- Gnome Maps
-- Gnome Text Editor
-- G4Music
-- Clapper
-- Gnome Image Viewer (Loupe)
-- Secrets
-- Sticky Notes
-- Rnote
-- LocalSend
-- GPU Screen Recorder
-- Flatseal
-- Warehouse
-- PinApp
-- Extension Manager
-- Easy Effects
-- Bottles
+- [Boxes](https://apps.gnome.org/en/Boxes/)
+- [Calculator](https://apps.gnome.org/en/Calculator/)
+- [Calendar](https://apps.gnome.org/en/Calendar/)
+- [Camera](https://apps.gnome.org/en/Snapshot/)
+- [Contacts](https://apps.gnome.org/en/Contacts/)
+- [Clocks](https://apps.gnome.org/en/Clocks/)
+- [Document Viewer](https://apps.gnome.org/en/Evince/)
+- [Maps](https://apps.gnome.org/en/Maps/)
+- [Text Editor](https://apps.gnome.org/en/TextEditor/)
+- [G4Music](https://flathub.org/apps/com.github.neithern.g4music)
+- [Clapper](https://flathub.org/apps/com.github.rafostar.Clapper)
+- [Image Viewer](https://apps.gnome.org/en/Loupe/)
+- [Secrets](https://apps.gnome.org/en/Secrets/)
+- [Sticky Notes](https://flathub.org/apps/com.vixalien.sticky)
+- [Rnote](https://flathub.org/apps/com.github.flxzt.rnote)
+- [LocalSend](https://flathub.org/apps/org.localsend.localsend_app)
+- [GPU Screen Recorder](https://flathub.org/apps/com.dec05eba.gpu_screen_recorder)
+- [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal)
+- [Warehouse](https://flathub.org/apps/io.github.flattool.Warehouse)
+- [PinApp](https://flathub.org/apps/io.github.fabrialberio.pinapp)
+- [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
+- [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
+- [Bottles](https://flathub.org/apps/com.usebottles.bottles)
 
 Optional flatpaks:
-- Warp (Global File Sharing)
-- OBS Studio (Screen Recorder)
-- Thunderbird (Email)
-- Discord
-- Telegram
-- FreeTube (YouTube alt.)
-- Dialect (Translator)
-- Deluge (Torrent)
-- ASCII Draw
-- InkScape
-- Mousai (Shazam alt.)
-- NewsFlash
-- LibreOffice
-- Tagger
-- Parabolic (YouTube Downloader)
-- Nicotine+ (Soulseek alt.)
-- Tenacity (Audacity alt.)
-- GitHub Desktop
-- Steam
-- ProtonPlus (Steam Proton Manager)
-- PCSX2 (PS2 Emulator)
-- Space Cadet Pinball
-- Grapejuice (Roblox)
-- Cartridges (Universal Game Launcher)
+- [Warp (Global File Sharing)](https://apps.gnome.org/en/Warp/)
+- [OBS Studio (Screen Recorder)](https://flathub.org/apps/com.obsproject.Studio)
+- [Thunderbird (Email)](https://flathub.org/apps/org.mozilla.Thunderbird)
+- [Discord](https://flathub.org/apps/com.discordapp.Discord)
+- [Telegram](https://flathub.org/apps/org.telegram.desktop)
+- [FreeTube (YouTube alt.)](https://flathub.org/apps/io.freetubeapp.FreeTube)
+- [Dialect (Translator)](https://apps.gnome.org/en/Dialect/)
+- [Deluge (Torrent)](https://flathub.org/apps/org.deluge_torrent.deluge)
+- [ASCII Draw](https://flathub.org/apps/io.github.nokse22.asciidraw)
+- [InkScape](https://flathub.org/apps/org.inkscape.Inkscape)
+- [Mousai (Shazam alt.)](https://apps.gnome.org/en/Mousai/)
+- [NewsFlash](https://apps.gnome.org/en/NewsFlash/)
+- [LibreOffice](https://flathub.org/apps/org.libreoffice.LibreOffice)
+- [Tagger](https://flathub.org/apps/org.nickvision.tagger)
+- [Parabolic (YouTube Downloader)](https://flathub.org/apps/org.nickvision.tubeconverter)
+- [Nicotine+ (Soulseek alt.)](https://flathub.org/apps/org.nicotine_plus.Nicotine)
+- [Tenacity (Audacity alt.)](https://flathub.org/apps/org.tenacityaudio.Tenacity)
+- [GitHub Desktop](https://flathub.org/apps/io.github.shiftey.Desktop)
+- [Steam](https://flathub.org/apps/com.valvesoftware.Steam)
+- [ProtonPlus (Steam Proton Manager)](https://flathub.org/apps/com.vysp3r.ProtonPlus)
+- [PCSX2 (PS2 Emulator)](https://flathub.org/apps/net.pcsx2.PCSX2)
+- [Space Cadet Pinball](https://flathub.org/apps/com.github.k4zmu2a.spacecadetpinball)
+- [Grapejuice (Roblox)](https://flathub.org/apps/net.brinkervii.grapejuice)
+- [Cartridges (Universal Game Launcher)](https://apps.gnome.org/en/Cartridges/)
 
 Optional config:
 - Hide GRUB text output on boot (available in yafti & just)
 - Hide close button from windows - useful for mouses which have a special key for closing applications window (available in yafti & just)
 
 Settings applied by default:
-- Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000/HD 8000 series)
-- Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs (for improved responsiveness under I/O load)
-- ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop (avoids OOM situations better & it also improves responsiveness under I/O load)
-- Set memlock limit from 64kb to 2GB (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
-- Increased vm.max_map_count value to match SteamOS (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
-- Disabled kernel split-lock mitigate (for restoring performance of affected games)
-- Applied fix for non-working trim for LUKS partitions
-- Applied fix for keyboard language on LUKS unlock screen
-- Disabled kernel watchdog (for improved performance & battery life)
-- Increased inotify limits (for preventing errors like "too many open files" when installing/using some huge applications & games)
-- Increased file nolimits to prevent non-working Esync
-- BBR TCP congestion algorithm & FQ network packet scheduling (for better network performance, especially in low-signal situations)
-- Fixed caps-lock delay, which is present in all other Linux distributions
+- [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
+- [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
+- [ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop](https://github.com/pop-os/default-settings/pull/163) (avoids OOM situations better & it also improves responsiveness under I/O load)
+- [Set memlock limit from 64kb to 2GB](https://github.com/RPCS3/rpcs3/issues/9328#issuecomment-732712084) (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
+- [Increased vm.max_map_count value to match SteamOS](https://www.reddit.com/r/linux_gaming/comments/10x1e6u/fix_hogwarts_legacy_loading_screen_crash/) (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
+- [Disabled kernel split-lock mitigate](https://github.com/doitsujin/dxvk/issues/2938) (for restoring performance of affected games)
+- [Applied fix for non-working trim for LUKS partitions](https://bugzilla.redhat.com/show_bug.cgi?id=1801539)
+- [Applied fix for keyboard language on LUKS unlock screen](https://github.com/fedora-silverblue/issue-tracker/issues/3)
+- [Disabled kernel watchdog](https://wiki.archlinux.org/title/Power_management#Disabling_NMI_watchdog) (for improved performance & battery life)
+- [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
+- [Increased file nolimits to prevent non-working Esync](https://github.com/lutris/docs/blob/master/HowToEsync.md)
+- [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1926845420) (for better network performance, especially in low-signal situations)
+- [Fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper
-- Set light & dark theme to AdwGtk3 for GTK3 applications
-- Use MoreWaita icon pack (to extend Adwaita icon language)
+- [Set light & dark theme to AdwGtk3 for GTK3 applications](https://github.com/lassekongo83/adw-gtk3) (to make Adwaita design more consistent)
+- [Use MoreWaita icon pack](https://github.com/somepaulo/MoreWaita) (to extend Adwaita theme icon language)
 - Set Serbian Latin language as the locale (display language remains English)
 - Set top bar to show weekday too in all languages
 - Show battery percentage in top bar
@@ -133,12 +133,12 @@ Settings applied by default:
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
 - Enabled Nautilus "Sort folders before files"
-- Set keyboard delay to be much faster, as Gnome defaults are too slow
-- "Window not responding" dialog extended to 20s
+- Set keyboard delay to be much lower, as Gnome defaults are too slow
+- ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
 - Add Nautilus "New Document" to context menu
 - Set Gnome Software to use Flathub-user remote by default
 - Hide ROM Properties desktop shortcut
-- Include Proton-GE with auto-updates support for Steam
+- [Include Proton-GE with auto-download support for Steam](https://github.com/GloriousEggroll/proton-ge-custom)
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
 - Telegram silent auto-start on boot enabled (if app is installed)
