@@ -29,6 +29,19 @@ Installed packages (RPMs):
 - Python3-icoextract (for .exe icons thumbnailing support)
 - Gnome-randr-rust (xrandr equivalent for Gnome Wayland)
 
+Installed akmods (kernel modules):
+- V4L2loopback (Allows creation of "virtual video devices")
+- WineSync (Support for Winesync/Fastsync/NTSync primitives)
+- OpenRazer (Additional features for Razer hardware)
+- OpenRGB (Installed i2c-nct6775 and patched i2c-piix4 sensor for use with OpenRGB)
+- NCT6687D (Enablement of Nuvoton NCT6687-R sensor found on AMD B550 chipset motherboards)
+- Gasket (Coral Gasket Driver, allowing usage of the Coral EdgeTPU on Linux systems)
+- GCAdapter_OC (Overclock of Nintendo Wii U/Mayflash GameCube adapter)
+- Ryzen-SMU (Exposure to the SMU - System Management Unit for certain AMD Ryzen Processors)
+- XOne (Xbox One controller USB wired/RF driver)
+- XpadNeo (Xbox One controller bluetooth driver)
+- Xpad-NoOne (Xbox/Xbox 360 controller driver)
+
 Installed extensions:
 - Blur My Shell
 - Caffeine
