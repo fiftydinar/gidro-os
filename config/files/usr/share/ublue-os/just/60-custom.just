@@ -4,7 +4,7 @@
 [private]
 post-setup-root:
     #!/usr/bin/env bash
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.usebottles.bottles' <<< ${FLATPAK}; then
     flatpak override --filesystem=home com.usebottles.bottles
       echo 'Bottles filesystem sandbox relax applied.'
@@ -19,7 +19,7 @@ post-setup-user:
     output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
       echo '"New documents" context menu entry in Nautilus created.'
 
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
     rm -f $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -30,7 +30,7 @@ post-setup-user:
       echo 'ERROR: Gnome Text Editor is not installed, settings not applied.' >&2
     fi
 
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'org.gnome.Calculator' <<< ${FLATPAK}; then
     rm -f $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.Calculator/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -41,7 +41,7 @@ post-setup-user:
       echo 'ERROR: Gnome Calculator is not installed, settings not applied.' >&2
     fi
 
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.github.rafostar.Clapper' <<< ${FLATPAK}; then
     rm -f $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -52,7 +52,7 @@ post-setup-user:
       echo 'ERROR: Clapper (Videos) is not installed, settings not applied.' >&2
     fi   
 
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'org.gnome.Epiphany' <<< ${FLATPAK}; then
     rm -f $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -63,7 +63,7 @@ post-setup-user:
       echo 'ERROR: Gnome Web is not installed, settings not applied.' >&2
     fi   
 
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.github.neithern.g4music' <<< ${FLATPAK}; then
     rm -f $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
     output=`mkdir -p $HOME/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/ 2>&1` || echo $output && false
@@ -140,7 +140,7 @@ factory-reset-keep:
 # Delete old Proton-GE versions, keep the latest one
 delete-old-protonge:
     #!/usr/bin/env bash
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.valvesoftware.Steam' <<< ${FLATPAK}; then
     cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
     ls -d -v GE-Proton* | head -n -1 | xargs -r rm -r
@@ -154,7 +154,7 @@ delete-old-protonge:
 # Install Proton-GE runner for Steam
 install-protonge:
     #!/usr/bin/env bash
-    FLATPAK=$(flatpak list)
+    FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.valvesoftware.Steam' <<< ${FLATPAK}; then
     cd $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam
     if [ ! -d "compatibilitytools.d" ]; then
