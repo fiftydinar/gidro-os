@@ -102,6 +102,7 @@ Settings applied by default:
 - [Applied fix for non-working trim for LUKS partitions](https://bugzilla.redhat.com/show_bug.cgi?id=1801539)
 - [Applied fix for keyboard language on LUKS unlock screen](https://github.com/fedora-silverblue/issue-tracker/issues/3)
 - [Disabled kernel watchdog](https://wiki.archlinux.org/title/Power_management#Disabling_NMI_watchdog) (for improved performance & battery life)
+- [Disabled most kernel logs](https://phabricator.whonix.org/T950) (for improving boot/shutdown times & for improving security)
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - [Increased file nolimits to prevent non-working Esync](https://github.com/lutris/docs/blob/master/HowToEsync.md)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
