@@ -98,6 +98,7 @@ Settings applied by default:
 - [Set memlock limit from 64kb to 2GB](https://github.com/RPCS3/rpcs3/issues/9328#issuecomment-732712084) (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - [Increased vm.max_map_count value to match SteamOS](https://www.reddit.com/r/linux_gaming/comments/10x1e6u/fix_hogwarts_legacy_loading_screen_crash/) (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - [Disabled kernel split-lock mitigate](https://github.com/doitsujin/dxvk/issues/2938) (for restoring performance of affected games)
+- [Disabled memory core dumps](https://wiki.archlinux.org/title/Core_dump) (for preventing potential performance drop when dumping memory-heavy processes & for improving security)
 - [Applied fix for non-working trim for LUKS partitions](https://bugzilla.redhat.com/show_bug.cgi?id=1801539)
 - [Applied fix for keyboard language on LUKS unlock screen](https://github.com/fedora-silverblue/issue-tracker/issues/3)
 - [Disabled kernel watchdog](https://wiki.archlinux.org/title/Power_management#Disabling_NMI_watchdog) (for improved performance & battery life)
