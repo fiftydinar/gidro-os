@@ -88,8 +88,8 @@ Optional flatpaks:
 - [Cartridges (Universal Game Launcher)](https://apps.gnome.org/en/Cartridges/)
 
 Optional config:
-- Hide GRUB text output on boot (if you want to make boot process faster - hold Esc on boot if you need boot options back)
-- Hide close button from windows (useful for mouses which have a special key for closing applications window)
+- [Hide GRUB text output on boot](https://github.com/fiftydinar/gidro-os/wiki#how-to-apply-hide-grub-text-output-on-boot-config) (if you want to make boot process faster - hold Esc on boot if you need boot options back)
+- [Hide close button from windows](https://github.com/fiftydinar/gidro-os/wiki#how-to-apply-hide-close-button-from-windows-config) (useful for mouses which have a special key for closing applications window)
 
 Settings applied by default:
 - [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
