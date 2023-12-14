@@ -18,7 +18,7 @@ post-setup-user:
     #!/usr/bin/env bash
     FILE=$HOME/Templates/Untitled\ Document
     if test -f "$FILE"; then
-      echo '"New documents" context menu entry not created as it already exists.'
+      echo 'ERROR: "New documents" context menu entry not created as it already exists.' >&2
     else  
     output=`touch "$FILE" 2>&1` || echo $output && false
       echo '"New documents" context menu entry in Nautilus created.'
