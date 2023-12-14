@@ -16,8 +16,13 @@ post-setup-root:
 [private]
 post-setup-user:
     #!/usr/bin/env bash
-    output=`touch $HOME/Templates/Untitled\ Document 2>&1` || echo $output && false
+    FILE=$HOME/Templates/Untitled\ Document
+    if test -f "$FILE"; then
+      echo '"New documents" context menu entry not created as it already exists.'
+    else  
+    output=`touch "$FILE" 2>&1` || echo $output && false
       echo '"New documents" context menu entry in Nautilus created.'
+    fi
 
     FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'org.gnome.TextEditor' <<< ${FLATPAK}; then
