@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env bash
 set -oue pipefail
 
 # Get the latest Proton-GE-Custom release (url and filename)
