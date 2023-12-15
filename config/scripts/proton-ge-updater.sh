@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/env sh
+set -oue pipefail
 
 # Get the latest Proton-GE-Custom release (url and filename)
 url="$(curl -s "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest" | grep "browser_download_url.*\.tar\.gz" | cut -d \" -f 4)"
