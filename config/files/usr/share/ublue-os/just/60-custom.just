@@ -3,7 +3,7 @@
 # Necessary root post-setup for Gidro-OS
 [private]
 post-setup-root:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.usebottles.bottles' <<< "${FLATPAK}"; then
     flatpak override --filesystem=home com.usebottles.bottles
@@ -15,7 +15,7 @@ post-setup-root:
 # Necessary user post-setup for Gidro-OS
 [private]
 post-setup-user:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     FILE=$HOME/Templates/Untitled\ Document
     if test -f "$FILE"; then
       echo 'ERROR: "New documents" context menu entry not created as it already exists.' >&2
@@ -81,19 +81,19 @@ post-setup-user:
 
 # Remove close button from windows (useful for Logitech G305 mouse)
 hide-close-button:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
       echo 'Remove close button from windows setting applied.'    
 
 # Revert to include close button from windows (Default)
 unhide-close-button:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     gsettings reset org.gnome.desktop.wm.preferences button-layout
       echo 'Reverted setting "window close button" to defaults.'  
 
 # Set system to boot without showing the grub screen with options
 hide-grub:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
     output=$(echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
     output=$(echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
@@ -107,7 +107,7 @@ hide-grub:
 
 # Set system to boot with the grub screen showing options (Default)
 unhide-grub:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub
     sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
     sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub
@@ -121,13 +121,13 @@ unhide-grub:
 
 # Factory-reset all Gidro-OS configuration, including Gnome defaults
 factory-reset:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     dconf reset -f /
       echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
 
 # Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
 factory-reset-keep:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     gsettings reset org.gnome.desktop.background picture-options
     gsettings reset org.gnome.desktop.background picture-uri
     gsettings reset org.gnome.desktop.background picture-uri-dark
@@ -144,7 +144,7 @@ factory-reset-keep:
 
 # Delete old Proton-GE versions, keep the latest one
 delete-old-protonge:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
     cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
@@ -158,7 +158,7 @@ delete-old-protonge:
 
 # Install Proton-GE runner for Steam
 install-protonge:
-#!/usr/bin/env bash
+    #!/usr/bin/env bash
     FLATPAK=$(/usr/bin/flatpak list --app --columns=application)
     if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
     cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam
