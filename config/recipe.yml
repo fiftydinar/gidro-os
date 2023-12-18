@@ -13,7 +13,6 @@ modules:
   - from-file: common_modules/rpm-ostree.yml
   - from-file: common_modules/files.yml
   - from-file: common_modules/bling.yml
-  - from-file: common_modules/files-2.yml  
   - from-file: common_modules/yafti.yml  
   - from-file: common_modules/default-flatpaks.yml
   - from-file: common_modules/scripts.yml
