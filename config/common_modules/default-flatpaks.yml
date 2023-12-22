@@ -30,7 +30,6 @@ system:
   - com.mattjakeman.ExtensionManager
   - com.github.wwmm.easyeffects
   - com.usebottles.bottles
-  - org.winehq.Wine//stable-23.08
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user
