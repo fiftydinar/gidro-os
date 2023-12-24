@@ -1,6 +1,5 @@
 type: script
 scripts:
-  - signing.sh
   - reload-font-cache.sh
   - system76-scheduler.sh
   - system76-power.sh
@@ -9,3 +8,4 @@ scripts:
   - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
+  - signing.sh
