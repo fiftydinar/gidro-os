@@ -15,5 +15,5 @@ modules:
   - from-file: common_modules/bling.yml
   - from-file: common_modules/yafti.yml  
   - from-file: common_modules/default-flatpaks.yml
+  - from-file: common_modules/systemd.yml
   - from-file: common_modules/scripts.yml
-  - from-file: common_modules/systemd.yml  
