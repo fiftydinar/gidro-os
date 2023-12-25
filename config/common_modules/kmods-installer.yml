@@ -1,13 +1,3 @@
 type: kmods-installer
 install:
-  - v4l2loopback
   - winesync
-  - openrazer
-  - openrgb
-  - nct6687d
-  - gasket
-  - gcadapter_oc
-  - ryzen-smu
-  - xpadneo
-  - xone
-  - xpad-noone

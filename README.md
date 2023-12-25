@@ -30,17 +30,7 @@ Installed packages (RPMs):
 - [Gnome-randr-rust](https://github.com/maxwellainatchi/gnome-randr-rust) (xrandr equivalent for Gnome Wayland)
 
 Installed akmods (kernel modules):
-- [V4L2loopback](https://github.com/umlaeute/v4l2loopback) (Allows creation of "virtual video devices")
 - [WineSync](https://lkml.org/lkml/2021/1/17/312) (Support for Winesync/Fastsync/NTSync primitives)
-- [OpenRazer](https://openrazer.github.io/) (Additional features for Razer hardware)
-- [OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB/-/raw/master/OpenRGB.patch) (Installed i2c-nct6775 and patched i2c-piix4 sensor for use with OpenRGB)
-- [NCT6687D](https://github.com/Fred78290/nct6687d) (Enablement of Nuvoton NCT6687-R sensor found on AMD B550 chipset motherboards)
-- [Gasket](https://github.com/google/gasket-driver) (Coral Gasket Driver, allowing usage of the Coral EdgeTPU on Linux systems)
-- [GCAdapter_OC](https://github.com/hannesmann/gcadapter-oc-kmod) (Overclock of Nintendo Wii U/Mayflash GameCube adapter)
-- [Ryzen-SMU](https://gitlab.com/leogx9r/ryzen_smu) (Exposure to the SMU - System Management Unit for certain AMD Ryzen Processors)
-- [XOne](https://github.com/medusalix/xone) (Xbox One controller USB wired/RF driver)
-- [XpadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controller bluetooth driver)
-- [Xpad-NoOne](https://github.com/ublue-os/xpad-noone) (Xbox/Xbox 360 controller driver)
 
 Installed extensions:
 - [Blur My Shell](https://github.com/aunetx/blur-my-shell)
