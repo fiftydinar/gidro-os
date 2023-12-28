@@ -52,7 +52,7 @@ title-bar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org/gnome/shell]
-enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com']
+enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com']
 favorite-apps=['org.gnome.Epiphany.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org/gnome/shell/extensions/blur-my-shell]
@@ -65,6 +65,9 @@ position-in-panel='right'
 show-comment-in-panel=true
 wind-direction=true
 decimal-places=0
+
+[org/gnome/shell/extensions/notifications-alert]
+color='rgb(138,156,184)'
 
 [org/gnome/software]
 allow-updates=false

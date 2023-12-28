@@ -123,6 +123,7 @@ Settings applied by default:
 - Set mouse acceleration to flat 
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
+- Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
