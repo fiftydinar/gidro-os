@@ -7,6 +7,7 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/repo/fedora-%OS_VERSION%/fiftydinar-gnome-randr-rust-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-middleclickclose-git-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-openweather-toppk-fedora-%OS_VERSION%.repo
+  - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/repo/fedora-39/fiftydinar-gnome-shell-extension-notifications-alert-git-fedora-39.repo
 
 install:
   - gnome-shell-extension-caffeine
@@ -15,6 +16,7 @@ install:
   - gnome-shell-extension-system76-scheduler
   - gnome-shell-extension-middleclickclose-git
   - gnome-shell-extension-openweather-toppk
+  - gnome-shell-extension-notifications-alert-git
   - hl2linux-selinux
   - rom-properties-gtk3
   - nautilus-python

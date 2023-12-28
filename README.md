@@ -34,6 +34,7 @@ Installed extensions:
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
 - [OpenWeather](https://github.com/toppk/gnome-shell-extension-openweather)
+- [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
