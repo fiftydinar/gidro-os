@@ -146,9 +146,15 @@ Settings applied by default:
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
 
 ISOs are online-based & are constantly upgraded. There is no need to worry about the version & the date of the ISO.
-Just download, install & enjoy!
+It is available for download in Releases page.
 
-Available for download in Releases page.
+Just download & install it.
+
+After that, type this command into Terminal & reboot:
+
+```
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
+```
 
 ## Installation (Rebase)
 
