@@ -5,3 +5,5 @@ system:
     - com.system76.PowerDaemon.service
     - system76-power-wake.service
     - com.system76.Scheduler.service
+  masked:
+    - power-profiles-daemon.service
