@@ -120,25 +120,32 @@ unhide-grub:
     fi
 
 # Factory-reset all Gidro-OS configuration, including Gnome defaults
-factory-reset:
+factory-reset-all-settings:
     #!/usr/bin/env bash
     dconf reset -f /
       echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
 
 # Factory-reset Gidro-OS configuration, but keep modified Gnome defaults
-factory-reset-keep:
+factory-reset-gidro-settings:
     #!/usr/bin/env bash
+    gsettings reset org.gnome.desktop.app-folders folder-children
+    gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ apps
+    gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ name
     gsettings reset org.gnome.desktop.background picture-options
     gsettings reset org.gnome.desktop.background picture-uri
     gsettings reset org.gnome.desktop.background picture-uri-dark
     gsettings reset org.gnome.desktop.background primary-color
     gsettings reset org.gnome.desktop.background secondary-color
+    gsettings reset org.gnome.desktop.input-sources sources
+    gsettings reset org.gnome.desktop.input-sources mru-sources
     gsettings reset org.gnome.desktop.interface show-battery-percentage
+    gsettings reset org.gnome.desktop.peripherals.keyboard numlock-state    
     gsettings reset org.gnome.settings-daemon.plugins.power power-button-action
     gsettings reset org.gnome.shell enabled-extensions
     gsettings reset org.gnome.shell favorite-apps
     gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
     gsettings reset-recursively org.gnome.shell.extensions.openweather
+    gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
     gsettings reset system.locale region
       echo 'Factory-reset of Gidro-OS settings only completed.'
 
