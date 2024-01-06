@@ -146,6 +146,10 @@ factory-reset-gidro-settings:
     gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
     gsettings reset-recursively org.gnome.shell.extensions.openweather
     gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
+    gsettings reset-recursively org.gnome.shell.extensions.middleclickclose
+    dconf reset -f /org/gnome/shell/extensions/caffeine/
+    dconf reset /org/gnome/shell/enabled-extensions
+    dconf reset /org/gnome/shell/disabled-extensions
     gsettings reset system.locale region
       echo 'Factory-reset of Gidro-OS settings only completed.'
 
