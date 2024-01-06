@@ -1,3 +1,4 @@
+import '100-bling.just'
 # Include some of your custom scripts here!
 
 # Necessary root post-setup for Gidro-OS
