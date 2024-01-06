@@ -150,7 +150,7 @@ factory-reset-gidro-settings:
     dconf reset -f /org/gnome/shell/extensions/caffeine/
     dconf reset /org/gnome/shell/enabled-extensions
     dconf reset /org/gnome/shell/disabled-extensions
-    gsettings reset system.locale region
+    dconf reset /system/locale/region
       echo 'Factory-reset of Gidro-OS settings only completed.'
 
 # Delete old Proton-GE versions, keep the latest one
