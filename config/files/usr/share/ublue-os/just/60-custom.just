@@ -91,7 +91,7 @@ configure-close-button:
     if [ "$OPTION" == "Disable" ]; then
       gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
         echo 'Disable close button from windows setting applied.' 
-    if [ "$OPTION" == "Enable (Default)" ]; then
+    elif [ "$OPTION" == "Enable (Default)" ]; then
       gsettings reset org.gnome.desktop.wm.preferences button-layout
         echo 'Reverted setting "window close button" to defaults.'
     fi
