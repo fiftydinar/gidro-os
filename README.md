@@ -130,7 +130,7 @@ Settings applied by default:
 - Add Nautilus "New Document" to context menu
 - Set Gnome Software to use Flathub-user remote by default
 - Hide ROM Properties desktop shortcut
-- [Include Proton-GE with auto-download support for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it)
+- [Include Proton-GE with auto-download support for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable & update it)
 - [Include StevenBlack hosts file for blocking ads, malware, fakenews, porn & gambling](https://github.com/StevenBlack/hosts)
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
