@@ -97,7 +97,7 @@ configure-close-button:
     fi
     
 # Configure GRUB screen with various options
-configure-grub:
+hiding-grub:
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
