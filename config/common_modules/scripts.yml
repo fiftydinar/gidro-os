@@ -7,4 +7,5 @@ scripts:
   - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
+  - block-ads.sh
   - signing.sh
