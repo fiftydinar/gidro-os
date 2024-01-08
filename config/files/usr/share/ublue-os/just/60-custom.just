@@ -11,7 +11,7 @@ configure-close-button  ARG="prompt":
     echo "${bold}Configuring window close button${normal}"
     echo 'Hiding close button from windows can be useful for mouses which have special key mapped for closing applications.'
     echo 'Hide or Unhide close button? Press ESC to exit.'
-    OPTION=$(ugum choose "Unhide (Default)" "Hide")
+    OPTION=$(ugum choose "Unhide (Default)" Hide)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust hiding-grub <option>"
       echo "  <option>: Specify the quick option - 'hide' or 'unhide'"
@@ -37,7 +37,7 @@ configure-grub ARG="prompt":
     echo "${bold}Configuring GRUB${normal}"
     echo 'GRUB hiding option can be useful for making boot-times faster.'
     echo 'Hide or Unhide GRUB? Press ESC to exit.'
-    OPTION=$(ugum choose "Unhide (Default)" "Hide")
+    OPTION=$(ugum choose "Unhide (Default)" Hide)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust hiding-grub <option>"
       echo "  <option>: Specify the quick option - 'hide' or 'unhide'"
@@ -220,7 +220,7 @@ proton-ge ARG="prompt":
       echo "${bold}Configuring Proton-GE${normal}"
       echo 'Configure Proton-GE for better games support on Steam.'
       echo 'Install, Uninstall or Remove old Proton-GE? Press ESC to exit.'
-      OPTION=$(ugum choose "Remove old Proton-GE" "Uninstall" "Install")
+      OPTION=$(ugum choose "Remove old Proton-GE" Uninstall Install)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust proton-ge <option>"
       echo "  <option>: Specify the quick option - 'install', 'uninstall' or 'remove-old'"
