@@ -62,17 +62,17 @@ screens:
           description: Performs necessary post-setup for Gidro-OS.
           default: true
           packages:
-          - Post Setup: ujust post-setup-user && pkexec ujust post-setup-root         
+          - Post Setup: ujust factory-reset all         
         Hide GRUB:
           description: Hides GRUB text output on boot.
           default: false
           packages:
-          - Hide GRUB: pkexec ujust hide-grub
+          - Hide GRUB: pkexec ujust configure-grub hide
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false
           packages:
-          - Remove window close button: ujust hide-close-button   
+          - Remove window close button: ujust configure-close-button hide  
          
   final-screen:
     source: yafti.screen.title
