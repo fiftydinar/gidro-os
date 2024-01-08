@@ -19,7 +19,7 @@ configure-close-button  ARG="prompt":
       echo "  Use 'unhide' to revert to defaults."
       exit 0
     fi    
-    if [ "$OPTION,," == "Hide" ]; then
+    if [ "${OPTION,,}" == "Hide" ]; then
       gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
         echo 'Hide close button from windows setting applied.' 
     elif [ "$OPTION" == "Unhide (Default)" || [ "${OPTION,,}" == "unhide" ]; then
@@ -45,7 +45,7 @@ configure-grub ARG="prompt":
       echo "  Use 'unhide' to revert to defaults."
       exit 0
     fi    
-    if [ "$OPTION,," == "Hide" ]; then
+    if [ "${OPTION,,}" == "Hide" ]; then
       sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
       output=$(echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
       output=$(echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
@@ -90,7 +90,7 @@ factory-reset ARG="prompt":
       echo "  Use 'apps-gidro-os' to factory-reset Gidro-OS modified apps settings only."
       exit 0
     fi
-    if [ "$OPTION" == "Factory-reset everything"  || [ "${OPTION,,}" == "all" ]; then
+    if [ "$OPTION" == "Factory-reset everything" || [ "${OPTION,,}" == "all" ]; then
       flatpak --system repair
       flatpak --user repair
         echo 'Repaired possibly non-working flatpaks.'
@@ -124,7 +124,7 @@ factory-reset ARG="prompt":
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed.'
       echo 'Factory-reset of everything completed. Please restart your system.' 
-    elif [ "$OPTION" == "Factory-reset OS settings"  || [ "${OPTION,,}" == "settings" ]; then
+    elif [ "$OPTION" == "Factory-reset OS settings" || [ "${OPTION,,}" == "settings" ]; then
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified settings only" || [ "${OPTION,,}" == "settings-gidro-os" ]; then
@@ -181,7 +181,7 @@ factory-reset ARG="prompt":
       output=$(echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
         echo 'G4Music pre-configured settings applied.'  
       echo 'Factory reset of all apps completed.'
-    elif   [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" || [ "${OPTION,,}" == "apps-gidro-os" ]; then
+    elif [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" || [ "${OPTION,,}" == "apps-gidro-os" ]; then
       rm -f "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
       mkdir -p "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
       touch "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
@@ -207,7 +207,7 @@ factory-reset ARG="prompt":
       touch "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
       output=$(echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
         echo 'G4Music pre-configured settings applied.'  
-      echo 'Factory reset of all apps completed.'
+      echo 'Factory reset of Gidro-OS modified app settings completed.'
     fi
     
 # Configure Proton-GE
@@ -229,7 +229,7 @@ proton-ge ARG="prompt":
       echo "  Use 'remove-old' to uninstall old versions of Proton-GE."
       exit 0
     fi    
-    if [ "$OPTION,," == "Install" ]; then
+    if [ "${OPTION,,}" == "Install" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam
@@ -242,7 +242,7 @@ proton-ge ARG="prompt":
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
-    elif [ "$OPTION,," == "Uninstall" ]; then
+    elif [ "${OPTION,,}" == "Uninstall" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       rm -r "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*
