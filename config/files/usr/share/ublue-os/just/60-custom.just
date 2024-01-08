@@ -19,7 +19,7 @@ configure-close-button  ARG="prompt":
       echo "  Use 'unhide' to revert to defaults."
       exit 0
     fi    
-    if [ "${OPTION,,}" == Hide ]; then
+    if [ "${OPTION,,}" == "hide" ]; then
       gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
         echo 'Hide close button from windows setting applied.' 
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
@@ -45,7 +45,7 @@ configure-grub ARG="prompt":
       echo "  Use 'unhide' to revert to defaults."
       exit 0
     fi    
-    if [ "${OPTION,,}" == Hide ]; then
+    if [ "${OPTION,,}" == "hide" ]; then
       sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
       output=$(echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
       output=$(echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
@@ -229,7 +229,7 @@ proton-ge ARG="prompt":
       echo "  Use 'remove-old' to uninstall old versions of Proton-GE."
       exit 0
     fi    
-    if [ "${OPTION,,}" == Install ]; then
+    if [ "${OPTION,,}" == "install" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam
@@ -242,7 +242,7 @@ proton-ge ARG="prompt":
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
-    elif [ "${OPTION,,}" == Uninstall ]; then
+    elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       rm -r "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*
