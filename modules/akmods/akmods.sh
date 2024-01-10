@@ -2,7 +2,9 @@
 set -oue pipefail
 
 get_yaml_array INSTALL '.install[]' "$1"
-VERSION=$(sed '46!d' "${BASE_IMAGE}" | grep -o "asus" || sed '46!d' "${BASE_IMAGE}" | grep -o "surface")
+IMAGE_MAIN=$(echo "${BASE_IMAGE}" | grep -o "main")
+IMAGE_NVIDIA=$(echo "${BASE_IMAGE}" | grep -o "main-nvidia" || echo "${BASE_IMAGE}" | grep -o "asus-nvidia" || echo "${BASE_IMAGE}" | grep -o "surface-nvidia") 
+IMAGE_DEVICES=$(echo "${BASE_IMAGE}" | grep -o "asus" || echo "${BASE_IMAGE}" | grep -o "surface")
 
 INSTALL_PATH=("${INSTALL[@]/#/\/tmp/rpms/kmods/*}")
 INSTALL_PATH=("${INSTALL_PATH[@]/%/*.rpm}")
@@ -12,9 +14,11 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
   echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
 
-  if [[ "$VERSION" == surface ]] || [ "$VERSION" == asus ]; then
+  if [[ "$IMAGE_DEVICES" == asus ]] || [ "$IMAGE_NVIDIA" == asus-nvidia ] || [ "$IMAGE_DEVICES" == surface ] || [ "$IMAGE_NVIDIA" == surface-nvidia ]; then
     rpm-ostree install kernel-tools "$INSTALL_STR"
-  else    
+    else
+    if [[ "$IMAGE_MAIN" == main ]] || [ "$IMAGE_NVIDIA" == main-nvidia ]; then
     rpm-ostree install kernel-devel-matched "$INSTALL_STR"
+    fi
   fi  
 fi
