@@ -7,3 +7,6 @@ system:
     - com.system76.Scheduler.service
   masked:
     - power-profiles-daemon.service
+user:
+  enabled:
+    - podman.socket
