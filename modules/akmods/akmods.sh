@@ -2,7 +2,7 @@
 set -oue pipefail
 
 get_yaml_array INSTALL '.install[]' "$1"
-VERSION=$(sed '46!d' Containerfile | grep -o "asus" || sed '46!d' Containerfile | grep -o "surface")
+VERSION=$(sed '46!d' "${BASE_IMAGE}" | grep -o "asus" || sed '46!d' "${BASE_IMAGE}" | grep -o "surface")
 
 INSTALL_PATH=("${INSTALL[@]/#/\/tmp/rpms/kmods/*}")
 INSTALL_PATH=("${INSTALL_PATH[@]/%/*.rpm}")
@@ -12,9 +12,9 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
   echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
 
-  if [[ $VERSION == surface ]] || [ $VERSION == asus ]; then
-    rpm-ostree install kernel-tools $INSTALL_STR
+  if [[ "$VERSION" == surface ]] || [ "$VERSION" == asus ]; then
+    rpm-ostree install kernel-tools "$INSTALL_STR"
   else    
-    rpm-ostree install kernel-devel-matched $INSTALL_STR
+    rpm-ostree install kernel-devel-matched "$INSTALL_STR"
   fi  
 fi
