@@ -9,12 +9,10 @@
 # does nothing if the image is built in the cloud.
 
 # !! Warning: changing these might not do anything for you. Read comment above.
-ARG IMAGE_MAJOR_VERSION="${IMAGE_MAJOR_VERSION:-39}"
+ARG IMAGE_MAJOR_VERSION=39
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/silverblue-main
 
 FROM ${BASE_IMAGE_URL}:${IMAGE_MAJOR_VERSION}
-
-ARG IMAGE_MAJOR_VERSION="${IMAGE_MAJOR_VERSION:-39}"
 
 # The default recipe is set to the recipe's default filename
 # so that `podman build` should just work for most people.
@@ -45,7 +43,7 @@ COPY modules /tmp/modules/
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 
 # Change this if you want different version of akmods. Only use main akmod tag.
-COPY --from=ghcr.io/ublue-os/akmods:main-${IMAGE_MAJOR_VERSION} /rpms /tmp/rpms
+COPY --from=ghcr.io/ublue-os/akmods:main-39 /rpms /tmp/rpms
 
 # Run the build script, then clean up temp files and finalize container build.
 RUN chmod +x /tmp/build.sh && /tmp/build.sh && \
