@@ -2,11 +2,11 @@ import '100-bling.just'
 # Include some of your custom scripts here!
 
 # Configure window close button
-configure-close-button  ARG="prompt":
+configure-close-button  ACTION="prompt":
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
-    OPTION={{ ARG }}
+    OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then    
     echo "${bold}Configuring window close button${normal}"
     echo 'Hiding close button from windows can be useful for mouses which have special key mapped for closing applications.'
@@ -28,11 +28,11 @@ configure-close-button  ARG="prompt":
     fi
     
 # Configure GRUB screen with various options
-configure-grub ARG="prompt":
+configure-grub ACTION="prompt":
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
-    OPTION={{ ARG }}
+    OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
     echo "${bold}Configuring GRUB${normal}"
     echo 'GRUB hiding option can be useful for making boot-times faster.'
@@ -70,11 +70,11 @@ configure-grub ARG="prompt":
     fi
     
 # Factory-reset Gidro-OS
-factory-reset ARG="prompt":
+factory-reset ACTION="prompt":
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
-    OPTION={{ ARG }}
+    OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then    
     echo "${bold}Configuring Factory-reset for Gidro-OS${normal}"
     echo 'Factory-reset of Gidro-OS can be used to solve or troubleshoot issues you may have.'
@@ -211,11 +211,11 @@ factory-reset ARG="prompt":
     fi
     
 # Configure Proton-GE
-proton-ge ARG="prompt":
+proton-ge ACTION="prompt":
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
-    OPTION={{ ARG }}
+    OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
       echo "${bold}Configuring Proton-GE${normal}"
       echo 'Configure Proton-GE for better games support on Steam.'
