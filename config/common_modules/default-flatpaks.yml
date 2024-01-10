@@ -29,7 +29,7 @@ system:
     - io.github.fabrialberio.pinapp
     - com.mattjakeman.ExtensionManager
     - com.github.wwmm.easyeffects
-    - com.usebottles.bottles
+    - com.github.marhkb.Pods
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user

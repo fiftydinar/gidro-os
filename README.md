@@ -60,7 +60,7 @@ Installed flatpaks:
 - [PinApp](https://flathub.org/apps/io.github.fabrialberio.pinapp)
 - [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
-- [Bottles](https://flathub.org/apps/com.usebottles.bottles)
+- [Pods](https://flathub.org/apps/com.github.marhkb.Pods)
 
 Optional flatpaks:
 - [Warp (Global File Sharing)](https://apps.gnome.org/en/Warp/)
