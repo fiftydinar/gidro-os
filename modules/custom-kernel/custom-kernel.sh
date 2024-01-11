@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-INSTALL=$(get_yaml_array INSTALL '.install[]' "$1")
+INSTALL=$(echo "$1" | yq -I=0 ".install")
 
-if [[ $INSTALL == fsync ]]; then
+if [[ $INSTALL == "fsync" ]]; then
   echo "Installing Fsync custom kernel:"
   wget https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/repo/fedora-"${OS_VERSION}"/sentry-kernel-fsync-fedora-"${OS_VERSION}".repo -P /etc/yum.repos.d/
   rpm-ostree cliwrap install-to-root /
@@ -16,6 +16,6 @@ if [[ $INSTALL == fsync ]]; then
   kernel-uki-virt
   echo "Installation of Fsync custom kernel finished!"
   else
-  echo "Kernel is not or wrongly specified, please fix your input in recipe"
+  echo "Kernel is not/wrongly specified, please fix your input in recipe"
   exit 1
 fi  
