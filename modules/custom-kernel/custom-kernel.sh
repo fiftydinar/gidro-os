@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -oue pipefail
+
+get_yaml_array INSTALL '.install[]' "$1"
+
+if [[ $INSTALL == "fsync" ]]; then
+  echo "Installing Fsync custom kernel:"
+  wget https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/repo/fedora-${OS_VERSION}/sentry-kernel-fsync-fedora-${OS_VERSION}.repo -P /etc/yum.repos.d/
+  rpm-ostree cliwrap install-to-root /
+  rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:sentry:kernel-fsync \
+  kernel \
+  kernel-core \
+  kernel-modules \
+  kernel-modules-core \
+  kernel-modules-extra \
+  kernel-uki-virt
+  echo "Installation of Fsync custom kernel finished!"
+fi  
