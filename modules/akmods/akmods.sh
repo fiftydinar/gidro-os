@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-BASED_IMAGE="$(echo "/tmp/config/recipe.yml" | yq -I=0 '.base-image')"
-
 get_yaml_array INSTALL '.install[]' "$1"
-IMAGE_NVIDIA=$(echo "${BASED_IMAGE}" | grep -o "asus-nvidia" || echo "${BASED_IMAGE}" | grep -o "surface-nvidia") 
-IMAGE_DEVICES=$(echo "${BASED_IMAGE}" | sed 's/asus-nvidia//' | grep -o "asus" || echo "${BASED_IMAGE}" | sed 's/surface-nvidia//' | grep -o "surface")
+IMAGE_NVIDIA=$(echo "${BASE_IMAGE}" | grep -o "asus-nvidia" || echo "${BASE_IMAGE}" | grep -o "surface-nvidia") 
+IMAGE_DEVICES=$(echo "${BASE_IMAGE}" | sed 's/asus-nvidia//' | grep -o "asus" || echo "${BASE_IMAGE}" | sed 's/surface-nvidia//' | grep -o "surface")
 
 INSTALL_PATH=("${INSTALL[@]/#/\/tmp/rpms/kmods/*}")
 INSTALL_PATH=("${INSTALL_PATH[@]/%/*.rpm}")
