@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-INSTALL=$(echo "$1" | yq -I=0 ".install")
+get_yaml_array INSTALL ".$INSTALL.install[]" "$1"
 
 if [[ $INSTALL == "fsync" ]]; then
   echo "Installing Fsync custom kernel:"
