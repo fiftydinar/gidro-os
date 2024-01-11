@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-get_yaml_array INSTALL '.install[]' "$1"
+INSTALL=$(get_yaml_array INSTALL '.install[]' "$1")
 
 if [[ $INSTALL == "fsync" ]]; then
   echo "Installing Fsync custom kernel:"
@@ -16,5 +16,6 @@ if [[ $INSTALL == "fsync" ]]; then
   kernel-uki-virt
   echo "Installation of Fsync custom kernel finished!"
   else
-  echo "Kernel is not specified, please fix your input"
+  echo "Kernel is not or wrongly specified, please fix your input in recipe"
+  exit 0
 fi  
