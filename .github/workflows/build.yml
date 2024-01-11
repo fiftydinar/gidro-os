@@ -182,15 +182,6 @@ jobs:
             IMAGE_REGISTRY=${{ steps.registry_case.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
-          
-      #------- "Uncomment # below if you'll install custom kernel" -------#   
-      - name: Sign custom kernel
-        uses: EyeCantCU/kernel-signer@v0.1.2
-        with:
-          image: ${{ steps.build_image.outputs.image }}
-          privkey: ${{ secrets.AKMOD_PRIVKEY_20230518 }}
-          pubkey: /etc/pki/akmods/certs/akmods-ublue.der
-          tags: ${{ steps.build_image.outputs.tags }}
 
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
