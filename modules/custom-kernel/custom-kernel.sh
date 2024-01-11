@@ -3,7 +3,7 @@ set -oue pipefail
 
 INSTALL=$(get_yaml_array INSTALL '.install[]' "$1")
 
-if [[ $INSTALL == "fsync" ]]; then
+if [[ $INSTALL == fsync ]]; then
   echo "Installing Fsync custom kernel:"
   wget https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/repo/fedora-"${OS_VERSION}"/sentry-kernel-fsync-fedora-"${OS_VERSION}".repo -P /etc/yum.repos.d/
   rpm-ostree cliwrap install-to-root /
