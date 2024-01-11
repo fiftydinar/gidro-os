@@ -17,5 +17,5 @@ if [[ $INSTALL == "fsync" ]]; then
   echo "Installation of Fsync custom kernel finished!"
   else
   echo "Kernel is not or wrongly specified, please fix your input in recipe"
-  exit 0
+  exit 1
 fi  
