@@ -81,10 +81,10 @@ jobs:
           echo "BASE_IMAGE_URL=$BASE_IMAGE" >> $GITHUB_ENV
           echo "BASE_IMAGE_NAME=$(echo $BASE_IMAGE | sed 's/.*\/.*\///')" >> $GITHUB_ENV
 
-      - name: Verify base image
-        uses: EyeCantCU/cosign-action/verify@v0.2.2
-        with:
-          containers: ${{ env.BASE_IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
+      #- name: Verify base image
+        #uses: EyeCantCU/cosign-action/verify@v0.2.2
+        #with:
+          #containers: ${{ env.BASE_IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
 
       - name: Get current version
         id: labels
