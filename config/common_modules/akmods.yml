@@ -1,2 +1,6 @@
 type: akmods
-install: openrazer
+install:
+    - openrazer
+    - openrgb
+    - v4l2loopback
+    - winesync
