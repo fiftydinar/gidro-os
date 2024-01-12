@@ -13,7 +13,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
   echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
   if [[ "$BASED_IMAGE" =~ asus ]] || [[ "$BASED_IMAGE" =~ surface ]]; then
-    rpm-ostree install kernel-tools $INSTALL_STR
+    rpm-ostree install $INSTALL_STR
     else
     rpm-ostree install kernel-devel-matched $INSTALL_STR
   fi  
