@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-IMAGE_NVIDIA=$(echo "${BASE_IMAGE}" | grep -o "asus-nvidia" || echo "${BASE_IMAGE}" | grep -o "surface-nvidia") 
-IMAGE_DEVICES=$(echo "${BASE_IMAGE}" | sed 's/asus-nvidia//' | grep -o "asus" || echo "${BASE_IMAGE}" | sed 's/surface-nvidia//' | grep -o "surface")
+IMAGE_NVIDIA=$(echo "${BASE_IMAGE}" | grep -o "asus-nvidia" | exit 0 || echo "${BASE_IMAGE}" | grep -o "surface-nvidia" | exit 0) 
+IMAGE_DEVICES=$(echo "${BASE_IMAGE}" | sed 's/asus-nvidia//' | grep -o "asus" | exit 0 || echo "${BASE_IMAGE}" | sed 's/surface-nvidia//' | grep -o "surface" | exit 0)
 
 get_yaml_array INSTALL '.install[]' "$1"
 
