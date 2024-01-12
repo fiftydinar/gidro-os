@@ -29,6 +29,12 @@ Installed packages (RPMs):
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
 - [Gnome-randr-rust](https://github.com/maxwellainatchi/gnome-randr-rust) (xrandr equivalent for Gnome Wayland)
 
+Installed akmods:
+- [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
+- [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
+- [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing change of behavior for universal screensharing)
+- [WineSync](https://github.com/Cat-Lady/winesync-dkms/blob/main/README.md) (for possibly improving Windows apps performance)
+
 Installed extensions:
 - [Blur My Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
