@@ -4,7 +4,7 @@ install:
     - openrazer
     - openrgb
     - v4l2loopback
-    - xone    
-    - xpadneo
-    - xpad-noone
     - winesync
+    - xone    
+    - xpad-noone
+    - xpadneo    
