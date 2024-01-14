@@ -128,7 +128,9 @@ factory-reset ACTION="prompt":
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified settings only" ] || [ "${OPTION,,}" == "settings-gidro-os" ]; then
-      dconf load / < /usr/etc/dconf/db/local.d/01-gidro
+      dconf load / < /usr/etc/dconf/db/local.d/01-gidro 2> /dev/null
+      dconf reset /org/gnome/shell/enabled-extensions
+      dconf reset /org/gnome/shell/disabled-extensions
         echo 'Factory-reset of Gidro-OS settings only completed.'
     elif [ "$OPTION" == "Factory-reset apps" ] || [ "${OPTION,,}" == "apps" ]; then
       flatpak --system repair
