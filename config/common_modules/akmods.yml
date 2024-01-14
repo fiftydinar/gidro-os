@@ -1,6 +1,10 @@
 type: akmods
 install:
+    - nct6687d
     - openrazer
     - openrgb
     - v4l2loopback
+    - xone    
+    - xpadneo
+    - xpad-noone
     - winesync
