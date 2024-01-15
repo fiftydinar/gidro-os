@@ -57,12 +57,7 @@ screens:
       title: Additional Gidro-OS packages & configs
       show_terminal: true
       package_manager: yafti.plugin.run
-      groups:
-        Post Setup (DO NOT DISABLE):
-          description: Performs necessary post-setup for Gidro-OS.
-          default: true
-          packages:
-          - Post Setup: ujust factory-reset all         
+      groups:         
         Hide GRUB:
           description: Hides GRUB text output on boot.
           default: false

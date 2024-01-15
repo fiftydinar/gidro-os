@@ -1,0 +1,5 @@
+[com/github/rafostar/Clapper]
+subtitle-font='Nokia Pure Text 12'
+volume-custom=true
+volume-value=100
+after-playback=2

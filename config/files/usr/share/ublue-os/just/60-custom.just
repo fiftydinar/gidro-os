@@ -98,28 +98,17 @@ factory-reset ACTION="prompt":
         echo 'Uninstalled all user flatpaks.'
       rm -r "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
-      FILE="$HOME"/Templates/Untitled\ Document  
-      touch "$FILE"
+      cp -r -f /usr/etc/skel/Templates "$HOME"/
         echo '"New documents" context menu entry in Nautilus created.'    
-      mkdir -p "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'\nvolume-custom=true\nvolume-value=100\nafter-playback=2" | tee -a "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/epiphany]\nrestore-session-policy='crashed'" | tee -a "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
         echo 'G4Music pre-configured settings applied.'    
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed.'
@@ -140,53 +129,28 @@ factory-reset ACTION="prompt":
         echo 'Uninstalled all user flatpaks.'
       rm -r "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
-      mkdir -p "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'\nvolume-custom=true\nvolume-value=100\nafter-playback=2" | tee -a "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/epiphany]\nrestore-session-policy='crashed'" | tee -a "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      mkdir -p "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
-        echo 'G4Music pre-configured settings applied.'  
+      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
+        echo 'G4Music pre-configured settings applied.' 
       echo 'Factory reset of all apps completed.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" ] || [ "${OPTION,,}" == "apps-gidro-os" ]; then
-      rm -f "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
-      mkdir -p "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/TextEditor]\nuse-system-font=false\ncustom-font='Nokia Pure Text 16'\nrestore-session=false\nshow-line-numbers=true\nstyle-scheme='kate'" | tee -a "$HOME"/.var/app/org.gnome.TextEditor/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      rm -f "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile  
-      mkdir -p "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/calculator]\nshow-thousands=true" | tee -a "$HOME"/.var/app/org.gnome.Calculator/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      rm -f "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile  
-      mkdir -p "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/rafostar/Clapper]\nsubtitle-font='Nokia Pure Text 12'\nvolume-custom=true\nvolume-value=100\nafter-playback=2" | tee -a "$HOME"/.var/app/com.github.rafostar.Clapper/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      rm -f "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile  
-      mkdir -p "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[org/gnome/epiphany]\nrestore-session-policy='crashed'" | tee -a "$HOME"/.var/app/org.gnome.Epiphany/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
+      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      rm -f "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile      
-      mkdir -p "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/
-      touch "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile
-      output=$(echo -e "[com/github/neithern/g4music]\nplay-background=true" | tee -a "$HOME"/.var/app/com.github.neithern.g4music/config/glib-2.0/settings/keyfile 2>&1) || echo "$output" && false
-        echo 'G4Music pre-configured settings applied.'  
+      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
+        echo 'G4Music pre-configured settings applied.' 
       echo 'Factory reset of Gidro-OS modified app settings completed.'
     fi
     

@@ -1,0 +1,2 @@
+[org/gnome/epiphany]
+restore-session-policy='crashed'
