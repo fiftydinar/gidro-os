@@ -167,8 +167,8 @@ proton-ge ACTION="prompt":
       OPTION=$(ugum choose "Remove old Proton-GE" Uninstall "Install (Update)")
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust proton-ge <option>"
-      echo "  <option>: Specify the quick option - 'install', 'uninstall' or 'remove-old'"
-      echo "  Use 'install' to Install Proton-GE."
+      echo "  <option>: Specify the quick option - 'install'('update'/'upgrade'), 'uninstall' or 'remove-old'"
+      echo "  Use 'install', 'update' or 'upgrade' to install/update Proton-GE."
       echo "  Use 'uninstall' to uninstall Proton-GE."
       echo "  Use 'remove-old' to uninstall old versions of Proton-GE."
       exit 0
