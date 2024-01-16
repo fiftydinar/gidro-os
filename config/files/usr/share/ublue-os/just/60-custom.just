@@ -181,7 +181,7 @@ proton-ge ACTION="prompt":
           mkdir "compatibilitytools.d"
       fi
       cd "compatibilitytools.d"
-      cp -r /usr/share/ProtonGE-gidro/*  "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
+      cp -r /usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*  "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
