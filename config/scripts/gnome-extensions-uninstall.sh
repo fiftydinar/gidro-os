@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-set -oue pipefail
+set -euo pipefail
 
 rpm-ostree uninstall gnome-extensions-app

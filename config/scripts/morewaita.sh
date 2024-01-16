@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -euo pipefail
 
 mkdir /usr/share/icons/MoreWaita-main
 wget https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip -O /usr/share/icons/MoreWaita-main/main.zip

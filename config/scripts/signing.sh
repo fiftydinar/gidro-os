@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -oue pipefail
+set -euo pipefail
 
 echo "Setting up container signing in policy.json and cosign.yaml for $IMAGE_NAME"
 echo "Registry to write: $IMAGE_REGISTRY"

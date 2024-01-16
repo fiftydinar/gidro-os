@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -oue pipefail
+set -euo pipefail
 
 cd /usr/share/applications
 echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
