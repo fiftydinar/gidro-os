@@ -6,8 +6,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/system-flatpak-setup
-Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-Environment="XDG_RUNTIME_DIR=/run/user/$(id -u)"
+Environment="DISPLAY=:0"
 Restart=on-failure
 RestartSec=30
 StartLimitInterval=0
