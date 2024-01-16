@@ -164,7 +164,7 @@ proton-ge ACTION="prompt":
       echo "${bold}Configuring Proton-GE${normal}"
       echo 'Configure Proton-GE for better games support on Steam.'
       echo 'Install, Uninstall or Remove old Proton-GE? Press ESC to exit.'
-      OPTION=$(ugum choose "Remove old Proton-GE" Uninstall Install)
+      OPTION=$(ugum choose "Remove old Proton-GE" Uninstall "Install (Update)")
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust proton-ge <option>"
       echo "  <option>: Specify the quick option - 'install', 'uninstall' or 'remove-old'"
@@ -173,7 +173,7 @@ proton-ge ACTION="prompt":
       echo "  Use 'remove-old' to uninstall old versions of Proton-GE."
       exit 0
     fi    
-    if [ "${OPTION,,}" == "install" ]; then
+    if [ "Install (Update)" ] || "${OPTION,,}" == "install" || "${OPTION,,}" == "update" || "${OPTION,,}" == "upgrade" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam
