@@ -96,7 +96,7 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -r "$HOME"/.var/app/*
+      rm -rf "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
       cp -r -f /usr/etc/skel/Templates "$HOME"/
         echo '"New documents" context menu entry in Nautilus created.'    
@@ -127,7 +127,7 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -r "$HOME"/.var/app/*
+      rm -rf "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
       cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
@@ -189,7 +189,7 @@ proton-ge ACTION="prompt":
     elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-      rm -r "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*
+      rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*GE-Proton*
         echo 'Proton-GE uninstalled.'
       else
         echo 'ERROR: Proton-GE cannot be uninstalled because Steam is not installed.'
@@ -198,7 +198,7 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
-      ls -d -v GE-Proton* | head -n -1 | xargs -r rm -r
+      ls -d -v GE-Proton* | head -n -1 | xargs -r rm -rf
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else
