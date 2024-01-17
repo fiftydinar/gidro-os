@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # GLOBAL
-initramfs=$(rpm-ostree initramfs-etc)
+initramfs=$(rpm-ostree initramfs-etc | grep -v "Tracked files:" | tr -d ' ')
 needed_initramfs=("/etc/crypttab")
 needs_initramfs_application=false
 minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
