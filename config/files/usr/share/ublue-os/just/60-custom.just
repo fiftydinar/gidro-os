@@ -206,7 +206,7 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
-      ls -d -v GE-Proton* | head -n -1 | xargs -r rm -rf
+      ls -d GE-Proton* | sort -V | head -n -1 | xargs -r rm -rf
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else
