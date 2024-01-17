@@ -226,6 +226,5 @@ proton-ge ACTION="prompt":
       cd "$HOME"  
       else
         echo 'ERROR: Cannot delete old Proton-GE because Steam is not installed.'
-      cd "$HOME"
       fi
     fi
