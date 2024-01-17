@@ -27,8 +27,15 @@ done
 
 if $needs_initramfs_application; then
   printf "Found needed initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
+  printf "Also potentially applying removal of non-active tracked files"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
-  rpm-ostree initramfs-etc "${untracked_initramfs[@]/#/--untrack=}" "${needed_initramfs[@]/#/--track=}" --reboot         
+  if [[ -n "${untracked_initramfs[*]}" ]]; then
+    untracked_args=("${untracked_initramfs[@]/#/--untrack=}")
+  fi
+  if [[ -n "${needed_initramfs[*]}" ]]; then
+    tracked_args=("${needed_initramfs[@]/#/--track=}")
+  fi
+  rpm-ostree initramfs-etc "${untracked_args[@]}" "${tracked_args[@]}" --reboot      
 else
   echo "No initramfs changes needed"
 fi
