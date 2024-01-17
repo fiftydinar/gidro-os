@@ -18,10 +18,17 @@ for initramfs_arg in "${needed_initramfs[@]}"; do
   fi
 done
 
+for initramfs_arg in "${initramfs[@]}"; do
+  if [[ ! $needed_initramfs =~ $initramfs_arg ]]; then
+    needs_initramfs_application=true
+    untracked_initramfs+=("$initramfs_arg")
+  fi
+done
+
 if $needs_initramfs_application; then
   printf "Found needed initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
-  rpm-ostree initramfs-etc "${needed_initramfs[@]/#/--track=}" --reboot         
+  rpm-ostree initramfs-etc "${untracked_initramfs[@]/#/--untrack=}" "${needed_initramfs[@]/#/--track=}" --reboot         
 else
   echo "No initramfs changes needed"
 fi
