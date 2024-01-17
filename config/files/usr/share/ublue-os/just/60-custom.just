@@ -98,17 +98,17 @@ factory-reset ACTION="prompt":
         echo 'Uninstalled all user flatpaks.'
       rm -rf "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
-      cp -r -f /usr/etc/skel/Templates "$HOME"/
+      cp -rf /usr/etc/skel/Templates "$HOME"/
         echo '"New documents" context menu entry in Nautilus created.'    
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
         echo 'G4Music pre-configured settings applied.'    
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed.'
@@ -129,27 +129,27 @@ factory-reset ACTION="prompt":
         echo 'Uninstalled all user flatpaks.'
       rm -rf "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
         echo 'G4Music pre-configured settings applied.' 
       echo 'Factory reset of all apps completed.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" ] || [ "${OPTION,,}" == "apps-gidro-os" ]; then
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
         echo 'Text Editor pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
         echo 'Calculator pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
         echo 'Clapper pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
         echo 'Web pre-configured settings applied.'
-      cp -r -f /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
+      cp -rf /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
         echo 'G4Music pre-configured settings applied.' 
       echo 'Factory reset of Gidro-OS modified app settings completed.'
     fi
@@ -164,28 +164,36 @@ proton-ge ACTION="prompt":
       echo "${bold}Configuring Proton-GE${normal}"
       echo 'Configure Proton-GE for better games support on Steam.'
       echo 'Install, Uninstall or Remove old Proton-GE? Press ESC to exit.'
-      OPTION=$(ugum choose "Remove old Proton-GE" Uninstall "Install (Update)")
+      OPTION=$(ugum choose Uninstall Install "Remove old Proton-GE" Update)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust proton-ge <option>"
-      echo "  <option>: Specify the quick option - 'install'('update'/'upgrade'), 'uninstall' or 'remove-old'"
-      echo "  Use 'install', 'update' or 'upgrade' to install/update Proton-GE."
+      echo "  <option>: Specify the quick option - 'update/upgrade', 'install', 'uninstall' or 'remove-old'"
+      echo "  Use 'update' or 'upgrade' to update/upgrade Proton-GE."
+      echo "  Use 'remove-old' to uninstall old versions of Proton-GE."      
+      echo "  Use 'install' to install Proton-GE."
       echo "  Use 'uninstall' to uninstall Proton-GE."
-      echo "  Use 'remove-old' to uninstall old versions of Proton-GE."
       exit 0
     fi    
-    if [ "Install (Update)" ] || "${OPTION,,}" == "install" || "${OPTION,,}" == "update" || "${OPTION,,}" == "upgrade" ]; then
+    if [ "${OPTION,,}" == "install" ]; then
+      SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
+      TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
-      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-      cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam
-      if [ ! -d "compatibilitytools.d" ]; then
-          mkdir "compatibilitytools.d"
-      fi
-      cd "compatibilitytools.d"
-      cp -r /usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*  "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
+      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
+      cp -rf "$SOURCE" "$TARGET"
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
+    elif [ "${OPTION,,}" == "update" || [ "${OPTION,,}" == "upgrade" ]; then
+      SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
+      TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
+      FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
+      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
+        cp -rf "$SOURCE" "$TARGET"
+          echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
+      else
+        echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
+      fi      
     elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
