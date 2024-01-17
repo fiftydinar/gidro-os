@@ -203,7 +203,7 @@ proton-ge ACTION="prompt":
         echo "ERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists."
       else 
         cp -rf "$folder" "$TARGET"
-          echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
+          echo 'Proton-GE runner for Steam updated, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
       fi
       done
       else
