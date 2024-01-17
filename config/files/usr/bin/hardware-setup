@@ -1,38 +1,38 @@
 #!/usr/bin/env bash
 
 # GLOBAL
-INITRAMFS=$(rpm-ostree initramfs-etc)
-NEEDED_INITRAMFS=("/etc/crypttab")
-NEEDS_INITRAMFS_APPLICATION=false
-MINIMUM_FREE_ZRAM=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
-CURRENT_FREE_ZRAM=$(sysctl vm.min_free_kbytes | awk '{print $3}')
+initramfs=$(rpm-ostree initramfs-etc)
+needed_initramfs=("/etc/crypttab")
+needs_initramfs_application=false
+minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
+current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
 
 # INITRAMFS
-echo "Current initramfs: $INITRAMFS"
+printf "Current initramfs: %s\n" "$initramfs"
 
-NEEDED_INITRAMFS+=("/etc/modprobe.d/modprobe-gidro.conf")
-NEEDED_INITRAMFS+=("/etc/vconsole.conf")
+needed_initramfs+=("/etc/modprobe.d/modprobe-gidro.conf" "/etc/vconsole.conf")
 
-for INITRAMFS_ARG in ${NEEDED_INITRAMFS[@]}; do
-  if [[ ! $INITRAMFS =~ "$INITRAMFS_ARG" ]]; then
-    NEEDS_INITRAMFS_APPLICATION=true
+for initramfs_arg in "${needed_initramfs[@]}"; do
+  if [[ ! $initramfs =~ $initramfs_arg ]]; then
+    needs_initramfs_application=true
   fi
 done
 
-if $NEEDS_INITRAMFS_APPLICATION; then
-  echo "Found needed initramfs changes, applying the following: ${NEEDED_INITRAMFS[*]}"
+if $needs_initramfs_application; then
+  printf "Found needed initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
   plymouth display-message --text="Updating initramfs - System will reboot" || true
-  rpm-ostree initramfs-etc "${NEEDED_INITRAMFS[@]/#/--track=}" --reboot         
+  rpm-ostree initramfs-etc "${needed_initramfs[@]/#/--track=}" --reboot         
 else
   echo "No initramfs changes needed"
 fi
 
 # Minimum-free ZRAM
-echo "Current minimum-free ZRAM value: $CURRENT_FREE_ZRAM"
+printf "Current minimum-free ZRAM value: %s\n" "$current_free_zram"
 
-if ((MINIMUM_FREE_ZRAM > CURRENT_FREE_ZRAM)); then
-    sysctl -w "vm.min_free_kbytes=${MINIMUM_FREE_ZRAM}"
-    echo "Found needed minimum-free ZRAM changes, applying the following: ${MINIMUM_FREE_ZRAM}"
+if ((minimum_free_zram > current_free_zram)); then
+    sysctl -w "vm.min_free_kbytes=${minimum_free_zram}"
+    printf "Found needed minimum-free ZRAM changes, applying the following: %s\n" "$minimum_free_zram"
 else
   echo "No minimum-free ZRAM changes needed"
 fi
+
