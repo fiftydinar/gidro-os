@@ -185,15 +185,30 @@ proton-ge ACTION="prompt":
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
     elif [ "${OPTION,,}" == "update" || [ "${OPTION,,}" == "upgrade" ]; then
-      SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
-      TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
-      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-        cp -rf "$SOURCE" "$TARGET"
+      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
+        SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
+        TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
+        for folder in "$SOURCE"/GE-Proton*; do
+          SOURCE_VERSION=$(basename "$folder" | grep -oP 'GE-Proton\K\d+-\d+')
+          found_duplicate=false
+          for target_folder in "$TARGET"/GE-Proton*; do
+            TARGET_VERSION=$(basename "$target_folder" | grep -oP 'GE-Proton\K\d+-\d+')
+            if [[ "$SOURCE_VERSION" == "$TARGET_VERSION" ]]; then
+              found_duplicate=true
+              break
+           fi  
+      done
+      if [[ "$found_duplicate" == true ]]; then
+        echo "ERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists."
+      else 
+        cp -rf "$folder" "$TARGET"
           echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
+      fi
+      done
       else
-        echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
-      fi      
+        echo 'ERROR: Proton-GE cannot be updated because Steam is not installed.'
+      fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
