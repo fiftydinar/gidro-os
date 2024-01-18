@@ -49,4 +49,4 @@ If live-user wants to include dracut files too, he can do that by copying them t
 
 One-liner command which handles that if OS does not have just script included for this:
 
-`grep -v -E '^#|^$' "/etc/ublue-os/initramfs/tracked-custom" | sed -i '/^[^#]/ s/false/true/g' "/etc/ublue-os/initramfs/tracked-custom"`
+`sudo grep -v -E '^#|^$' "/etc/ublue-os/initramfs/tracked-custom" | sed -i '/^[^#]/ s/false/true/g' "/etc/ublue-os/initramfs/tracked-custom"`
