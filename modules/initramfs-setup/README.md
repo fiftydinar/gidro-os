@@ -22,7 +22,7 @@ Your modifications are written to this file here:
 To include your modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
 Remember to delete the modification files if you have those too, when you want those modifications gone.
 
-To include `dracut` files, just copy those files to `/etc/dracut.conf.d/` directory. There is no need to put them in `include`.
+To include `dracut` files, just copy those files to `/etc/dracut.conf.d/` directory. There is no need to put them in `include`. Do it otherwise if you want them deleted.
 
 ## Example configuration
 
