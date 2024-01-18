@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # GLOBAL
-initramfs=$(rpm-ostree initramfs-etc | grep -v "Tracked files:" | tr -d ' ')
+initramfs=($(rpm-ostree initramfs-etc | grep -v "Tracked files:" | tr -d ' '))
 needed_initramfs=("/etc/crypttab")
 needs_initramfs_tracking=false
 needs_initramfs_untracking=false
@@ -9,18 +9,32 @@ minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
 current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
 
 # INITRAMFS
-printf "Current initramfs: %s\n" "$initramfs"
+printf "Current initramfs: %s\n" "${initramfs[*]}"
 
 needed_initramfs+=("/etc/modprobe.d/modprobe-gidro.conf" "/etc/vconsole.conf")
 
 for initramfs_arg in "${needed_initramfs[@]}"; do
-  if [[ ! $initramfs =~ $initramfs_arg ]]; then
+  found=false
+  for initramfs_elem in "${initramfs[@]}"; do
+    if [[ "$initramfs_elem" == "$initramfs_arg" ]]; then
+      found=true
+      break
+    fi
+  done
+  if ! $found; then
     needs_initramfs_tracking=true
   fi
 done
 
 for initramfs_arg in "${initramfs[@]}"; do
-  if [[ ! $needed_initramfs =~ $initramfs_arg ]]; then
+  found=false
+  for needed_initramfs_elem in "${needed_initramfs[@]}"; do
+    if [[ "$needed_initramfs_elem" == "$initramfs_arg" ]]; then
+      found=true
+      break
+    fi
+  done
+  if ! $found; then
     needs_initramfs_untracking=true
     untracked_initramfs+=("$initramfs_arg")
   fi
@@ -30,22 +44,20 @@ tracked_args=("${needed_initramfs[@]/#/--track=}")
 untracked_args=("${untracked_initramfs[@]/#/--untrack=}")
 
 if $needs_initramfs_tracking || $needs_initramfs_untracking; then
-  if $needs_initramfs_tracking && $needs_initramfs_untracking; then
+  if $needs_initramfs_tracking && ! $needs_initramfs_untracking; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
+    plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
+  elif ! $needs_initramfs_tracking && $needs_initramfs_untracking; then
+    printf "Found needed removal of non-active tracked files, applying the following: %s\n" "${untracked_initramfs[*]}"
+    plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot
+  elif $needs_initramfs_tracking && $needs_initramfs_untracking; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked_initramfs[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
-    rpm-ostree initramfs-etc "${untracked_args[@]}" "${tracked_args[@]}" --reboot
-    if [[ $needs_initramfs_tracking == false && $needs_initramfs_untracking ]]; then
-      printf "Found needed removal of non-active tracked files, applying the following: %s\n" "${untracked_initramfs[*]}"
-      plymouth display-message --text="Updating initramfs - System will reboot" || true
-      rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot
-      if [[ $needs_initramfs_tracking && $needs_initramfs_untracking == false ]]; then
-        printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed_initramfs[*]}"
-        plymouth display-message --text="Updating initramfs - System will reboot" || true
-        rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
-      fi
-    fi
-  fi    
+    rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
+  fi  
 else
   echo "No initramfs changes needed"
 fi
