@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # GLOBAL
-initramfs=$(rpm-ostree initramfs-etc | grep -v "Tracked files:" | tr -d ' ')
+initramfs=($(rpm-ostree initramfs-etc | grep -v "Tracked files:" | tr -d ' '))
 needed_initramfs=("/etc/crypttab")
 needs_initramfs_tracking=false
 needs_initramfs_untracking=false
