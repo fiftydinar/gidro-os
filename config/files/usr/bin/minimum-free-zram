@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
+current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
+
+# Minimum-free ZRAM
+printf "Current minimum-free ZRAM value: %s\n" "$current_free_zram"
+
+if ((minimum_free_zram > current_free_zram)); then
+    sysctl -w "vm.min_free_kbytes=${minimum_free_zram}"
+    printf "Found needed minimum-free ZRAM changes, applying the following: %s\n" "$minimum_free_zram"
+else
+  echo "No minimum-free ZRAM changes needed"
+fi
+

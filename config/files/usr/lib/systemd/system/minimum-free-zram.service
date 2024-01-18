@@ -1,12 +1,12 @@
 [Unit]
-Description=Configure Gidro-OS for current hardware
-After=rpm-ostreed.service
+Description=Minimum-free ZRAM setup
+After=initramfs-setup.service
 Before=systemd-user-sessions.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/hardware-setup
+ExecStart=/usr/bin/minimum-free-zram
 
 [Install]
 WantedBy=multi-user.target

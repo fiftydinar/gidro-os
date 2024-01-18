@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+# Global variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
+tracked_file="/etc/ublue-os/initramfs/tracked"
+custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
+current=($(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2))
+needed=($(grep -v "#" "$tracked_file" && grep -v "#" "$custom_tracked_file"))
+applies_tracking=false
+applies_untracking=false
+rebuild_file="/etc/ublue-os/initramfs/rebuild"
+rebuild=$(grep -v "#" "$rebuild_file")
+
+# When rebuild of initramfs is enabled by the user, immediately change it back to false to avoid bootloop & do the rebuild
+if [[ $rebuild == true ]]; then
+  grep -v '^#' "$rebuild_file" | sed -i 's/true/false/g' "$rebuild_file"
+  echo "Manual rebuild of initramfs is enabled, proceeding"
+  plymouth display-message --text="Updating initramfs - Manual rebuild process is running" || true  
+  rpm-ostree initramfs-etc --force-sync
+  echo "Manual rebuild of initramfs finished"
+fi
+
+# Print current initramfs file arguments
+printf "Current initramfs:\n"
+for current_file in "${current[@]}"; do
+    printf "%s\n" "$current_file"
+done
+
+# If current initramfs is missing needed file arguments, make them ready for tracking
+for needed_arg in "${needed[@]}"; do
+  found=false
+  for current_arg in "${current[@]}"; do
+    if [[ "$current_arg" == "$needed_arg" ]]; then
+      found=true
+      break
+    fi
+  done
+  if ! $found; then
+    applies_tracking=true
+  fi
+done
+
+# If there are file arguments in current initramfs, that are not present in needed initramfs, make them ready for untracking
+for current_arg in "${current[@]}"; do
+  found=false
+  for needed_arg in "${needed[@]}"; do
+    if [[ "$needed_arg" == "$current_arg" ]]; then
+      found=true
+      break
+    fi
+  done
+  if ! $found; then
+    applies_untracking=true
+    untracked+=("$current_arg")
+  fi
+done
+
+# Apply --track= & --untrack= prefixes to tracked & untracked file arguments
+tracked_args=("${needed[@]/#/--track=}")
+untracked_args=("${untracked[@]/#/--untrack=}")
+
+# Track & untrack file arguments based on given data + ready conditions, display boot screen message & reboot
+if $applies_tracking || $applies_untracking; then
+  if $applies_tracking && ! $applies_untracking; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
+  elif ! $applies_tracking && $applies_untracking; then
+    printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
+    plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot
+  elif $applies_tracking && $applies_untracking; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
+    plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
+  fi  
+else
+  echo "No initramfs changes needed"
+fi
