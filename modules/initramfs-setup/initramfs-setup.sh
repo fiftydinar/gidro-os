@@ -19,6 +19,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
     printf "%s\n" "$file"
   done  
   mkdir -p /usr/etc/ublue-os/initramfs
+  echo "Writing 'rebuilt' file to initramfs directory"
   
   echo "# Set to true if you want initramfs to be rebuilt again.
 # Rebuilding initramfs is useful if you are including dracut files.
@@ -26,6 +27,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
 
 false" > /usr/etc/ublue-os/initramfs/rebuilt
 
+  echo "Writing 'tracked-custom' file to initramfs directory"
   echo "# This file can be modified by live-users if they want to have custom file location arguments in initramfs.
 # Be sure to check if the arguments you want already exist in initramfs by issuing \`rpm-ostree initramfs-etc\` command before modifying this file.
 # Here's an example on how to do that (ignore # symbol):
@@ -33,6 +35,8 @@ false" > /usr/etc/ublue-os/initramfs/rebuilt
 # /etc/vconsole.conf
 # /etc/crypttab
 # /etc/modprobe.d/my-modprobe.conf" > /usr/etc/ublue-os/initramfs/tracked-custom
+
+  echo "Writing 'tracked' file to initramfs directory with user modifications"
 
   echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/etc/ublue-os/initramfs/tracked
   
@@ -43,4 +47,5 @@ false" > /usr/etc/ublue-os/initramfs/rebuilt
   echo "Initramfs-setup is successfully installed & configured"
   else
   echo "Initramfs-setup did not run installation & configuring step, be sure that values are typed correctly in recipe file"
+  exit 1
 fi
