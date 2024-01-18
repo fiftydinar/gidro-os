@@ -1,0 +1,5 @@
+type: initramfs-setup
+include:
+    - /etc/crypttab
+    - /etc/vconsole.conf
+    - /etc/modprobe.d/my_config.conf

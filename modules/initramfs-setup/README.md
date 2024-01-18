@@ -28,7 +28,7 @@ To include `dracut` files, just copy those files to `/etc/dracut.conf.d/` direct
 
 ```yaml
 type: initramfs-setup
-  include:
+include:
     - /etc/crypttab
     - /etc/vconsole.conf
     - /etc/modprobe.d/my_config.conf
