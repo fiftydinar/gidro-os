@@ -1,7 +1,8 @@
 type: systemd
 system:
   enabled:
-    - hardware-setup.service
+    - initramfs-setup.service
+    - minimum-free-zram.service
     - com.system76.PowerDaemon.service
     - system76-power-wake.service
     - com.system76.Scheduler.service

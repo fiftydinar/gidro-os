@@ -8,11 +8,11 @@ needed=($(grep -v "#" "$tracked_file" && grep -v "#" "$custom_tracked_file"))
 applies_tracking=false
 applies_untracking=false
 rebuild_file="/etc/ublue-os/initramfs/rebuild"
-rebuild=$(grep -v "#" "$rebuild_file")
+rebuild=$(grep -v -E '^#|^$' "$rebuild_file")
 
-# When rebuild of initramfs is enabled by the user, immediately change it back to false to avoid bootloop & do the rebuild
+# When rebuild of initramfs is enabled by the live-user, immediately change it back to false to avoid bootloop & do the rebuild
 if [[ $rebuild == true ]]; then
-  grep -v '^#' "$rebuild_file" | sed -i 's/true/false/g' "$rebuild_file"
+  grep -v -E '^#|^$' "$rebuild_file" | sed -i '/^[^#]/ s/true/false/g' "$rebuild_file"
   echo "Manual rebuild of initramfs is enabled, proceeding"
   plymouth display-message --text="Updating initramfs - Manual rebuild process is running" || true  
   rpm-ostree initramfs-etc --force-sync
