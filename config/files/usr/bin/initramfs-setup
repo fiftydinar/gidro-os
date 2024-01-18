@@ -4,7 +4,7 @@
 tracked_file="/etc/ublue-os/initramfs/tracked"
 custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
 current=($(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2))
-needed=($(grep -v "#" "$tracked_file" && grep -v "#" "$custom_tracked_file"))
+needed=($(grep -v -E '^#|^$' "$tracked_file" && grep -v -E '^#|^$' "$custom_tracked_file"))
 applies_tracking=false
 applies_untracking=false
 rebuild_file="/etc/ublue-os/initramfs/rebuild"
