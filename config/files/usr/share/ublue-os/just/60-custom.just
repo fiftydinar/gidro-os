@@ -178,7 +178,7 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
-      TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"      
+      TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"      
       cp -rf "$SOURCE" "$TARGET"
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
@@ -188,7 +188,7 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
         SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
-        TARGET=""$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
+        TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
         for folder in "$SOURCE"/GE-Proton*; do
           SOURCE_VERSION=$(basename "$folder" | grep -oP 'GE-Proton\K\d+-\d+')
           found_duplicate=false
