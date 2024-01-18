@@ -9,7 +9,10 @@ minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
 current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
 
 # INITRAMFS
-printf "Current initramfs: %s\n" "${initramfs[*]}"
+printf "Current initramfs:\n"
+for file in "${initramfs[@]}"; do
+    printf "%s\n" "$file"
+done
 
 needed_initramfs+=("/etc/modprobe.d/modprobe-gidro.conf" "/etc/vconsole.conf")
 
