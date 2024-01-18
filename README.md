@@ -120,6 +120,7 @@ Settings applied by default:
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
 - Enabled touchpad tap-to-click
+- Make login screen (GDM) respect display scaling
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper

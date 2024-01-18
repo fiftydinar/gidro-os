@@ -50,3 +50,12 @@ else
   echo "No minimum-free ZRAM changes needed"
 fi
 
+# Make GDM respect display settings
+monitors_xml="$HOME/.config/monitors.xml"
+gdm_config_dir="~gdm/.config/"
+
+if [ -s "$monitors_xml" ]; then
+  install -o gdm -g gdm -m 644 "$monitors_xml" "$gdm_config_dir"
+else
+  echo "Missing monitor configuration, GDM fix not applied."
+fi
