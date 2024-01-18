@@ -43,7 +43,8 @@ false" > /usr/etc/ublue-os/initramfs/rebuilt
   echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/etc/ublue-os/initramfs/tracked
   
   printf "%s" "${INCLUDE[@]}" >> /usr/etc/ublue-os/initramfs/tracked
-  # Uncomment this when it's ready for startingpoint/bling 
+  # Uncomment this when it's ready for startingpoint/bling
+  #echo "Enabling initramfs-setup service"
   #mkdir -p /usr/etc/flatpak/{system,user}
   #systemctl enable -f initramfs-setup.service
   echo "Initramfs-setup is successfully installed & configured"
