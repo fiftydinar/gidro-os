@@ -3,7 +3,7 @@
 # Tell build process to exit if there are any errors.
 set -euo pipefail
 
-# Uncomment this when it's ready for startingpoint 
+# Uncomment this when it's ready for startingpoint/bling
 #BLING_DIRECTORY="${BLING_DIRECTORY:-"/tmp/bling"}"
 #
 #cp -r "$BLING_DIRECTORY"/files/usr/bin/initramfs-setup /usr/bin/initramfs-setup
@@ -36,7 +36,10 @@ false" > /usr/etc/ublue-os/initramfs/rebuilt
 
   echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/etc/ublue-os/initramfs/tracked
   
-  printf "%s" "${INCLUDE[@]}" >> /usr/etc/ublue-os/initramfs/tracked  
+  printf "%s" "${INCLUDE[@]}" >> /usr/etc/ublue-os/initramfs/tracked
+  # Uncomment this when it's ready for startingpoint/bling 
+  #mkdir -p /usr/etc/flatpak/{system,user}
+  #systemctl enable -f initramfs-setup.service
   echo "Initramfs-setup is successfully installed & configured"
   else
   echo "Initramfs-setup did not run installation & configuring step, be sure that values are typed correctly in recipe file"
