@@ -13,11 +13,13 @@ get_yaml_array INCLUDE '.include[]' "$1"
 
 # If any inputted value is found, then install & configure
 if [[ ${#INCLUDE[@]} -gt 0 ]]; then
-  echo "Installing initramfs-setup"  
+  echo "Installing initramfs-setup"
+  
   printf "Configuring following initramfs files:\n"
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
-  done  
+  done
+  
   mkdir -p /usr/etc/ublue-os/initramfs
   echo "Writing 'rebuilt' file to initramfs directory"
   
