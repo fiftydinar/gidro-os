@@ -15,12 +15,13 @@ It is run on every boot by this service:
 
 Your modifications are written to this file here:
 
-- `/etc/ublue-os/initramfs/tracked-custom`
+- `/etc/ublue-os/initramfs/tracked`
 
 `initramfs-setup` detects your modifications & file locations which are redundant, so your modification output is exactly matched in `rpm-ostree initramfs-etc` output. It also checks if `rebuild` is enabled & rebuilds initramfs. When initramfs change is happening, you will see boot screen message which will say `Updating initramfs - System will reboot` or `Updating initramfs - Manual rebuild process is running`, depending if `initramfs-setup` updates your modifications or rebuilds initramfs.
 
 To include your modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
 Remember to delete the modification file too when you want that modification gone.
+
 To include `dracut` files, just copy those files to `/etc/dracut.conf.d/` directory. There is no need to put them in `include`.
 
 ## Example configuration
