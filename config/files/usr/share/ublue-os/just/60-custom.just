@@ -141,16 +141,18 @@ factory-reset ACTION="prompt":
         echo 'G4Music pre-configured settings applied.' 
       echo 'Factory reset of all apps completed.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" ] || [ "${OPTION,,}" == "apps-gidro-os" ]; then
-      cp -rf /usr/etc/skel/.var/app/org.gnome.TextEditor "$HOME"/.var/app/
-        echo 'Text Editor pre-configured settings applied.'
-      cp -rf /usr/etc/skel/.var/app/org.gnome.Calculator "$HOME"/.var/app/
-        echo 'Calculator pre-configured settings applied.'
-      cp -rf /usr/etc/skel/.var/app/com.github.rafostar.Clapper "$HOME"/.var/app/
-        echo 'Clapper pre-configured settings applied.'
-      cp -rf /usr/etc/skel/.var/app/org.gnome.Epiphany "$HOME"/.var/app/
-        echo 'Web pre-configured settings applied.'
-      cp -rf /usr/etc/skel/.var/app/com.github.neithern.g4music "$HOME"/.var/app/
-        echo 'G4Music pre-configured settings applied.' 
+      flatpak_data="/usr/etc/skel/.var/app"
+      declare -A apps=(
+        ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
+        ["Calculator"]="$flatpak_data/org.gnome.Calculator"
+        ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
+        ["Web"]="$flatpak_data/org.gnome.Epiphany"
+        ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
+      )
+      for app in "${!apps[@]}"; do
+        cp -rf "${apps[$app]}" "$HOME/.var/app/"
+        echo "${app} pre-configured settings applied."
+      done
       echo 'Factory reset of Gidro-OS modified app settings completed.'
     fi
     
