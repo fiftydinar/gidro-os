@@ -48,7 +48,7 @@ for current_arg in "${dracut_current[@]}"; do
   fi
 done
 
-# If dracut config files are detected, then automatically perform initramfs rebuild process
+# If dracut config changes are detected, then automatically perform initramfs rebuild process
 if $applies_rebuilding_1 || $applies_rebuilding_2; then
   echo "Rebuild of initramfs is enabled because new dracut config changes are detected, proceeding"
   plymouth display-message --text="Updating initramfs - Rebuild process triggered by dracut" || true  
