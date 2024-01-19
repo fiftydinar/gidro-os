@@ -58,7 +58,7 @@ tracked_args=("${needed[@]/#/--track=}")
 untracked_args=("${untracked[@]/#/--untrack=}")
 
 # Track & untrack file arguments based on given data + ready conditions, display boot screen message & reboot. Also supports dracut.
-if $applies_tracking || $applies_untracking || [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+if $applies_tracking || $applies_untracking || [[ "${dracut_current[*]}" != "${dracut_needed[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
   if $applies_tracking && ! $applies_untracking; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
@@ -72,23 +72,23 @@ if $applies_tracking || $applies_untracking || [[ "${dracut_needed[*]}" != "${dr
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
-  elif $applies_tracking && ! $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+  elif $applies_tracking && ! $applies_untracking && [[ "${dracut_current[*]}" != "${dracut_needed[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     echo "Also found dracut changes, so initramfs will be force rebuilt."
     plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" --force-sync --reboot
-  elif ! $applies_tracking && $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+  elif ! $applies_tracking && $applies_untracking && [[ "${dracut_current[*]}" != "${dracut_needed[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
     printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
     echo "Also found dracut changes, so initramfs will be force rebuilt."
     plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
     rpm-ostree initramfs-etc "${untracked_args[@]}" --force-sync --reboot
-  elif $applies_tracking && $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+  elif $applies_tracking && $applies_untracking && [[ "${dracut_current[*]}" != "${dracut_needed[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
     echo "Also found dracut changes, so initramfs will be force rebuilt."    
     plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --force-sync --reboot
-  elif ! $applies_tracking && ! $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+  elif ! $applies_tracking && ! $applies_untracking && [[ "${dracut_current[*]}" != "${dracut_needed[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
     echo "Found needed dracut-only changes, force rebuilding initramfs & rebooting"
     plymouth display-message --text="Updating initramfs with dracut changes only - System will reboot" || true
     rpm-ostree initramfs-etc --force-sync --reboot    
