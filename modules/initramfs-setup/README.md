@@ -52,4 +52,4 @@ Files contain explanations on what those do & how those should be used.
 
 If live-user wants to include dracut files too, he can do that by copying files to `/etc/dracut.conf.d/` & editing
 
-`/etc/ublue-os/initramfs/dracut-tracked-custom/`
+`/etc/ublue-os/initramfs/dracut-tracked-custom`
