@@ -9,10 +9,8 @@ applies_tracking=false
 applies_untracking=false
 dracut_tracked_file="/etc/ublue-os/initramfs/dracut-tracked"
 dracut_custom_tracked_file="/etc/ublue-os/initramfs/dracut-tracked-custom"
-dracut_current=($(ls -A /etc/dracut.conf.d))
-dracut_needed=($(grep -v -E '^#|^$' "$dracut_tracked_file" && grep -v -E '^#|^$' "$dracut_custom_tracked_file"))
-applies_rebuilding_1=false
-applies_rebuilding_2=false
+readarray -t dracut_current < <(ls -A /etc/dracut.conf.d)
+readarray -t dracut_needed < <(grep -v -E '^#|^$' "$dracut_tracked_file" && grep -v -E '^#|^$' "$dracut_custom_tracked_file")
 
 # Print current dracut file configs
 printf "Current dracut file configs:\n"
@@ -20,42 +18,14 @@ for current_file in "${dracut_current[@]}"; do
     printf "%s\n" "$current_file"
 done
 
-# If new dracut changes are detected, make them ready for rebuild
-for needed_arg in "${dracut_needed[@]}"; do
-  found=false
-  for current_arg in "${dracut_current[@]}"; do
-    if [[ "$current_arg" == "$needed_arg" ]]; then
-      found=true
-      break
-    fi
-  done
-  if ! $found; then
-    applies_rebuilding_1=true
-  fi
-done
-
-# If there are file arguments in current initramfs, that are not present in needed initramfs, make them ready for untracking
-for current_arg in "${dracut_current[@]}"; do
-  found=false
-  for needed_arg in "${dracut_needed[@]}"; do
-    if [[ "$needed_arg" == "$current_arg" ]]; then
-      found=true
-      break
-    fi
-  done
-  if ! $found; then
-    applies_untracking_2=true
-  fi
-done
-
 # If dracut config changes are detected, then automatically perform initramfs rebuild process
-if $applies_rebuilding_1 || $applies_rebuilding_2; then
-  echo "Rebuild of initramfs is enabled because new dracut config changes are detected, proceeding"
-  plymouth display-message --text="Updating initramfs - Rebuild process triggered by dracut" || true  
-  rpm-ostree initramfs-etc --force-sync
-  echo "Rebuild process of initramfs finished"
-  else
-  echo "No need for rebuild is detected, as no new dracut config changes are detected."
+if [[ "${dracut_needed[*]}" != "${dracut_current[*]}" ]] && [[ "${#dracut_current[@]}" -gt 0 ]]; then
+    echo "Rebuild of initramfs is enabled because new dracut config changes are detected, proceeding"
+    plymouth display-message --text="Updating initramfs - Rebuild process triggered by dracut" || true
+    rpm-ostree initramfs-etc --force-sync
+    echo "Rebuild process of initramfs finished"
+else
+    echo "No need for rebuild is detected, as no new dracut config changes are detected."
 fi
 
 # Print current initramfs file arguments
