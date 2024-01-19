@@ -58,6 +58,8 @@ if [[ ${#DRACUT_INCLUDE[@]} -gt 0 ]]; then
 # mydracut2.conf
 # mydracut3.conf" > /usr/etc/ublue-os/initramfs/dracut-tracked-custom  
 
+  echo "Writing 'dracut_tracked' file to initramfs directory with modifications"
+
   echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/etc/ublue-os/initramfs/dracut-tracked
   printf "%s" "${DRACUT_INCLUDE[@]}" >> /usr/etc/ublue-os/initramfs/dracut-tracked
 fi
