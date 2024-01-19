@@ -139,7 +139,7 @@ if $applies_tracking || $applies_untracking || $applies_dracut || $warn_dracut; 
     rpm-ostree initramfs-etc --force-sync --reboot
     
 # Tracked initramfs + tracked & untracked dracut (give a warning here for untracked dracut)
-  elif $applies_tracking && ! $applies_untracking && ! $applies_dracut && $warn_dracut; then
+  elif $applies_tracking && ! $applies_untracking && $applies_dracut && $warn_dracut; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     printf "Also found following dracut files in /etc/dracut.conf.d/, which are not in dracut tracking list:  %s\n" "${dracut_warned[*]}"
     echo "Either delete the file or include that file as an argument in dracut tracking list."
