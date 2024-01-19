@@ -52,7 +52,7 @@ if [[ ${#DRACUT_INCLUDE[@]} -gt 0 ]]; then
   echo "# This file can be modified by live-users if they want to have custom dracut configs.
 # Be sure that you copied your dracut configs to \`/etc/dracut.conf.d\` location before editing this file.
 # When you edit this file & reboot, you will notice boot screen message which says: \"Updating initramfs with dracut changes - System will reboot\"
-# Here's an example on how to do edit this file (ignore # symbol):
+# Here's an example on how to edit this file (ignore # symbol):
 #
 # mydracut1.conf
 # mydracut2.conf
