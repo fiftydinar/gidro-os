@@ -23,10 +23,10 @@ Your modifications to dracut are written to this file here:
 
 `tracked` & `dracut-tracked` files won't get written if you did not include modifications for those. This makes separation between OS & live-user modifications clearer.
 
-`initramfs-setup` detects your modifications & redundant file locations, so your modification output is exactly matched to `rpm-ostree initramfs-etc` output. It also checks dracut configs the same way to trigger rebuild automatically only when necessary. When initramfs/dracut change is happening, you will see boot screen message which will say `Updating initramfs - System will reboot` or `Updating initramfs with dracut changes - System will reboot`, depending if `initramfs-setup` updates your initramfs or dracut modifications (or if it updates them both).
+`initramfs-setup` detects your modifications & redundant file arguments, so your modification output is exactly matched to `rpm-ostree initramfs-etc` output. It also checks dracut configs the same way to trigger rebuild automatically only when necessary. When initramfs/dracut change is happening, you will see boot screen message which will say `Updating initramfs - System will reboot` or `Updating initramfs with dracut changes - System will reboot`, depending if `initramfs-setup` updates your initramfs or dracut modifications (or if it updates them both).
 
 To include your initramfs modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
-Remember to delete the modification files if you have those too, when you want those modifications gone.
+Do the otherwise for deleting.
 
 To include `dracut` files, just copy those files to `/etc/dracut.conf.d/` directory. Than put them in `dracut_include`. Do the otherwise for deleting.
 
@@ -52,6 +52,6 @@ If live-user is not satisfied with initramfs modifications done by the OS, he ca
 
 Files contain explanations on what those do & how those should be used.
 
-If live-user wants to include dracut files too, he can do that by copying files to `/etc/dracut.conf.d/` & editing
+If live-user wants to include dracut files too, he can do that by copying files to `/etc/dracut.conf.d/` & editing:
 
 `/etc/ublue-os/initramfs/dracut-tracked-custom`
