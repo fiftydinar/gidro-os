@@ -18,16 +18,6 @@ for current_file in "${dracut_current[@]}"; do
     printf "%s\n" "$current_file"
 done
 
-# If dracut config changes are detected, then automatically perform initramfs rebuild process
-if [[ "${dracut_needed[*]}" != "${dracut_current[*]}" ]] && [[ "${#dracut_current[@]}" -gt 0 ]]; then
-    echo "Rebuild of initramfs is enabled because new dracut config changes are detected, proceeding"
-    plymouth display-message --text="Updating initramfs - Rebuild process triggered by dracut" || true
-    rpm-ostree initramfs-etc --force-sync
-    echo "Rebuild process of initramfs finished"
-else
-    echo "No need for rebuild is detected, as no new dracut config changes are detected."
-fi
-
 # Print current initramfs file arguments
 printf "Current initramfs:\n"
 for current_file in "${current[@]}"; do
@@ -67,8 +57,8 @@ done
 tracked_args=("${needed[@]/#/--track=}")
 untracked_args=("${untracked[@]/#/--untrack=}")
 
-# Track & untrack file arguments based on given data + ready conditions, display boot screen message & reboot
-if $applies_tracking || $applies_untracking; then
+# Track & untrack file arguments based on given data + ready conditions, display boot screen message & reboot. Also supports dracut.
+if $applies_tracking || $applies_untracking || [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
   if $applies_tracking && ! $applies_untracking; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
@@ -82,7 +72,27 @@ if $applies_tracking || $applies_untracking; then
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
+  elif $applies_tracking && ! $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    echo "Also found dracut changes, so initramfs will be force rebuilt."
+    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" --force-sync --reboot
+  elif ! $applies_tracking && $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+    printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
+    echo "Also found dracut changes, so initramfs will be force rebuilt."
+    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
+    rpm-ostree initramfs-etc "${untracked_args[@]}" --force-sync --reboot
+  elif $applies_tracking && $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
+    echo "Also found dracut changes, so initramfs will be force rebuilt."    
+    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --force-sync --reboot
+  elif ! $applies_tracking && ! $applies_untracking && [[ "${dracut_needed[*]}" != "${dracut_current[*]}" && "${#dracut_current[@]}" -gt 0 ]]; then
+    echo "Found needed dracut-only changes, force rebuilding initramfs & rebooting"
+    plymouth display-message --text="Updating initramfs with dracut changes only - System will reboot" || true
+    rpm-ostree initramfs-etc --force-sync --reboot    
   fi  
 else
-  echo "No initramfs changes needed"
+  echo "No initramfs & dracut changes detected"
 fi
