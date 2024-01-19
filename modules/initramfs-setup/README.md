@@ -21,6 +21,8 @@ Your modifications to dracut are written to this file here:
 
 - `/etc/ublue-os/initramfs/dracut-tracked`
 
+`tracked` & `dracut-tracked` files won't get written if you did not include modifications for those. This makes separation between OS & live-user modifications clearer.
+
 `initramfs-setup` detects your modifications & redundant file locations, so your modification output is exactly matched to `rpm-ostree initramfs-etc` output. It also checks dracut configs the same way to trigger rebuild automatically only when necessary. When initramfs/dracut change is happening, you will see boot screen message which will say `Updating initramfs - System will reboot` or `Updating initramfs with dracut changes - System will reboot`, depending if `initramfs-setup` updates your initramfs or dracut modifications (or if it updates them both).
 
 To include your initramfs modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
