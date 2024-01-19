@@ -2,3 +2,4 @@ type: initramfs-setup
 include:
 dracut_include:
     - tpm2-tss.conf
+    - btrfs.conf
