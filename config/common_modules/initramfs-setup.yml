@@ -1,7 +1,4 @@
 type: initramfs-setup
 include:
-    - /etc/crypttab
-    - /etc/vconsole.conf
-    - /etc/modprobe.d/modprobe-gidro.conf
 dracut_include:
     - tpm2-tss.conf
