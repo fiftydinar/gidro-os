@@ -3,6 +3,7 @@
 # Global initramfs variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
 tracked_file="/etc/ublue-os/initramfs/tracked"
 custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
+rebuild_file="/etc/ublue-os/initramfs/rebuild"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
 
 # Make sure that fetched needed initramfs values support all file scenarios
@@ -18,6 +19,7 @@ fi
 
 applies_tracking=false
 applies_untracking=false
+applies_rebuilding=false
 
 # Print current initramfs file arguments
 printf "Current initramfs:\n"
@@ -56,31 +58,68 @@ for current_arg in "${current[@]}"; do
   fi
 done
 
+# If "rebuild" file exists, prepare for initramfs rebuild
+if [ -f "$rebuild_file" ]; then
+  applies_rebuilding=true
+fi  
+
 # Apply --track= & --untrack= prefixes to tracked & untracked file arguments
 tracked_args=("${needed[@]/#/--track=}")
 untracked_args=("${untracked[@]/#/--untrack=}")
 
-# Track & untrack file arguments based on given data + ready conditions, mostly displays boot screen messages & reboots. Also supports dracut.
-if $applies_tracking || $applies_untracking; then
+# Track & untrack file arguments based on given data + ready conditions, display boot screen message & reboot. Also detects if initramfs rebuilding is enabled.
+if $applies_tracking || $applies_untracking || $applies_rebuilding; then
 
 # Tracked initramfs
-  if $applies_tracking && ! $applies_untracking; then
+  if $applies_tracking && ! $applies_untracking && ! $applies_rebuilding; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
 
 # Untracked initramfs
-  elif ! $applies_tracking && $applies_untracking; then
+  elif ! $applies_tracking && $applies_untracking && ! $applies_rebuilding; then
     printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
     rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot
 
 # Tracked & untracked initramfs
-  elif $applies_tracking && $applies_untracking; then
+  elif $applies_tracking && $applies_untracking && ! $applies_rebuilding; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
+
+# Rebuild initramfs
+  if ! $applies_tracking && ! $applies_untracking && $applies_rebuilding; then
+    echo "Initramfs rebuilding is enabled, proceeding"
+    rm -f "$rebuild_file"
+    plymouth display-message --text="Rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc --force-sync --reboot
+
+# Tracked + rebuild initramfs
+  if $applies_tracking && ! $applies_untracking && $applies_rebuilding; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    echo "Initramfs rebuilding is enabled, proceeding"
+    rm -f "$rebuild_file"    
+    plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" --force-sync --reboot
+
+# Untracked + rebuild initramfs
+  elif ! $applies_tracking && $applies_untracking && $applies_rebuilding; then
+    printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
+    echo "Initramfs rebuilding is enabled, proceeding"
+    rm -f "$rebuild_file"    
+    plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${untracked_args[@]}" --force-sync --reboot
+
+# Tracked & untracked + rebuild initramfs
+  elif $applies_tracking && $applies_untracking && $applies_rebuilding; then
+    printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
+    echo "Initramfs rebuilding is enabled, proceeding"
+    rm -f "$rebuild_file"    
+    plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --force-sync --reboot
 
 else
   echo "No initramfs changes detected"
