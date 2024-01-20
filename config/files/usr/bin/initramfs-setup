@@ -4,13 +4,35 @@
 tracked_file="/etc/ublue-os/initramfs/tracked"
 custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
+
+# Make sure that fetched needed initramfs values support all file scenarios
+if [ -f "$tracked_file" ] && [ ! -f "$custom_tracked_file" ]; then
+readarray -t needed < <(grep -v -E '^#|^$' "$tracked_file")
+fi
+if [ ! -f "$tracked_file" ] && [ -f "$custom_tracked_file" ]; then
+readarray -t needed < <(grep -v -E '^#|^$' "$custom_tracked_file")
+fi
+if [ -f "$tracked_file" ] && [ -f "$custom_tracked_file" ]; then
 readarray -t needed < <(grep -v -E '^#|^$' "$tracked_file" && grep -v -E '^#|^$' "$custom_tracked_file")
+fi
+
 applies_tracking=false
 applies_untracking=false
 dracut_tracked_file="/etc/ublue-os/initramfs/dracut-tracked"
 dracut_custom_tracked_file="/etc/ublue-os/initramfs/dracut-tracked-custom"
 readarray -t dracut_current < <(ls -A /etc/dracut.conf.d)
+
+# Make sure that fetched needed dracut values support all file scenarios
+if [ -f "$dracut_tracked_file" ] && [ ! -f "$dracut_custom_tracked_file" ]; then
+readarray -t dracut_needed < <(grep -v -E '^#|^$' "$dracut_tracked_file")
+fi
+if [ ! -f "$dracut_tracked_file" ] && [ -f "$dracut_custom_tracked_file" ]; then
+readarray -t dracut_needed < <(grep -v -E '^#|^$' "$dracut_custom_tracked_file")
+fi
+if [ -f "$dracut_tracked_file" ] && [ -f "$dracut_custom_tracked_file" ]; then
 readarray -t dracut_needed < <(grep -v -E '^#|^$' "$dracut_tracked_file" && grep -v -E '^#|^$' "$dracut_custom_tracked_file")
+fi
+
 applies_dracut=false
 warn_dracut=false
 
