@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Global variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
+# Global initramfs variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
 tracked_file="/etc/ublue-os/initramfs/tracked"
 custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
@@ -18,6 +18,8 @@ fi
 
 applies_tracking=false
 applies_untracking=false
+
+# Global dracut variables -Needed dracut file arguments contain tracked file arguments dictated by the module & by the live-user
 dracut_tracked_file="/etc/ublue-os/initramfs/dracut-tracked"
 dracut_custom_tracked_file="/etc/ublue-os/initramfs/dracut-tracked-custom"
 readarray -t dracut_current < <(ls -A /etc/dracut.conf.d)
