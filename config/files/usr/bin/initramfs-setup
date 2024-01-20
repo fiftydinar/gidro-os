@@ -19,7 +19,7 @@ fi
 applies_tracking=false
 applies_untracking=false
 
-# Global dracut variables -Needed dracut file arguments contain tracked file arguments dictated by the module & by the live-user
+# Global dracut variables - Needed dracut file arguments contain tracked file arguments dictated by the module & by the live-user
 dracut_tracked_file="/etc/ublue-os/initramfs/dracut-tracked"
 dracut_custom_tracked_file="/etc/ublue-os/initramfs/dracut-tracked-custom"
 readarray -t dracut_current < <(ls -A /etc/dracut.conf.d)
