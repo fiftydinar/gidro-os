@@ -54,11 +54,12 @@ done
 for needed_arg in "${dracut_needed[@]}"; do
   found=false
   for current_arg in "${dracut_current[@]}"; do
-    if [[ "$current_arg" == "$needed_arg" ]]; then
+    if [[ "$current_arg" == "$needed_arg" || "${#current_arg[@]}" -gt "${#needed_arg[@]}" ]]; then
       found=true
       break
     fi
   done
+  # If "needed dracut" has more array elements than "current dracut", prepare for rebuild
   if ! $found; then
     applies_dracut=true
   fi
@@ -68,11 +69,12 @@ done
 for current_arg in "${dracut_current[@]}"; do
   found=false
   for needed_arg in "${dracut_needed[@]}"; do
-    if [[ "$needed_arg" == "$current_arg" ]]; then
+    if [[ "$needed_arg" == "$current_arg" || "${#needed_arg[@]}" -gt "${#current_arg[@]}" ]]; then
       found=true
       break
     fi
   done
+  # If "current dracut" has more array elements than "needed dracut", prepare for warning  
   if ! $found; then
     warn_dracut=true
     dracut_warned+=("$current_arg")    
@@ -83,11 +85,12 @@ done
 for needed_arg in "${needed[@]}"; do
   found=false
   for current_arg in "${current[@]}"; do
-    if [[ "$current_arg" == "$needed_arg" ]]; then
+    if [[ "$current_arg" == "$needed_arg" || "${#current_arg[@]}" -gt "${#needed_arg[@]}" ]]; then
       found=true
       break
     fi
   done
+  # If "needed initramfs" has more array elements than "current initramfs", prepare for tracking
   if ! $found; then
     applies_tracking=true
   fi
@@ -97,11 +100,12 @@ done
 for current_arg in "${current[@]}"; do
   found=false
   for needed_arg in "${needed[@]}"; do
-    if [[ "$needed_arg" == "$current_arg" ]]; then
+    if [[ "$needed_arg" == "$current_arg" || "${#needed_arg[@]}" -gt "${#current_arg[@]}" ]]; then
       found=true
       break
     fi
   done
+  # If "current initramfs" has more array elements than "needed initramfs", prepare for untracking
   if ! $found; then
     applies_untracking=true
     untracked+=("$current_arg")
