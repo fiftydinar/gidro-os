@@ -156,37 +156,35 @@ if $applies_tracking || $applies_untracking || $applies_dracut || $warn_dracut; 
 # Tracked initramfs + untracked dracut
   elif $applies_tracking && ! $applies_untracking && ! $applies_dracut && $warn_dracut; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
-    echo "Also found dracut changes, so initramfs will be force rebuilt."
     printf "Also found following dracut files in /etc/dracut.conf.d/, which are not in dracut tracking list:  %s\n" "${dracut_warned[*]}"
     echo "Either delete the file or include that file as an argument in dracut tracking list."    
-    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
+    plymouth display-message --text="Updating initramfs - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
 
 # Untracked initramfs + untracked dracut
   elif ! $applies_tracking && $applies_untracking && ! $applies_dracut && $warn_dracut; then
     printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
-    echo "Also found dracut changes, so initramfs will be force rebuilt."
     printf "Also found following dracut files in /etc/dracut.conf.d/, which are not in dracut tracking list:  %s\n" "${dracut_warned[*]}"
     echo "Either delete the file or include that file as an argument in dracut tracking list."    
-    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
+    plymouth display-message --text="Updating initramfs - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
     rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot    
     
 # Tracked & untracked initramfs + untracked dracut
   elif $applies_tracking && $applies_untracking && ! $applies_dracut && $warn_dracut; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
-    echo "Also found dracut changes, so initramfs will be force rebuilt."
     printf "Also found following dracut files in /etc/dracut.conf.d/, which are not in dracut tracking list:  %s\n" "${dracut_warned[*]}"
     echo "Either delete the file or include that file as an argument in dracut tracking list."    
-    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
+    plymouth display-message --text="Updating initramfs - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
 
 # Tracked initramfs + tracked & untracked dracut (give a warning here for untracked dracut)
   elif $applies_tracking && ! $applies_untracking && $applies_dracut && $warn_dracut; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
+    echo "Also found dracut changes, so initramfs will be force rebuilt."    
     printf "Also found following dracut files in /etc/dracut.conf.d/, which are not in dracut tracking list:  %s\n" "${dracut_warned[*]}"
     echo "Either delete the file or include that file as an argument in dracut tracking list."
-    plymouth display-message --text="Updating initramfs - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
+    plymouth display-message --text="Updating initramfs with initramfs + dracut changes - System will reboot\nRedundant dracut file(s) found in /etc/dracut.conf.d/\nEither delete it or include it in dracut tracking list" || true
     rpm-ostree initramfs-etc "${tracked_args[@]}" --force-sync --reboot
 
 # Untracked initramfs + tracked & untracked dracut (give a warning here for untracked dracut)
