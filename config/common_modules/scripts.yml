@@ -8,4 +8,5 @@ scripts:
   - python3-icoextract.sh
   - morewaita.sh
   - block-ads.sh
+  - gnome-locale-flatpak-fix.sh
   - signing.sh
