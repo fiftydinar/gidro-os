@@ -44,10 +44,6 @@ File contains explanation on what it does & how it should be used.
 
 If live-user wants to include dracut configs from `/etc/dracut.conf.d/` to be recognized by initramfs, he needs to follow instructions bellow.
 
-If live-user wants to rebuild initramfs immediately on his booted system, he can do that by issuing this command:
-
-`rpm-ostree initramfs-etc --force-sync`
-
 If live-user wants to rebuild initramfs on system reboot, he can do that by issuing this command:
 
 `sudo touch /etc/ublue-os/initramfs/rebuild`
