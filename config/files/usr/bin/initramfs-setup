@@ -21,7 +21,7 @@ done
 for needed_arg in "${needed[@]}"; do
   found=false
   for current_arg in "${current[@]}"; do
-    if [[ "$current_arg" == "$needed_arg" || "${#current_arg[@]}" -gt "${#needed_arg[@]}" ]]; then
+    if [[ "$current_arg" == "$needed_arg" || "${#current[@]}" -gt "${#needed[@]}" ]]; then
       found=true
       break
     fi
@@ -36,7 +36,7 @@ done
 for current_arg in "${current[@]}"; do
   found=false
   for needed_arg in "${needed[@]}"; do
-    if [[ "$needed_arg" == "$current_arg" || "${#needed_arg[@]}" -gt "${#current_arg[@]}" ]]; then
+    if [[ "$needed_arg" == "$current_arg" || "${#needed[@]}" -gt "${#current[@]}" ]]; then
       found=true
       break
     fi
