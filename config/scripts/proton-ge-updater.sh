@@ -7,7 +7,7 @@ filename="$(echo "$url" | sed "s|.*/||")"
 
 # Installation routine
 install() {
-    # make ProtonGE-gidro directory
+    # make compatibilitytools.d directory
     mkdir -p "$1"
     # cd into the given path
     cd "$1"
