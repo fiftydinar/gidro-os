@@ -206,6 +206,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
 - [OpenWeather](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/)
+- [Notifications Alert](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/)
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
