@@ -33,7 +33,7 @@ Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
 - [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
 - [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
-- [RTL8814AU](https://github.com/aircrack-ng/rtl8814au) (for supporting mentioned USB Realtek WiFi card model)
+- [RTL8814AU](https://github.com/morrownr/8814au) (for supporting mentioned USB Realtek WiFi card model)
 - [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing change of behavior for universal screensharing)
 - [XOne](https://github.com/medusalix/xone) (Xbox One controllers with USB/RF driver)
 - [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controllers Bluetooth driver)
