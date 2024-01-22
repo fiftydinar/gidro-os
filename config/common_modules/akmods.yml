@@ -8,3 +8,4 @@ install:
     - xpadneo
     - xpad-noone
     - winesync
+    - zenergy

@@ -38,6 +38,7 @@ Installed akmods:
 - [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controllers Bluetooth driver)
 - [XPad-NoOne](https://github.com/ublue-os/xpad-noone) (Xbox/Xbox 360 controllers driver)
 - [WineSync](https://github.com/Cat-Lady/winesync-dkms/blob/main/README.md) (for possibly improving Windows apps performance)
+- [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
 
 Installed extensions:
 - [Blur My Shell](https://github.com/aunetx/blur-my-shell)
