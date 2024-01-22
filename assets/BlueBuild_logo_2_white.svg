@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1250 400" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 10 10 8 0.5 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="10" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="inner-shadow-filter-3" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="inner-shadow 1 0 0 5 0.5 rgba(0,0,0,0.7)">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur stdDeviation="5"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feComponentTransfer result="choke">
+        <feFuncA type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+      <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+    <filter id="inner-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="inner-shadow 1 0 0 5 0.25 rgba(0,0,0,0.7)">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur stdDeviation="5"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feComponentTransfer result="choke">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+      <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="795.552" y1="124.334" x2="795.552" y2="312.815" id="gradient-0" gradientTransform="matrix(1, 0, 0, 1, 2, 0)">
+      <stop offset="0" style="stop-color: rgb(10.196% 48.235% 79.216%)"/>
+      <stop offset="1" style="stop-color: rgb(0% 29.033% 52.164%)"/>
+    </linearGradient>
+    <filter id="inner-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="inner-shadow 1 0 0 5 0.5 rgba(0,0,0,0.7)">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur stdDeviation="5"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feComponentTransfer result="choke">
+        <feFuncA type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+      <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="196.908" y1="25.093" x2="196.908" y2="390.908" id="gradient-1">
+      <stop offset="0" style="stop-color: rgb(10.196% 48.235% 79.216%)"/>
+      <stop offset="1" style="stop-color: rgb(0% 29.033% 52.164%)"/>
+    </linearGradient>
+    <filter id="inner-shadow-filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="inner-shadow 1 0 0 5 0.25 rgba(0,0,0,0.7)">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur stdDeviation="5"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feComponentTransfer result="choke">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+      <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <text style="fill: url('#gradient-0'); font-family: 'Atkinson Hyperlegible'; font-size: 180.1px; font-weight: 700; stroke: rgb(10, 101, 153); text-anchor: middle; white-space: pre; filter: url('#inner-shadow-filter-2');" x="797.552" y="267.43">BlueBuild</text>
+  <g transform="matrix(0.473632, 0, 0, 0.473632, 66.290894, 64.00238)" style="filter: url('#drop-shadow-filter-0');"/>
+  <path d="M 144.649 51.222 Q 196.908 -1.037 249.167 51.222 L 353.686 155.741 Q 405.945 208 353.686 260.259 L 249.167 364.778 Q 196.908 417.037 144.649 364.778 L 40.13 260.259 Q -12.129 208 40.13 155.741 Z" style="filter: url('#inner-shadow-filter-0'); stroke: rgb(10, 101, 153); fill: url('#gradient-1');" bx:shape="n-gon 196.908 208 209.037 209.037 4 0.25 1@c7b2e4a6"/>
+  <path d="M 317.65 141.611 C 317.476 139.588 316.144 137.85 314.24 137.157 C 312.332 136.46 310.196 136.935 308.76 138.368 L 279.388 167.738 L 246.826 157.428 L 236.516 124.867 L 265.889 95.494 C 267.326 94.058 267.795 91.922 267.103 90.017 C 266.403 88.108 264.67 86.779 262.643 86.603 C 244.804 85.066 227.326 91.435 214.689 104.074 C 197.381 121.383 192.798 146.659 200.914 168.204 C 200.027 168.951 199.152 169.743 198.288 170.597 L 100.242 263.114 C 100.208 263.148 100.174 263.185 100.136 263.218 C 88.606 274.749 88.606 293.511 100.136 305.044 C 111.669 316.574 130.293 316.434 141.822 304.903 C 141.872 304.856 141.917 304.81 141.963 304.758 L 233.673 205.949 C 234.509 205.109 235.285 204.23 236.017 203.329 C 257.567 211.459 282.859 206.887 300.182 189.567 C 312.816 176.927 319.189 159.447 317.65 141.611 Z M 127.047 292.587 C 122.798 296.835 115.917 296.833 111.668 292.587 C 107.421 288.343 107.421 281.456 111.668 277.21 C 115.917 272.965 122.798 272.965 127.047 277.21 C 131.294 281.456 131.294 288.343 127.047 292.587 Z" style="filter: url('#inner-shadow-filter-3'); stroke: rgb(161, 173, 181); fill: rgb(255, 255, 255);"/>
+  <path d="M 273.833 104.289 L 277.005 118.566 L 286.203 107.048 L 282.721 121.256 L 296.122 114.777 L 286.676 126.102 L 301.627 125.946 L 288.088 132.145 L 301.627 138.344 L 286.676 138.188 L 296.122 149.513 L 282.721 143.034 L 286.203 157.242 L 277.005 145.724 L 273.833 160.001 L 270.661 145.724 L 261.463 157.242 L 264.945 143.034 L 251.544 149.513 L 260.99 138.188 L 246.039 138.344 L 259.579 132.145 L 246.039 125.946 L 260.99 126.102 L 251.544 114.777 L 264.945 121.256 L 261.463 107.048 L 270.661 118.566 Z" style="filter: url('#inner-shadow-filter-1'); stroke: rgb(161, 173, 181); fill: rgb(255, 255, 255);" bx:shape="star 273.833 132.145 28.509 27.856 0.5 14 1@c06201dd"/>
+</svg>

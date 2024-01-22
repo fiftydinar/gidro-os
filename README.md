@@ -1,6 +1,7 @@
 # Gidro-OS
 
 ![](assets/bg.webp)
+![](assets/BlueBuild_logo_2_white.svg)
 
 My customized image, based on Fedora Silverblue, main edition, derived from UniversalBlue project.
 
