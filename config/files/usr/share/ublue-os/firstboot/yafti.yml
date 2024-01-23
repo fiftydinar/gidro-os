@@ -8,7 +8,7 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description:
-        Please wait for notification of finished flatpaks installation before proceeding to installer.
+        Explore useful apps & options for Gidro-OS!
   applications:
     source: yafti.screen.package
     values:
@@ -20,7 +20,7 @@ screens:
         system: false
       groups:
         User Apps:
-          description: User applications which are generally used.
+          description: User applications for general usage.
           default: false
           packages:
              - Warp (Global File Sharing): app.drey.Warp
@@ -42,7 +42,7 @@ screens:
              - Tenacity (Audacity alt.): org.tenacityaudio.Tenacity
              - GitHub Desktop: io.github.shiftey.Desktop
         Gaming Apps:
-          description: User applications which are used for gaming.
+          description: User applications for gaming usage.
           default: false
           packages:
             - Steam: com.valvesoftware.Steam
