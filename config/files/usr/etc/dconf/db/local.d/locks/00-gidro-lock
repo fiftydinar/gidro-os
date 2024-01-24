@@ -36,4 +36,3 @@
 
 # Mutter settings lock
 /org/gnome/mutter/check-alive-timeout
-/org/gnome/mutter/experimental-features
