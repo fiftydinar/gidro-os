@@ -20,25 +20,25 @@ XONE_INSTALL_STR=$(echo "$INSTALL_STR" | sed 's/xone//g')
 if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
   echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
-  # Surface images use special surface kernel
-  if [[ "$BASE_IMAGE" =~ "surface" ]] && [[ "${INSTALL[@]}" =~ ! "xone" ]]; then
-    ENABLE_MULTIMEDIA_REPO
-    rpm-ostree install kernel-surface-devel-matched $INSTALL_STR
-    DISABLE_MULTIMEDIA_REPO
   # Xone requires disabled multimedia repo for it to work, applies for Surface images too
-  elif [[ "$BASE_IMAGE" =~ "surface" ]] && [[ "${INSTALL[@]}" =~ "xone" ]]; then
+  if [[ "$BASE_IMAGE" =~ "surface" ]] && [[ "${INSTALL[@]}" =~ "xone" ]]; then
     ENABLE_MULTIMEDIA_REPO
     rpm-ostree install kernel-surface-devel-matched $XONE_INSTALL_STR
     DISABLE_MULTIMEDIA_REPO
     rpm-ostree install /tmp/rpms/kmods/*xone*.rpm
   # Xone requires disabled multimedia repo for it to work    
-  elif [[ "$BASE_IMAGE" =~ ! "surface" ]] && [[ "${INSTALL[@]}" =~ "xone" ]]; then
+  elif [[ ! "$BASE_IMAGE" =~ "surface" ]] && [[ "${INSTALL[@]}" =~ "xone" ]]; then
     ENABLE_MULTIMEDIA_REPO
     rpm-ostree install kernel-devel-matched $XONE_INSTALL_STR
     DISABLE_MULTIMEDIA_REPO
     rpm-ostree install /tmp/rpms/kmods/*xone*.rpm
+  # Surface images use special surface kernel
+  elif [[ "$BASE_IMAGE" =~ "surface" ]] && [[ ! "${INSTALL[@]}" =~ "xone" ]]; then
+    ENABLE_MULTIMEDIA_REPO
+    rpm-ostree install kernel-surface-devel-matched $INSTALL_STR
+    DISABLE_MULTIMEDIA_REPO    
   # Regular situation  
-  elif [[ "$BASE_IMAGE" =~ ! "surface" ]] && [[ "${INSTALL[@]}" =~ ! "xone" ]]; then
+  elif [[ ! "$BASE_IMAGE" =~ "surface" ]] && [[ ! "${INSTALL[@]}" =~ "xone" ]]; then
     ENABLE_MULTIMEDIA_REPO
     rpm-ostree install kernel-devel-matched $INSTALL_STR
     DISABLE_MULTIMEDIA_REPO
