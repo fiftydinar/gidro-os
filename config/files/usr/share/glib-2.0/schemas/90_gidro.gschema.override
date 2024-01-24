@@ -1,32 +1,32 @@
-[org/gnome/desktop/peripherals/touchpad:GNOME-Greeter]
+[org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
 tap-to-click=true
 
-[org/gtk/gtk4/settings/file-chooser]
+[org.gtk.gtk4.settings.file-chooser]
 sort-directories-first=true
 
-[org/gtk/settings/file-chooser]
+[org.gtk.settings.file-chooser]
 sort-directories-first=true
 
-[org/gnome/desktop/app-folders]
+[org.gnome.desktop.app-folders]
 folder-children=['Utilities', 'YaST', 'Pardus']
 
-[org/gnome/desktop/app-folders/folders/Utilities]
+[org.gnome.desktop.app-folders.folders.Utilities]
 apps=['org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Loupe.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'com.github.tchx84.Flatseal.desktop', 'io.github.flattool.Warehouse.desktop', 'io.github.fabrialberio.pinapp.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'com.github.wwmm.easyeffects.desktop', 'com.github.marhkb.Pods.desktop']
 name='Utilities'
 
-[org/gnome/desktop/background]
+[org.gnome.desktop.background]
 picture-options='zoom'
 picture-uri='file:///usr/share/backgrounds/nokia/grasssky.webp'
 picture-uri-dark='file:///usr/share/backgrounds/nokia/grasssky.webp'
 primary-color='000000'
 secondary-color='FFFFFF'
 
-[org/gnome/desktop/input-sources]
+[org.gnome.desktop.input-sources]
 sources=[('xkb', 'rs+latinyz')]
 mru-sources=[('xkb', 'rs+latinyz')]
 xkb-options=['caps:ctrl_modifier']
 
-[org/gnome/desktop/interface]
+[org.gnome.desktop.interface]
 show-battery-percentage=true
 clock-show-weekday=true
 document-font-name='Nokia Pure Text 11'
@@ -35,33 +35,33 @@ font-name='Nokia Pure Text 11'
 gtk-theme='adw-gtk3'
 icon-theme='MoreWaita'
 
-[org/gnome/desktop/peripherals/keyboard]
+[org.gnome.desktop.peripherals.keyboard]
 delay=uint32 226
 numlock-state=true
 
-[org/gnome/desktop/peripherals/mouse]
+[org.gnome.desktop.peripherals.mouse]
 accel-profile='flat'
 
-[org/gnome/desktop/peripherals/touchpad]
+[org.gnome.desktop.peripherals.touchpad]
 tap-to-click=true
 
-[org/gnome/desktop/privacy]
+[org.gnome.desktop.privacy]
 remove-old-trash-files=true
 
-[org/gnome/desktop/wm/preferences]
+[org.gnome.desktop.wm.preferences]
 title-bar-font='Nokia Pure Text Bold 11'
 
-[org/gnome/settings-daemon/plugins/power]
+[org.gnome.settings-daemon.plugins.power]
 power-button-action='interactive'
 
-[org/gnome/shell]
+[org.gnome.shell]
 enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com']
 favorite-apps=['org.gnome.Epiphany.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
-[org/gnome/shell/extensions/blur-my-shell]
+[org.gnome.shell.extensions.blur-my-shell]
 sigma=5
 
-[org/gnome/shell/extensions/openweather]
+[org.gnome.shell.extensions.openweather]
 use-system-icons=false
 pressure-unit='mbar'
 position-in-panel='right'
@@ -69,17 +69,17 @@ show-comment-in-panel=true
 wind-direction=true
 decimal-places=0
 
-[org/gnome/shell/extensions/notifications-alert]
+[org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
 
-[org/gnome/software]
+[org.gnome.software]
 allow-updates=false
 download-updates=false
 download-updates-notify=false
 packaging-format-preference=['flatpak:flathub-user']
 
-[system/locale]
+[org.gnome.system.locale]
 region='sr_RS.UTF-8@latin'
 
-[org/gnome/mutter]
+[org.gnome.mutter]
 check-alive-timeout=uint32 20000
