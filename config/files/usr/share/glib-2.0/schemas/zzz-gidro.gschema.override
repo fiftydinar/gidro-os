@@ -30,6 +30,7 @@ font-hinting='none'
 font-name='Nokia Pure Text 11'
 gtk-theme='adw-gtk3'
 icon-theme='MoreWaita'
+gtk-enable-primary-paste=false
 
 [org.gnome.desktop.peripherals.keyboard]
 delay=uint32 226

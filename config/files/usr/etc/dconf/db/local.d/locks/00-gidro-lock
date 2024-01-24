@@ -12,6 +12,7 @@
 /org/gnome/desktop/interface/font-name
 /org/gnome/desktop/interface/gtk-theme
 /org/gnome/desktop/interface/icon-theme
+/org/gnome/desktop/interface/gtk-enable-primary-paste
 
 # Keyboard settings lock
 /org/gnome/desktop/peripherals/keyboard/delay

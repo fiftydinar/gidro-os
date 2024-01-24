@@ -132,7 +132,8 @@ Settings applied by default:
 - Show battery percentage in top bar
 - Power button powers off PC instead of suspending it
 - Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
-- Set mouse acceleration to flat 
+- Set mouse acceleration to flat
+- Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
