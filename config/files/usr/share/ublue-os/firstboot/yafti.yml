@@ -7,7 +7,7 @@ screens:
     values:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
-      description:
+      description: |
         Explore useful apps & options for Gidro-OS!
   applications:
     source: yafti.screen.package
