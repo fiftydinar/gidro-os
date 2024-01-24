@@ -49,7 +49,7 @@ tap-to-click=true
 remove-old-trash-files=true
 
 [org.gnome.desktop.wm.preferences]
-title-bar-font='Nokia Pure Text Bold 11'
+titlebar-font='Nokia Pure Text Bold 11'
 
 [org.gnome.settings-daemon.plugins.power]
 power-button-action='interactive'
