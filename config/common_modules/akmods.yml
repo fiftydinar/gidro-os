@@ -7,6 +7,6 @@ install:
     - v4l2loopback
     - xone    
     - xpadneo
-    - xpad-noone
+    - xpad
     - winesync
     - zenergy

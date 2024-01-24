@@ -35,9 +35,9 @@ Installed akmods:
 - [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
 - [RTL8814AU](https://github.com/morrownr/8814au) (for supporting mentioned USB Realtek WiFi card model)
 - [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing change of behavior for universal screensharing)
-- [XOne](https://github.com/medusalix/xone) (Xbox One controllers with USB/RF driver)
-- [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controllers Bluetooth driver)
-- [XPad-NoOne](https://github.com/ublue-os/xpad-noone) (Xbox/Xbox 360 controllers driver)
+- [XOne](https://github.com/medusalix/xone) (Xbox One controller RF driver)
+- [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One controller Bluetooth driver)
+- [XPad](https://github.com/paroj/xpad) (Xbox/Xbox 360 USB & RF driver + Xbox One controller USB driver)
 - [WineSync](https://github.com/Cat-Lady/winesync-dkms/blob/main/README.md) (for possibly improving Windows apps performance)
 - [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
 
