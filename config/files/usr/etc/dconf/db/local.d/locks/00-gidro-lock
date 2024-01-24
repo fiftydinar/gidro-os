@@ -1,0 +1,39 @@
+# Set folders first lock
+/org/gtk/gtk4/settings/file-chooser/sort-directories-first
+/org/gtk/settings/file-chooser/sort-directories-first
+
+# Lock caps-lock fix setting
+/org/gnome/desktop/input-sources/xkb-options
+
+# Font & theme settings lock
+/org/gnome/desktop/interface/clock-show-weekday
+/org/gnome/desktop/interface/document-font-name
+/org/gnome/desktop/interface/font-hinting
+/org/gnome/desktop/interface/font-name
+/org/gnome/desktop/interface/gtk-theme
+/org/gnome/desktop/interface/icon-theme
+
+# Keyboard settings lock
+/org/gnome/desktop/peripherals/keyboard/delay
+
+# Mouse settings lock
+/org/gnome/desktop/peripherals/mouse/accel-profile
+
+# Touchpad settings lock
+/org/gnome/desktop/peripherals/touchpad/tap-to-click
+
+# Remove old trash files setting lock
+/org/gnome/desktop/privacy/remove-old-trash-files
+
+# Titlebar font setting lock
+/org/gnome/desktop/wm/preferences/titlebar-font
+
+# Gnome Software settings lock
+/org/gnome/software/allow-updates
+/org/gnome/software/download-updates
+/org/gnome/software/download-updates-notify
+/org/gnome/software/packaging-format-preference
+
+# Mutter settings lock
+/org/gnome/mutter/check-alive-timeout
+/org/gnome/mutter/experimental-features
