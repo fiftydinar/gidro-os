@@ -8,4 +8,5 @@ scripts:
   - python3-icoextract.sh
   - morewaita.sh
   - block-ads.sh
+  - glib-schema-compile.sh  
   - signing.sh

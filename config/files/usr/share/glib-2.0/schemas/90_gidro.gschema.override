@@ -1,3 +1,6 @@
+[org/gnome/desktop/peripherals/touchpad:GNOME-Greeter]
+tap-to-click=true
+
 [org/gtk/gtk4/settings/file-chooser]
 sort-directories-first=true
 
