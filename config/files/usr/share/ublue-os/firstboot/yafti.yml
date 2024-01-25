@@ -6,7 +6,7 @@ screens:
     source: yafti.screen.title
     values:
       title: "Welcome to Gidro-OS"
-      icon: "/usr/share/pixmaps/fedora-logo-sprite.svg"
+      icon: "/path/to/icon"
       description: |
         Explore useful apps and options!
   applications:
@@ -73,7 +73,7 @@ screens:
     source: yafti.screen.title
     values:
       title: "All done!"
-      icon: "/usr/share/pixmaps/fedora-logo-sprite.svg"
+      icon: "/path/to/icon"
       links:
         - "Install More Applications":
             run: /usr/bin/gnome-software
