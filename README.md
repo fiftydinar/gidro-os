@@ -181,6 +181,10 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 
 Rebasing is only supported from Fedora Silverblue edition.
 
+If your system uses Secure Boot, you will need to enroll security key before rebase with this command:
+
+`currently in draft, i need to find correct command`
+
 To rebase an existing Silverblue installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
