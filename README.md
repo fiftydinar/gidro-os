@@ -181,7 +181,7 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 
 Rebasing is only supported from Fedora Silverblue edition.
 
-If your system uses Secure Boot, you will need to enroll security key before rebase with this command:
+If your system uses Secure Boot, you will need to enroll security key before rebase with this command (needs internet):
 
 ```
 wget -q https://raw.githubusercontent.com/ublue-os/akmods/main/certs/public_key.der -O /tmp/akmods-ublue.der && echo 'Enter password "ublue-os" if prompted after your user password.' && sudo mokutil --timeout -1 && sudo mokutil --import /tmp/akmods-ublue.der && echo 'When you reboot your computer, follow the instructions to start MOK util' && echo 'by pressing a key, then enroll the secure boot key and enter "ublue-os" as the password' && rm /tmp/akmods-ublue.der
