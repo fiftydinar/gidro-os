@@ -183,7 +183,9 @@ Rebasing is only supported from Fedora Silverblue edition.
 
 If your system uses Secure Boot, you will need to enroll security key before rebase with this command:
 
-`wget https://raw.githubusercontent.com/ublue-os/akmods/main/certs/public_key.der -O /tmp/akmods-ublue.der && echo 'Enter password "ublue-os" if prompted after your user password.' && sudo mokutil --timeout -1 && sudo mokutil --import /tmp/akmods-ublue.der && echo 'When you reboot your computer, follow the instructions to start MOK util' && echo 'by pressing a key, then enroll the secure boot key and enter "ublue-os" as the password'`
+```
+wget https://raw.githubusercontent.com/ublue-os/akmods/main/certs/public_key.der -O /tmp/akmods-ublue.der && echo 'Enter password "ublue-os" if prompted after your user password.' && sudo mokutil --timeout -1 && sudo mokutil --import /tmp/akmods-ublue.der && echo 'When you reboot your computer, follow the instructions to start MOK util' && echo 'by pressing a key, then enroll the secure boot key and enter "ublue-os" as the password'
+```
 
 To rebase an existing Silverblue installation to the latest build:
 
@@ -191,7 +193,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
-- Reboot to complete the rebase (and enter Secure Boot key if you're using it & when prompted):
+- Reboot to complete the rebase (and enter Secure Boot key with "ublue-os" password if you're using it):
   ```
   systemctl reboot
   ```
