@@ -162,7 +162,7 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 ISOs are online-based & are constantly upgraded. There is no need to worry about the version & the date of the ISO.
 It is available for download in Releases page.
 
-Just download & install it.
+Just download & proceed with installation.
 
 If you are on UEFI system, you will notice blue MOK screen after installer, which is used for enrolling security keys.
 If your system uses Secure Boot, you will need to "Enroll key" with a password `ublue-os` (type minus on a keyboard as - sign if you get errors).
