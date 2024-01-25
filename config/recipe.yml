@@ -12,7 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - from-file: common_modules/akmods.yml 
   - from-file: common_modules/files.yml
-  - from-file: common_modules/initramfs-setup.yml
+  #- from-file: common_modules/initramfs-setup.yml
   - from-file: common_modules/rpm-ostree.yml
   - from-file: common_modules/yafti.yml  
   - from-file: common_modules/default-flatpaks.yml
