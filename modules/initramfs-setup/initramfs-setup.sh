@@ -20,12 +20,12 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
     printf "%s\n" "$file"
   done
   
-  mkdir -p /usr/etc/ublue-os/initramfs
+  mkdir -p /usr/share/ublue-os/initramfs
 
   echo "Writing 'tracked' file to initramfs directory with modifications"
 
-  echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/etc/ublue-os/initramfs/tracked
-  printf "%s" "${INCLUDE[@]}" >> /usr/etc/ublue-os/initramfs/tracked
+  echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/share/ublue-os/initramfs/tracked
+  printf "%s" "${INCLUDE[@]}" >> /usr/share/ublue-os/initramfs/tracked
 fi
 
 mkdir -p /usr/etc/ublue-os/initramfs
@@ -42,6 +42,5 @@ echo "# This file can be modified by live-users if they want to have custom file
 
 # Uncomment this when it's ready for startingpoint/bling
 #echo "Enabling initramfs-setup service"
-#mkdir -p /usr/etc/flatpak/{system,user}
 #systemctl enable -f initramfs-setup.service
 echo "Initramfs-setup is successfully installed & configured"

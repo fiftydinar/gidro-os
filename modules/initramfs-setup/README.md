@@ -15,7 +15,7 @@ It is run on every boot by this service:
 
 Your modifications to initramfs are written to this file here:
 
-- `/etc/ublue-os/initramfs/tracked`
+- `/usr/share/ublue-os/initramfs/tracked`
 
 `tracked` file won't get written if you did not include any initramfs modifications. This makes separation between OS & live-user modifications clearer.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Global initramfs variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
-tracked_file="/etc/ublue-os/initramfs/tracked"
+tracked_file="/usr/share/ublue-os/initramfs/tracked"
 custom_tracked_file="/etc/ublue-os/initramfs/tracked-custom"
 rebuild_file="/etc/ublue-os/initramfs/rebuild"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
