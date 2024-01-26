@@ -17,7 +17,7 @@ Removed packages (RPMs):
 - Gnome Tweaks
 
 Replaced packages (RPMs)/usecases:
-- [Gnome Web](https://wiki.gnome.org/Apps/Web) from Flathub instead of Firefox
+- [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) from Flathub instead of Firefox
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
 - [System76-Power](https://github.com/pop-os/system76-power) instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
 
@@ -152,7 +152,7 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
-- Gnome Web "Restore Tabs on Startup" disabled
+- Set LibreWolf to enable WebGL, disable ResistFingerprinting, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable GPU video decoding, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage
 - G4Music background playback enabled
   
 ## Installation (ISO) [Recommended]

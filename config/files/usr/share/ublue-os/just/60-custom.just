@@ -105,7 +105,7 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["Web"]="$flatpak_data/org.gnome.Epiphany"
+        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do
@@ -156,7 +156,7 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["Web"]="$flatpak_data/org.gnome.Epiphany"
+        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do
@@ -170,7 +170,7 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["Web"]="$flatpak_data/org.gnome.Epiphany"
+        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do

@@ -17,7 +17,7 @@ system:
     - com.github.neithern.g4music
     - com.github.rafostar.Clapper
     - org.gnome.Loupe
-    - org.gnome.Epiphany
+    - io.gitlab.librewolf-community
     - io.missioncenter.MissionCenter
     - org.gnome.World.Secrets
     - com.vixalien.sticky
