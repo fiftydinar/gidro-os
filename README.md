@@ -152,7 +152,7 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
-- Set LibreWolf to enable WebGL, disable ResistFingerprinting, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable GPU video decoding, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage
+- Set LibreWolf to enable WebGL, disable ResistFingerprinting, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable GPU video decoding, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage, disable tab manager arrow
 - G4Music background playback enabled
   
 ## Installation (ISO) [Recommended]
