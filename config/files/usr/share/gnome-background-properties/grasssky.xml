@@ -4,6 +4,7 @@
     <wallpaper deleted="false">
         <name>Grass and Sky</name>
         <filename>/usr/share/backgrounds/nokia/grasssky.webp</filename>
+        <filename-dark>/usr/share/backgrounds/nokia/grasssky-dark.webp</filename-dark>    
         <options>zoom</options>
         <shade_type>solid</shade_type>
         <pcolor>#000000</pcolor>
