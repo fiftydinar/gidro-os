@@ -124,7 +124,7 @@ Settings applied by default:
 - Enabled touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
-- Set a beautiful Symbian^3 picture as a wallpaper
+- Set a beautiful Symbian^3 picture as a wallpaper, including dark variant
 - [Set light & dark theme to AdwGtk3 for GTK3 applications](https://github.com/lassekongo83/adw-gtk3) (to make Adwaita design more consistent)
 - [Use MoreWaita icon pack](https://github.com/somepaulo/MoreWaita) (to extend Adwaita theme icon language)
 - Set Serbian Latin language as the locale (display language remains English)
