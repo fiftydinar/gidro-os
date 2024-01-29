@@ -73,6 +73,7 @@ Installed flatpaks:
 - [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
 - [Pods](https://flathub.org/apps/com.github.marhkb.Pods)
+- [Gear Lever](https://flathub.org/apps/it.mijorus.gearlever)
 
 Optional flatpaks:
 - [Warp (Global File Sharing)](https://apps.gnome.org/en/Warp/)
