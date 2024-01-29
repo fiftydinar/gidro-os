@@ -3,4 +3,4 @@ Type=Application
 Name=Tuta Mail
 Comment=Tuta Mail silent autostart
 Icon=com.tutanota.Tutanota
-Exec=flatpak run com.tutanota.Tutanota -a
+Exec=NetworkManager nm-online && flatpak run com.tutanota.Tutanota -a
