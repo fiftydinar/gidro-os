@@ -144,7 +144,7 @@ Settings applied by default:
 - Set Gnome Software to use Flathub-user remote by default
 - Hide ROM Properties desktop shortcut
 - [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
-- [Include StevenBlack hosts file for blocking ads, malware, fakenews, porn & gambling](https://github.com/StevenBlack/hosts)
+- [Include StevenBlack hosts file for blocking ads, malware, porn & gambling](https://github.com/StevenBlack/hosts)
 - Steam silent auto-start on boot enabled (if app is installed)
 - Discord silent auto-start on boot enabled (if app is installed)
 - Telegram silent auto-start on boot enabled (if app is installed)
