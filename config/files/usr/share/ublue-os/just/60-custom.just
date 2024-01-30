@@ -213,7 +213,7 @@ proton-ge ACTION="prompt":
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
-    elif [ "${OPTION,,}" == "update" || [ "${OPTION,,}" == "upgrade" ]; then
+    elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
         SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
