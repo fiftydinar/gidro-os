@@ -57,9 +57,7 @@ configure-grub ACTION="prompt":
             echo 'Hide BIOS GRUB logs during boot setting applied.'   
       fi
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
-      sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub
-      sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
-      sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub
+      cp -f /usr/share/ublue-os/gidro-os/grub /etc/default/
       if [ -d /sys/firmware/efi ]; then
         output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
             echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  

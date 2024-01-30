@@ -8,5 +8,6 @@ scripts:
   - python3-icoextract.sh
   - morewaita.sh
   - block-ads.sh
+  - backup-fedora-grub.sh
   - glib-schema-compile.sh  
   - signing.sh
