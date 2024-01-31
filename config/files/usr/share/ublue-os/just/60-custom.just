@@ -120,8 +120,8 @@ factory-reset ACTION="prompt":
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified settings only" ] || [ "${OPTION,,}" == "settings-gidro-os" ]; then
-      dconf reset /org/gnome/desktop/app-folders/folders/Utilities/name
-      dconf reset /org/gnome/desktop/app-folders/folders/Utilities/apps
+      gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ name
+      gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ apps
       gsettings reset org.gnome.desktop.app-folders folder-children
       gsettings reset org.gnome.desktop.background picture-options
       gsettings reset org.gnome.desktop.background picture-uri
