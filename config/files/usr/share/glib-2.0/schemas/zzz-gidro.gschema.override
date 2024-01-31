@@ -12,8 +12,8 @@ folder-children=['Utilities', 'YaST', 'Pardus']
 
 [org.gnome.desktop.background]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/nokia/grasssky.webp'
-picture-uri-dark='file:///usr/share/backgrounds/nokia/grasssky-dark.webp'
+picture-uri='file:///usr/share/backgrounds/nokia/grasssky.jxl'
+picture-uri-dark='file:///usr/share/backgrounds/nokia/grasssky-dark.jxl'
 primary-color='000000'
 secondary-color='FFFFFF'
 
