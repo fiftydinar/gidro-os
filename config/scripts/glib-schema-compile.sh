@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-glib-compile-schemas /usr/share/glib-2.0/schemas
+glib-compile-schemas --strict /usr/share/glib-2.0/schemas
