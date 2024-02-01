@@ -12,7 +12,7 @@ What does this module do?
 
 Temporary test location is:
 
-`/usr/share/bluebuild/gschema-overrides/bluebuild-schema-test`
+`/tmp/bluebuild-schema-test`
 
 To use it, you need to include your gschema.override file in this location:
 
