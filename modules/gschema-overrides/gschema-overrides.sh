@@ -3,7 +3,10 @@
 set -euo pipefail
 
 get_yaml_array INCLUDE '.include[]' "$1"
-  
+
+mkdir -p /usr/share/bluebuild/gschema-overrides/bluebuild-schema-test
+mkdir -p /usr/share/glib-2.0/schemas
+
 schema-test-location="/usr/share/bluebuild/gschema-overrides/bluebuild-schema-test"
 schema-location="/usr/share/glib-2.0/schemas"
 
@@ -14,7 +17,6 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; th
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
   done
-  mkdir -p "$schema-test-location"
   find "$schema-location" -type f ! -name "*.gschema.override" -exec cp {} "$schema-test-location" \;
   for file in "${INCLUDE[@]}"; do
     cp "$schema_location/$file" "$schema_test_location"
