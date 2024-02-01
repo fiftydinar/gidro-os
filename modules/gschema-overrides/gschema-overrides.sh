@@ -3,10 +3,8 @@
 set -euo pipefail
 
 get_yaml_array INCLUDE '.include[]' "$1"
-
-mkdir -p /tmp/bluebuild-schema-test
   
-schema-test-location="/tmp/bluebuild-schema-test"
+schema-test-location="/usr/share/bluebuild/gschema-overrides/bluebuild-schema-test"
 schema-location="/usr/share/glib-2.0/schemas"
 
 echo "Installing gschema-overrides module"
@@ -16,6 +14,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; th
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
   done
+  mkdir -p "$schema-test-location"
   find "$schema-location" -type f ! -name "*.gschema.override" -exec cp {} "$schema-test-location" \;
   for file in "${INCLUDE[@]}"; do
     cp "$schema_location/$file" "$schema_test_location"
@@ -24,6 +23,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; th
   glib-compile-schemas --strict "$schema-test-location"
   echo "Compiling gschema to include your setting overrides"
   glib-compile-schemas "$schema-location" &>/dev/null
+  rm -rf "$schema-test-location"
 else
   echo "Module failed because no gschema-overrides were included into the module. Please ensure that those are included properly & try again."
 fi  
