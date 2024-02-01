@@ -11,6 +11,7 @@ echo "Installing gschema-overrides module"
 
 if [[ ${#INCLUDE[@]} == 0 ]]; then
   echo "Module failed because gschema-overrides aren't included into the module."
+  exit 1
 fi
 
 if [[ ${#INCLUDE[@]} -gt 0 ]]; then
