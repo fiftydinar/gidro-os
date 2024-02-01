@@ -7,20 +7,22 @@ What does this module do?
 
 - It copies all content from `/usr/share/glib-2.0/schemas`, except existing gschema.overrides to avoid conflicts, into temporary test location.
 - It copies your gschema.overrides you provided in this module from `/usr/share/glib-2.0/schemas` into temporary test location.
-- It tests them for errors in temporary test location by using `glib-compile-schemas` with `--strict` flag. If errors are found, fail the build.
+- It tests them for errors in temporary test location by using `glib-compile-schemas` with `--strict` flag. If errors are found, build will fail.
 - If test is passed successfully, compile gschema using `glib-compile-schemas` in `/usr/share/glib-2.0/schemas` to include your changes.
 
 Temporary test location is:
 
 `/tmp/bluebuild-schema-test`
 
-To use it, you need to include your gschema.override file in this location:
+To use it, you need to include your gschema.override file(s) in this location:
 
 `/usr/share/glib-2.0/schemas`
 
 Then you need to include it in recipe file, like in example configuration.
 
-It is highly recommended to use `z0-` prefix or higher before your gschema.override name, to ensure that your changes are going to be applied.
+It is highly recommended to use `z0-` prefix before your gschema.override name, to ensure that your changes are going to be applied.
+
+Also don't forget to rename your file too with this prefix in `/usr/share/glib-2.0/schemas`.
 
 ## Example configuration
 
