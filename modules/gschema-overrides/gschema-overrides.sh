@@ -6,10 +6,17 @@ get_yaml_array INCLUDE '.include[]' "$1"
 
 schema_test_location="/tmp/bluebuild-schema-test"
 schema_location="/usr/share/glib-2.0/schemas"
+matches_extension=false
 
 echo "Installing gschema-overrides module"
 
-if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ ${INCLUDE[@]} == *.gschema.override ]]; then
+for item in "${INCLUDE[@]}"; do
+    if [[ $item == *.gschema.override ]]; then
+    matches_extension=true
+    fi
+done
+
+if [[ ${#INCLUDE[@]} -gt 0 ]] && matches_extension; then
   printf "Applying following gschema-overrides:\n"
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
