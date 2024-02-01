@@ -1,3 +1,3 @@
 type: gschema-overrides
 include:
-  - zzz-gidro.gschema.overrides
+  - zzz-gidro.gschema.override
