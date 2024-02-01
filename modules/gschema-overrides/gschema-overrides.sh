@@ -2,9 +2,6 @@
 
 set -euo pipefail
 
-shopt -s nullglob
-shopt -s failglob
-
 get_yaml_array INCLUDE '.include[]' "$1"
 
 schema_test_location="/tmp/bluebuild-schema-test"
