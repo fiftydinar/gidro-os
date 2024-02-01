@@ -13,13 +13,13 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   for file in "${INCLUDE[@]}"; do
   if [[ $file == *.gschema.override ]]; then       
     printf "Applying following gschema-overrides:\n"
-    for file in "${INCLUDE[@]}"; do
-      printf "%s\n" "$file"
+    for file2 in "${INCLUDE[@]}"; do
+      printf "%s\n" "$file2"
     done
     mkdir -p "$schema_test_location" "$schema_location"
     find "$schema_location" -type f ! -name "*.gschema.override" -exec cp {} "$schema_test_location" \;
-    for file in "${INCLUDE[@]}"; do
-      file_path="${schema_location}/${file//$'\n'/}"
+    for file3 in "${INCLUDE[@]}"; do
+      file_path="${schema_location}/${file3//$'\n'/}"
       cp "$file_path" "$schema_test_location"
     done
     echo "Running error-test for your gschema-overrides. Aborting if failed."
