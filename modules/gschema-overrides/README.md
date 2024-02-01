@@ -20,17 +20,17 @@ To use it, you need to include your gschema.override file in this location:
 
 Then you need to include it in recipe file, like in example configuration.
 
-It is highly recommended to use `zz-` prefix before your gschema.override name, to ensure that your changes are going to be applied.
+It is highly recommended to use `z0-` prefix before your gschema.override name, to ensure that your changes are going to be applied.
 
 ## Example configuration
 
 ```yaml
 type: gschema-overrides
 include:
-  - zz-myoverride.gschema.override
-  - zz-myoverride2.gschema.override
+  - z0-myoverride.gschema.override
+  - z0-myoverride2.gschema.override
 ```
 
-For more information on best practices for editing `gschema.override` files & combining them with `dconf`, here's some documentation:
+For more information on best practices for editing `gschema.override` files & potentially combining them with `dconf`, here's some documentation:
 
 https://github.com/ublue-os/bling/issues/53#issuecomment-1915474038
