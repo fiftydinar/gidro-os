@@ -17,7 +17,8 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   mkdir -p "$schema_test_location" "$schema_location"
   find "$schema_location" -type f ! -name "*.gschema.override" -exec cp {} "$schema_test_location" \;
   for file in "${INCLUDE[@]}"; do
-    cp "$schema_location"/"$file" "$schema_test_location"
+    file_path="$schema_location/$file"    
+    cp "$file_path" "$schema_test_location"
   done
   echo "Running error test for your gschema-overrides. Aborting if failed."
   glib-compile-schemas --strict "$schema_test_location"
