@@ -9,6 +9,10 @@ schema_location="/usr/share/glib-2.0/schemas"
 
 echo "Installing gschema-overrides module"
 
+if [[ ${#INCLUDE[@]} == 0 ]]; then
+  echo "Module failed because gschema-overrides aren't included into the module."
+fi
+
 if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   for file in "${INCLUDE[@]}"; do
     file="${file//$'\n'/}"
@@ -33,4 +37,4 @@ else
   glib-compile-schemas --strict "$schema_test_location"
   echo "Compiling gschema to include your setting overrides"
   glib-compile-schemas "$schema_location" &>/dev/null
-fi  
+fi
