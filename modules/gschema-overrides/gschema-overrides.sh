@@ -30,7 +30,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   done
 fi
 
-echo "Most preferred gschema-override is:\n$most_preferred_override"
+echo -e "Most preferred gschema-override is:\n$most_preferred_override"
 echo "If your gschema-override is not listed as most preferred, you should adjust filename prefix"
 
 # Apply gschema-override when all conditions above are satisfied
