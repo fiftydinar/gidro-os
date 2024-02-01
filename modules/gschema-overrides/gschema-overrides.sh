@@ -25,7 +25,6 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; th
   glib-compile-schemas --strict "$schema-test-location"
   echo "Compiling gschema to include your setting overrides"
   glib-compile-schemas "$schema-location" &>/dev/null
-  rm -rf "$schema-test-location"
 else
   echo "Module failed because no gschema-overrides were included into the module. Please ensure that those are included properly & try again."
 fi
