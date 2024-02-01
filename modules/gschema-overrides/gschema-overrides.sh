@@ -10,13 +10,13 @@ matches_extension=false
 
 echo "Installing gschema-overrides module"
 
-for item in "${INCLUDE[@]}"; do
-    if [[ $item == *.gschema.override ]]; then
+for file in "${INCLUDE[@]}"; do
+    if [[ $file == *.gschema.override ]]; then
     matches_extension=true
     fi
 done
 
-if [[ ${#INCLUDE[@]} -gt 0 ]] && matches_extension; then
+if [[ ${#INCLUDE[@]} -gt 0 ]] && $matches_extension; then
   printf "Applying following gschema-overrides:\n"
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
