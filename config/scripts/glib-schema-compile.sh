@@ -9,4 +9,3 @@ echo "Running error test for gidro gschema override. Aborting if failed."
 glib-compile-schemas --strict /tmp/gidro-schema-test
 echo "Compiling gschema to include gidro setting overrides"
 glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null
-rm -rf /tmp/gidro-schema-test
