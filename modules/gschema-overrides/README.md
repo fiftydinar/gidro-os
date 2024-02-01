@@ -20,7 +20,7 @@ To use it, you need to include your gschema.override file in this location:
 
 Then you need to include it in recipe file, like in example configuration.
 
-It is highly recommended to use `z0-` prefix before your gschema.override name, to ensure that your changes are going to be applied.
+It is highly recommended to use `z0-` prefix or higher before your gschema.override name, to ensure that your changes are going to be applied.
 
 ## Example configuration
 
