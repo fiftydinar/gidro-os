@@ -29,7 +29,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   done
 fi
 
-# Apply gschema-override when there files are included & when they have .gschema.override extension
+# Apply gschema-override when all conditions above are satisfied
 if [[ ${#INCLUDE[@]} -gt 0 ]] && $gschema_extension; then
   printf "Applying the following gschema-overrides:\n"
   for file in "${INCLUDE[@]}"; do
@@ -42,8 +42,8 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && $gschema_extension; then
     file_path="${schema_location}/${file//$'\n'/}"
     cp "$file_path" "$schema_test_location"
   done
-  echo "Running error-test for your gschema-overrides. Aborting if the test failed."
+  echo "Running error-checking test for your gschema-overrides. If test fails, build also fails."
   glib-compile-schemas --strict "$schema_test_location"
-  echo "Compiling gschema to include your setting overrides"
+  echo "Compiling gschema to include your changes with gschema-override"
   glib-compile-schemas "$schema_location" &>/dev/null
 fi
