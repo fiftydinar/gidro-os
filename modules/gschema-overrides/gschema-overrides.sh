@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+shopt -s nullglob
+shopt -s failglob
+
 get_yaml_array INCLUDE '.include[]' "$1"
 
 schema_test_location="/tmp/bluebuild-schema-test"
@@ -15,6 +18,9 @@ for file in "${INCLUDE[@]}"; do
     matches_extension=true
     fi
 done
+
+shopt -u nullglob
+shopt -u failglob
 
 if [[ ${#INCLUDE[@]} -gt 0 ]] && $matches_extension; then
   printf "Applying following gschema-overrides:\n"
