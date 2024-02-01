@@ -9,7 +9,7 @@ schema_location="/usr/share/glib-2.0/schemas"
 
 echo "Installing gschema-overrides module"
 
-if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; then
+if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ ${INCLUDE[@]} == *.gschema.override ]]; then
   printf "Applying following gschema-overrides:\n"
   for file in "${INCLUDE[@]}"; do
     printf "%s\n" "$file"
