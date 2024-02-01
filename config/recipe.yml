@@ -18,4 +18,5 @@ modules:
   - from-file: common_modules/default-flatpaks.yml
   - from-file: common_modules/bling.yml
   - from-file: common_modules/systemd.yml
+  - from-file: common_modules/gschema-overrides.yml
   - from-file: common_modules/scripts.yml
