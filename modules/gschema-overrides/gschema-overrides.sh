@@ -31,5 +31,5 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   fi
   done
 else
-  echo "Module failed because no gschema-overrides are included into the module."
+  echo "Module failed because gschema-overrides aren't included into the module."
 fi  
