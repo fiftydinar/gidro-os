@@ -28,4 +28,6 @@ if [[ ${#INCLUDE[@]} -gt 0 ]] && [[ "${INCLUDE[@]}" == *.gschema.override ]]; th
   rm -rf "$schema-test-location"
 else
   echo "Module failed because no gschema-overrides were included into the module. Please ensure that those are included properly & try again."
-fi  
+fi
+
+rm -rf "$schema-test-location"
