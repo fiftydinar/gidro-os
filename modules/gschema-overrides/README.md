@@ -5,8 +5,8 @@ If you heard about `dconf`, this is similar to it, but it's a much better & clea
 
 What does this module do?
 
-- It copies all content from `/usr/share/glib-2.0/schemas`, except existing gschema.overrides to avoid conflicts, into temporary test location
-- It copies your gschema.overrides you provided from `/usr/share/glib-2.0/schemas` & from this module to temporary test location
+- It copies all content from `/usr/share/glib-2.0/schemas`, except existing gschema.overrides to avoid conflicts, into temporary test location.
+- It copies your gschema.overrides you provided in this module from `/usr/share/glib-2.0/schemas` into temporary test location.
 - It tests them for errors in temporary test location by using `glib-compile-schemas` with `--strict` flag. If errors are found, fail the build.
 - If test is passed successfully, compile gschema using `glib-compile-schemas` in `/usr/share/glib-2.0/schemas` to inject your changes.
 
