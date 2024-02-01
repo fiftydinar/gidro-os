@@ -15,7 +15,8 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   if [[ ! $file == *.gschema.override ]]; then
     echo "Module failed because included files in module don't have .gschema.override extension."
     exit 1
-    done
+  fi  
+  done
   else
     printf "Applying following gschema-overrides:\n"
     for file2 in "${INCLUDE[@]}"; do
@@ -32,7 +33,6 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
     glib-compile-schemas --strict "$schema_test_location"
     echo "Compiling gschema to include your setting overrides"
     glib-compile-schemas "$schema_location" &>/dev/null
-  fi
 else
   echo "Module failed because gschema-overrides aren't included into the module."
   exit 1
