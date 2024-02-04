@@ -242,6 +242,7 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/GE-Proton*
+      rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*-GE-*
         echo 'Proton-GE uninstalled.'
       else
         echo 'ERROR: Proton-GE cannot be uninstalled because Steam is not installed.'
@@ -250,7 +251,8 @@ proton-ge ACTION="prompt":
       FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
-      ls -d GE-Proton* | sort -V | head -n -1 | xargs -r rm -rf
+      find . -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
+      rm -rf "$PWD"/*-GE-*
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else
