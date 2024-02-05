@@ -35,7 +35,8 @@ mkdir -p "$user_location"
 
 echo "Writing 'tracked-custom' file to initramfs directory for live-user modifications"
 echo "# This file can be modified by live-users if they want to have custom file location arguments in initramfs.
-# Be sure to check if the arguments you want already exist in initramfs by issuing \`rpm-ostree initramfs-etc\` command before modifying this file.
+# Duplicates from already existing initramfs modifications will be ignored.
+# \`rpm-ostree initramfs-etc\` command can be issued to check current initramfs status.
 # Also don't forget to copy your initramfs modification files if you have those.
 # Here's an example on how to edit this file (ignore # symbol):
 #
