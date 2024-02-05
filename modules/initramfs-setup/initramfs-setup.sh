@@ -11,6 +11,9 @@ set -euo pipefail
 
 get_yaml_array INCLUDE '.include[]' "$1"
 
+root_location="/usr/share/bluebuild/initramfs-setup"
+user_location="/usr/etc/bluebuild/initramfs-setup"
+
 echo "Installing initramfs-setup"
 
 if [[ ${#INCLUDE[@]} -gt 0 ]]; then
@@ -20,15 +23,15 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
     printf "%s\n" "$file"
   done
   
-  mkdir -p /usr/share/ublue-os/initramfs
+  mkdir -p "$root_location"
 
   echo "Writing 'tracked' file to initramfs directory with modifications"
 
-  echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > /usr/share/ublue-os/initramfs/tracked
-  printf "%s" "${INCLUDE[@]}" >> /usr/share/ublue-os/initramfs/tracked
+  echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > "$root_location"/tracked
+  printf "%s" "${INCLUDE[@]}" >> "$root_location"/tracked
 fi
 
-mkdir -p /usr/etc/ublue-os/initramfs
+mkdir -p "$user_location"
 
 echo "Writing 'tracked-custom' file to initramfs directory for live-user modifications"
 echo "# This file can be modified by live-users if they want to have custom file location arguments in initramfs.
@@ -38,7 +41,7 @@ echo "# This file can be modified by live-users if they want to have custom file
 #
 # /etc/vconsole.conf
 # /etc/crypttab
-# /etc/modprobe.d/my-modprobe.conf" > /usr/etc/ublue-os/initramfs/tracked-custom
+# /etc/modprobe.d/my-modprobe.conf" > "$user_location"/tracked-custom
 
 # Uncomment this when it's ready for startingpoint/bling
 #echo "Enabling initramfs-setup service"

@@ -15,7 +15,7 @@ It is run on every boot by this service:
 
 Your modifications to initramfs are written to this file here:
 
-- `/usr/share/ublue-os/initramfs/tracked`
+- `/usr/share/bluebuild/initramfs-setup/tracked`
 
 `tracked` file won't get written if you did not include any initramfs modifications. This makes separation between OS & live-user modifications clearer.
 
@@ -38,7 +38,7 @@ Live-user modification is available too.
 
 If live-user is not satisfied with initramfs modifications done by the OS, he can add them into this file here:
 
-`/etc/ublue-os/initramfs/tracked-custom`
+`/etc/bluebuild/initramfs-setup/tracked-custom`
 
 File contains explanation on what it does & how it should be used.
 
@@ -46,4 +46,4 @@ If live-user wants to include dracut configs from `/etc/dracut.conf.d/` to be re
 
 If live-user wants to rebuild initramfs on system reboot, he can do that by issuing this command:
 
-`sudo touch /etc/ublue-os/initramfs/rebuild`
+`sudo touch /etc/bluebuild/initramfs-setup/rebuild`
