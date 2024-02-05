@@ -37,7 +37,7 @@ echo "Writing 'tracked-custom' file to initramfs directory for live-user modific
 echo "# This file can be modified by live-users if they want to have custom file location arguments in initramfs.
 # Duplicates from already existing initramfs modifications will be ignored.
 # \`rpm-ostree initramfs-etc\` command can be issued to check current initramfs status.
-# Also don't forget to copy your initramfs modification files if you have those.
+# Don't forget to copy your initramfs modification files if you have those.
 # Here's an example on how to edit this file (ignore # symbol):
 #
 # /etc/vconsole.conf
