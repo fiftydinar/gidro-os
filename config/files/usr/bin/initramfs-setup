@@ -5,7 +5,7 @@ tracked_file="/usr/share/bluebuild/initramfs-setup/tracked"
 custom_tracked_file="/etc/bluebuild/initramfs-setup/tracked-custom"
 rebuild_file="/etc/bluebuild/initramfs-setup/rebuild"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
-readarray -t needed < <(cat "$tracked_file" "$custom_tracked_file" 2>/dev/null | grep -v -E '^#|^$')
+readarray -t needed < <(cat "$tracked_file" "$custom_tracked_file" 2>/dev/null | grep -v -E '^#|^$' | awk '!seen[$0]++')
 
 applies_tracking=false
 applies_untracking=false
