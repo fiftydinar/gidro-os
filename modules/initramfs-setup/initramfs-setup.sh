@@ -6,8 +6,8 @@ set -euo pipefail
 # Uncomment this when it's ready for startingpoint/bling
 #MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
 #
-#cp -r "$MODULE_DIRECTORY"/initramfs-setup/files/usr/bin/initramfs-setup /usr/bin/initramfs-setup
-#cp -r "$MODULE_DIRECTORY"/initramfs-setup/files/usr/lib/systemd/system/initramfs-setup.service /usr/lib/systemd/system/initramfs-setup.service
+#cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup /usr/bin/initramfs-setup
+#cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup.service /usr/lib/systemd/system/initramfs-setup.service
 
 get_yaml_array INCLUDE '.include[]' "$1"
 
