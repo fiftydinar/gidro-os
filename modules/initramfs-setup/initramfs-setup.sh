@@ -27,14 +27,14 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
 
   echo "Writing 'tracked' file to initramfs directory with modifications"
 
-  echo -e "# This file should not be modified by the user, as it's used by the OS directly.\n" > "$root_location"/tracked
+  echo -e "# This file utilizes maintainer's configuration for custom initramfs arguments used by initramfs-setup BlueBuild module.\n" > "$root_location"/tracked
   printf "%s" "${INCLUDE[@]}" >> "$root_location"/tracked
 fi
 
 mkdir -p "$user_location"
 
 echo "Writing 'tracked-custom' file to initramfs directory for live-user modifications"
-echo "# This file can be modified by live-users if they want to have custom file location arguments in initramfs.
+echo "# This file utilizes user configuration for custom initramfs arguments used by initramfs-setup BlueBuild module.
 # Duplicates from already existing initramfs modifications will be ignored.
 # \`rpm-ostree initramfs-etc\` command can be issued to check current initramfs status.
 # Don't forget to copy your initramfs modification files if you have those.
