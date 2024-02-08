@@ -23,6 +23,7 @@ install:
   - system76-power
   - python3-icoextract
   - gnome-randr-rust
+  - langpacks-en
 
 remove:
   - firefox
