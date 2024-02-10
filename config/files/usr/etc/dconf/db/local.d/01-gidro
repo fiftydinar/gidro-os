@@ -1,3 +1,3 @@
 [org/gnome/desktop/app-folders/folders/Utilities]
-apps=['org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Loupe.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'com.github.tchx84.Flatseal.desktop', 'io.github.flattool.Warehouse.desktop', 'io.github.fabrialberio.pinapp.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'com.github.wwmm.easyeffects.desktop', 'com.github.marhkb.Pods.desktop', 'it.mijorus.gearlever.desktop']
+apps=['org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Loupe.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'com.github.tchx84.Flatseal.desktop', 'io.github.flattool.Warehouse.desktop', 'io.github.fabrialberio.pinapp.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'com.github.wwmm.easyeffects.desktop', 'it.mijorus.gearlever.desktop']
 name='Utilities'

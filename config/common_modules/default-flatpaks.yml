@@ -29,7 +29,6 @@ system:
     - io.github.fabrialberio.pinapp
     - com.mattjakeman.ExtensionManager
     - com.github.wwmm.easyeffects
-    - com.github.marhkb.Pods
     - it.mijorus.gearlever
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
