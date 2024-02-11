@@ -64,12 +64,14 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
   if $applies_tracking && ! $applies_untracking && ! $applies_rebuilding; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${tracked_args[@]}" --reboot
 
 # Untracked initramfs
   elif ! $applies_tracking && $applies_untracking && ! $applies_rebuilding; then
     printf "Found needed removal of non-active tracked files, removing the following: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${untracked_args[@]}" --reboot
 
 # Tracked & untracked initramfs
@@ -77,6 +79,7 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
     printf "Found needed tracking initramfs changes, applying the following: %s\n" "${needed[*]}"
     printf "Also applying needed removal of non-active tracked files: %s\n" "${untracked[*]}"
     plymouth display-message --text="Updating initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --reboot
 
 # Rebuild initramfs
@@ -84,6 +87,7 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
     echo "Initramfs rebuilding is enabled, proceeding"
     rm -f "$rebuild_file"
     plymouth display-message --text="Rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc --force-sync --reboot
 
 # Tracked + rebuild initramfs
@@ -92,6 +96,7 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
     echo "Initramfs rebuilding is enabled, proceeding"
     rm -f "$rebuild_file"    
     plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${tracked_args[@]}" --force-sync --reboot
 
 # Untracked + rebuild initramfs
@@ -100,6 +105,7 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
     echo "Initramfs rebuilding is enabled, proceeding"
     rm -f "$rebuild_file"    
     plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${untracked_args[@]}" --force-sync --reboot
 
 # Tracked & untracked + rebuild initramfs
@@ -109,6 +115,7 @@ if $applies_tracking || $applies_untracking || $applies_rebuilding; then
     echo "Initramfs rebuilding is enabled, proceeding"
     rm -f "$rebuild_file"    
     plymouth display-message --text="Updating & rebuilding initramfs - System will reboot" || true
+    rpm-ostree initramfs --disable
     rpm-ostree initramfs-etc "${tracked_args[@]}" "${untracked_args[@]}" --force-sync --reboot
   fi
 

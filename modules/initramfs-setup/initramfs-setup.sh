@@ -28,6 +28,14 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   printf "%s" "${INCLUDE[@]}" >> "$root_location"/tracked
 fi
 
+# Only copy dracut files when they are present & with .conf extension only
+dracut_config="/tmp/config/initramfs-setup/dracut"
+dracut_files=$(find "$dracut_config" -type f -name "*.conf")
+if [ -n "$dracut_files" ]; then
+    echo "Copying dracut config files"
+    cp -r "$dracut_config"/*.conf /usr/lib/dracut/dracut.conf.d
+fi
+
 mkdir -p "$user_location"
 
 echo "Copying user modification template file"
