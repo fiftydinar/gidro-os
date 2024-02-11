@@ -1,0 +1,10 @@
+name: initramfs-setup
+shortdesc: The initramfs-setup module can be used to include file arguments into initramfs, which are useful for modifying hardware behavior.
+readme: https://raw.githubusercontent.com/ublue-os/bling/main/modules/initramfs-setup/README.md
+example: |
+  modules:
+    - type: initramfs-setup
+      include:
+        - /etc/crypttab
+        - /etc/vconsole.conf
+        - /etc/modprobe.d/my-config.conf

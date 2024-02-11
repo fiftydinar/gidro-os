@@ -1,7 +1,8 @@
-# `initramfs-setup` module for startingpoint
+# `initramfs-setup`
 
-This `initramfs-setup` module is intended for including files into initramfs, which are useful for modifying hardware behavior.
+The `initramfs-setup` module can be used to include file arguments into initramfs, which are useful for modifying hardware behavior.
 It is similar to `rpm-ostree kargs` for this purpose, but `initramfs-setup` can load some modifications which are not possible to load with `rpm-ostree kargs`.
+It is also a more reliable method of doing those type of changes, as modifications are file-based, compared to being argument-based.
 
 Currently, it supports including file locations from `/etc` directory only by internally using `rpm-ostree initramfs-etc` component.
 
@@ -24,26 +25,16 @@ Your modifications to initramfs are written to this file here:
 To include your initramfs modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
 Do the otherwise for deleting.
 
-## Example configuration
+# Local modification
 
-```yaml
-type: initramfs-setup
-include:
-    - /etc/crypttab
-    - /etc/vconsole.conf
-    - /etc/modprobe.d/my_config.conf
-```
+If local user is not satisfied with default initramfs modifications in the image, it is possible for them to make modifications to the default configuration through the configuration file located here:
 
-Live-user modification is available too.
+`/etc/bluebuild/initramfs-setup/tracked`
 
-If live-user is not satisfied with initramfs modifications done by the OS, he can add them into this file here:
+It contains the explanation on what it does & how it should be used.
 
-`/etc/bluebuild/initramfs-setup/tracked-custom`
+If local user wants to include dracut configs from `/etc/dracut.conf.d/` to be recognized by initramfs, he needs to follow instructions bellow.
 
-File contains explanation on what it does & how it should be used.
-
-If live-user wants to include dracut configs from `/etc/dracut.conf.d/` to be recognized by initramfs, he needs to follow instructions bellow.
-
-If live-user wants to rebuild initramfs on system reboot, he can do that by issuing this command:
+If local user wants to rebuild initramfs on system reboot, he can do that by issuing this command:
 
 `sudo touch /etc/bluebuild/initramfs-setup/rebuild`

@@ -1,0 +1,10 @@
+# This file utilizes user configuration of `initramfs arguments` used by the `initramfs-setup` BlueBuild module.
+# If this file is not modified, the image's default configuration will be used instead (located in /usr/share/bluebuild/initramfs-setup/tracked).
+# This config uses the file location format, with one file location per line.
+# Duplicated entries won't be used if located in the image's default configuration.
+# Don't forget to copy your initramfs modification files if you have those.
+# Here's an example on how to edit this file (ignore # symbol):
+#
+# /etc/vconsole.conf
+# /etc/crypttab
+# /etc/modprobe.d/my-modprobe.conf

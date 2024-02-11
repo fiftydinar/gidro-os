@@ -3,11 +3,10 @@
 # Tell build process to exit if there are any errors.
 set -euo pipefail
 
-# Uncomment this when it's ready for startingpoint/bling
-#MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
-#
-#cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup /usr/bin/initramfs-setup
-#cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup.service /usr/lib/systemd/system/initramfs-setup.service
+MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
+
+cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup /usr/bin/initramfs-setup
+cp -r "$MODULE_DIRECTORY"/initramfs-setup/initramfs-setup.service /usr/lib/systemd/system/initramfs-setup.service
 
 get_yaml_array INCLUDE '.include[]' "$1"
 
@@ -25,26 +24,16 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   
   mkdir -p "$root_location"
 
-  echo "Writing 'tracked' file to initramfs directory with modifications"
-
-  echo -e "# This file utilizes maintainer's configuration for custom initramfs arguments used by initramfs-setup BlueBuild module.\n" > "$root_location"/tracked
+  cp -r "$MODULE_DIRECTORY"/initramfs-setup/config/tracked "$root_location"/tracked
   printf "%s" "${INCLUDE[@]}" >> "$root_location"/tracked
 fi
 
 mkdir -p "$user_location"
 
-echo "Writing 'tracked-custom' file to initramfs directory for live-user modifications"
-echo "# This file utilizes user configuration for custom initramfs arguments used by initramfs-setup BlueBuild module.
-# Duplicates from already existing initramfs modifications will be ignored.
-# \`rpm-ostree initramfs-etc\` command can be issued to check current initramfs status.
-# Don't forget to copy your initramfs modification files if you have those.
-# Here's an example on how to edit this file (ignore # symbol):
-#
-# /etc/vconsole.conf
-# /etc/crypttab
-# /etc/modprobe.d/my-modprobe.conf" > "$user_location"/tracked-custom
+echo "Copying user modification template file"
+cp -r "$MODULE_DIRECTORY"/initramfs-setup/user-config/tracked "$user_location"/tracked
 
-# Uncomment this when it's ready for startingpoint/bling
-#echo "Enabling initramfs-setup service"
-#systemctl enable -f initramfs-setup.service
+echo "Enabling initramfs-setup service"
+systemctl enable -f initramfs-setup.service
+
 echo "Initramfs-setup is successfully installed & configured"

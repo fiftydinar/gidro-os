@@ -2,7 +2,7 @@
 
 # Global initramfs variables - Needed initramfs file arguments contain tracked file arguments dictated by the module & by the live-user
 tracked_file="/usr/share/bluebuild/initramfs-setup/tracked"
-custom_tracked_file="/etc/bluebuild/initramfs-setup/tracked-custom"
+custom_tracked_file="/etc/bluebuild/initramfs-setup/tracked"
 rebuild_file="/etc/bluebuild/initramfs-setup/rebuild"
 readarray -t current < <(rpm-ostree initramfs-etc | tr -d ' ' | tail -n +2)
 readarray -t needed < <(cat "$tracked_file" "$custom_tracked_file" 2>/dev/null | grep -v -E '^#|^$' | awk '!seen[$0]++')
