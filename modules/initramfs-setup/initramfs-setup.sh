@@ -30,10 +30,11 @@ fi
 
 # Only copy dracut files when they are present & with .conf extension only
 dracut_config="/tmp/config/initramfs-setup/dracut"
-dracut_files=$(find "$dracut_config" -type f -name "*.conf")
-if [ -n "$dracut_files" ]; then
+if [ -d "$dracut_config" ]; then
+  if [[ -n $(find "$dracut_config" -type f -name "*.conf") ]]; then
     echo "Copying dracut config files"
     cp -r "$dracut_config"/*.conf /usr/lib/dracut/dracut.conf.d
+  fi
 fi
 
 mkdir -p "$user_location"
