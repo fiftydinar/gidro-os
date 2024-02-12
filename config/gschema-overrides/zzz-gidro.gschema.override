@@ -3,9 +3,6 @@
 [org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
 tap-to-click=true
 
-[org.gnome.desktop.background:GNOME-Greeter]
-picture-uri='file:///usr/share/backgrounds/nokia/grasssky.jxl'
-
 #-------------- DESKTOP MODIFICATIONS --------------#
 
 [org.gtk.gtk4.Settings.FileChooser]
