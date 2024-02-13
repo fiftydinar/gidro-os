@@ -11,13 +11,6 @@ sort-directories-first=true
 [org.gtk.Settings.FileChooser]
 sort-directories-first=true
 
-[org.gnome.desktop.background]
-picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/nokia/grasssky.jxl'
-picture-uri-dark='file:///usr/share/backgrounds/nokia/grasssky-dark.jxl'
-primary-color='000000'
-secondary-color='FFFFFF'
-
 [org.gnome.desktop.input-sources]
 sources=[('xkb', 'rs+latinyz')]
 mru-sources=[('xkb', 'rs+latinyz')]
