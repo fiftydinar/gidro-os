@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+    <wallpaper deleted="false">
+        <name>Grass and Sky</name>
+        <filename>/usr/share/backgrounds/nokia/grasssky.jxl</filename>
+        <filename-dark>/usr/share/backgrounds/nokia/grasssky-dark.jxl</filename-dark>    
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#000000</pcolor>
+        <scolor>#ffffff</scolor>
+    </wallpaper>
+</wallpapers>
