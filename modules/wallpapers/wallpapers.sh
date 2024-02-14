@@ -255,13 +255,13 @@ wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_location="/tmp/config/wallpapers"
 wallpaper_location="/usr/share/backgrounds/bluebuild"
 wallpaper_gnome_xml="/usr/share/gnome-background-properties"
-SCALING_NONE_ALL=$(yq eval '.scaling.none' "$1")
-SCALING_SCALED_ALL=$(yq eval '.scaling.scaled' "$1")
-SCALING_STRETCHED_ALL=$(yq eval '.scaling.stretched' "$1")
-SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "$1")
-SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "$1")
-SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "$1")
-SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "$1")
+SCALING_NONE_ALL=$(yq eval '.scaling.none' "/tmp/config/recipe.yml")
+SCALING_SCALED_ALL=$(yq eval '.scaling.scaled' "/tmp/config/recipe.yml")
+SCALING_STRETCHED_ALL=$(yq eval '.scaling.stretched' "/tmp/config/recipe.yml")
+SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "/tmp/config/recipe.yml")
+SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "/tmp/config/recipe.yml")
+SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "/tmp/config/recipe.yml")
+SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "/tmp/config/recipe.yml")
 
 # Install the wallpapers module
 echo "Installing wallpapers module"
