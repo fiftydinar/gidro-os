@@ -191,14 +191,26 @@ install_wallpapers_module() {
   local wallpaper_location=$2
   local wallpaper_gnome_xml=$3
   local wallpapers_module_dir=$4
+
+  # Copy wallpapers to the system backgrounds directory
   copy_wallpapers "$wallpaper_include_location" "$wallpaper_location"
+
+  # Check if GNOME desktop environment is installed
   check_gnome_de
+
+  # Separate light and dark wallpapers from a given array
   separate_light_dark_wallpapers DEFAULT_WALLPAPER_LIGHT_DARK DEFAULT_WALLPAPER_LIGHT DEFAULT_WALLPAPER_DARK
+
+  # Write XML files for each wallpaper
   write_xmls WALLPAPER "$wallpaper_gnome_xml" "$wallpaper_location"
   write_xmls WALLPAPER_LIGHT "$wallpaper_gnome_xml" "$wallpaper_location"
   write_xmls WALLPAPER_DARK "$wallpaper_gnome_xml" "$wallpaper_location"
+
+  # Write XML files for default wallpapers
   write_default_wallpaper DEFAULT_WALLPAPER "$wallpaper_gnome_xml" "$wallpaper_location"
   write_default_wallpaper DEFAULT_WALLPAPER_LIGHT_DARK "$wallpaper_gnome_xml" "$wallpaper_location"
+
+  # Write scaling settings for each wallpaper
   write_per_wallpaper_scaling_settings SCALING_NONE "$wallpaper_gnome_xml"
   write_per_wallpaper_scaling_settings SCALING_SCALED "$wallpaper_gnome_xml"
   write_per_wallpaper_scaling_settings SCALING_STRETCHED "$wallpaper_gnome_xml"
@@ -206,8 +218,12 @@ install_wallpapers_module() {
   write_per_wallpaper_scaling_settings SCALING_CENTERED "$wallpaper_gnome_xml"
   write_per_wallpaper_scaling_settings SCALING_SPANNED "$wallpaper_gnome_xml"
   write_per_wallpaper_scaling_settings SCALING_WALLPAPER "$wallpaper_gnome_xml"
+
+  # Set the default wallpaper in gschema override
   set_default_wallpaper_in_gschema_override DEFAULT_WALLPAPER "$wallpapers_module_dir" "$wallpaper_location"
   set_default_light_dark_wallpaper_in_gschema_override DEFAULT_WALLPAPER_LIGHT_DARK "$wallpapers_module_dir" "$wallpaper_location"
+
+  # Overwrite the scaling value in gschema override
   overwrite_scaling_value_in_gschema_override SCALING_NONE_ALL SCALING_NONE "$wallpapers_module_dir"
   overwrite_scaling_value_in_gschema_override SCALING_SCALED_ALL SCALING_SCALED "$wallpapers_module_dir"
   overwrite_scaling_value_in_gschema_override SCALING_STRETCHED_ALL SCALING_STRETCHED "$wallpapers_module_dir"
@@ -215,6 +231,8 @@ install_wallpapers_module() {
   overwrite_scaling_value_in_gschema_override SCALING_CENTERED_ALL SCALING_CENTERED "$wallpapers_module_dir"
   overwrite_scaling_value_in_gschema_override SCALING_SPANNED_ALL SCALING_SPANNED "$wallpapers_module_dir"
   overwrite_scaling_value_in_gschema_override SCALING_WALLPAPER_ALL SCALING_WALLPAPER "$wallpapers_module_dir"
+
+  # Overwrite the scaling value per wallpaper in gschema override
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_NONE "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_SCALED "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_STRETCHED "$wallpapers_module_dir"
@@ -222,9 +240,12 @@ install_wallpapers_module() {
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_CENTERED "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_SPANNED "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_WALLPAPER "$wallpapers_module_dir"
+
+  # Copy gschema override to the system & build it to include wallpaper defaults
   echo "Copying gschema override to the system & building it to include wallpaper defaults"
   cp "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override /usr/share/glib-2.0/schemas
   glib-compile-schemas --strict /usr/share/glib-2.0/schemas
+
   echo "Wallpapers module installed successfully!"
 }
 
