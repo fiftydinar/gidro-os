@@ -5,21 +5,14 @@ set -euo pipefail
 MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
 wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 
-echo "get_yaml_array DEFAULT_WALLPAPER '.default.wallpaper[]' "$1""
 get_yaml_array DEFAULT_WALLPAPER '.default.wallpaper[]' "$1"
-echo "readarray -t DEFAULT_WALLPAPER < <(printf '%s\n' "${DEFAULT_WALLPAPER[@]}" | tr ' ' '_')"
 # If file-name has whitespace, convert it to _ character.
-echo "readarray -t DEFAULT_WALLPAPER < <(printf '%s\n' "${DEFAULT_WALLPAPER[@]}" | tr ' ' '_')"
 readarray -t DEFAULT_WALLPAPER < <(printf '%s\n' "${DEFAULT_WALLPAPER[@]}" | tr ' ' '_')
-echo "get_yaml_array DEFAULT_WALLPAPER_LIGHT_DARK '.default.wallpaper-light-dark[]' "$1""
 get_yaml_array DEFAULT_WALLPAPER_LIGHT_DARK '.default.wallpaper-light-dark[]' "$1"
 # If file-name has whitespace, convert it to _ character.
-echo "readarray -t DEFAULT_WALLPAPER_LIGHT_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | tr ' ' '_')"
 readarray -t DEFAULT_WALLPAPER_LIGHT_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | tr ' ' '_')
 # Separate default light & dark wallpaper entry (without need to make another yaml array). It must contain "-bb-light" &/or "-bb-dark" word in filename.
-echo "readarray -t DEFAULT_WALLPAPER_LIGHT < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $1}')"
 readarray -t DEFAULT_WALLPAPER_LIGHT < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $1}')
-echo "readarray -t DEFAULT_WALLPAPER_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $NF}')"
 readarray -t DEFAULT_WALLPAPER_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $NF}')
 
 # Scaling (use special variables for all & for specific wallpapers)
