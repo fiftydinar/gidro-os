@@ -23,7 +23,7 @@ readarray -t DEFAULT_WALLPAPER_LIGHT_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER
 readarray -t DEFAULT_WALLPAPER_LIGHT < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $1}')
 readarray -t DEFAULT_WALLPAPER_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $NF}')
 # Separate included light/dark wallpapers list from the default wallpapers. Also don't include ./ prefix in files & include filenames only.
-readarray -t WALLPAPER_LIGHT_DARK < <(find "$wallpaper_light_dark" -type f ! \( "${DEFAULT_WALLPAPER_LIGHT[*]/#/-name }" "${DEFAULT_WALLPAPER_DARK[*]/#/-o -name }" \) -printf "%f\n")
+readarray -t WALLPAPER_LIGHT_DARK < <(find "$wallpaper_light_dark" -type f ! \( "${DEFAULT_WALLPAPER_LIGHT[@]/#/-name }" "${DEFAULT_WALLPAPER_DARK[@]/#/-o -name }" \) -printf "%f\n")
 # Separate light & dark wallpaper entry. It must contain "-bb-light" &/or "-bb-dark" word in filename.
 readarray -t WALLPAPER_LIGHT < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
 readarray -t WALLPAPER_DARK < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
