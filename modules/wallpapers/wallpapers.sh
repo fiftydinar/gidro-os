@@ -262,6 +262,7 @@ SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "$1")
 SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "$1")
 SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "$1")
 SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "$1")
+default_wallpaper_array_name=$(yq eval '.default.wallpaper' "$1")
 
 # Install the wallpapers module
 echo "Installing wallpapers module"
