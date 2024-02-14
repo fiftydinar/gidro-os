@@ -177,7 +177,6 @@ for scaling_option in "${scaling_options[@]}"; do
       yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$scaling_variable".xml
       echo "Writing custom per-wallpaper scaling value to XML file"
     fi
-  done  
 done
 
 ############################### GSCHEMA OVERRIDE ###################################
