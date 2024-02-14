@@ -15,20 +15,20 @@ wallpaper_gnome_xml="/usr/share/gnome-background-properties"
 
 get_yaml_array DEFAULT_WALLPAPER '.default.wallpaper[]' "$1"
 # If file-name has whitespace, convert it to _ character.
-readarray -t DEFAULT_WALLPAPER < <(printf '%s\n' "${DEFAULT_WALLPAPER[@]}" | tr ' ' '_')
+readarray -t DEFAULT_WALLPAPER < <(printf '%s\n' "${DEFAULT_WALLPAPER[*]}" | tr ' ' '_')
 get_yaml_array DEFAULT_WALLPAPER_LIGHT_DARK '.default.wallpaper-light-dark[]' "$1"
 # If file-name has whitespace, convert it to _ character.
-readarray -t DEFAULT_WALLPAPER_LIGHT_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | tr ' ' '_')
+readarray -t DEFAULT_WALLPAPER_LIGHT_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}" | tr ' ' '_')
 # Separate default light & dark wallpaper entry (without need to make another yaml array). It must contain "-bb-light" &/or "-bb-dark" word in filename.
-readarray -t DEFAULT_WALLPAPER_LIGHT < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $1}')
-readarray -t DEFAULT_WALLPAPER_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}" | awk -F '_\\+_' '{print $NF}')
+readarray -t DEFAULT_WALLPAPER_LIGHT < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}" | awk -F '_\\+_' '{print $1}')
+readarray -t DEFAULT_WALLPAPER_DARK < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}" | awk -F '_\\+_' '{print $NF}')
 # Separate included light/dark wallpapers list from the default wallpapers. Also don't include ./ prefix in files & include filenames only.
-readarray -t WALLPAPER_LIGHT_DARK < <(find "$wallpaper_light_dark" -type f ! \( "${DEFAULT_WALLPAPER_LIGHT[@]/#/-name }" "${DEFAULT_WALLPAPER_DARK[@]/#/-o -name }" \) -printf "%f\n")
+readarray -t WALLPAPER_LIGHT_DARK < <(find "$wallpaper_light_dark" -type f ! \( "${DEFAULT_WALLPAPER_LIGHT[*]/#/-name }" "${DEFAULT_WALLPAPER_DARK[*]/#/-o -name }" \) -printf "%f\n")
 # Separate light & dark wallpaper entry. It must contain "-bb-light" &/or "-bb-dark" word in filename.
 readarray -t WALLPAPER_LIGHT < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
 readarray -t WALLPAPER_DARK < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
 # Separate included wallpapers list from the default wallpapers. Also don't include ./ prefix in files & include filenames only. Exclude directory for light/dark wallpapers inclusion.
-readarray -t WALLPAPER < <(find "$wallpaper_include_location" -type d -not -path "$wallpaper_light_dark" -type f "${DEFAULT_WALLPAPER[@]/#/-not -name }" -printf "%f\n")
+readarray -t WALLPAPER < <(find "$wallpaper_include_location" -type d -not -path "$wallpaper_light_dark" -type f "${DEFAULT_WALLPAPER[*]/#/-not -name }" -printf "%f\n")
 
 # Scaling variables
 
@@ -100,7 +100,7 @@ for wallpaper in "${WALLPAPER[@]}"; do
   for scaling_option in "${scaling_options[@]}"; do
     cp "$wallpapers_module_dir"/bluebuild.xml "$wallpapers_module_dir"/bluebuild-template.xml
     yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper"'"' "$wallpapers_module_dir"/bluebuild-template.xml
-    yq -i '.wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper' "$wallpapers_module_dir"/bluebuild-template.xml
+    yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper" "$wallpapers_module_dir"/bluebuild-template.xml
     yq 'del(.wallpapers.wallpaper.filename-dark)' "$wallpapers_module_dir"/bluebuild-template.xml -i
     scaling_variable="SCALING_${scaling_option^^}_ALL"
     if [[ "${!scaling_variable}" = "all" ]] && [[ ${#scaling_variable[@]} -gt 0 ]]; then
@@ -119,8 +119,8 @@ for wallpaper_light in "${WALLPAPER_LIGHT[@]}"; do
     for scaling_option in "${scaling_options[@]}"; do
       cp "$wallpapers_module_dir"/bluebuild.xml "$wallpapers_module_dir"/bluebuild-template.xml    
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper_light"_+_"$wallpaper_dark"'"' "$wallpapers_module_dir"/bluebuild-template.xml
-      yq -i '.wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper_light' "$wallpapers_module_dir"/bluebuild-template.xml
-      yq -i '.wallpapers.wallpaper.filename-dark = $wallpaper_destination/$wallpaper_dark' "$wallpapers_module_dir"/bluebuild-template.xml
+      yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper_light" "$wallpapers_module_dir"/bluebuild-template.xml
+      yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$wallpaper_dark" "$wallpapers_module_dir"/bluebuild-template.xml
       scaling_variable="SCALING_${scaling_option^^}_ALL"
       if [[ "${!scaling_variable}" = "all" ]] && [[ ${#scaling_variable[@]} -gt 0 ]]; then
         yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpapers_module_dir"/bluebuild-template.xml
@@ -135,11 +135,11 @@ done
 # Remove filename-dark field, as it's not needed for the default wallpaper
 # Set name of the XML to BlueBuild-nameofthewallpaper.jpg.xml
 # Also write global scaling option
-for default_wallpaper in "${DEFAULT_WALLPAPER[@]}"; do
+for default_wallpaper in "${DEFAULT_WALLPAPER[*]}"; do
   for scaling_option in "${scaling_options[@]}"; do
     cp "$wallpapers_module_dir"/bluebuild.xml "$wallpapers_module_dir"/bluebuild-template.xml  
     yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper"'"' "$wallpapers_module_dir"/bluebuild-template.xml
-    yq -i '.wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper' "$wallpapers_module_dir"/bluebuild-template.xml
+    yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper" "$wallpapers_module_dir"/bluebuild-template.xml
     yq 'del(.wallpapers.wallpaper.filename-dark)' "$wallpapers_module_dir"/bluebuild-template.xml -i
     scaling_variable="SCALING_${scaling_option^^}_ALL"
     if [[ "${!scaling_variable}" = "all" ]] && [[ ${#scaling_variable[@]} -gt 0 ]]; then
@@ -153,13 +153,13 @@ done
 # Write XMLs to make default light/dark wallpaper appear in Gnome settings.
 # Set name of the wallpaper to BlueBuild-nameofthewallpaper.jpg.xml
 # Also write global scaling option
-for default_wallpaper_light in "${DEFAULT_WALLPAPER_LIGHT[@]}"; do
-  for default_wallpaper_dark in "${DEFAULT_WALLPAPER_DARK[@]}"; do
+for default_wallpaper_light in "${DEFAULT_WALLPAPER_LIGHT[*]}"; do
+  for default_wallpaper_dark in "${DEFAULT_WALLPAPER_DARK[*]}"; do
     for scaling_option in "${scaling_options[@]}"; do
       cp "$wallpapers_module_dir"/bluebuild.xml "$wallpapers_module_dir"/bluebuild-template.xml      
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light"_+_"$default_wallpaper_dark"'"' "$wallpapers_module_dir"/bluebuild-template.xml
-      yq -i '.wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper_light' "$wallpapers_module_dir"/bluebuild-template.xml
-      yq -i '.wallpapers.wallpaper.filename-dark = $wallpaper_destination/$default_wallpaper_dark' "$wallpapers_module_dir"/bluebuild-template.xml
+      yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper_light" "$wallpapers_module_dir"/bluebuild-template.xml
+      yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$default_wallpaper_dark" "$wallpapers_module_dir"/bluebuild-template.xml
       scaling_variable="SCALING_${scaling_option^^}_ALL"
       if [[ "${!scaling_variable}" = "all" ]] && [[ ${#scaling_variable[@]} -gt 0 ]]; then
         yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpapers_module_dir"/bluebuild-template.xml
@@ -183,8 +183,8 @@ done
 
 # Write default wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]]; then
-  printf "%s" "Setting ${DEFAULT_WALLPAPER[@]} as the default wallpaper in gschema override"
-  printf  "picture-uri='file://$wallpaper_destination/${DEFAULT_WALLPAPER[@]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
+  printf "%s" "Setting ${DEFAULT_WALLPAPER[*]} as the default wallpaper in gschema override"
+  printf '..%s..' "picture-uri='file://$wallpaper_destination/${DEFAULT_WALLPAPER[*]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
 elif [[ ${#DEFAULT_WALLPAPER[@]} -gt 1 ]]; then
   echo "Module failed because you included more than 1 wallpaper to be set as default, which is not allowed"
   exit 1
@@ -192,9 +192,9 @@ fi
 
 # Write default light/dark theme wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]]; then
-  printf "%s" "Setting ${DEFAULT_WALLPAPER_LIGHT_DARK[@]} as the default light/dark wallpaper in gschema override"
-  printf  "picture-uri='file://$wallpaper_destination/${DEFAULT_WALLPAPER_LIGHT[@]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
-  printf  "picture-uri-dark='file://$wallpaper_destination/${DEFAULT_WALLPAPER_DARK[@]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override 
+  printf "%s" "Setting ${DEFAULT_WALLPAPER_LIGHT_DARK[*]} as the default light/dark wallpaper in gschema override"
+  printf '..%s..' "picture-uri='file://$wallpaper_destination/${DEFAULT_WALLPAPER_LIGHT[*]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
+  printf '..%s..' "picture-uri-dark='file://$wallpaper_destination/${DEFAULT_WALLPAPER_DARK[*]}'" >> "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override 
 elif [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -gt 1 ]]; then
   echo "Module failed because you included more than 1 light & dark wallpaper to be set as default for light/dark theme, which is not allowed"
   exit 1
@@ -211,7 +211,7 @@ done
 
 # Overwrite default "zoom" scaling value if user supplied their own options with scaling per-wallpaper in gschema override
 for scaling_option in "${scaling_options[@]}"; do
-    for value in "${DEFAULT_WALLPAPER[@]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
+    for value in "${DEFAULT_WALLPAPER[*]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}"; do
         scaling_variable="SCALING_${scaling_option^^}"
         if [[ "${!scaling_variable}" == *"$value"* ]] && [[ ${#scaling_variable[@]} -gt 0 ]]; then
             echo "Writing custom per-wallpaper scaling value to gschema override"
