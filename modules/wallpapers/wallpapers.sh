@@ -5,6 +5,7 @@ set -euo pipefail
 MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
 wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 
+# Function to get an array from a YAML file using yq
 get_yaml_array() {
   local variable_name=$1
   local yaml_path=$2
@@ -12,11 +13,13 @@ get_yaml_array() {
   readarray -t "$variable_name" < <(yq eval "$yaml_path" "$yaml_file" | tr ' ' '_')
 }
 
+# Function to convert whitespace to underscore in an array
 convert_whitespace_to_underscore() {
   local array_name=$1
   readarray -t "$array_name" < <(printf '%s\n' "${!array_name[@]}" | tr ' ' '_')
 }
 
+# Function to separate light and dark wallpapers from a given array
 separate_light_dark_wallpapers() {
   local light_dark_array_name=$1
   local light_array_name=$2
@@ -25,21 +28,23 @@ separate_light_dark_wallpapers() {
   readarray -t "$dark_array_name" < <(printf '%s\n' "${!light_dark_array_name[@]}" | awk '/-bb-dark/')
 }
 
+# Function to copy wallpapers to the system backgrounds directory
 copy_wallpapers() {
   local wallpaper_include_location=$1
   local wallpaper_location=$2
   if [ -d "$wallpaper_include_location" ]; then
     if [[ $(find "$wallpaper_include_location") ]]; then
-      echo "Copying wallpapers into system backgrounds directory"
+      echo "Copying wallpapers into the system backgrounds directory"
       find "$wallpaper_include_location" -depth -name "* *" -execdir bash -c 'mv "$0" "${0// /_}"' {} \;
       cp -r "$wallpaper_include_location"/* "$wallpaper_location"
     else
-      echo "Module failed because wallpapers aren't included in config/wallpapers directory"
+      echo "Module failed because wallpapers aren't included in the config/wallpapers directory"
       exit 1
     fi
   fi
 }
 
+# Function to check if GNOME desktop environment is installed
 check_gnome_de() {
   local gnome_detection=$(find /usr/bin -type f -name "gnome-session" -printf "%f\n")
   if [[ ! $gnome_detection == gnome-session ]]; then
@@ -48,6 +53,7 @@ check_gnome_de() {
   fi
 }
 
+# Function to write XML files for each wallpaper
 write_xmls() {
   local wallpaper_array_name=$1
   local wallpaper_gnome_xml=$2
@@ -82,6 +88,7 @@ write_xmls() {
   done
 }
 
+# Function to write XML files for default wallpapers
 write_default_wallpaper() {
   local default_wallpaper_array_name=$1
   local wallpaper_gnome_xml=$2
@@ -116,6 +123,7 @@ write_default_wallpaper() {
   done
 }
 
+# Function to write scaling settings for each wallpaper
 write_per_wallpaper_scaling_settings() {
   local scaling_array_name=$1
   local wallpaper_gnome_xml=$2
@@ -124,6 +132,7 @@ write_per_wallpaper_scaling_settings() {
   done
 }
 
+# Function to set the default wallpaper in gschema override
 set_default_wallpaper_in_gschema_override() {
   local default_wallpaper_array_name=$1
   local wallpapers_module_dir=$2
@@ -137,6 +146,7 @@ set_default_wallpaper_in_gschema_override() {
   fi
 }
 
+# Function to set the default light and dark wallpaper in gschema override
 set_default_light_dark_wallpaper_in_gschema_override() {
   local default_wallpaper_light_dark_array_name=$1
   local wallpapers_module_dir=$2
@@ -151,6 +161,7 @@ set_default_light_dark_wallpaper_in_gschema_override() {
   fi
 }
 
+# Function to overwrite the scaling value in gschema override
 overwrite_scaling_value_in_gschema_override() {
   local scaling_all_variable_name=$1
   local scaling_variable_name=$2
@@ -160,6 +171,7 @@ overwrite_scaling_value_in_gschema_override() {
   fi
 }
 
+# Function to overwrite the scaling value per wallpaper in gschema override
 overwrite_scaling_value_per_wallpaper_in_gschema_override() {
   local default_wallpaper_array_name=$1
   local scaling_array_name=$2
@@ -173,6 +185,7 @@ overwrite_scaling_value_per_wallpaper_in_gschema_override() {
   done
 }
 
+# Function to install the wallpapers module
 install_wallpapers_module() {
   local wallpaper_include_location=$1
   local wallpaper_location=$2
@@ -209,18 +222,20 @@ install_wallpapers_module() {
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_CENTERED "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_SPANNED "$wallpapers_module_dir"
   overwrite_scaling_value_per_wallpaper_in_gschema_override DEFAULT_WALLPAPER SCALING_WALLPAPER "$wallpapers_module_dir"
-  echo "Copying gschema override to system & building it to include wallpaper defaults"
+  echo "Copying gschema override to the system & building it to include wallpaper defaults"
   cp "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override /usr/share/glib-2.0/schemas
   glib-compile-schemas --strict /usr/share/glib-2.0/schemas
   echo "Wallpapers module installed successfully!"
 }
 
+# Set the variables
 MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
 wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_location="/tmp/config/wallpapers"
 wallpaper_location="/usr/share/backgrounds/bluebuild"
 wallpaper_gnome_xml="/usr/share/gnome-background-properties"
 
+# Install the wallpapers module
 echo "Installing wallpapers module"
 install_wallpapers_module "$wallpaper_include_location" "$wallpaper_location" "$wallpaper_gnome_xml" "$wallpapers_module_dir"
 
