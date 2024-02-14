@@ -255,8 +255,14 @@ wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_location="/tmp/config/wallpapers"
 wallpaper_location="/usr/share/backgrounds/bluebuild"
 wallpaper_gnome_xml="/usr/share/gnome-background-properties"
+SCALING_NONE_ALL=$(yq eval '.scaling.none' "$1")
+SCALING_SCALED_ALL=$(yq eval '.scaling.scaled' "$1")
+SCALING_STRETCHED_ALL=$(yq eval '.scaling.stretched' "$1")
+SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "$1")
+SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "$1")
+SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "$1")
+SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "$1")
 
 # Install the wallpapers module
 echo "Installing wallpapers module"
 install_wallpapers_module "$wallpaper_include_location" "$wallpaper_location" "$wallpaper_gnome_xml" "$wallpapers_module_dir"
-
