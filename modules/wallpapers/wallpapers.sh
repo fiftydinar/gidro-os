@@ -255,14 +255,14 @@ wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_location="/tmp/config/wallpapers"
 wallpaper_location="/usr/share/backgrounds/bluebuild"
 wallpaper_gnome_xml="/usr/share/gnome-background-properties"
-SCALING_NONE_ALL=$(yq eval '.scaling.none' "$1")
-SCALING_SCALED_ALL=$(yq eval '.scaling.scaled' "$1")
-SCALING_STRETCHED_ALL=$(yq eval '.scaling.stretched' "$1")
-SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "$1")
-SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "$1")
-SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "$1")
-SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "$1")
-default_wallpaper_array_name=$(yq eval '.default.wallpaper' "$1")
+SCALING_NONE_ALL=$(yq eval '.scaling.none' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_SCALED_ALL=$(yq eval '.scaling.scaled' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_STRETCHED_ALL=$(yq eval '.scaling.stretched' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_ZOOM_ALL=$(yq eval '.scaling.zoom' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_CENTERED_ALL=$(yq eval '.scaling.centered' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_SPANNED_ALL=$(yq eval '.scaling.spanned' "$CONFIG_DIRECTORY/$RECIPE")
+SCALING_WALLPAPER_ALL=$(yq eval '.scaling.wallpaper' "$CONFIG_DIRECTORY/$RECIPE")
+default_wallpaper_array_name=$(yq eval '.default.wallpaper' "$CONFIG_DIRECTORY/$RECIPE")
 
 # Install the wallpapers module
 echo "Installing wallpapers module"
