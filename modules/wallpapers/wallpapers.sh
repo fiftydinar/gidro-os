@@ -5,7 +5,7 @@ set -euo pipefail
 ############################### VARIABLE FUNCTIONS ###################################
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
-    local -n files_array=$1
+    files_array=$1
     files_array=("${files_array[@]// /_}")
 }
 
