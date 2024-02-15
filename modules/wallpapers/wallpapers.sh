@@ -45,7 +45,7 @@ extract_wallpaper() {
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
-    readarray -t "$1" < <(find "$wallpaper_include_dir" -type d -not -path "$wallpaper_light_dark" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
+    readarray -t "$1" < <(find "$wallpaper_include_dir" -type d -not -path "$wallpaper_light_dark_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
 }
 
 ############################### VARIABLES ###################################
@@ -148,12 +148,13 @@ if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]]; then
 fi
 
 # Stop the script after copying wallpapers if non-Gnome DE is detected
-function gnome_section ()
+function gnome_section () {
 gnome_detection=$(find /usr/bin -type f -name "gnome-session" -printf "%f\n")
 if [[ ! $gnome_detection == gnome-session ]]; then
   echo "Wallpapers module installed successfully!"
   exit 0
 fi
+}
 
 ############################### INSTALLATION PROCESS ###################################
 
@@ -181,7 +182,7 @@ echo "Writing XMLs for included wallpapers to appear in Gnome settings"
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper"'"' "$xml_modified_template"
       yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper" "$xml_modified_template"
       yq 'del(.wallpapers.wallpaper.filename-dark)' "$xml_modified_template" -i
-      cp "$xml_modified_template" "$wallpaper_gnome_xml"/bluebuild-"$wallpaper".xml
+      cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper".xml
       rm "$xml_modified_template"
   done
 fi
@@ -197,7 +198,7 @@ echo "Writing XMLs for included light+dark wallpapers to appear in Gnome setting
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper_light"_+_"$wallpaper_dark"'"' "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper_light" "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$wallpaper_dark" "$xml_modified_template"
-        cp "$xml_modified_template" "$wallpaper_gnome_xml"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
+        cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
         rm "$xml_modified_template"
     done
   done
@@ -214,7 +215,7 @@ echo "Writing XML for default wallpaper to appear in Gnome settings"
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper"'"' "$xml_modified_template"
       yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper" "$xml_modified_template"
       yq 'del(.wallpapers.wallpaper.filename-dark)' "$xml_modified_template" -i
-      cp "$xml_modified_template" "$wallpaper_gnome_xml"/bluebuild-"$default_wallpaper".xml
+      cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper".xml
       rm "$xml_modified_template"    
   done
 fi
@@ -230,7 +231,7 @@ echo "Writing XML for default light+dark wallpaper to appear in Gnome settings"
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light"_+_"$default_wallpaper_dark"'"' "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper_light" "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$default_wallpaper_dark" "$xml_modified_template"
-        cp "$xml_modified_template" "$wallpaper_gnome_xml"/bluebuild-"$default_wallpaper_light"_+_"$default_wallpaper_dark".xml
+        cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper_light"_+_"$default_wallpaper_dark".xml
         rm "$xml_modified_template"
     done
   done
@@ -242,16 +243,16 @@ for scaling_option in "${scaling_options[@]}"; do
   if [[ "$scaling_variable" == "all" ]]; then
     echo "Writing global scaling value to XML file(s)"
     for xml_included in "${WALLPAPER[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$xml_included".xml
+      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_included".xml
     done
     for xml_light_dark in "${WALLPAPER_LIGHT_DARK[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$xml_light_dark".xml
+      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_light_dark".xml
     done
     for xml_default in "${DEFAULT_WALLPAPER[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$xml_default".xml
+      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default".xml
     done
     for xml_default_light_dark in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$xml_default_light_dark".xml
+      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default_light_dark".xml
     done      
   fi
 done
@@ -262,7 +263,7 @@ for scaling_option in "${scaling_options[@]}"; do
   if [[ ${#scaling_variable[@]} -gt 0 ]]; then
     for scaling_per_wallpaper in ${scaling_variable[@]}; do
         echo "Writing per-wallpaper scaling value to XML file(s)"
-        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$wallpaper_gnome_xml"/bluebuild-"$scaling_per_wallpaper".xml
+        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$scaling_per_wallpaper".xml
     done
   fi
 done
@@ -308,8 +309,8 @@ done
 
 if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]]; then
   echo "Copying gschema override to system & building it to include wallpaper defaults"
-  cp "$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override /usr/share/glib-2.0/schemas
-  glib-compile-schemas --strict /usr/share/glib-2.0/schemas
+  cp "$gschema_override" "$gschema_override_destination"
+  glib-compile-schemas --strict "$gschema_override_destination"
 fi
 
-echo "Wallpapers module installed successfully!"  
+echo "Wallpapers module installed successfully!"
