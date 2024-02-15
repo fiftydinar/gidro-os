@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
+    
 ############################### VARIABLE FUNCTIONS ###################################
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
@@ -24,8 +24,20 @@ extract_default_wallpaper_dark() {
 extract_wallpaper_light_dark() {
     # Extract included light/dark wallpapers from default light/dark wallpapers which are inputted into recipe file.
     # Exclude default light/dark wallpaper from the list.
-    # Also don't include ./ prefix in files & include filenames only for `find` command.    
-    readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f ! \( -name "$DEFAULT_WALLPAPER_LIGHT" -o -name "$DEFAULT_WALLPAPER_DARK" \) -printf "%f\n")
+    # Also don't include ./ prefix in files & include filenames only for `find` command.
+    shopt -s nullglob
+    files=("$wallpaper_light_dark_dir"/*)
+    # Exclude the default light/dark wallpapers
+    excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")
+    files=("${files[@]/$excluded_files}")
+    # Extract only the filenames without the directory path
+    filenames=()
+    for file in "${files[@]}"; do
+        filenames+=("$(basename "$file")")
+    done
+    # Assign the filenames to the input variable
+    readarray -t "$1" <<<"${filenames[@]}"
+    shopt -u nullglob
 }
 
 extract_wallpaper_light() {
@@ -44,8 +56,24 @@ extract_wallpaper() {
     # Extract regular included wallpaper.
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
-    # Also don't include ./ prefix in files & include filenames only for `find` command.
-    readarray -t "$1" < <(find "$wallpaper_include_dir" -type d -not -path "$wallpaper_light_dark_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
+    shopt -s globstar nullglob
+
+    # Create an empty array
+    files=()
+
+    # Iterate over the files using globbing
+    for file in "$wallpaper_include_dir"/**/*; do
+        # Check if the file is a regular file and exclude specific conditions
+        if [[ -f "$file" && ! -d "$file" && "$file" != "$wallpaper_light_dark_dir" && "$file" != "$DEFAULT_WALLPAPER" ]]; then
+            # Extract the filename and add it to the array
+            files+=("$(basename "$file")")
+        fi
+    done
+
+    # Assign the filenames to the input variable
+    readarray -t "$1" <<<"${files[@]}"
+
+    shopt -u globstar nullglob
 }
 
 ############################### VARIABLES ###################################
