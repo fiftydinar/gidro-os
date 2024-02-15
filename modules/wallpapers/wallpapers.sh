@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
     
+set -euo pipefail    
+    
 ############################### VARIABLE FUNCTIONS ###################################
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
@@ -126,11 +128,6 @@ for option in "${scaling_options[@]}"; do
     sanitize_file_names "$array_variable_value"
     eval "$array_variable_name=\$array_variable_value"
 done
-
-# Place this error check after variables,
-# to avoid harmless "Unbound variable" error
-# (always happens when you do not use all options at once from recipe)
-set -euo pipefail
 
 ############################### INSTALLATION CHECKS ###################################
 
