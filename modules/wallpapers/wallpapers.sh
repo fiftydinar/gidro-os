@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-set -euo pipefail
     
 ############################### VARIABLE FUNCTIONS ###################################
 sanitize_file_names() {
@@ -75,6 +73,11 @@ extract_wallpaper() {
 
     shopt -u globstar nullglob
 }
+
+# Place this error check after variable functions,
+# to avoid harmless "Unbound variable" error
+# (always happens when you do not use all options at once from recipe)
+set -euo pipefail
 
 ############################### VARIABLES ###################################
 
