@@ -20,4 +20,5 @@ modules:
   - from-file: common_modules/systemd.yml
   - from-file: common_modules/gschema-overrides.yml
   - from-file: common_modules/scripts.yml
+  - from-file: common_modules/wallpapers.yml  
   - type: signing
