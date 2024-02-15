@@ -111,7 +111,7 @@ fi
 
 # Fail if included light+dark wallpaper does not contain `-bb-light` or `-bb-dark` suffix.
 if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-  for wallpaper in "${WALLPAPER_LIGHT_DARK[@]}"; do
+  for wallpaper in "${WALLPAPER_LIGHT[@]}"; do
     if [[ ! $wallpaper =~ "-bb-light" ]]; then
       echo "Module failed because included light wallpaper $wallpaper does not contain '-bb-light' suffix"
       exit 1
