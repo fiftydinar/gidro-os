@@ -45,7 +45,7 @@ extract_wallpaper() {
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
-    readarray -t "$1" < <(find "$wallpaper_include_location" -type d -not -path "$wallpaper_light_dark" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
+    readarray -t "$1" < <(find "$wallpaper_include_dir" -type d -not -path "$wallpaper_light_dark" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
 }
 
 ############################### VARIABLES ###################################
@@ -56,7 +56,7 @@ wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_dir="$CONFIG_DIRECTORY"/wallpapers
 wallpaper_destination="/usr/share/backgrounds/bluebuild"
 # Gnome file & folder locations
-wallpaper_light_dark_dir="$wallpaper_include_location"/bluebuild-gnome-light-dark
+wallpaper_light_dark_dir="$wallpaper_include_dir"/bluebuild-gnome-light-dark
 xml_default_template="$wallpapers_module_dir"/bluebuild.xml
 xml_modified_template="$wallpapers_module_dir"/bluebuild-template.xml
 xml_destination="/usr/share/gnome-background-properties"
@@ -104,7 +104,7 @@ done
 ############################### INSTALLATION CHECKS ###################################
 
 # Fail if no wallpapers are detected in `config/wallpapers` directory.
-if [ ! -d "$wallpaper_include_location" ] || [[ ! $(find "$wallpaper_include_location" -type f) ]]; then
+if [ ! -d "$wallpaper_include_dir" ] || [[ ! $(find "$wallpaper_include_dir" -type f) ]]; then
   echo "Module failed because wallpapers aren't included in config/wallpapers directory"
   exit 1
 fi
@@ -161,8 +161,8 @@ echo "Installing wallpapers module"
 
 echo "Copying wallpapers into system backgrounds directory"
 # If file-names & wallpaper folders have whitespaces, convert them to _ character.
-find "$wallpaper_include_location" -depth -name "* *" -execdir bash -c 'mv "$0" "${0// /_}"' {} \;
-cp -r "$wallpaper_include_location"/* "$wallpaper_destination"
+find "$wallpaper_include_dir" -depth -name "* *" -execdir bash -c 'mv "$0" "${0// /_}"' {} \;
+cp -r "$wallpaper_include_dir"/* "$wallpaper_destination"
 
 ############################### GNOME-SPECIFIC CODE ###################################
 ####################################################################################
