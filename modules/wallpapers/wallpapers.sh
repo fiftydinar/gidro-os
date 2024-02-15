@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
+shopt -s nullglob
+    
 ############################### VARIABLE FUNCTIONS ###################################
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
@@ -312,5 +313,7 @@ if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]}
   cp "$gschema_override" "$gschema_override_destination"
   glib-compile-schemas --strict "$gschema_override_destination"
 fi
+
+shopt -u nullglob
 
 echo "Wallpapers module installed successfully!"
