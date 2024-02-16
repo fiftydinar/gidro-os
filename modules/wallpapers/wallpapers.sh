@@ -89,7 +89,7 @@ extract_wallpaper() {
     # Extract regular included wallpaper.
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
-    if [[ -d  "$wallpaper_light_dark_dir" ]]; then
+    if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then            
       shopt -s globstar nullglob
       # Create an empty array
       files=()
@@ -104,8 +104,12 @@ extract_wallpaper() {
       # Assign the filenames to the input variable
       readarray -t "$1" <<<"${files[@]}"
       shopt -u globstar nullglob
-    elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
+    elif  [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] && [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
+    elif  [[ -d  "$wallpaper_light_dark_dir" ]]; then
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir/*" -printf "%f\n")
+    elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -printf "%f\n")
     fi  
 }
 
