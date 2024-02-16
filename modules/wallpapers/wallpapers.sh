@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
     
 set -euo pipefail    
-shopt -s nullglob
-
+    
 ############################### VARIABLE FUNCTIONS ###################################
 
 sanitize_file_names() {
@@ -32,6 +31,7 @@ extract_wallpaper_light_dark() {
     # Exclude default light/dark wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then    
+      shopt -s nullglob
       files=("$wallpaper_light_dark_dir"/*)
       # Exclude the default light/dark wallpapers
       excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")
@@ -43,6 +43,7 @@ extract_wallpaper_light_dark() {
       done
       # Assign the filenames to the input variable
       readarray -t "$1" <<<"${filenames[@]}"
+      shopt -u nullglob
     elif [[ -d  "$wallpaper_light_dark_dir" ]]; then
       # Create an array to store the file names
       files=()
@@ -89,7 +90,7 @@ extract_wallpaper() {
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
     if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then            
-      shopt -s globstar
+      shopt -s globstar nullglob
       # Create an empty array
       files=()
       # Iterate over the files using globbing
@@ -102,7 +103,7 @@ extract_wallpaper() {
       done
       # Assign the filenames to the input variable
       readarray -t "$1" <<<"${files[@]}"
-      shopt -u globstar
+      shopt -u globstar nullglob
     elif  [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] && [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
     elif  [[ -d  "$wallpaper_light_dark_dir" ]]; then
@@ -387,5 +388,3 @@ if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]}
 fi
 
 echo "Wallpapers module installed successfully!"
-
-shopt -u nullglob
