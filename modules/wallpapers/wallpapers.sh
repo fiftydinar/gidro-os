@@ -33,14 +33,16 @@ extract_wallpaper_light_dark() {
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then    
       shopt -s nullglob
       files=("$wallpaper_light_dark_dir"/*)
-      # Exclude the default light/dark wallpapers
-      excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")
-      files=("${files[@]/$excluded_files}")
+      excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")        
+      # Exclude the default light/dark wallpapers from the files array
+      for excluded_file in "${excluded_files[@]}"; do
+          files=("${files[@]/$excluded_file}")
+      done 
       # Extract only the filenames without the directory path
       filenames=()
       for file in "${files[@]}"; do
-          filenames+=("$(basename "$file")")
-      done
+      filenames+=("$(basename "$file")")
+      done  
       # Assign the filenames to the input variable
       readarray -t "$1" <<<"${filenames[@]}"
       shopt -u nullglob
