@@ -213,7 +213,7 @@ echo "Writing XMLs for included wallpapers to appear in Gnome settings"
   for wallpaper in "${WALLPAPER[@]}"; do
       cp "$xml_default_template" "$xml_modified_template"
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper"'"' "$xml_modified_template"
-      yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper" "$xml_modified_template"
+      yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$wallpaper\"" "$xml_modified_template"
       yq 'del(.wallpapers.wallpaper.filename-dark)' "$xml_modified_template" -i
       cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper".xml
       rm "$xml_modified_template"
@@ -229,8 +229,8 @@ echo "Writing XMLs for included light+dark wallpapers to appear in Gnome setting
     for wallpaper_dark in "${WALLPAPER_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper_light"_+_"$wallpaper_dark"'"' "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$wallpaper_light" "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$wallpaper_dark" "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$wallpaper_light\"" "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$wallpaper_dark\"" "$xml_modified_template"
         cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
         rm "$xml_modified_template"
     done
@@ -246,7 +246,7 @@ echo "Writing XML for default wallpaper to appear in Gnome settings"
   for default_wallpaper in "${DEFAULT_WALLPAPER[@]}"; do
       cp "$xml_default_template" "$xml_modified_template"
       yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper"'"' "$xml_modified_template"
-      yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper" "$xml_modified_template"
+      yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$default_wallpaper\"" "$xml_modified_template"
       yq 'del(.wallpapers.wallpaper.filename-dark)' "$xml_modified_template" -i
       cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper".xml
       rm "$xml_modified_template"    
@@ -262,8 +262,8 @@ echo "Writing XML for default light+dark wallpaper to appear in Gnome settings"
     for default_wallpaper_dark in "${DEFAULT_WALLPAPER_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light"_+_"$default_wallpaper_dark"'"' "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename = $wallpaper_destination/$default_wallpaper_light" "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename-dark = $wallpaper_destination/$default_wallpaper_dark" "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$default_wallpaper_light\"" "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$default_wallpaper_dark\"" "$xml_modified_template"
         cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper_light"_+_"$default_wallpaper_dark".xml
         rm "$xml_modified_template"
     done
