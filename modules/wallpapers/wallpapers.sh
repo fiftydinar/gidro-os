@@ -110,7 +110,11 @@ extract_wallpaper() {
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir" -printf "%f\n")
     elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -printf "%f\n")
-    fi  
+    fi
+    else
+      # Avoid unbound variable if value should be empty
+      readarray -t "${1:-}"      
+    fi    
 }
 
 ############################### VARIABLES ###################################
