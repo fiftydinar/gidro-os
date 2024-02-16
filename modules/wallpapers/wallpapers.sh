@@ -30,9 +30,9 @@ extract_wallpaper_light_dark() {
     # Extract included light/dark wallpapers from default light/dark wallpapers which are inputted into recipe file.
     # Exclude default light/dark wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
-    if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then    
+    if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]] && [[ -n $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then    
       readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f ! -name "${DEFAULT_WALLPAPER_LIGHT[@]}" ! -name  "${DEFAULT_WALLPAPER_DARK[@]}" -exec basename {} \;)
-    elif [[ -d  "$wallpaper_light_dark_dir" ]]; then
+    elif [[ -n $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then
       readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
@@ -66,13 +66,13 @@ extract_wallpaper() {
     # Extract regular included wallpaper.
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
-    if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then            
+    if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ -n $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then            
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f ! -path "$wallpaper_light_dark_dir" ! -name "${DEFAULT_WALLPAPER[@]}" -exec basename {} \;)
-    elif  [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
+    elif  [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ -z $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "${DEFAULT_WALLPAPER[@]}" -exec basename {} \;)
-    elif  [[ -d  "$wallpaper_light_dark_dir" ]]; then
+    elif  [[ -n $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir/*" -exec basename {} \;)
-    elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
+    elif  [[ -z $(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;) ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
