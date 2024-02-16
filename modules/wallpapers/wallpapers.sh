@@ -3,6 +3,10 @@
 set -euo pipefail    
     
 ############################### VARIABLE FUNCTIONS ###################################
+
+WALLPAPER_LIGHT_DARK="${WALLPAPER_LIGHT_DARK:-""}" # Avoid unbound variable error if value is unset (should be empty)
+WALLPAPER="${WALLPAPER:-""}" # Avoid unbound variable error if value is unset (should be empty)
+
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
     files_array=$1
@@ -128,14 +132,12 @@ sanitize_file_names DEFAULT_WALLPAPER_LIGHT_DARK
 extract_default_wallpaper_light DEFAULT_WALLPAPER_LIGHT
 extract_default_wallpaper_dark DEFAULT_WALLPAPER_DARK
 # Included wallpapers
-WALLPAPER_LIGHT_DARK="" # Avoid unbound variable error if value is 0
 extract_wallpaper_light_dark WALLPAPER_LIGHT_DARK
 sanitize_file_names WALLPAPER_LIGHT_DARK
 #
 extract_wallpaper_light WALLPAPER_LIGHT
 extract_wallpaper_dark WALLPAPER_DARK
 #
-WALLPAPER="" # Avoid unbound variable error if value is 0
 extract_wallpaper WALLPAPER
 sanitize_file_names WALLPAPER
 
