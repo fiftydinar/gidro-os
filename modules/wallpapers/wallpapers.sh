@@ -57,27 +57,32 @@ extract_wallpaper_light_dark() {
       done
       # Assign the array to the provided variable
       readarray -t "$1" <<<"${files[@]}"
+    else
+      # Avoid unbound variable if value should be empty
+      readarray -t "${1:-}"
     fi
 }
 
 extract_wallpaper_light() {
     # Extract included light wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Light wallpaper must contain "-bb-light" word in filename.
-    if [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-        readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
-      fi
-    fi    
+    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
+      readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
+    else
+      # Avoid unbound variable if value should be empty
+      readarray -t "${1:-}"      
+    fi
 }
 
 extract_wallpaper_dark() {
     # Extract included dark wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Dark wallpaper must contain "-bb-dark" word in filename.
-    if [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-        readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
-      fi
-    fi    
+    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
+      readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
+    else
+      # Avoid unbound variable if value should be empty
+      readarray -t "${1:-}"      
+    fi
 }
 
 extract_wallpaper() {
@@ -301,18 +306,26 @@ for scaling_option in "${scaling_options[@]}"; do
   scaling_variable="SCALING_${scaling_option^^}_ALL"
   if [[ "$scaling_variable" == "all" ]]; then
     echo "Writing global scaling value to XML file(s)"
-    for xml_included in "${WALLPAPER[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_included".xml
-    done
-    for xml_light_dark in "${WALLPAPER_LIGHT_DARK[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_light_dark".xml
-    done
-    for xml_default in "${DEFAULT_WALLPAPER[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default".xml
-    done
-    for xml_default_light_dark in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
-      yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default_light_dark".xml
-    done      
+    if [[ ${#WALLPAPER[@]} -gt 0 ]]; then
+      for xml_included in "${WALLPAPER[@]}"; do
+        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_included".xml
+      done
+    fi
+    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
+      for xml_light_dark in "${WALLPAPER_LIGHT_DARK[@]}"; do
+        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_light_dark".xml
+      done
+    fi
+    if [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]]; then
+      for xml_default in "${DEFAULT_WALLPAPER[@]}"; do
+        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default".xml
+      done
+    fi
+    if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]]; then
+      for xml_default_light_dark in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
+        yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_default_light_dark".xml
+      done
+    fi  
   fi
 done
 
