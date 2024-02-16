@@ -107,7 +107,7 @@ extract_wallpaper() {
     elif  [[ ${#DEFAULT_WALLPAPER[@]} == 1 ]] && [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
     elif  [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir/*" -printf "%f\n")
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir" -printf "%f\n")
     elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -printf "%f\n")
     fi  
