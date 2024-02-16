@@ -31,34 +31,9 @@ extract_wallpaper_light_dark() {
     # Exclude default light/dark wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then    
-      shopt -s nullglob
-      files=("$wallpaper_light_dark_dir"/*)
-      excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")        
-      # Exclude the default light/dark wallpapers from the files array
-      for excluded_file in "${excluded_files[@]}"; do
-          files=("${files[@]/$excluded_file}")
-      done 
-      # Extract only the filenames without the directory path
-      filenames=()
-      for file in "${files[@]}"; do
-      filenames+=("$(basename "$file")")
-      done  
-      # Assign the filenames to the input variable
-      readarray -t "$1" <<<"${filenames[@]}"
-      shopt -u nullglob
+      readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f ! -name "$DEFAULT_WALLPAPER_LIGHT" ! -name  "$DEFAULT_WALLPAPER_DARK" -exec basename {} \;)
     elif [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      # Create an array to store the file names
-      files=()
-      # Loop through the directory and add file names to the array
-      for file in "$wallpaper_light_dark_dir"/*; do
-          # Check if the file is a regular file
-          if [[ -f "$file" ]]; then
-              # Extract the file name and add it to the array
-              files+=("$(basename "$file")")
-          fi
-      done
-      # Assign the array to the provided variable
-      readarray -t "$1" <<<"${files[@]}"
+      readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
       readarray -t "${1:-}"
@@ -92,26 +67,13 @@ extract_wallpaper() {
     # Exclude directory for light/dark wallpapers inclusion.
     # Exclude default wallpaper from the list.
     if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then            
-      shopt -s globstar nullglob
-      # Create an empty array
-      files=()
-      # Iterate over the files using globbing
-      for file in "$wallpaper_include_dir"/**/*; do
-          # Check if the file is a regular file and exclude specific conditions
-          if [[ -f "$file" && ! -d "$file" && "$file" != "$wallpaper_light_dark_dir" && "$file" != "$DEFAULT_WALLPAPER" ]]; then
-              # Extract the filename and add it to the array
-              files+=("$(basename "$file")")
-          fi
-      done
-      # Assign the filenames to the input variable
-      readarray -t "$1" <<<"${files[@]}"
-      shopt -u globstar nullglob
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f ! -path "$wallpaper_light_dark_dir" ! -name "$DEFAULT_WALLPAPER" -exec basename {} \;)
     elif  [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] && [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
-      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "$DEFAULT_WALLPAPER" -printf "%f\n")
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -name "$DEFAULT_WALLPAPER" -exec basename {} \;)
     elif  [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir/*" -printf "%f\n")
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -not -path "$wallpaper_light_dark_dir/*" -exec basename {} \;)
     elif  [[ ! -d  "$wallpaper_light_dark_dir" ]]; then
-      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -printf "%f\n")
+      readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
       readarray -t "${1:-}"      
@@ -219,7 +181,7 @@ fi
 
 # Stop the script after copying wallpapers if non-Gnome DE is detected
 function gnome_section () {
-gnome_detection=$(find /usr/bin -type f -name "gnome-session" -printf "%f\n")
+gnome_detection=$(find /usr/bin -type f -name "gnome-session" -exec basename {} \;)
 if [[ ! $gnome_detection == "gnome-session" ]]; then
   echo "Wallpapers module installed successfully!"
   exit 0
