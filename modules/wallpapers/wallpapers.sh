@@ -4,9 +4,6 @@ set -euo pipefail
     
 ############################### VARIABLE FUNCTIONS ###################################
 
-WALLPAPER_LIGHT_DARK="${WALLPAPER_LIGHT_DARK:-""}" # Avoid unbound variable error if value is unset (should be empty)
-WALLPAPER="${WALLPAPER:-""}" # Avoid unbound variable error if value is unset (should be empty)
-
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
     files_array=$1
@@ -66,16 +63,20 @@ extract_wallpaper_light_dark() {
 extract_wallpaper_light() {
     # Extract included light wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Light wallpaper must contain "-bb-light" word in filename.
-    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then        
-    readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
-    fi
+    if [[ -d  "$wallpaper_light_dark_dir" ]]; then
+      if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
+        readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
+      fi
+    fi    
 }
 
 extract_wallpaper_dark() {
     # Extract included dark wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Dark wallpaper must contain "-bb-dark" word in filename.
-    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]] && [[ -d  "$wallpaper_light_dark_dir" ]]; then            
-    readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
+    if [[ -d  "$wallpaper_light_dark_dir" ]]; then
+      if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
+        readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
+      fi
     fi    
 }
 
