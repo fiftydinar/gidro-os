@@ -3,14 +3,6 @@
 set -euo pipefail    
     
 ############################### VARIABLE FUNCTIONS ###################################
-
-# Avoid unbound variable error
-DEFAULT_WALLPAPER=""
-DEFAULT_WALLPAPER_LIGHT_DARK=""
-DEFAULT_WALLPAPER_LIGHT=""
-DEFAULT_WALLPAPER_DARK=""
-WALLPAPER_LIGHT_DARK=""
-
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
     files_array=$1
