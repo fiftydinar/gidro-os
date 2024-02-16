@@ -191,6 +191,7 @@ echo "Installing wallpapers module"
 echo "Copying wallpapers into system backgrounds directory"
 # If file-names & wallpaper folders have whitespaces, convert them to _ character.
 find "$wallpaper_include_dir" -depth -name "* *" -execdir bash -c 'mv "$0" "${0// /_}"' {} \;
+mkdir -p "$wallpaper_destination"
 cp -r "$wallpaper_include_dir"/* "$wallpaper_destination"
 
 ############################### GNOME-SPECIFIC CODE ###################################
