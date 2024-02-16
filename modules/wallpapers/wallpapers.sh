@@ -273,7 +273,8 @@ fi
 # Write global scaling settings to XML
 for scaling_option in "${scaling_options[@]}"; do
   scaling_variable="SCALING_${scaling_option^^}_ALL"
-  if [[ "$scaling_variable" == "all" ]]; then
+  readarray -t scaling_all <<< "${!scaling_variable}"  
+  if [[ ${scaling_all[@]} == "all" ]]; then
     echo "Writing global scaling value to XML file(s)"
     if [[ ${#WALLPAPER[@]} -gt 0 ]]; then
       for xml_included in "${WALLPAPER[@]}"; do
@@ -300,9 +301,10 @@ done
 
 # Write per-wallpaper scaling settings to XML
 for scaling_option in "${scaling_options[@]}"; do
-  scaling_variable=("SCALING_${scaling_option^^}_WALLPAPER")
-  if [[ ${#scaling_variable[@]} -gt 0 ]]; then
-    for scaling_per_wallpaper in ${scaling_variable[@]}; do
+  scaling_variable="SCALING_${scaling_option^^}_WALLPAPER"
+  readarray -t scaling_specific <<< "${!scaling_variable}"
+  if [[ ${#scaling_specific[@]} -gt 0 ]]; then
+    for scaling_per_wallpaper in "${scaling_specific[@]}"; do
         echo "Writing per-wallpaper scaling value to XML file(s)"
         yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$scaling_per_wallpaper".xml
     done
@@ -327,7 +329,8 @@ fi
 # Overwrite default "zoom" scaling value if user supplied their own option with global scaling in gschema override
 for scaling_option in "${scaling_options[@]}"; do
   scaling_variable="SCALING_${scaling_option^^}_ALL"
-  if [[ "$scaling_variable" = "all" ]]; then
+  readarray -t scaling_all <<< "${!scaling_variable}"  
+  if [[ ${scaling_all[@]} == "all" ]]; then
     echo "Writing global scaling value to gschema override"
     sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
   fi
@@ -338,11 +341,14 @@ for scaling_option in "${scaling_options[@]}"; do
     for value in "${DEFAULT_WALLPAPER[@]}"; do
         for light_dark_value in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
             scaling_variable="SCALING_${scaling_option^^}_WALLPAPER"
-            if [[ ${#scaling_variable[@]} -gt 0 ]]; then
-              if [[ "$scaling_variable" == *"$value"* ]] || [[ "$scaling_variable" == *"$light_dark_value"* ]]; then
-                  echo "Writing per-wallpaper scaling value to gschema override"
-                  sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
-              fi
+            readarray -t scaling_specific <<< "${!scaling_variable}"
+            if [[ ${#scaling_specific[@]} -gt 0 ]]; then
+              for specific_value in "${scaling_specific[@]}"; do
+                if [[ "$specific_value" == *"$value"* ]] || [[ "$specific_value" == *"$light_dark_value"* ]]; then
+                    echo "Writing per-wallpaper scaling value to gschema override"
+                    sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
+                fi
+              done
             fi  
         done    
     done
