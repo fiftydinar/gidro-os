@@ -29,31 +29,39 @@ extract_wallpaper_light_dark() {
     # Extract included light/dark wallpapers from default light/dark wallpapers which are inputted into recipe file.
     # Exclude default light/dark wallpaper from the list.
     # Also don't include ./ prefix in files & include filenames only for `find` command.
-    shopt -s nullglob
-    files=("$wallpaper_light_dark_dir"/*)
-    # Exclude the default light/dark wallpapers
-    excluded_files=("$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_LIGHT}" "$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_DARK}")
-    files=("${files[@]/$excluded_files}")
-    # Extract only the filenames without the directory path
-    filenames=()
-    for file in "${files[@]}"; do
-        filenames+=("$(basename "$file")")
-    done
-    # Assign the filenames to the input variable
-    readarray -t "$1" <<<"${filenames[@]}"
-    shopt -u nullglob
+    if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} == 1 ]]; then    
+      shopt -s nullglob
+      files=("$wallpaper_light_dark_dir"/*)
+      # Exclude the default light/dark wallpapers
+      excluded_files=("$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_LIGHT}" "$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_DARK}")
+      files=("${files[@]/$excluded_files}")
+      # Extract only the filenames without the directory path
+      filenames=()
+      for file in "${files[@]}"; do
+          filenames+=("$(basename "$file")")
+      done
+      # Assign the filenames to the input variable
+      readarray -t "$1" <<<"${filenames[@]}"
+      shopt -u nullglob
+    else
+      readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f -printf "%f\n")
+    fi
 }
 
 extract_wallpaper_light() {
     # Extract included light wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Light wallpaper must contain "-bb-light" word in filename.
+    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then        
     readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
+    fi
 }
 
 extract_wallpaper_dark() {
     # Extract included dark wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Dark wallpaper must contain "-bb-dark" word in filename.
+    if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then            
     readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
+    fi    
 }
 
 extract_wallpaper() {
