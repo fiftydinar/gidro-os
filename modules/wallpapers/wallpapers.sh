@@ -51,21 +51,17 @@ extract_wallpaper_light_dark() {
 extract_wallpaper_light() {
     # Extract included light wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Light wallpaper must contain "-bb-light" word in filename.
-    shopt -s nullglob
     if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then        
     readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
     fi
-    shopt -u nullglob        
 }
 
 extract_wallpaper_dark() {
     # Extract included dark wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Dark wallpaper must contain "-bb-dark" word in filename.
-    shopt -s nullglob
     if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then            
     readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
-    fi
-    shopt -u nullglob    
+    fi    
 }
 
 extract_wallpaper() {
