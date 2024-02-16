@@ -44,7 +44,18 @@ extract_wallpaper_light_dark() {
       readarray -t "$1" <<<"${filenames[@]}"
       shopt -u nullglob
     elif [[ -d  "$wallpaper_light_dark_dir" ]]; then
-      readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f -printf "%f\n")
+      # Create an array to store the file names
+      files=()
+      # Loop through the directory and add file names to the array
+      for file in "$wallpaper_light_dark_dir"/*; do
+          # Check if the file is a regular file
+          if [[ -f "$file" ]]; then
+              # Extract the file name and add it to the array
+              files+=("$(basename "$file")")
+          fi
+      done
+      # Assign the array to the provided variable
+      readarray -t "$1" <<<"${files[@]}"
     fi
 }
 
