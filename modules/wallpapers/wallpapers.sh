@@ -12,13 +12,13 @@ sanitize_file_names() {
 extract_default_wallpaper_light() {
     # Extract default light theme wallpaper from light/dark recipe input.
     # It always assumes that light wallpaper is set as 1st in light.jpg + dark.jpg recipe format.
-    readarray -t "$1" < <(printf '%s\n' "$DEFAULT_WALLPAPER_LIGHT_DARK" | awk -F '_\\+_' '{print $1}')
+    readarray -t "$1" < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK:-}" | awk -F '_\\+_' '{print $1}')
 }
 
 extract_default_wallpaper_dark() {
     # Extract default dark theme wallpaper from light/dark recipe input.
     # It always assumes that dark wallpaper is set as 2nd in light.jpg + dark.jpg recipe format.
-    readarray -t "$1" < <(printf '%s\n' "$DEFAULT_WALLPAPER_LIGHT_DARK" | awk -F '_\\+_' '{print $NF}')
+    readarray -t "$1" < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK:-}" | awk -F '_\\+_' '{print $NF}')
 }
 
 extract_wallpaper_light_dark() {
@@ -28,7 +28,7 @@ extract_wallpaper_light_dark() {
     shopt -s nullglob
     files=("$wallpaper_light_dark_dir"/*)
     # Exclude the default light/dark wallpapers
-    excluded_files=("$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_LIGHT" "$wallpaper_light_dark_dir/$DEFAULT_WALLPAPER_DARK")
+    excluded_files=("$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_LIGHT:-}" "$wallpaper_light_dark_dir/${DEFAULT_WALLPAPER_DARK:-}")
     files=("${files[@]/$excluded_files}")
     # Extract only the filenames without the directory path
     filenames=()
@@ -64,7 +64,7 @@ extract_wallpaper() {
     # Iterate over the files using globbing
     for file in "$wallpaper_include_dir"/**/*; do
         # Check if the file is a regular file and exclude specific conditions
-        if [[ -f "$file" && ! -d "$file" && "$file" != "$wallpaper_light_dark_dir" && "$file" != "$DEFAULT_WALLPAPER" ]]; then
+        if [[ -f "$file" && ! -d "$file" && "$file" != "$wallpaper_light_dark_dir" && "$file" != "${DEFAULT_WALLPAPER:-}" ]]; then
             # Extract the filename and add it to the array
             files+=("$(basename "$file")")
         fi
