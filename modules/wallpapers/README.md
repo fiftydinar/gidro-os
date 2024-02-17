@@ -25,14 +25,10 @@ For more details about Gnome wallpaper functions, please see "Usage (Gnome)" doc
 
 ## Usage
 
-To use this module, you need to include your wallpapers into this location (make folder if it doesn't exist):
+To use this module, you need to include your wallpapers into this location (make folder if it doesn't exist)  
+Wallpaper files only, not additional wallpaper folders:
 
 `config/wallpapers`
-
-You can also make additional folders with wallpapers inside `config/wallpapers` for better organization.
-
-`config/wallpapers/delight`
-`config/wallpapers/great-wallpaper`
 
 Then you just need to set `type: wallpapers` into the recipe file & you're good to go.
 
@@ -49,12 +45,10 @@ Same format is used for `scaling`, `scaling-option` recipe entry.
 
 ### Light+dark wallpapers
 
-To add light+dark wallpapers for Gnome, copy your wallpapers into this location (make folder if it doesn't exist):
-`config/wallpapers/bluebuild-gnome-light-dark`
+To add light+dark wallpapers for Gnome, copy your wallpapers into this location (make folder if it doesn't exist)  
+Wallpaper files only, not additional wallpaper folders:
 
-To make things tidy, you can also place them in separate folders, like here in example:
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-1`
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-2`
+`config/wallpapers/bluebuild-gnome-light-dark`
 
 Then add `-bb-light` & `-bb-dark` suffix to wallpaper file-names, to make the module additionally recognize those wallpapers as light+dark.  
 Wallpapers must have the same file-name with only differentiation of `-bb-light` & `-bb-dark` suffix.
