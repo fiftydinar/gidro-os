@@ -141,8 +141,7 @@ for option in "${scaling_options[@]}"; do
     SCALING_ALL["$variable_name"]=$variable_value
     
     array_variable_name="SCALING_${option^^}_WALLPAPER"
-    array_variable_value=$(echo "$1" | yq -I=0 ".scaling.$option[]")
-    sanitize_file_names "$array_variable_value"
+    array_variable_value=$(echo "$1" | yq -I=0 ".scaling.$option[]" | tr ' ' '_')
     SCALING_WALLPAPER["$array_variable_name"]=$array_variable_value
 done
 
