@@ -6,8 +6,10 @@ set -euo pipefail
 
 sanitize_file_names() {
     # If file-name has whitespace, convert it to _ character.
-    files_array=$1
-    files_array=("${files_array[@]// /_}")
+    declare -n arr=$1
+    for i in "${!arr[@]}"; do
+        arr[$i]=${arr[$i]// /_}
+    done
 }
 
 extract_default_wallpaper_light() {
