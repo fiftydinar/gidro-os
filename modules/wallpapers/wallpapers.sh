@@ -226,7 +226,7 @@ fi
 # Write XMLs to make included light+dark wallpapers appear in Gnome settings.
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-echo "Writing XMLs for included light+dark wallpapers to appear in Gnome settings"
+  echo "DEBUG: Number of included light+dark wallpapers: ${#WALLPAPER_LIGHT_DARK[@]}"
   for wallpaper_light in "${WALLPAPER_LIGHT[@]}"; do
     for wallpaper_dark in "${WALLPAPER_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
@@ -237,6 +237,8 @@ echo "Writing XMLs for included light+dark wallpapers to appear in Gnome setting
         rm "$xml_modified_template"
     done
   done
+else
+  echo "DEBUG: Number of included light+dark wallpapers: 0"
 fi
 
 # Default wallpaper XML section
