@@ -341,6 +341,7 @@ done
 
 if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
   echo "Copying gschema override to system & building it to include wallpaper defaults"
+  mkdir -p "$gschema_override_test_dir"
   cp "$gschema_override" "$gschema_override_test_dir"
   find "$gschema_override_destination" -type f ! -name "*.gschema.override" -exec cp {} "$gschema_override_test_dir" \;  
   glib-compile-schemas --strict "$gschema_override_test_dir"
