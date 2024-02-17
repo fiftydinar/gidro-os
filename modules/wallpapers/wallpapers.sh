@@ -36,7 +36,7 @@ extract_wallpaper_light_dark() {
       readarray -t "$1" < <(find "$wallpaper_light_dark_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
-      readarray -t "${1:-}"
+      readarray -t "$1" <<< ""
     fi
 }
 
@@ -47,7 +47,7 @@ extract_wallpaper_light() {
       readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
     else
       # Avoid unbound variable if value should be empty
-      readarray -t "${1:-}"      
+      readarray -t "$1" <<< ""
     fi
 }
 
@@ -58,7 +58,7 @@ extract_wallpaper_dark() {
       readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
     else
       # Avoid unbound variable if value should be empty
-      readarray -t "${1:-}"      
+      readarray -t "$1" <<< ""
     fi
 }
 
@@ -76,7 +76,7 @@ extract_wallpaper() {
       readarray -t "$1" < <(find "$wallpaper_include_dir" -type f -exec basename {} \;)
     else
       # Avoid unbound variable if value should be empty
-      readarray -t "${1:-}"      
+      readarray -t "$1" <<< ""
     fi    
 }
 
