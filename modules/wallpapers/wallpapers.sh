@@ -19,7 +19,7 @@ extract_default_wallpaper_light() {
     # Extract default light theme wallpaper from light/dark recipe input.
     # It always assumes that light wallpaper is set as 1st in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      readarray -t "$1" < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}" | awk -F '_\\+_' '{print $1}')
+      readarray -t "$1" < <(awk -F '_\\+_' '{print $1}' <<< "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}")
     fi  
 }
 
@@ -27,7 +27,7 @@ extract_default_wallpaper_dark() {
     # Extract default dark theme wallpaper from light/dark recipe input.
     # It always assumes that dark wallpaper is set as 2nd in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      readarray -t "$1" < <(printf '%s\n' "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}" | awk -F '_\\+_' '{print $NF}')
+      readarray -t "$1" < <(awk -F '_\\+_' '{print $NF}' <<< "${DEFAULT_WALLPAPER_LIGHT_DARK[*]}")
     fi  
 }
 
@@ -49,7 +49,7 @@ extract_wallpaper_light() {
     # Extract included light wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Light wallpaper must contain "-bb-light" word in filename.
     if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-      readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-light/')
+      readarray -t "$1" < <(awk '/-bb-light/' <<< "${WALLPAPER_LIGHT_DARK[@]}")
     else
       # Avoid unbound variable if value should be empty
       readarray -t "$1" <<< ""
@@ -60,7 +60,7 @@ extract_wallpaper_dark() {
     # Extract included dark wallpaper from default light/dark wallpapers which are inputted into recipe file.
     # Dark wallpaper must contain "-bb-dark" word in filename.
     if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-      readarray -t "$1" < <(printf '%s\n' "${WALLPAPER_LIGHT_DARK[@]}" | awk '/-bb-dark/')
+      readarray -t "$1" < <(awk '/-bb-dark/' <<< "${WALLPAPER_LIGHT_DARK[@]}")
     else
       # Avoid unbound variable if value should be empty
       readarray -t "$1" <<< ""
@@ -152,16 +152,6 @@ done
 if [ ! -d "$wallpaper_include_dir" ] || [[ ! $(find "$wallpaper_include_dir" -type f) ]]; then
   echo "Module failed because wallpapers aren't included in config/wallpapers directory"
   exit 1
-fi
-
-# Fail if included light+dark wallpaper does not contain `-bb-light` or `-bb-dark` suffix.
-if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
-  for wallpaper in "${WALLPAPER_LIGHT_DARK[@]}"; do
-    if [[ ! $wallpaper =~ "-bb-light" ]] || [[ ! $wallpaper =~ "-bb-dark" ]]; then
-      echo "Module failed because included light+dark wallpaper $wallpaper does not contain '-bb-light' or '-bb-dark' suffix"
-      exit 1
-    fi
-  done
 fi
 
 # Fail if more than 1 default wallpaper is included.
