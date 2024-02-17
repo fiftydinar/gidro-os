@@ -93,6 +93,8 @@ xml_default_template="$wallpapers_module_dir"/bluebuild.xml
 xml_modified_template="$wallpapers_module_dir"/bluebuild-template.xml
 xml_destination="/usr/share/gnome-background-properties"
 gschema_override="$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
+gschema_override_test_dir="/tmp/bluebuild-schema-test-wallpapers"
+gschema_override_test="$gschema_override_test_dir"/zz2-bluebuild-wallpapers.gschema.override
 gschema_override_destination="/usr/share/glib-2.0/schemas"
 
 # Wallpaper variables (for Gnome)
@@ -298,13 +300,13 @@ done
 
 # Write default wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]]; then
-  printf "%s" "Setting $DEFAULT_WALLPAPER as the default wallpaper in gschema override"
+  printf "%s\n" "Setting $DEFAULT_WALLPAPER as the default wallpaper in gschema override"
   printf '..%s..' "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER'" >> "$gschema_override"
 fi
 
 # Write default light/dark theme wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-  printf "%s" "Setting $DEFAULT_WALLPAPER_LIGHT_DARK as the default light+dark wallpaper in gschema override"
+  printf "%s\n" "Setting $DEFAULT_WALLPAPER_LIGHT_DARK as the default light+dark wallpaper in gschema override"
   printf '..%s..' "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER_LIGHT'" >> "$gschema_override"
   printf '..%s..' "picture-uri-dark='file://$wallpaper_destination/$DEFAULT_WALLPAPER_DARK'" >> "$gschema_override"
 fi
@@ -339,8 +341,11 @@ done
 
 if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
   echo "Copying gschema override to system & building it to include wallpaper defaults"
-  cp "$gschema_override" "$gschema_override_destination"
-  glib-compile-schemas --strict "$gschema_override_destination"
+  cp "$gschema_override" "$gschema_override_test_dir"
+  find "$gschema_override_destination" -type f ! -name "*.gschema.override" -exec cp {} "$gschema_override_test_dir" \;  
+  glib-compile-schemas --strict "$gschema_override_test_dir"
+  cp "$gschema_override_test" "$gschema_override_destination"
+  glib-compile-schemas "$gschema_override_destination" &>/dev/null
 fi
 
 echo "Wallpapers module installed successfully!"
