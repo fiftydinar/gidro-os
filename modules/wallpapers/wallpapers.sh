@@ -301,14 +301,14 @@ done
 # Write default wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]]; then
   printf "%s\n" "Setting $DEFAULT_WALLPAPER as the default wallpaper in gschema override"
-  printf '..%s..' "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER'" >> "$gschema_override"
+  printf "%s\n" "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER'" >> "$gschema_override"
 fi
 
 # Write default light/dark theme wallpaper to gschema override
 if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
   printf "%s\n" "Setting $DEFAULT_WALLPAPER_LIGHT_DARK as the default light+dark wallpaper in gschema override"
-  printf '..%s..' "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER_LIGHT'" >> "$gschema_override"
-  printf '..%s..' "picture-uri-dark='file://$wallpaper_destination/$DEFAULT_WALLPAPER_DARK'" >> "$gschema_override"
+  printf "%s\n" "picture-uri='file://$wallpaper_destination/$DEFAULT_WALLPAPER_LIGHT'" >> "$gschema_override"
+  printf "%s\n" "picture-uri-dark='file://$wallpaper_destination/$DEFAULT_WALLPAPER_DARK'" >> "$gschema_override"
 fi
 
 # Global scaling value (overwrites default zoom value)
