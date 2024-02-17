@@ -2,3 +2,7 @@ type: wallpapers
 default:
   wallpaper-light-dark:
     - grasssky-bb-light.jxl + grasssky-bb-dark.jxl
+scaling:
+  scaled: all
+  stretched:
+    - nordwood-themes-R53t-Tg6J4c-unsplash.jpg
