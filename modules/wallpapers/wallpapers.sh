@@ -5,6 +5,9 @@ set -euo pipefail
 ############################### VARIABLE FUNCTIONS ###################################
 
 sanitize_file_names() {
+    if [ -z "$1" ]; then
+        return 0  # Exit the function if the variable is empty
+    fi
     # If file-name has whitespace, convert it to _ character.
     declare -n arr=$1
     for i in "${!arr[@]}"; do
