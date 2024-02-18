@@ -254,15 +254,13 @@ fi
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
 echo "Writing XML for default light+dark wallpaper to appear in Gnome settings"
-  for default_wallpaper_light in "${DEFAULT_WALLPAPER_LIGHT[@]}"; do
-    for default_wallpaper_dark in "${DEFAULT_WALLPAPER_DARK[@]}"; do
+  for default_wallpaper_light_dark in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
-        yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light"_+_"$default_wallpaper_dark"'"' "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$default_wallpaper_light\"" "$xml_modified_template"
-        yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$default_wallpaper_dark\"" "$xml_modified_template"
-        cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper_light"_+_"$default_wallpaper_dark".xml
+        yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light_dark"'"' "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$DEFAULT_WALLPAPER_LIGHT\"" "$xml_modified_template"
+        yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$DEFAULT_WALLPAPER_DARK\"" "$xml_modified_template"
+        cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper_light_dark".xml
         rm "$xml_modified_template"
-    done
   done
 fi
 
