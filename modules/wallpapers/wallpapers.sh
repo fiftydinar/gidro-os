@@ -263,6 +263,7 @@ echo "Writing XML for default light+dark wallpaper to appear in Gnome settings"
         yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$default_wallpaper_dark\"" "$xml_modified_template"
         cp "$xml_modified_template" "$xml_destination"/bluebuild-"$default_wallpaper_light"_+_"$default_wallpaper_dark".xml
         rm "$xml_modified_template"
+    done
   done
 fi
 
