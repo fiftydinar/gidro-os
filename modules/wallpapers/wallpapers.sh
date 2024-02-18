@@ -221,15 +221,15 @@ fi
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
 echo "Writing XMLs for included light+dark wallpapers to appear in Gnome settings"
-  for ((i = 0; i < ${#WALLPAPER_LIGHT[@]}; i++)); do
-        wallpaper_light=${WALLPAPER_LIGHT[i]}
-        wallpaper_dark=${WALLPAPER_DARK[i]}
+  for wallpaper_light in "${WALLPAPER_LIGHT[@]}"; do
+    for wallpaper_dark in "${WALLPAPER_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper_light"_+_"$wallpaper_dark"'"' "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$wallpaper_light\"" "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$wallpaper_dark\"" "$xml_modified_template"
         cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
         rm "$xml_modified_template"
+    done
   done
 fi
 
@@ -254,9 +254,8 @@ fi
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
 echo "Writing XML for default light+dark wallpaper to appear in Gnome settings"
-  for ((i = 0; i < ${#DEFAULT_WALLPAPER_LIGHT[@]}; i++)); do
-        wallpaper_light=${DEFAULT_WALLPAPER_LIGHT[i]}
-        wallpaper_dark=${DEFAULT_WALLPAPER_DARK[i]}
+  for default_wallpaper_light in "${DEFAULT_WALLPAPER_LIGHT[@]}"; do
+    for default_wallpaper_dark in "${DEFAULT_WALLPAPER_DARK[@]}"; do
         cp "$xml_default_template" "$xml_modified_template"
         yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$default_wallpaper_light"_+_"$default_wallpaper_dark"'"' "$xml_modified_template"
         yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$default_wallpaper_light\"" "$xml_modified_template"
@@ -273,14 +272,9 @@ for scaling_option in "${scaling_options[@]}"; do
     scaling_all="${SCALING_ALL[$scaling_variable]}"
     if [[ $scaling_all == "all" ]]; then
         echo "Writing global scaling value to XML file(s)"
-        for xml_file in "${WALLPAPER[@]}" "${DEFAULT_WALLPAPER[@]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
+        for xml_file in "${WALLPAPER[@]}" "${WALLPAPER_LIGHT_DARK[@]}" "${DEFAULT_WALLPAPER[@]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
             yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_file".xml
         done
-        for ((i = 0; i < ${#WALLPAPER_LIGHT[@]}; i++)); do
-            wallpaper_light=${WALLPAPER_LIGHT[i]}
-            wallpaper_dark=${WALLPAPER_DARK[i]}
-            yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
-        done    
     fi
 done
 
