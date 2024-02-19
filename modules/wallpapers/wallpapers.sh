@@ -290,6 +290,8 @@ done
 for scaling_option in "${scaling_options[@]}"; do
     scaling_variable="SCALING_${scaling_option^^}_WALLPAPER"
     scaling_specific="${SCALING_WALLPAPER[$scaling_variable]}"
+    message_displayed=false
+    # Avoid displaying this echo for every per-wallpaper scaling entry
     if [[ -n $scaling_specific && $message_displayed == false ]]; then
       echo "Writing per-wallpaper scaling value to XML file(s)"
       message_displayed=true
