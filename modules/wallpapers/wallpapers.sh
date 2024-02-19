@@ -19,7 +19,7 @@ extract_default_wallpaper_light() {
     # Extract default light theme wallpaper from light/dark recipe input.
     # It always assumes that light wallpaper is set as 1st in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      readarray -t "$1" < <(awk -F '_\\+_' '{print $1}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
+      readarray -t "$1" < <(awk -F '_\\+_' '{printf "%s", $1}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
     fi  
 }
 
@@ -27,7 +27,7 @@ extract_default_wallpaper_dark() {
     # Extract default dark theme wallpaper from light/dark recipe input.
     # It always assumes that dark wallpaper is set as 2nd in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      readarray -t "$1" < <(awk -F '_\\+_' '{print $NF}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
+      readarray -t "$1" < <(awk -F '_\\+_' '{printf "%s", $NF}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
     fi  
 }
 
