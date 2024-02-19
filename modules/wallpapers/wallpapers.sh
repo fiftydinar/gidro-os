@@ -221,15 +221,16 @@ fi
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
   echo "Writing XMLs for included light+dark wallpapers to appear in Gnome settings"
-  for ((i=0; i<${#WALLPAPER_LIGHT[@]}; i++)); do
-    wallpaper_light="${WALLPAPER_LIGHT[i]}"
-    wallpaper_dark="${WALLPAPER_DARK[i]}"
+  for ((i=0; i<${#WALLPAPER_LIGHT_DARK[@]}; i++)); do
+    wallpaper_light="${WALLPAPER_LIGHT_DARK[i]}"
+    wallpaper_dark="${WALLPAPER_LIGHT_DARK[i+1]}"
     cp "$xml_default_template" "$xml_modified_template"
     yq -i '.wallpapers.wallpaper.name = "BlueBuild-'"$wallpaper_light"_+_"$wallpaper_dark"'"' "$xml_modified_template"
     yq -i ".wallpapers.wallpaper.filename = \"$wallpaper_destination/$wallpaper_light\"" "$xml_modified_template"
     yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$wallpaper_dark\"" "$xml_modified_template"
     cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
     rm "$xml_modified_template"
+    ((i++))  # Increment i by 1 to skip the next element (dark wallpaper)
   done
 fi
 
