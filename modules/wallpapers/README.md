@@ -31,8 +31,8 @@ To use this module, you need to include your wallpapers into this location (make
 
 You can also make additional folders with wallpapers inside `config/wallpapers` for better organization.
 
-`config/wallpapers/delight`
-`config/wallpapers/great-wallpaper`
+`config/wallpapers/delight`  
+`config/wallpapers/forest`
 
 Then you just need to set `type: wallpapers` into the recipe file & you're good to go.
 
@@ -42,33 +42,35 @@ Then you just need to set `type: wallpapers` into the recipe file & you're good 
 
 To set your wallpaper as the default, input the wallpaper name into `default`, `wallpaper` recipe entry:
 
-`- I-love-nature.jpg`
-`- I LOVE BLUEBUILD.PNG`
+`- I-love-nature.jpg`  
+`- I LOVE BLUEBUILD.png` # spaced characters are also supported as an input
 
 Same format is used for `scaling`, `scaling-option` recipe entry.
 
 ### Light+dark wallpapers
 
 To add light+dark wallpapers for Gnome, copy your wallpapers into this location (make folder if it doesn't exist):
+
 `config/wallpapers/bluebuild-gnome-light-dark`
 
 To make things tidy, you can also place them in separate folders, like here in example:
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-1`
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-2`
+
+`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-folder-1`  
+`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-folder-2`
 
 Then add `-bb-light` & `-bb-dark` suffix to wallpaper file-names, to make the module additionally recognize those wallpapers as light+dark.  
 Wallpapers must have the same file-name with only differentiation of `-bb-light` & `-bb-dark` suffix.
 
-`my-wallpaper-bb-light.jpg`
+`my-wallpaper-bb-light.jpg`  
 `my-wallpaper-bb-dark.jpg`
 
-`My great wallpaper-bb-light.png`
+`My great wallpaper-bb-light.png`  
 `My great wallpaper-bb-dark.png`
 
 To set some light+dark wallpaper as the default,  
 you need to input it into `default`, `wallpaper-light-dark` recipe entry in this format example:
 
-`- my-default-wallpaper-bb-light.jpg + my-default-wallpaper-bb-dark.jpg`
+`- my-default-wallpaper-bb-light.jpg + my-default-wallpaper-bb-dark.jpg`  
 `- My Little Pony-bb-light.jxl + My Little Pony-bb-dark.jxl`
 
 Order is VERY IMPORTANT here, with `light + dark` order.  
@@ -102,7 +104,9 @@ To set different wallpaper scaling, you can use 2 wallpaper scaling ranges:
 When you decide which wallpaper scaling range & option is sufficient for you,  
 you can input those settings in `scaling` recipe entry as follows:
 
-- `scaling-option: all`  
-- `scaling-option:`  
-     `- my-normal-wallpaper bruh.jpg`  
-     `- my-default-wallpaper-bb-light.jpg + my-default-wallpaper-bb-dark.jpg`
+```yaml
+- scaling-option: all  
+- scaling-option:  
+     - my-normal-wallpaper bruh.jpg  
+     - my-default-wallpaper-bb-light.jpg + my-default-wallpaper-bb-dark.jpg
+```
