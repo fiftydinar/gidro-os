@@ -230,7 +230,6 @@ if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
     yq -i ".wallpapers.wallpaper.filename-dark = \"$wallpaper_destination/$wallpaper_dark\"" "$xml_modified_template"
     cp "$xml_modified_template" "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
     rm "$xml_modified_template"
-    ((i++))  # Increment i by 1 to skip the next element (dark wallpaper)
   done
 fi
 
