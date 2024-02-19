@@ -197,7 +197,7 @@ echo "Copying wallpapers into system backgrounds directory"
 # If file-names & wallpaper folders have whitespaces, convert them to _ character.
 find "$wallpaper_include_dir" -depth -name "* *" -execdir bash -c 'mv "$0" "${0// /_}"' {} \;
 mkdir -p "$wallpaper_destination"
-cp -r "$wallpaper_include_dir"/* "$wallpaper_destination"
+find "$wallpaper_include_dir" -type f -exec cp {} "$wallpaper_destination" \;
 
 ############################### GNOME-SPECIFIC CODE ###################################
 ####################################################################################
@@ -290,8 +290,11 @@ done
 for scaling_option in "${scaling_options[@]}"; do
     scaling_variable="SCALING_${scaling_option^^}_WALLPAPER"
     scaling_specific="${SCALING_WALLPAPER[$scaling_variable]}"
+    if [[ -n $scaling_specific && $message_displayed == false ]]; then
+      echo "Writing per-wallpaper scaling value to XML file(s)"
+      message_displayed=true
+    fi
     if [[ -n $scaling_specific ]]; then
-        echo "Writing per-wallpaper scaling value to XML file(s)"
         for scaling_per_wallpaper in $scaling_specific; do
             yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$scaling_per_wallpaper".xml
         done
