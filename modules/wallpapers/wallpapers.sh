@@ -270,9 +270,14 @@ for scaling_option in "${scaling_options[@]}"; do
     scaling_all="${SCALING_ALL[$scaling_variable]}"
     if [[ $scaling_all == "all" ]]; then
         echo "Writing global scaling value to XML file(s)"
-        for xml_file in "${WALLPAPER[@]}" "${WALLPAPER_LIGHT_DARK[@]}" "${DEFAULT_WALLPAPER[@]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
+        for xml_file in "${WALLPAPER[@]}" "${DEFAULT_WALLPAPER[@]}" "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
             yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$xml_file".xml
         done
+        for ((i=0; i<${#WALLPAPER_LIGHT_DARK[@]}; i+=2)); do
+            wallpaper_light="${WALLPAPER_LIGHT_DARK[i]}"
+            wallpaper_dark="${WALLPAPER_LIGHT_DARK[i+1]}"
+            yq -i '.wallpapers.wallpaper.options = "'"$scaling_option"'"' "$xml_destination"/bluebuild-"$wallpaper_light"_+_"$wallpaper_dark".xml
+        done    
     fi
 done
 
