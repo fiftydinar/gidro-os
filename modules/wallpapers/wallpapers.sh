@@ -221,7 +221,7 @@ fi
 # Set name of the XML to bluebuild-wallpaper-bb-light.jpg_+_bluebuild-wallpaper-bb-dark.jpg.xml
 if [[ ${#WALLPAPER_LIGHT_DARK[@]} -gt 0 ]]; then
   echo "Writing XMLs for included light+dark wallpapers to appear in Gnome settings"
-  for ((i=0; i<${#WALLPAPER_LIGHT_DARK[@]}; i++)); do
+  for ((i=0; i<${#WALLPAPER_LIGHT_DARK[@]}; i+=2)); do
     wallpaper_light="${WALLPAPER_LIGHT_DARK[i]}"
     wallpaper_dark="${WALLPAPER_LIGHT_DARK[i+1]}"
     cp "$xml_default_template" "$xml_modified_template"
