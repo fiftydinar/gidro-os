@@ -4,6 +4,11 @@ set -euox pipefail
     
 ############################### VARIABLE FUNCTIONS ###################################
 
+get_yaml_array() {
+    # Workaround for trimming newlines until this is implemented in build.sh
+    readarray -t "$1" < <(echo "$3" | yq -I=0 "$2")
+}
+
 sanitize_file_names() {
     if [ -z "$1" ]; then
         return 0  # Exit the function if the variable is empty
