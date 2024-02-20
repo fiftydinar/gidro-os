@@ -98,7 +98,7 @@ wallpapers_module_dir="$MODULE_DIRECTORY"/wallpapers
 wallpaper_include_dir="$CONFIG_DIRECTORY"/wallpapers
 wallpaper_destination="/usr/share/backgrounds/bluebuild"
 # Gnome file & folder locations
-wallpaper_light_dark_dir="$wallpaper_include_dir"/bluebuild-gnome-light-dark
+wallpaper_light_dark_dir="$wallpaper_include_dir"/gnome-light-dark
 xml_default_template="$wallpapers_module_dir"/bluebuild.xml
 xml_modified_template="$wallpapers_module_dir"/bluebuild-template.xml
 xml_destination="/usr/share/gnome-background-properties"

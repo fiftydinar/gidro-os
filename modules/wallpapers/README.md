@@ -10,16 +10,20 @@ Universal:
 - It copies your provided wallpapers from `config/wallpapers` into `/usr/share/backgrounds/bluebuild`.
 
 Gnome:  
-- When light+dark wallpapers are included, it automatically sorts them accordingly for further manipulation process.  
+- When light+dark wallpapers are included, it automatically separates them for further manipulation process.  
 - It automatically assigns all your wallpapers into background XML files located in `/usr/share/gnome-background-properties`,  
    which makes them available for selection in Gnome Appearance settings.  
 - If specified, advanced scaling options are written into XML files too  
+   Global scaling is always written 1st, while per-wallpaper scaling is always written last.  
 - XML files are automatically renamed to "bluebuild-`name-of-wallpaper.jpg`.xml".  
    Light+dark XML files are renamed to "bluebuild-`name-of-wallpaper-bb-light.jpg`_+_`name-of-wallpaper-bb-dark.jpg`.xml".  
 - Default wallpaper & default scaling is set through gschema override.  
+   Default scaling mirrors global scaling, while  
+   per-wallpaper scaling is only mirrored if default wallpaper is specified in scaling entry.  
+- Gschema override is copied to `/tmp/bluebuild-schema-test-wallpapers` location.
+- Error-checking test is performed using `glib-compile-schemas` with `--strict` flag.
 - Gschema override is then copied into `/usr/share/glib-2.0/schemas`  
-- To finally apply wallpaper defaults, gschema override is then compiled  
-   using `glib-compile-schemas` with `--strict` flag for build-time troubleshooting.
+- To finally apply wallpaper defaults, gschema override is then compiled with `glib-compile-schemas` normally.
 
 For more details about Gnome wallpaper functions, please see "Usage (Gnome)" documentation section.
 
@@ -51,12 +55,12 @@ Same format is used for `scaling`, `scaling-option` recipe entry.
 
 To add light+dark wallpapers for Gnome, copy your wallpapers into this location (make folder if it doesn't exist):
 
-`config/wallpapers/bluebuild-gnome-light-dark`
+`config/wallpapers/gnome-light-dark`
 
 To make things tidy, you can also place them in separate folders, like here in example:
 
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-folder-1`  
-`config/wallpapers/bluebuild-gnome-light-dark/my-wallpaper-folder-2`
+`config/wallpapers/gnome-light-dark/my-wallpaper-folder-1`  
+`config/wallpapers/gnome-light-dark/my-wallpaper-folder-2`
 
 Then add `-bb-light` & `-bb-dark` suffix to wallpaper file-names, to make the module additionally recognize those wallpapers as light+dark.  
 Wallpapers must have the same file-name with only differentiation of `-bb-light` & `-bb-dark` suffix.
