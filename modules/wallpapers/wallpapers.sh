@@ -332,22 +332,10 @@ done
 for scaling_option in "${scaling_options[@]}"; do
     scaling_variable="SCALING_${scaling_option^^}_WALLPAPER"
     scaling_specific="${SCALING_WALLPAPER[$scaling_variable]}"
-    if [[ -n $scaling_specific ]]; then
-        for value in "${DEFAULT_WALLPAPER[@]}"; do
-            for light_dark_value in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
-                for scaling_per_wallpaper in $scaling_specific; do
-                    if [[ "$scaling_per_wallpaper" == *"$value"* ]]; then
-                        echo "Writing per-wallpaper scaling value to gschema override"
-                        sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
-                    fi    
-                    if [[ "$scaling_per_wallpaper" == *"$light_dark_value"* ]]; then
-                        echo "Writing per-wallpaper scaling value to gschema override"
-                        sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
-                    fi
-                done
-            done
-        done
-    fi
+    if [[ "$scaling_specific" == "$DEFAULT_WALLPAPER_LIGHT_DARK" ]] || [[ "$scaling_specific" == "$DEFAULT_WALLPAPER" ]]; then
+      echo "Writing per-wallpaper scaling value to gschema override"
+      sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
+    fi    
 done
 
 if [[ ${#DEFAULT_WALLPAPER[@]} -eq 1 ]] || [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
