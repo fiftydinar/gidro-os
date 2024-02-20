@@ -1,10 +1,10 @@
 type: wallpapers
 default:
-  wallpaper-light-dark:
-    - grasssky-bb-light.jxl + grasssky-bb-dark.jxl
+  wallpaper:
+    - Black and White Jelly-proteus.png
 scaling:
   scaled: all
   stretched:
     - Psihovan-bb-light.jpg + Psihovan-bb-dark.jpg
   wallpaper:
-    - grasssky-bb-light.jxl + grasssky-bb-dark.jxl
+    - Black and White Jelly-proteus.png
