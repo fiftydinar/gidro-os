@@ -22,7 +22,7 @@ Gnome:
    per-wallpaper scaling is only mirrored if default wallpaper is specified in scaling entry.  
 - Gschema override is copied to `/tmp/bluebuild-schema-test-wallpapers` location.
 - Error-checking test is performed using `glib-compile-schemas` with `--strict` flag.
-- Gschema override is then copied into `/usr/share/glib-2.0/schemas`  
+- If test passes successfully, gschema override is then copied into `/usr/share/glib-2.0/schemas` location.  
 - To finally apply wallpaper defaults, gschema override is then compiled with `glib-compile-schemas` normally.
 
 For more details about Gnome wallpaper functions, please see "Usage (Gnome)" documentation section.

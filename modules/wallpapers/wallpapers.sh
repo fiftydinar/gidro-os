@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
     
-set -euxo pipefail    
+set -euo pipefail    
     
 ############################### VARIABLE FUNCTIONS ###################################
 
@@ -99,7 +99,7 @@ wallpaper_include_dir="$CONFIG_DIRECTORY"/wallpapers
 wallpaper_destination="/usr/share/backgrounds/bluebuild"
 # Gnome file & folder locations
 wallpaper_light_dark_dir="$wallpaper_include_dir"/gnome-light-dark
-xml_default_template="$wallpapers_module_dir"/bluebuild.xml
+xml_default_template="$wallpapers_module_dir"/template.xml
 xml_modified_template="$wallpapers_module_dir"/bluebuild-template.xml
 xml_destination="/usr/share/gnome-background-properties"
 gschema_override="$wallpapers_module_dir"/zz2-bluebuild-wallpapers.gschema.override
