@@ -336,7 +336,11 @@ for scaling_option in "${scaling_options[@]}"; do
         for value in "${DEFAULT_WALLPAPER[@]}"; do
             for light_dark_value in "${DEFAULT_WALLPAPER_LIGHT_DARK[@]}"; do
                 for scaling_per_wallpaper in $scaling_specific; do
-                    if [[ "$scaling_per_wallpaper" == *"$value"* ]] || [[ "$scaling_per_wallpaper" == *"$light_dark_value"* ]]; then
+                    if [[ "$scaling_per_wallpaper" == *"$value"* ]]; then
+                        echo "Writing per-wallpaper scaling value to gschema override"
+                        sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
+                    fi    
+                    if [[ "$scaling_per_wallpaper" == *"$light_dark_value"* ]]; then
                         echo "Writing per-wallpaper scaling value to gschema override"
                         sed -i "s/picture-options=.*/picture-options='$scaling_option'/" "$gschema_override"
                     fi
