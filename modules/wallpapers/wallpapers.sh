@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
     
-set -euxo pipefail    
+set -euo pipefail    
     
 ############################### VARIABLE FUNCTIONS ###################################
 
