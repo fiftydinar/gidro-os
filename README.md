@@ -23,7 +23,6 @@ Replaced packages (RPMs)/usecases:
 
 Installed packages (RPMs):
 - [System76 Scheduler](https://github.com/pop-os/system76-scheduler) (for performance improvement by adequately adjusting process priorities in realtime)
-- [Team Fortress 2 SELinux rule](https://github.com/kylegospo/hl2linux-selinux) (for preventing "no certain sounds" issue)
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)

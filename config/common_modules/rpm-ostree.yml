@@ -17,7 +17,6 @@ install:
   - gnome-shell-extension-middleclickclose-git
   - gnome-shell-extension-openweather-toppk
   - gnome-shell-extension-notifications-alert-git
-  - hl2linux-selinux
   - rom-properties-gtk3
   - nautilus-python
   - system76-power
