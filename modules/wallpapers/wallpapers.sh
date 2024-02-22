@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
     
-set -euxo pipefail    
+set -euo pipefail    
     
 ############################### VARIABLE FUNCTIONS ###################################
 
@@ -24,7 +24,7 @@ extract_default_wallpaper_light() {
     # Extract default light theme wallpaper from light/dark recipe input.
     # It always assumes that light wallpaper is set as 1st in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      read -r "$1" <<< "$(awk -F '_\\+_' '{printf "%s", $1}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")"
+      readarray -t "$1" < <(awk -F '_\\+_' '{printf "%s", $1}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
     fi  
 }
 
@@ -32,7 +32,7 @@ extract_default_wallpaper_dark() {
     # Extract default dark theme wallpaper from light/dark recipe input.
     # It always assumes that dark wallpaper is set as 2nd in light.jpg + dark.jpg recipe format.
     if [[ ${#DEFAULT_WALLPAPER_LIGHT_DARK[@]} -eq 1 ]]; then
-      read -r "$1" <<< "$(awk -F '_\\+_' '{printf "%s", $NF}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")"
+      readarray -t "$1" < <(awk -F '_\\+_' '{printf "%s", $NF}' <<< "$DEFAULT_WALLPAPER_LIGHT_DARK")
     fi  
 }
 
@@ -183,7 +183,7 @@ fi
 # Stop the script after copying wallpapers if non-Gnome DE is detected
 function gnome_section () {
 gnome_detection=$(find /usr/bin -type f -name "gnome-session" -exec basename {} \;)
-if [[ ! "$gnome_detection" == "gnome-session" ]]; then
+if [[ ! $gnome_detection == "gnome-session" ]]; then
   echo "Wallpapers module installed successfully!"
   exit 0
 fi
