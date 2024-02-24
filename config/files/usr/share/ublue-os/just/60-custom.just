@@ -258,3 +258,29 @@ proton-ge ACTION="prompt":
         echo 'ERROR: Cannot delete old Proton-GE because Steam is not installed.'
       fi
     fi
+    
+# Configure scheduled nightly reboot
+configure-scheduled-reboot ACTION="prompt":
+    #!/usr/bin/env bash
+    bold=$(tput bold)
+    normal=$(tput sgr0)
+    OPTION={{ ACTION }}
+    if [ "$OPTION" == "prompt" ]; then
+      echo "${bold}Configuring scheduled nightly reboot${normal}"
+      echo 'Configure scheduled nightly reboot, which happens in 03:00.'
+      echo 'Enable or Disable scheduled nightly reboot? Press ESC to exit.'
+      OPTION=$(ugum choose "Disable (Default)" Enable)
+    elif [ "$OPTION" == "help" ]; then
+      echo "Usage: ujust configure-scheduled-reboot <option>"
+      echo "  <option>: Specify the quick option - 'enable' or 'disable'"
+      echo "  Use 'enable' to enable scheduled nightly reboot systemd service."
+      echo "  Use 'disable' to revert to defaults."      
+      exit 0
+    fi
+    if [ "${OPTION,,}" == "enable" ]; then
+      sudo systemctl enable nightly-reboot.timer
+      sudo systemctl start nightly-reboot.timer
+    elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
+      sudo systemctl disable nightly-reboot.timer
+      sudo systemctl stop nightly-reboot.timer
+    fi  
