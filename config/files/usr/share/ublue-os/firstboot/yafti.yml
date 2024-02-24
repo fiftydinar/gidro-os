@@ -68,6 +68,11 @@ screens:
           default: false
           packages:
           - Remove window close button: ujust configure-close-button hide  
+        Scheduled nightly reboot:
+          description: Enable scheduled nightly reboot to happen in 03:00. Useful for users who leave their PCs on 24/7, but still want system updates applied.
+          default: false
+          packages:
+          - Scheduled nightly reboot: pkexec ujust scheduled-reboot enable         
          
   final-screen:
     source: yafti.screen.title
