@@ -8,6 +8,7 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-middleclickclose-git-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-openweather-toppk-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-notifications-alert-git-fedora-%OS_VERSION%.repo
+  - https://copr.fedorainfracloud.org/coprs/elxreno/zsync/repo/fedora-%OS_VERSION%/elxreno-zsync-fedora-%OS_VERSION%.repo
 
 install:
   - gnome-shell-extension-caffeine
@@ -23,6 +24,7 @@ install:
   - python3-icoextract
   - gnome-randr-rust
   - langpacks-en
+  - zsync
 
 remove:
   - firefox
