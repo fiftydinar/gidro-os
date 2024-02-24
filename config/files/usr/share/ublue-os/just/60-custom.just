@@ -260,7 +260,7 @@ proton-ge ACTION="prompt":
     fi
     
 # Configure scheduled nightly reboot
-configure-scheduled-reboot ACTION="prompt":
+scheduled-reboot ACTION="prompt":
     #!/usr/bin/env bash
     bold=$(tput bold)
     normal=$(tput sgr0)
