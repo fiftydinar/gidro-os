@@ -9,3 +9,4 @@ scripts:
   - morewaita.sh
   - block-ads.sh
   - binutils-workaround.sh
+  - AM-portable.sh
