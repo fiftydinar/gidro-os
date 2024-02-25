@@ -278,9 +278,15 @@ scheduled-reboot ACTION="prompt":
       exit 0
     fi
     if [ "${OPTION,,}" == "enable" ]; then
-      sudo systemctl enable nightly-reboot.timer
-      sudo systemctl start nightly-reboot.timer
+      if systemctl is-enabled nightly-reboot.timer | grep -q disabled; then
+        sudo systemctl enable nightly-reboot.timer
+        sudo systemctl start nightly-reboot.timer
+        echo "Nightly scheduled reboot is enabled!"
+      fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
-      sudo systemctl disable nightly-reboot.timer
-      sudo systemctl stop nightly-reboot.timer
+      if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
+        sudo systemctl disable nightly-reboot.timer
+        sudo systemctl stop nightly-reboot.timer
+        echo 'Reverted setting "nightly scheduled reboot" to defaults.'
+      fi
     fi  
