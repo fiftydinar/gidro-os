@@ -30,18 +30,6 @@ Installed packages (RPMs):
 - Langpacks-EN (for avoiding Gnome Software's message about it & for potentially solving flatpak mixed locale issues)
 - [Zsync](https://zsync.moria.org.uk/index) (Needed dependency for some AppImage auto-updates)
 
-Installed akmods:
-- [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
-- [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
-- [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
-- [RTL8814AU](https://github.com/morrownr/8814au) (for supporting mentioned USB Realtek WiFi card model)
-- [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing change of behavior for universal screensharing)
-- [XOne](https://github.com/medusalix/xone) (Xbox One RF driver)
-- [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One Bluetooth driver)
-- [XPad](https://github.com/paroj/xpad) (Xbox/Xbox 360 USB & RF driver + Xbox One USB driver - built-in into upstream kernel)
-- [WineSync](https://github.com/Cat-Lady/winesync-dkms/blob/main/README.md) (for possibly improving Windows apps performance)
-- [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
-
 Installed extensions:
 - [Blur My Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
