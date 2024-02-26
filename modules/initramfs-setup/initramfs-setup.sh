@@ -25,7 +25,10 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   mkdir -p "$root_location"
 
   cp -r "$MODULE_DIRECTORY"/initramfs-setup/config/tracked "$root_location"/tracked
-  printf "%s" "${INCLUDE[@]}" >> "$root_location"/tracked
+  for file in "${INCLUDE[@]}"; do
+    printf "%s\n" "$file" >> "$root_location"/tracked
+  done
+
 fi
 
 # Only copy dracut files when they are present & with .conf extension only
