@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euo pipefail
+set -euxo pipefail
 
 MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
 
@@ -11,7 +11,7 @@ cp -r "$MODULE_DIRECTORY"/default-flatpaks/system-flatpak-setup.service /usr/lib
 cp -r "$MODULE_DIRECTORY"/default-flatpaks/user-flatpak-setup.service /usr/lib/systemd/user/user-flatpak-setup.service
 
 # If yq is not installed, then install it, as it's a needed dependency for this module
-if ! command -v yq > /dev/null; then
+if ! [[ -f "/usr/bin/yq" ]]; then
   wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
   chmod +x /usr/bin/yq
 fi  
