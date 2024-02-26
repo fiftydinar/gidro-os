@@ -9,4 +9,3 @@ scripts:
   - morewaita.sh
   - block-ads.sh
   - binutils-workaround.sh
-  - yq-workaround.sh
