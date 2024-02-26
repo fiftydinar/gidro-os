@@ -73,7 +73,6 @@ Installed flatpaks:
 - [PinApp](https://flathub.org/apps/io.github.fabrialberio.pinapp)
 - [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
-- [Gear Lever](https://flathub.org/apps/it.mijorus.gearlever)
 
 Optional flatpaks:
 - [Warp (Global File Sharing)](https://apps.gnome.org/en/Warp/)
@@ -157,7 +156,6 @@ Settings applied by default:
 - Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
 - Set LibreWolf to enable WebGL, disable ResistFingerprinting, disable deleting cookies, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable GPU video decoding, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage, disable tab manager arrow, enable switching tabs with mouse-wheel
 - G4Music background playback enabled
-- Set Gear Lever to use `$HOME/.AppImages` folder instead of `$HOME/AppImages`
 
 ## Installation (ISO) [Recommended]
 

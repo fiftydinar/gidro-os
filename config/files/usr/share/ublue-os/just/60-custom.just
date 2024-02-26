@@ -106,7 +106,6 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
-        ["Gear Lever"]="$flatpak_data/it.mijorus.gearlever"        
       )
       for app in "${!apps[@]}"; do
         cp -rf "${apps[$app]}" "$HOME/.var/app/"
@@ -158,7 +157,6 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
-        ["Gear Lever"]="$flatpak_data/it.mijorus.gearlever"        
       )
       for app in "${!apps[@]}"; do
         cp -rf "${apps[$app]}" "$HOME/.var/app/"
@@ -173,7 +171,6 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
-        ["Gear Lever"]="$flatpak_data/it.mijorus.gearlever"        
       )
       for app in "${!apps[@]}"; do
         cp -rf "${apps[$app]}" "$HOME/.var/app/"
