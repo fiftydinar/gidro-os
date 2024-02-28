@@ -29,7 +29,7 @@ Your dracut configurations are copied to this location here:
 To include your initramfs modifications, copy the modification files if you have those, than edit the "Example configuration" accordingly in `include`.
 Do the otherwise for deleting.
 
-To include your dracut configurations, copy them into this folder location (make folder if it doesn't exist):
+To include your dracut configurations, copy them into this folder location (make folder if it doesn't exist):  
 `config/initramfs-setup/dracut`
 
 # Local modification
