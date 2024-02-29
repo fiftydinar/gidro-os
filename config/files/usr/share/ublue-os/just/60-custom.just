@@ -200,7 +200,7 @@ proton-ge ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "install" ]; then
-      FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
+      FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
       TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"      
@@ -210,7 +210,7 @@ proton-ge ACTION="prompt":
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
       fi
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
-      FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
+      FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
         SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
         TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
@@ -235,7 +235,7 @@ proton-ge ACTION="prompt":
         echo 'ERROR: Proton-GE cannot be updated because Steam is not installed.'
       fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
-      FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
+      FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/GE-Proton*
       rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*-GE-*
@@ -244,7 +244,7 @@ proton-ge ACTION="prompt":
         echo 'ERROR: Proton-GE cannot be uninstalled because Steam is not installed.'
       fi
     elif [ "$OPTION" == "Remove old Proton-GE" ] || [ "${OPTION,,}" == "remove-old" ]; then
-      FLATPAK=$(/usr/bin/flatpak list --user --app --columns=application)
+      FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
       find . -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
