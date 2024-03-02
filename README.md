@@ -66,6 +66,7 @@ Installed flatpaks:
 - [Clapper](https://flathub.org/apps/com.github.rafostar.Clapper)
 - [Image Viewer](https://apps.gnome.org/en/Loupe/)
 - [Secrets](https://apps.gnome.org/en/Secrets/)
+- [Authenticator](https://flathub.org/apps/com.belmoussaoui.Authenticator)
 - [Sticky Notes](https://flathub.org/apps/com.vixalien.sticky)
 - [Rnote](https://flathub.org/apps/com.github.flxzt.rnote)
 - [LocalSend](https://flathub.org/apps/org.localsend.localsend_app)

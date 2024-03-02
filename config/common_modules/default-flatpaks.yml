@@ -19,6 +19,7 @@ system:
     - org.gnome.Loupe
     - io.gitlab.librewolf-community
     - io.missioncenter.MissionCenter
+    - com.belmoussaoui.Authenticator
     - org.gnome.World.Secrets
     - com.vixalien.sticky
     - com.github.flxzt.rnote
