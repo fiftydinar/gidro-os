@@ -1,7 +1,6 @@
 type: rpm-ostree
 repos:
   - https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-%OS_VERSION%/kylegospo-system76-scheduler-fedora-%OS_VERSION%.repo
-  - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-%OS_VERSION%/szydell-system76-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/repo/fedora-%OS_VERSION%/fiftydinar-gnome-randr-rust-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-middleclickclose-git-fedora-%OS_VERSION%.repo
@@ -19,7 +18,6 @@ install:
   - gnome-shell-extension-notifications-alert-git
   - rom-properties-gtk3
   - nautilus-python
-  - system76-power
   - python3-icoextract
   - gnome-randr-rust
   - langpacks-en

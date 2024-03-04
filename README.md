@@ -21,7 +21,6 @@ Removed packages (RPMs):
 Replaced packages (RPMs)/usecases:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) from Flathub instead of Firefox
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
-- [System76-Power](https://github.com/pop-os/system76-power) instead of Power Profiles Daemon (it is more aggressively, but still reliably, adjusting power-saving of various components + Power Profiles Daemon is depreciated)
 
 Installed packages (RPMs):
 - [System76 Scheduler](https://github.com/pop-os/system76-scheduler) (for performance improvement by adequately adjusting process priorities in realtime)
@@ -219,7 +218,6 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231
 ```
 
 ## Repos used for some installed RPM packages
-- [System76-Power](https://copr.fedorainfracloud.org/coprs/szydell/system76/)
 - [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
