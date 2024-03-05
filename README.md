@@ -70,6 +70,7 @@ Installed flatpaks:
 - [Rnote](https://flathub.org/apps/com.github.flxzt.rnote)
 - [LocalSend](https://flathub.org/apps/org.localsend.localsend_app)
 - [GPU Screen Recorder](https://flathub.org/apps/com.dec05eba.gpu_screen_recorder)
+- [Varia](https://flathub.org/apps/io.github.giantpinkrobots.varia)
 - [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal)
 - [Warehouse](https://flathub.org/apps/io.github.flattool.Warehouse)
 - [PinApp](https://flathub.org/apps/io.github.fabrialberio.pinapp)

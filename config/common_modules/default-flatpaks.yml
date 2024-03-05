@@ -25,6 +25,7 @@ system:
     - com.github.flxzt.rnote
     - org.localsend.localsend_app
     - com.dec05eba.gpu_screen_recorder
+    - io.github.giantpinkrobots.varia
     - com.github.tchx84.Flatseal
     - io.github.flattool.Warehouse
     - io.github.fabrialberio.pinapp
