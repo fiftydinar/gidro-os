@@ -46,7 +46,7 @@ titlebar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org.gnome.shell]
-enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com']
+enabled-extensions=['openweather-extension@jenslody.de', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 's76-scheduler@mattjakeman.com', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com']
 favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org.gnome.shell.extensions.blur-my-shell]
@@ -62,6 +62,9 @@ decimal-places=0
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
+
+[org.gnome.shell.extensions.Bluetooth-Battery-Meter]
+enable-battery-level-text=true
 
 [org.gnome.software]
 allow-updates=false

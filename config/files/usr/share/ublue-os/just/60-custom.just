@@ -146,8 +146,9 @@ factory-reset ACTION="prompt":
       # This is needed to reset system & user extensions
       gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
       gsettings reset-recursively org.gnome.shell.extensions.openweather
+      gsettings reset-recursively org.gnome.shell.extensions.middleclickclose      
       gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
-      gsettings reset-recursively org.gnome.shell.extensions.middleclickclose
+      gsettings reset-recursively org.gnome.shell.extensions.Bluetooth-Battery-Meter
       dconf reset -f /org/gnome/shell/extensions/caffeine/
       gsettings reset org.gnome.shell enabled-extensions
       gsettings reset org.gnome.shell disabled-extensions

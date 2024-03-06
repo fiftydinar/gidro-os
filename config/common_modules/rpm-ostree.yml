@@ -6,6 +6,7 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-middleclickclose-git-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-openweather-toppk-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-notifications-alert-git-fedora-%OS_VERSION%.repo
+  - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-Bluetooth-Battery-Meter-git/repo/fedora-%OS_VERSION%/fiftydinar-gnome-shell-extension-Bluetooth-Battery-Meter-git-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/elxreno/zsync/repo/fedora-%OS_VERSION%/elxreno-zsync-fedora-%OS_VERSION%.repo
 
 install:
@@ -16,6 +17,7 @@ install:
   - gnome-shell-extension-middleclickclose-git
   - gnome-shell-extension-openweather-toppk
   - gnome-shell-extension-notifications-alert-git
+  - gnome-shell-extension-Bluetooth-Battery-Meter-git
   - rom-properties-gtk3
   - nautilus-python
   - python3-icoextract

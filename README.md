@@ -49,6 +49,7 @@ Installed extensions:
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
 - [OpenWeather](https://github.com/toppk/gnome-shell-extension-openweather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
+- [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
@@ -151,6 +152,7 @@ Settings applied by default:
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
 - Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
+- Set Bluetooth Battery Meter to show battery percentage
 - Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
@@ -234,6 +236,7 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
 - [OpenWeather](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/)
 - [Notifications Alert](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/)
+- [Bluetooth Battery Meter](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-Bluetooth-Battery-Meter-git/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 
 ## Plans for the future
