@@ -27,14 +27,14 @@ configure-close-button  ACTION="prompt":
         gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
           echo 'Hide close button from windows setting applied.'
       else
-        echo 'Close button is already hidden, no change is made.'
+        echo 'ERROR: Close button is already hidden, no change is made.'
       fi  
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
       if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
         gsettings reset org.gnome.desktop.wm.preferences button-layout
           echo 'Reverted setting "window close button" to defaults.'
       else
-        echo 'Close button is already present, no change is made.'
+        echo 'ERROR: Close button is already present, no change is made.'
       fi
     fi
     
@@ -293,7 +293,7 @@ scheduled-reboot ACTION="prompt":
         sudo systemctl start nightly-reboot.timer
         echo "Nightly scheduled reboot is enabled!"
       else
-        echo "Nightly scheduled reboot is already enabled, no change is made."
+        echo "ERROR: Nightly scheduled reboot is already enabled, no change is made."
       fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
@@ -301,6 +301,6 @@ scheduled-reboot ACTION="prompt":
         sudo systemctl stop nightly-reboot.timer
         echo 'Reverted setting "nightly scheduled reboot" to defaults.'
       else
-        echo "Nightly scheduled reboot is already disabled, no change is made."
+        echo "ERROR: Nightly scheduled reboot is already disabled, no change is made."
       fi
     fi  
