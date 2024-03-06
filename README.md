@@ -96,7 +96,6 @@ Optional flatpaks:
 - [Nicotine+ (Soulseek alt.)](https://flathub.org/apps/org.nicotine_plus.Nicotine)
 - [Tenacity (Audacity alt.)](https://flathub.org/apps/org.tenacityaudio.Tenacity)
 - [GitHub Desktop](https://flathub.org/apps/io.github.shiftey.Desktop)
-.
 - [Steam](https://flathub.org/apps/com.valvesoftware.Steam)
 - [ProtonPlus (Steam Proton Manager)](https://flathub.org/apps/com.vysp3r.ProtonPlus)
 - [Grapejuice (Roblox)](https://flathub.org/apps/net.brinkervii.grapejuice)
