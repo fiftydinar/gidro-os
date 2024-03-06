@@ -5,7 +5,7 @@ configure-close-button  ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Present"
-    if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+    if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
       CURRENT_STATE="Hidden"
     fi
     OPTION={{ ACTION }}
@@ -23,14 +23,14 @@ configure-close-button  ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "hide" ]; then
-      if ! gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+      if ! gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
         gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
           echo 'Hide close button from windows setting applied.'
       else
         echo 'Close button is already hidden, no change is made.'
       fi  
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
-      if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+      if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
         gsettings reset org.gnome.desktop.wm.preferences button-layout
           echo 'Reverted setting "window close button" to defaults.'
       else
