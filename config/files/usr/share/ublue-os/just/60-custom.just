@@ -3,10 +3,14 @@
 # Configure window close button
 configure-close-button  ACTION="prompt":
     #!/usr/bin/env bash
-    bold=$(tput bold)
-    normal=$(tput sgr0)
+    source /usr/lib/ujust/ujust.sh
+    CURRENT_STATE="Present"
+    if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+      CURRENT_STATE="Hidden"
+    fi
     OPTION={{ ACTION }}
-    if [ "$OPTION" == "prompt" ]; then    
+    if [ "$OPTION" == "prompt" ]; then
+    echo "Close button is currently: ${bold}${CURRENT_STATE}${normal}"
     echo "${bold}Configuring window close button${normal}"
     echo 'Hiding close button from windows can be useful for mouses which have special key mapped for closing applications.'
     echo 'Hide or Unhide close button? Press ESC to exit.'
@@ -19,18 +23,25 @@ configure-close-button  ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "hide" ]; then
-      gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
-        echo 'Hide close button from windows setting applied.' 
+      if ! gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+        gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
+          echo 'Hide close button from windows setting applied.'
+      else
+        echo 'Close button is already hidden, no change is made.'
+      fi  
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
-      gsettings reset org.gnome.desktop.wm.preferences button-layout
-        echo 'Reverted setting "window close button" to defaults.'
+      if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q 'appmenu:'; then
+        gsettings reset org.gnome.desktop.wm.preferences button-layout
+          echo 'Reverted setting "window close button" to defaults.'
+      else
+        echo 'Close button is already present, no change is made.'
+      fi
     fi
     
 # Configure GRUB screen with various options
 configure-grub ACTION="prompt":
     #!/usr/bin/env bash
-    bold=$(tput bold)
-    normal=$(tput sgr0)
+    source /usr/lib/ujust/ujust.sh
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
     echo "${bold}Configuring GRUB${normal}"
@@ -71,8 +82,7 @@ configure-grub ACTION="prompt":
 # Factory-reset Gidro-OS
 factory-reset ACTION="prompt":
     #!/usr/bin/env bash
-    bold=$(tput bold)
-    normal=$(tput sgr0)
+    source /usr/lib/ujust/ujust.sh
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then    
     echo "${bold}Configuring Factory-reset for Gidro-OS${normal}"
@@ -182,8 +192,7 @@ factory-reset ACTION="prompt":
 # Configure Proton-GE
 proton-ge ACTION="prompt":
     #!/usr/bin/env bash
-    bold=$(tput bold)
-    normal=$(tput sgr0)
+    source /usr/lib/ujust/ujust.sh
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
       echo "${bold}Configuring Proton-GE${normal}"
@@ -259,10 +268,14 @@ proton-ge ACTION="prompt":
 # Configure scheduled nightly reboot
 scheduled-reboot ACTION="prompt":
     #!/usr/bin/env bash
-    bold=$(tput bold)
-    normal=$(tput sgr0)
+    source /usr/lib/ujust/ujust.sh
+    CURRENT_STATE="Disabled"
+    if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
+      CURRENT_STATE="Enabled"
+    fi  
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
+      echo "Scheduled nightly reboot is currently: ${bold}${CURRENT_STATE}${normal}"
       echo "${bold}Configuring scheduled nightly reboot${normal}"
       echo 'Configure scheduled nightly reboot, which happens in 03:00.'
       echo 'Enable or Disable scheduled nightly reboot? Press ESC to exit.'
