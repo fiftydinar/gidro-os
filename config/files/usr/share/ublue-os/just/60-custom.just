@@ -10,8 +10,8 @@ configure-close-button  ACTION="prompt":
     fi
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
+    echo "${bold}Configuring window close button${normal}"    
     echo "Close button is currently: ${bold}${CURRENT_STATE}${normal}"
-    echo "${bold}Configuring window close button${normal}"
     echo 'Hiding close button from windows can be useful for mouses which have special key mapped for closing applications.'
     echo 'Hide or Unhide close button? Press ESC to exit.'
     OPTION=$(ugum choose "Unhide (Default)" Hide)
@@ -275,8 +275,8 @@ scheduled-reboot ACTION="prompt":
     fi  
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
+      echo "${bold}Configuring scheduled nightly reboot${normal}"    
       echo "Scheduled nightly reboot is currently: ${bold}${CURRENT_STATE}${normal}"
-      echo "${bold}Configuring scheduled nightly reboot${normal}"
       echo 'Configure scheduled nightly reboot, which happens in 03:00.'
       echo 'Enable or Disable scheduled nightly reboot? Press ESC to exit.'
       OPTION=$(ugum choose "Disable (Default)" Enable)
