@@ -223,12 +223,6 @@ To rebase an existing Silverblue installation to the latest build:
   systemctl reboot
   ```
 
-This repository builds date tags as well, so if you want to rebase to a particular day's build:
-
-```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:20231115
-```
-
 ## Repos used for some installed RPM packages
 - [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
