@@ -2,4 +2,3 @@ type: systemd
 system:
   enabled:
     - minimum-free-zram.service
-    - com.system76.Scheduler.service

@@ -23,7 +23,6 @@ Replaced packages (RPMs)/usecases:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
 
 Installed packages (RPMs):
-- [System76 Scheduler](https://github.com/pop-os/system76-scheduler) (for performance improvement by adequately adjusting process priorities in realtime)
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
@@ -50,7 +49,6 @@ Installed extensions:
 - [OpenWeather](https://github.com/toppk/gnome-shell-extension-openweather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
-- System76 Scheduler (needed for integration with Gnome)
 
 Installed flatpaks:
 - [Boxes](https://apps.gnome.org/en/Boxes/)
@@ -225,7 +223,6 @@ To rebase an existing Silverblue installation to the latest build:
   ```
 
 ## Repos used for some installed RPM packages
-- [System76-Scheduler](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)

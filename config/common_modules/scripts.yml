@@ -1,7 +1,6 @@
 type: script
 scripts:
   - reload-font-cache.sh
-  - system76-scheduler.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
   - proton-ge-updater.sh
