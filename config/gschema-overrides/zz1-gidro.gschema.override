@@ -52,7 +52,7 @@ favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desk
 [org.gnome.shell.extensions.blur-my-shell]
 sigma=5
 
-[org.gnome.shell.extensions.openweather]
+[org.gnome.shell.extensions.openweatherrefined]
 use-system-icons=false
 pressure-unit='mbar'
 show-comment-in-panel=true
