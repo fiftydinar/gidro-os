@@ -145,7 +145,7 @@ factory-reset ACTION="prompt":
       gsettings reset org.gnome.system.locale region
       # This is needed to reset system & user extensions
       gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
-      gsettings reset-recursively org.gnome.shell.extensions.openweather
+      gsettings reset-recursively org.gnome.shell.extensions.openweatherrefined
       gsettings reset-recursively org.gnome.shell.extensions.middleclickclose      
       gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
       gsettings reset-recursively org.gnome.shell.extensions.Bluetooth-Battery-Meter

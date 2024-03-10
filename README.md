@@ -46,7 +46,7 @@ Installed extensions:
 - [Blur My Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
-- [OpenWeather](https://github.com/toppk/gnome-shell-extension-openweather)
+- [OpenWeather Refined](https://github.com/penguin-teal/gnome-openweather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 
@@ -145,7 +145,7 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-- Set OpenWeather to be in top-right, to show weather conditions in top bar, use mbar for pressure, show wind arrows & don't use decimals for temperature
+- Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit & use packaged icons
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Enabled Nautilus "Sort folders before files"
@@ -223,13 +223,12 @@ To rebase an existing Silverblue installation to the latest build:
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
-- [OpenWeather](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-openweather-toppk/)
+- [OpenWeather Refined](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweatherrefined/)
 - [Notifications Alert](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/)
 - [Bluetooth Battery Meter](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-Bluetooth-Battery-Meter-git/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
-- Maintain current fork of OpenWeather from unmerged changes, as it looks like it is abandoned (separate extension reborn project is needed)
 - Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
