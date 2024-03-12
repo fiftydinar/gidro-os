@@ -10,7 +10,7 @@ Removed packages (RPMs):
 - Firefox
 - htop
 - nvtop
-- Gnome Software rpm-ostree package (not needed since ublue-update is used)
+- Gnome Software rpm-ostree package (not needed since we use rpm-ostree auto-updater)
 - Gnome classic session
 - Gnome Tour
 - Gnome Initial Setup
@@ -21,7 +21,6 @@ Removed packages (RPMs):
 Replaced packages (RPMs)/usecases:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) from Flathub instead of Firefox
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
-- [Ublue-Update](https://github.com/ublue-os/ublue-update) instead of basic systemd auto-update services
 
 Installed packages (RPMs):
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
