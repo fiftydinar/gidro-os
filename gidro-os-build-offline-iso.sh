@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Offline ISO size is around 4.1GB
+# Offline ISO size is around 4.1GB without flatpaks
 
 ARCH=x86_64
 VERSION=39
