@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Offline ISO size is around 4.1GB
+
 ARCH=x86_64
 VERSION=39
 IMAGE_REPO=ghcr.io/fiftydinar
