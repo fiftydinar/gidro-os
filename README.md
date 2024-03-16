@@ -163,7 +163,7 @@ Settings applied by default:
 - Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
-- Set LibreWolf to enable WebGL, disable ResistFingerprinting, disable deleting cookies & cache on exit, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage, disable tab manager arrow, enable switching tabs with mouse-wheel (GPU decoding is not yet enabled by default due to [this bug](https://codeberg.org/librewolf/issues/issues/1813), however, it can be still enabled manually in about:config with `media.ffmpeg.vaapi.enabled` option set to `true`)
+- Set LibreWolf to enable WebGL, disable ResistFingerprinting, disable deleting cookies & cache on exit, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage, disable tab manager arrow, enable switching tabs with mouse-wheel (GPU decoding is not yet enabled by default for AMD & Nvidia GPUs, however, it can be still enabled manually in about:config with `media.ffmpeg.vaapi.enabled` option set to `true` for AMD GPUs.)
 - G4Music background playback enabled
 
 ## Installation (ISO) [Recommended]
