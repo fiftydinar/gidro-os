@@ -117,6 +117,7 @@ Optional config:
 - [Scheduled nightly reboot](https://github.com/fiftydinar/gidro-os/wiki/Gidro%E2%80%90OS-Config#how-to-apply-scheduled-nightly-reboot-config) (useful for applying system updates if you're leaving your PC turned on 24/7)
 
 Settings applied by default:
+- Enabled experimental support for VRR (Variable Refresh Rate) for screens which support it
 - [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
 - [Enabled CUDA translation layer called ZLUDA for AMD GPUs](https://github.com/vosen/ZLUDA) (allows to run Nvidia AI applications on AMD GPUs)
 - [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
@@ -131,7 +132,6 @@ Settings applied by default:
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
-- Enabled touchpad tap-to-click
 - Set font hinting to "None"
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper, including dark variant
