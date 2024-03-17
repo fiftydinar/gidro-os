@@ -1,6 +1,0 @@
-ublue_variants:
-  - label: fiftydinar/gidro-os
-    ks: /kickstart/ublue-os.ks
-    flavors:
-      - label: gidro-os
-        info: Gidro-OS
