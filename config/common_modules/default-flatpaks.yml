@@ -11,6 +11,7 @@ system:
     - org.gnome.Snapshot
     - org.gnome.Contacts
     - org.gnome.clocks
+    - com.belmoussaoui.Decoder
     - org.gnome.Evince
     - org.gnome.Maps
     - org.gnome.TextEditor

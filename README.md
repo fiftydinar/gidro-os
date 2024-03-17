@@ -57,6 +57,7 @@ Installed flatpaks:
 - [Camera](https://apps.gnome.org/en/Snapshot/)
 - [Contacts](https://apps.gnome.org/en/Contacts/)
 - [Clocks](https://apps.gnome.org/en/Clocks/)
+- [Decoder](https://flathub.org/apps/com.belmoussaoui.Decoder)
 - [Document Viewer](https://apps.gnome.org/en/Evince/)
 - [Maps](https://apps.gnome.org/en/Maps/)
 - [Text Editor](https://apps.gnome.org/en/TextEditor/)
