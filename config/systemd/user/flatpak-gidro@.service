@@ -1,0 +1,10 @@
+[Unit]
+Description=Autostart Flatpak app (%i)
+
+[Service]
+Type=oneshot
+Environment="FLATPAK_RUN_OPTIONS=%i"
+ExecStart=/usr/bin/flatpak run $FLATPAK_RUN_OPTIONS
+
+[Install]
+WantedBy=default.target

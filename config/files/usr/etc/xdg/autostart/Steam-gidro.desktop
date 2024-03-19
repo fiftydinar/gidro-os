@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Steam
-Comment=Steam silent autostart
-Icon=com.valvesoftware.Steam
-Exec=flatpak run com.valvesoftware.Steam -silent
