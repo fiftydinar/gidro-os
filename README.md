@@ -211,6 +211,10 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   systemctl reboot
   ```
+
+- If you followed Secure Boot instructions, you will be prompted with blue MOK screen, which is used for enrolling security keys.
+  Choose "Enroll key" & type `ublue-os` as a password (type minus on a keyboard as - sign if you get errors). Continue boot afterwards.
+
 - Then rebase to the signed image, like so:
   ```
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
