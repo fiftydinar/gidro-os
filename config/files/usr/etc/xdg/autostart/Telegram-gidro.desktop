@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Telegram
-Comment=Telegram silent autostart
-Icon=org.telegram.desktop
-Exec=flatpak run org.telegram.desktop -startintray

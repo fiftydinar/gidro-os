@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Deluge
-Comment=Deluge silent autostart
-Icon=org.deluge_torrent.deluge
-Exec=flatpak run org.deluge_torrent.deluge

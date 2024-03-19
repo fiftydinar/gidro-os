@@ -1,0 +1,19 @@
+[Unit]
+Description=Autostart Flatpak app (%i)
+After=graphical-session.target
+PartOf=graphical-session.target
+ConditionEnvironment=DISPLAY
+
+[Service]
+Type=exec
+Environment="FLATPAK_RUN_OPTIONS=%i"
+ExecStart=/usr/bin/flatpak run $FLATPAK_RUN_OPTIONS
+WorkingDirectory=-/usr/bin
+Restart=no
+TimeoutStopSec=5s
+Slice=app.slice
+ExitType=cgroup
+IPAccounting=yes
+
+[Install]
+WantedBy=xdg-desktop-autostart.target
