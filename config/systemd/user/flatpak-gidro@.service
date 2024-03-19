@@ -1,7 +1,7 @@
 [Unit]
 Description=Autostart Flatpak app (%i)
-After=graphical-session.target
-PartOf=graphical-session.target
+After=gnome-session-initialized.target
+PartOf=gnome-session-initialized.target
 ConditionEnvironment=DISPLAY
 
 [Service]
@@ -16,4 +16,4 @@ ExitType=cgroup
 IPAccounting=yes
 
 [Install]
-WantedBy=xdg-desktop-autostart.target
+WantedBy=gnome-session.target
