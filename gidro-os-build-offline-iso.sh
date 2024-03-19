@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Thanks to Universal Blue for providing the repo for generating offline ISOs
+# https://github.com/ublue-os/isogenerator
+
 # Offline ISO size is around 4.1GB without flatpaks
 #
 # Kinoite installer variant is used because it includes option for making users
