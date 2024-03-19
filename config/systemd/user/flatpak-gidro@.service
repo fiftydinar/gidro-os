@@ -10,7 +10,6 @@ Environment="FLATPAK_RUN_OPTIONS=%i"
 ExecStart=/usr/bin/flatpak run $FLATPAK_RUN_OPTIONS
 WorkingDirectory=-/usr/bin
 Restart=no
-TimeoutStopSec=5s
 Slice=app.slice
 ExitType=cgroup
 IPAccounting=yes
