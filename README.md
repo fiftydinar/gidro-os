@@ -207,7 +207,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
-- Reboot to complete the rebase (and enter Secure Boot key with "ublue-os" password if you're using it):
+- Reboot to complete the rebase:
   ```
   systemctl reboot
   ```
