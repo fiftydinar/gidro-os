@@ -212,9 +212,9 @@ proton-ge ACTION="prompt":
     if [ "${OPTION,,}" == "install" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-      SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*"
+      SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"      
-      cp -rf "$SOURCE" "$TARGET"
+      cp -rf "$SOURCE"/* "$TARGET"
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
         echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
