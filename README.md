@@ -118,6 +118,7 @@ Optional config:
 
 Settings applied by default:
 - [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
+- [Applied workaround for too aggressive power-saving on AMD GPUs](https://gitlab.freedesktop.org/drm/amd/-/issues/1500#note_1854170) (solves stuttering issues on low-mid GPU load)
 - [Enabled CUDA translation layer called ZLUDA for AMD GPUs](https://github.com/vosen/ZLUDA) (allows to run Nvidia AI applications on AMD GPUs)
 - [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
 - [ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop](https://github.com/pop-os/default-settings/pull/163) (avoids OOM situations better & it also improves responsiveness under I/O load)
