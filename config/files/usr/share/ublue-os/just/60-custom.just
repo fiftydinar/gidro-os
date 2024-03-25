@@ -27,14 +27,14 @@ configure-close-button  ACTION="prompt":
         gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'
           echo 'Hide close button from windows setting applied.'
       else
-        echo 'ERROR: Close button is already hidden, no change is made.'
+        printf "\e[1;31mERROR: Close button is already hidden, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
       if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
         gsettings reset org.gnome.desktop.wm.preferences button-layout
           echo 'Reverted setting "window close button" to defaults.'
       else
-        echo 'ERROR: Close button is already present, no change is made.'
+        printf "\e[1;31mERROR: Close button is already present, no change is made.\e[0m\n" 1>&2
       fi
     fi
     
@@ -217,7 +217,7 @@ proton-ge ACTION="prompt":
       cp -rf "$SOURCE"/* "$TARGET"
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
-        echo 'ERROR: Proton-GE cannot be installed because Steam is not installed.'
+        printf "\e[1;31mERROR: Proton-GE cannot be installed because Steam is not installed.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
@@ -235,14 +235,14 @@ proton-ge ACTION="prompt":
            fi  
       done
       if [[ "$found_duplicate" == true ]]; then
-        echo "ERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists."
+        printf "\e[1;31mERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists.\e[0m\n" 1>&2
       else 
         cp -rf "$folder" "$TARGET"
           echo 'Proton-GE runner for Steam updated, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
       fi
       done
       else
-        echo 'ERROR: Proton-GE cannot be updated because Steam is not installed.'
+        printf "\e[1;31mERROR: Proton-GE cannot be updated because Steam is not installed.\e[0m\n" 1>&2
       fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
@@ -251,7 +251,7 @@ proton-ge ACTION="prompt":
       rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*-GE-*
         echo 'Proton-GE uninstalled.'
       else
-        echo 'ERROR: Proton-GE cannot be uninstalled because Steam is not installed.'
+        printf "\e[1;31mERROR: Proton-GE cannot be uninstalled because Steam is not installed.\e[0m\n" 1>&2
       fi
     elif [ "$OPTION" == "Remove old Proton-GE" ] || [ "${OPTION,,}" == "remove-old" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
@@ -262,7 +262,7 @@ proton-ge ACTION="prompt":
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else
-        echo 'ERROR: Cannot delete old Proton-GE because Steam is not installed.'
+        printf "\e[1;31mERROR: Cannot delete old Proton-GE because Steam is not installed.\e[0m\n" 1>&2
       fi
     fi
     
@@ -294,7 +294,7 @@ scheduled-reboot ACTION="prompt":
         sudo systemctl start nightly-reboot.timer
         echo "Nightly scheduled reboot is enabled!"
       else
-        echo "ERROR: Nightly scheduled reboot is already enabled, no change is made."
+        printf "\e[1;31mERROR: Nightly scheduled reboot is already enabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
@@ -302,6 +302,6 @@ scheduled-reboot ACTION="prompt":
         sudo systemctl stop nightly-reboot.timer
         echo 'Reverted setting "nightly scheduled reboot" to defaults.'
       else
-        echo "ERROR: Nightly scheduled reboot is already disabled, no change is made."
+        printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
       fi
     fi  
