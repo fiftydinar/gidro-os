@@ -36,7 +36,7 @@ dracut_config="/tmp/config/initramfs-setup/dracut"
 if [ -d "$dracut_config" ]; then
   if [[ -n $(find "$dracut_config" -type f -name "*.conf") ]]; then
     echo "Copying dracut config files"
-    cp -r "$dracut_config"/*.conf /usr/lib/dracut/dracut.conf.d
+    cp -r "$dracut_config"/*.conf /usr/etc/dracut/dracut.conf.d/
   fi
 fi
 
