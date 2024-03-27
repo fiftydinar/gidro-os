@@ -20,9 +20,6 @@
 # Mouse settings lock
 /org/gnome/desktop/peripherals/mouse/accel-profile
 
-# Touchpad settings lock
-/org/gnome/desktop/peripherals/touchpad/tap-to-click
-
 # Remove old trash files setting lock
 /org/gnome/desktop/privacy/remove-old-trash-files
 
