@@ -7,7 +7,7 @@ This image uses easy & robust [BlueBuild](https://blue-build.org/) tooling for m
 It is similar to making custom ROMs in the Android community, but in a much easier & in a more reliable way.
 
 Removed packages (RPMs):
-- [Gnome Software rpm-ostree package](https://packages.fedoraproject.org/pkgs/gnome-software/gnome-software-rpm-ostree/) (not needed since Gidro-OS uses ublue-os rpm-ostree auto-updater, which makes Gnome Software better & more reliable to use)
+- [Gnome Software rpm-ostree package](https://packages.fedoraproject.org/pkgs/gnome-software/gnome-software-rpm-ostree/) (it makes Gnome Software better + more reliable to use & it's not needed since Gidro-OS uses included [ublue-os rpm-ostree auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - [Gnome classic session](https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en)
 - Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
 - [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) (not needed since the user account is made inside the ISO & some unrelevant setup steps are there, which are not related to Gidro-OS)
