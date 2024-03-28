@@ -7,20 +7,21 @@ This image uses easy & robust [BlueBuild](https://blue-build.org/) tooling for m
 It is similar to making custom ROMs in the Android community, but in a much easier & in a more reliable way.
 
 Removed packages (RPMs):
-- Firefox
-- htop
-- nvtop
-- Gnome Software rpm-ostree package (not needed since Gidro-OS uses ublue-os rpm-ostree auto-updater, which in turn makes Gnome Software better to use)
-- Gnome classic session
-- Gnome Tour
-- Gnome Initial Setup
-- Gnome System Monitor
-- Gnome system extensions
-- Gnome Tweaks
+- [Gnome Software rpm-ostree package](https://packages.fedoraproject.org/pkgs/gnome-software/gnome-software-rpm-ostree/) (not needed since Gidro-OS uses ublue-os rpm-ostree auto-updater, which makes Gnome Software better & more reliable to use)
+- (Gnome classic session)[https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en]
+- Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
+- (Gnome Initial Setup)[https://gitlab.gnome.org/GNOME/gnome-initial-setup] (not needed since the user account is made inside the ISO & some unrelated setup steps are there, which are not related to Gidro-OS)
+- (Gnome Tweaks)[https://gitlab.gnome.org/GNOME/gnome-tweaks]
 
-Replaced packages (RPMs)/usecases:
-- [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) from Flathub instead of Firefox
-- [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) from Flathub instead of Gnome System Monitor
+Replaced packages (RPMs):
+- [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
+   (for better, more suitable first-time install experience)
+
+Replaced packages (RPMs) with flatpaks:
+- [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)
+   (it has better defaults, like Ublock Origin out-of-the-box, doesn't send telemetry & it offers easy customization to fix some LibreWolf quirks)
+- [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor), (nvtop)[https://github.com/Syllo/nvtop] & (htop)[https://github.com/htop-dev/htop]  
+   (it's a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
