@@ -154,7 +154,7 @@ Settings applied by default:
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
 - Add Nautilus "New Document" to context menu
 - Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
-- Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
+- Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
 - [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
