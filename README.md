@@ -11,7 +11,7 @@ Removed packages (RPMs):
 - [Gnome classic session](https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en)
 - Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
 - [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) (not needed since the user account is made inside the ISO & some unrelevant setup steps are there, which are not related to Gidro-OS)
-- [Gnome Tweaks](https://gitlab.gnome.org/GNOME/gnome-tweaks)
+- [Gnome Tweaks](https://gitlab.gnome.org/GNOME/gnome-tweaks) (It's lowly maintained & It's not officially supported by Gnome)
 
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
