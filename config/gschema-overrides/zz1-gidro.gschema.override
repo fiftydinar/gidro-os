@@ -68,6 +68,7 @@ enable-battery-level-text=true
 allow-updates=false
 download-updates=false
 download-updates-notify=false
+enable-repos-dialog=false
 packaging-format-preference=['flatpak:flathub-user', 'flatpak:flathub-system']
 
 [org.gnome.system.locale]
