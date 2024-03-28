@@ -10,7 +10,7 @@ Removed packages (RPMs):
 - Firefox
 - htop
 - nvtop
-- Gnome Software rpm-ostree package (not needed since we use rpm-ostree auto-updater)
+- Gnome Software rpm-ostree package (not needed since Gidro-OS uses ublue-os rpm-ostree auto-updater, which in turn makes Gnome Software better to use)
 - Gnome classic session
 - Gnome Tour
 - Gnome Initial Setup
@@ -152,7 +152,10 @@ Settings applied by default:
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
 - Add Nautilus "New Document" to context menu
-- Set Gnome Software to use Flathub-user remote by default
+- Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
+- Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses ublue-os flatpak auto-updater)
+- Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
+- [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
 - [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
 - [Include StevenBlack hosts file for blocking ads, malware, porn & gambling](https://github.com/StevenBlack/hosts)
