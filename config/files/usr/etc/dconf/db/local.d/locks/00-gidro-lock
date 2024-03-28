@@ -30,6 +30,7 @@
 /org/gnome/software/allow-updates
 /org/gnome/software/download-updates
 /org/gnome/software/download-updates-notify
+/org/gnome/software/enable-repos-dialog
 /org/gnome/software/packaging-format-preference
 
 # Mutter settings lock
