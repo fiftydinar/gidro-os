@@ -146,7 +146,7 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-- Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit & use packaged icons
+- Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit, use arrows for wind direction & use packaged icons
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Enabled Nautilus "Sort folders before files"
