@@ -2,9 +2,9 @@
 
 ![](assets/bg.webp)
 
-My customized image, based on slightly customized [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), which is derived from amazing [Universal Blue](https://universal-blue.org/images/main/) project.  
-This image uses easy & robust [BlueBuild](https://blue-build.org/) tooling for making & maintaining container-based Linux desktop images.
-It is similar to making custom ROMs in the Android community, but in a much easier & in a more reliable way.
+My customized image, based on slightly customized [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), which is derived from amazing [Universal Blue](https://universal-blue.org/) project.  
+This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.
+It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
 Removed packages (RPMs):
 - [Gnome Software rpm-ostree package](https://packages.fedoraproject.org/pkgs/gnome-software/gnome-software-rpm-ostree/) (it makes Gnome Software better + more reliable to use & it's not needed since Gidro-OS uses included [ublue-os rpm-ostree auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
