@@ -207,7 +207,11 @@ wget -q https://github.com/ublue-os/akmods/raw/main/certs/public_key.der -O /tmp
 
 To rebase an existing Silverblue installation to the latest build:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
+- Reset any package overrides that you might have:
+  ```
+  rpm-ostree override reset --all
+  ```
+- Rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
