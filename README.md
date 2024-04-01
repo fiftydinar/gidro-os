@@ -29,7 +29,7 @@ Installed packages (RPMs):
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
 - [Gnome-randr-rust](https://github.com/maxwellainatchi/gnome-randr-rust) (xrandr equivalent for Gnome Wayland)
-- Langpacks-EN (for avoiding Gnome Software's message about it & for potentially solving flatpak mixed locale issues)
+- [Langpacks-EN](https://packages.fedoraproject.org/pkgs/langpacks/langpacks-en/) (for avoiding Gnome Software's message about it & for potentially solving flatpak mixed locale issues)
 - [Zsync](https://web.archive.org/web/20240215223506/http://zsync.moria.org.uk/index) (Needed dependency for some AppImage auto-updates)
 
 Installed akmods:
