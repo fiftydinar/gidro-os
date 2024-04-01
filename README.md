@@ -3,7 +3,7 @@
 ![](assets/bg.webp)
 
 My customized image, based on slightly customized [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), which is derived from amazing [Universal Blue](https://universal-blue.org/) project.  
-This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.
+This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
 Removed packages (RPMs):
