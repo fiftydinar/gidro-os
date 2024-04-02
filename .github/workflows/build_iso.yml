@@ -57,7 +57,7 @@ jobs:
         shell: bash
         run: |
           mv ${{ steps.build.outputs.output-directory }}/*.iso ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
-          mv ${{ steps.build.outputs.output-directory }}/*.CHECKSUM ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}.CHECKSUM
+          mv ${{ steps.build.outputs.output-directory }}/*-CHECKSUM ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}-CHECKSUM
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
