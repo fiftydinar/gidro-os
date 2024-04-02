@@ -1,4 +1,3 @@
 .idea
 cosign.key
 /Containerfile
-/.github/worfklows/build_iso.yml
