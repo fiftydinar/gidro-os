@@ -1,0 +1,56 @@
+name: Build ISOs
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build_iso.yml'
+
+env:
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    container:
+      image: fedora:${{ matrix.major_version }}
+      options: "--privileged"
+      volumes:
+        - "/:/host"
+    strategy:
+      fail-fast: false
+      matrix:
+        image_name: gidro-os
+        major_version: 39
+        image_tag: latest
+    steps:
+      - name: Build ISO
+        uses: ublue-os/isogenerator@1.0.9
+        id: build
+        with:
+          ARCH: x86_64
+          IMAGE_NAME: ${{ matrix.image_name }}
+          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
+          VARIANT: 'Kinoite'
+          VERSION: ${{ matrix.major_version }}
+          IMAGE_TAG: ${{ matrix.image_tag }}
+          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+          ENROLLMENT_PASSWORD: 'ublue-os'
+
+      - name: Upload ISO to archive.org
+        uses: qoijjj/internet-archive-upload@v7
+        with:
+          access-key: ${{ secrets.IA_ACCESS_KEY }}
+          secret-key: ${{ secrets.IA_SECRET_KEY }}
+          identifier: ${{ matrix.image_name }}
+          files: ${{ steps.build.outputs.output-directory }}
