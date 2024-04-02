@@ -178,7 +178,7 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 
 ISO doesn't require an active internet connection during its usage.
 
-### [DOWNLOAD LINK](https://github.com/fiftydinar/gidro-os/releases/tag/auto-iso)
+### [DOWNLOAD LINK](https://archive.org/download/gidro-os_02-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_02-04-2024.iso)
 
 Just download the ISO & proceed with installation.
 
@@ -246,5 +246,4 @@ To rebase an existing Silverblue installation to the latest build:
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
-- Fix download link for the ISO
 - Use upstream isogenerator action instead of my own
