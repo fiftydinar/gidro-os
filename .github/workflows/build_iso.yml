@@ -53,8 +53,6 @@ jobs:
           secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
           enrollment_password: 'ublue-os'
           iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
-          flatpak_remote_name: 'flathub-system'
-          flatpak_remote_url: 'https://flathub.org/repo/flathub.flatpakrepo'
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
