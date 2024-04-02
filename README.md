@@ -176,7 +176,7 @@ Settings applied by default:
 
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
 
-ISO doesn't require an active internet connection.
+ISO doesn't require an active internet connection during its usage.
 
 ### [DOWNLOAD LINK](https://github.com/fiftydinar/gidro-os/releases/tag/auto-iso)
 
