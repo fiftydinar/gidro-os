@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build-iso:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -37,26 +37,29 @@ jobs:
       - name: Fetch current date
         shell: bash
         run: |
-          TIMESTAMP="$(date +%Y%m%d)"
+          TIMESTAMP="$(date +%d-%m-%Y)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Build ISO
-        uses: ublue-os/isogenerator@1.0.9
+        uses: jasonn3/build-container-installer@v1.1.1
         id: build
         with:
-          ARCH: x86_64
-          IMAGE_NAME: ${{ matrix.image_name }}
-          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
-          VARIANT: 'Kinoite'
-          VERSION: ${{ matrix.major_version }}
-          IMAGE_TAG: ${{ matrix.image_tag }}
-          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
-          ENROLLMENT_PASSWORD: 'ublue-os'
+          arch: x86_64
+          image_name: ${{ matrix.image_name }}
+          image_repo: ${{ env.IMAGE_REGISTRY }}
+          variant: 'Kinoite'
+          version: ${{ matrix.major_version }}
+          image_tag: ${{ matrix.image_tag }}
+          secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+          enrollment_password: 'ublue-os'
+          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          flatpak_remote_name: 'flathub-system'
+          flatpak_remote_url: 'https://flathub.org/repo/flathub.flatpakrepo'
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}-${{ env.TIMESTAMP }}
-          files: ${{ steps.build.outputs.output-directory }}
+          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          files: ${{ steps.build.outputs.iso_name }}
