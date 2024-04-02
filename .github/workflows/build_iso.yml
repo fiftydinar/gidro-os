@@ -45,13 +45,13 @@ jobs:
         id: build
         with:
           ARCH: x86_64
-          IMAGE_NAME: ${{ matrix.image_name }}
-          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
-          VARIANT: 'Kinoite'
           VERSION: ${{ matrix.major_version }}
+          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
+          IMAGE_NAME: ${{ matrix.image_name }}
           IMAGE_TAG: ${{ matrix.image_tag }}
-          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+          VARIANT: 'Kinoite'
           ENROLLMENT_PASSWORD: 'ublue-os'
+          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
 
       - name: Rename ISO to include date
         shell: bash
