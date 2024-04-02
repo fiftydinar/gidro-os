@@ -245,7 +245,6 @@ To rebase an existing Silverblue installation to the latest build:
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
-- Migrate "Quick Close in Overview" extension from my copr to official rpm when it gets released
 - Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
 - Fix download link for the ISO
 - Use upstream isogenerator action instead of my own
