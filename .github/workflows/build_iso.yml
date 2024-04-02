@@ -1,4 +1,4 @@
-name: Build ISOs
+name: Build ISO
 
 on:
   workflow_dispatch:
@@ -34,6 +34,12 @@ jobs:
         major_version: [39]
         image_tag: [latest]
     steps:
+      - name: Fetch current date
+        shell: bash
+        run: |
+          TIMESTAMP="$(date +%Y%m%d)"
+          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
+
       - name: Build ISO
         uses: ublue-os/isogenerator@1.0.9
         id: build
@@ -52,5 +58,5 @@ jobs:
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}
+          identifier: ${{ matrix.image_name }}-${{ env.TIMESTAMP }}
           files: ${{ steps.build.outputs.output-directory }}
