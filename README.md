@@ -174,28 +174,22 @@ Settings applied by default:
 
 ## Installation (ISO) [Recommended]
 
-Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
+Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
 
-ISOs are online-based & are constantly upgraded. There is no need to worry about the version & the date of the ISO.
-  
-ISO is available for download [here.](https://github.com/fiftydinar/gidro-os/releases/tag/auto-iso)
+ISO doesn't require an active internet connection.
 
-Just download & proceed with installation.
+### [DOWNLOAD LINK](https://github.com/fiftydinar/gidro-os/releases/tag/auto-iso)
+
+Just download the ISO & proceed with installation.
 
 If you are on UEFI system, you will notice blue MOK screen after installer, which is used for enrolling security keys.
 If your system uses Secure Boot, you will need to "Enroll key" with a password `ublue-os` (type minus on a keyboard as - sign if you get errors).
 
 Otherwise, continue boot.
 
-After you get into the OS, type this command into Terminal & reboot:
-
-```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
-```
-
 ## Installation (Rebase)
 
-Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding.
+Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
 
 Rebasing is only supported from Fedora Silverblue edition.
 
@@ -211,6 +205,13 @@ To rebase an existing Silverblue installation to the latest build:
 - Reset any package overrides that you might have:
   ```
   rpm-ostree override reset --all
+  ```
+- Reset any initramfs modifications that you might have:
+  ```
+  rpm-ostree initramfs --disable
+  ```
+  ```
+  rpm-ostree initramfs-etc --untrack-all
   ```
 - Rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
