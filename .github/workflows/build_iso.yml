@@ -30,9 +30,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image_name: gidro-os
-        major_version: 39
-        image_tag: latest
+        image_name: [gidro-os]
+        major_version: [39]
+        image_tag: [latest]
     steps:
       - name: Build ISO
         uses: ublue-os/isogenerator@1.0.9
