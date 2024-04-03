@@ -15,9 +15,9 @@ Not to say that Fedora Silverblue is bad, I actually like their FOSS & vanilla/u
 It's just that I want something better now, rather than waiting for upstream to improve (which is not bad either, great things usually take some time).
 
 At 1st, I modified the Fedora Silverblue directly on booted system through various RPM package installs, fiddling with various configs & some other things to achieve what I want.  
-However, I noticed that the reliability of the system would later decline. 
+However, I noticed that the reliability of the system would later decline. I would also forgot some of the modifications that I did.    
 I looked for the solution. And I found it.  
-Solution is using BlueBuild for making your own images.  
+Solution is using BlueBuild for making your own custom images.  
 BlueBuild allows me to build my own vision of how Fedora Silverblue should look like without affecting the reliability of the system.  
 If some update fails, it fail in the GitHub cloud, not on the booted system!
 
