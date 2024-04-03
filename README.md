@@ -2,7 +2,7 @@
 
 ![](assets/bg.webp)
 
-My customized image, based on slightly customized [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), which is derived from the amazing [Universal Blue](https://universal-blue.org/) project.
+My customized image, based on slightly customized [Fedora Silverblue-main](https://universal-blue.discourse.group/docs?topic=868), which is derived from the amazing [Universal Blue](https://universal-blue.org/) project.
 
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
