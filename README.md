@@ -18,10 +18,10 @@ At 1st, I modified the Fedora Silverblue directly on booted system through vario
 However, I noticed that the reliability of the system would later decline. I would also forgot some of the modifications that I did.
 
 I looked for the solution.  
-I noticed the Universal Blue project, which made base images that pretty much fitted into my scope!
-However, I still wanted more.  
+I noticed the Universal Blue project, which made base images that pretty much fitted into my scope!  
+However, I still wanted more.
 
-I looked for even better solution. And I found it!
+I looked for even better solution. And I found it!  
 Solution was using BlueBuild (formerly Universal Blue's startingpoint) for making my own custom images!
   
 BlueBuild allows me to build my own vision of how Fedora Silverblue should look like without affecting the reliability of the system.  
