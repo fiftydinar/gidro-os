@@ -8,55 +8,7 @@ Thanks to Fedora for developing the original [Fedora Silverblue](https://fedorap
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
-## My reason for making the customized image
-
-I really like the Fedora for making the most reliable Linux distribution I ever used, but I find it lacking in terms of user experience in some areas.  
-Not to say that Fedora Silverblue is bad, I actually like their FOSS & vanilla/upstream vision that they are pursuing.  
-It's just that I want something better now, rather than waiting for upstream to improve (which is not bad either, great things usually take some time).
-
-At 1st, I modified the Fedora Silverblue directly on booted system through various RPM package installs, fiddling with various configs & some other things to achieve what I want.  
-However, I noticed that the reliability of the system would later decline. I would also forgot some of the modifications that I did.
-
-I looked for the solution.  
-I noticed the Universal Blue project, which made base images that pretty much fitted into my scope!  
-However, I still wanted more.
-
-I looked for even better solution. And I found it!  
-Solution was using BlueBuild (formerly Universal Blue's startingpoint) for making my own custom images!
-  
-BlueBuild allows me to build my own vision of how Fedora Silverblue should look like without affecting the reliability of the system.  
-If some update fails, it fails in the GitHub cloud, not on the booted system!
-
-Now let's talk about my vision. What are the issues that I wanted to solve?
-
-Fedora UX issues:
-- Shipping inferior Fedora flatpak remote instead of Flathub as default
-- No needed proprietary drivers & codecs by default due to FOSS politics
-- Disabled RPMFusion repo by default due to reason above
-- No auto-updates by default for both system & user apps
-- No easy configuration of OS in some areas instead of writing commands manually
-- Lack of some downstream high quality packages which improve hardware enablement
-- etc.
-
-Universal Blue solves those issues with base images.
-
-However, due to Fedora Silverblue using vanila Gnome DE, I find that there are other issues too that are related to Gnome.
-
-Gnome DE issues:
-- Gnome Software being unreliable & utterly slow
-- Gnome lacking some bling, to make the already great design stand-out more (like blur or more extended icon pack)
-- Gnome lacking some useful & frequently used functionality, which can be easily implemented through extensions
-- Gnome not shipping some useful & frequently used settings by default
-- etc.
-
-I also implemented other modifications which are not solved by either Universal Blue base image or Gnome DE.  
-
-Other issues:
-- Still wanting the additional hardware enablement as much as possible
-- Still wanting to implement more useful shortcut commands as much as possible
-- Lack of some useful tweaks for performance & app compatibility, while still remaining secure
-- Lack of some higher quality default apps, which would cover frequent usecases much better
-- etc.
+[**Why did I make the custom image?**](https://github.com/fiftydinar/gidro-os/wiki#my-reason-for-making-the-customized-image)
 
 ## Modifications
 
