@@ -19,7 +19,7 @@ However, I noticed that the reliability of the system would later decline. I wou
 I looked for the solution. And I found it.  
 Solution is using BlueBuild for making your own custom images.  
 BlueBuild allows me to build my own vision of how Fedora Silverblue should look like without affecting the reliability of the system.  
-If some update fails, it fail in the GitHub cloud, not on the booted system!
+If some update fails, it fails in the GitHub cloud, not on the booted system!
 
 Now let's talk about my vision. What are the issues that I wanted to solve?
 
