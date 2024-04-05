@@ -184,6 +184,7 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 ISO doesn't require an active internet connection during its usage.
 
 ### [DOWNLOAD LINK](https://archive.org/download/gidro-os_02-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_02-04-2024.iso)
+### [TORRENT LINK (higher download speed)](https://archive.org/download/gidro-os_02-04-2024/gidro-os_02-04-2024_archive.torrent)
 
 Just download the ISO & proceed with installation.
 
