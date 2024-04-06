@@ -242,7 +242,7 @@ To rebase an existing Silverblue installation to the latest build:
   systemctl reboot
   ```
 
-## Repos used for some installed RPM packages
+## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Quick Close in Overview](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-middleclickclose-git/)
@@ -250,6 +250,7 @@ To rebase an existing Silverblue installation to the latest build:
 - [Notifications Alert](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-notifications-alert-git/)
 - [Bluetooth Battery Meter](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-Bluetooth-Battery-Meter-git/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
+- [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 
 ## Plans for the future
 - Integrate all post-setup into image as much as possible
