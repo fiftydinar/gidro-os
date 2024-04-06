@@ -8,4 +8,5 @@ scripts:
   - morewaita.sh
   - block-ads.sh
   - zluda.sh
+  - skel-cleanup.sh
   - binutils-workaround.sh
