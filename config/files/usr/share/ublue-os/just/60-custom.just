@@ -105,9 +105,9 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -rf "$HOME"/.var/app/*
+      rm -r "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
-      cp -rf /usr/etc/skel/Templates "$HOME"/
+      cp -r /usr/etc/skel/Templates "$HOME"/
         echo '"New documents" context menu entry in Nautilus created.'    
       flatpak_data="/usr/etc/skel/.var/app"
       declare -A apps=(
@@ -118,7 +118,7 @@ factory-reset ACTION="prompt":
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do
-        cp -rf "${apps[$app]}" "$HOME/.var/app/"
+        cp -r "${apps[$app]}" "$HOME/.var/app/"
         echo "${app} pre-configured settings applied."
       done    
       dconf reset -f /
@@ -159,7 +159,7 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -rf "$HOME"/.var/app/*
+      rm -r "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
       flatpak_data="/usr/etc/skel/.var/app"
       declare -A apps=(
@@ -170,7 +170,7 @@ factory-reset ACTION="prompt":
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do
-        cp -rf "${apps[$app]}" "$HOME/.var/app/"
+        cp -r "${apps[$app]}" "$HOME/.var/app/"
         echo "${app} pre-configured settings applied."
       done 
       echo 'Factory reset of all apps completed.'
@@ -184,7 +184,7 @@ factory-reset ACTION="prompt":
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
       )
       for app in "${!apps[@]}"; do
-        cp -rf "${apps[$app]}" "$HOME/.var/app/"
+        cp -r "${apps[$app]}" "$HOME/.var/app/"
         echo "${app} pre-configured settings applied."
       done
       echo 'Factory reset of Gidro-OS modified app settings completed.'
@@ -214,7 +214,7 @@ proton-ge ACTION="prompt":
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"      
-      cp -rf "$SOURCE"/* "$TARGET"
+      cp -r "$SOURCE"/* "$TARGET"
         echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
       else
         printf "\e[1;31mERROR: Proton-GE cannot be installed because Steam is not installed.\e[0m\n" 1>&2
@@ -237,7 +237,7 @@ proton-ge ACTION="prompt":
       if [[ "$found_duplicate" == true ]]; then
         printf "\e[1;31mERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists.\e[0m\n" 1>&2
       else 
-        cp -rf "$folder" "$TARGET"
+        cp -r "$folder" "$TARGET"
           echo 'Proton-GE runner for Steam updated, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
       fi
       done
@@ -247,8 +247,8 @@ proton-ge ACTION="prompt":
     elif [ "${OPTION,,}" == "uninstall" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-      rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/GE-Proton*
-      rm -rf "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*-GE-*
+      rm -r "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/GE-Proton*
+      rm -r "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/*-GE-*
         echo 'Proton-GE uninstalled.'
       else
         printf "\e[1;31mERROR: Proton-GE cannot be uninstalled because Steam is not installed.\e[0m\n" 1>&2
@@ -257,8 +257,8 @@ proton-ge ACTION="prompt":
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
-      find . -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
-      rm -rf "$PWD"/*-GE-*
+      find . -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -r
+      rm -r "$PWD"/*-GE-*
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else

@@ -47,7 +47,7 @@ install() {
         echo "--> Extracting $filename..."
         tar -xf "$filename"
         echo "--> Removing the compressed archive..."
-        rm -f "$filename"
+        rm "$filename"
         echo "--> Done. Please check the command line for errors and restart Steam for the changes to take effect."
         return 0
     fi
