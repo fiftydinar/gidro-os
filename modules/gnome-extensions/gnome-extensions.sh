@@ -26,7 +26,9 @@ if [[ ${#GETTEXT_DOMAIN[@]} -gt 0 ]]; then
        # Install main extension files
        echo "Installing main extension files"
        install -d -m 0755 "/usr/share/gnome-shell/extensions/${UUID}/"
-       find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" -type d -exec sh -c 'cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ && chmod 0755 /usr/share/gnome-shell/extensions/"${UUID}"/{}' \; -o -type f -exec sh -c 'cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ && chmod 0644 /usr/share/gnome-shell/extensions/"${UUID}"/{}' \; 
+       find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" -exec cp -r {} "/usr/share/gnome-shell/extensions/${UUID}/" \;
+       find "/usr/share/gnome-shell/extensions/${UUID}" -type d -exec chmod 0755 {} +
+       find "/usr/share/gnome-shell/extensions/${UUID}" -type f -exec chmod 0644 {} +
        # Install schema
        echo "Installing schema extension file"
        install -d -m 0755 "/usr/share/glib-2.0/schemas/"
