@@ -4,6 +4,9 @@ The `gnome-extensions` module can be used to install Gnome extensions inside sys
 
 This module is universally compatible with all distributions which ship Gnome, as long as some extension doesn't require some additional dependency, like Pano.
 
+Thanks to https://extensions.gnome.org which provides end-releases of extensions as zips, it is very easy to maintain this module configuration.
+Basically the only maintenance is to bump the extension version when new Fedora/Gnome releases (around every 6 months).
+
 What does this module do?
 - It parses the gettext-domain that you inputted, along with the extension version
 - It downloads the extension directly from https://extensions.gnome.org
