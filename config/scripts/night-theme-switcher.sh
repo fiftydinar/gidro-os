@@ -44,8 +44,8 @@ fi
 echo "Removing archive"
 rm "${ARCHIVE_DIR}"
 
-# Extract necessary info from metadata.json
-echo "Extracting necessary info from metadata.json"
+# Read necessary info from metadata.json
+echo "Reading necessary info from metadata.json"
 UUID=$(yq '.uuid' < "${TMP_DIR}/metadata.json")
 SCHEMA_ID=$(yq '.settings-schema' < "${TMP_DIR}/metadata.json")
 
