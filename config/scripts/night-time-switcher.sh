@@ -27,6 +27,6 @@ cp "${TMP_DIR}/schemas/${SCHEMA_ID}.gschema.xml" "/usr/share/glib-2.0/schemas/${
 
 # Install languages
 mkdir -p "/usr/share/locale/"
-cp "${TMP_DIR}/locale"/* "/usr/share/locale/"
+cp -r "${TMP_DIR}/locale"/* "/usr/share/locale/"
 
 rm -r "${TMP_DIR}"
