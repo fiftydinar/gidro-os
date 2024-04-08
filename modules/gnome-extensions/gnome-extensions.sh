@@ -25,15 +25,17 @@ if [[ ${#GETTEXT_DOMAIN[@]} -gt 0 ]]; then
        SCHEMA_ID=$(yq '.settings-schema' < "${TMP_DIR}/metadata.json")
        # Install main extension files
        echo "Installing main extension files"
-       mkdir -p "/usr/share/gnome-shell/extensions/${UUID}/"
-       find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \;
+       install -d -m 0755 "/usr/share/gnome-shell/extensions/${UUID}/"
+       find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" \
+       -exec sh -c 'chmod 0644 {}' \; -type f -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \; \
+       -o -type d -exec sh -c 'chmod 0755 {}' \; -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \;
        # Install schema
        echo "Installing schema extension file"
-       mkdir -p "/usr/share/glib-2.0/schemas/"
-       cp "${TMP_DIR}/schemas/${SCHEMA_ID}.gschema.xml" "/usr/share/glib-2.0/schemas/${SCHEMA_ID}.gschema.xml"
+       install -d -m 0755 "/usr/share/glib-2.0/schemas/"
+       install -D -p -m 0644 "${TMP_DIR}/schemas/${SCHEMA_ID}.gschema.xml" "/usr/share/glib-2.0/schemas/${SCHEMA_ID}.gschema.xml"
        # Install languages
        echo "Installing language extension files"
-       mkdir -p "/usr/share/locale/"
+       install -d -m 0755 "/usr/share/locale/"
        cp -r "${TMP_DIR}/locale"/* "/usr/share/locale/"
        # Delete the temporary directory
        echo "Cleaning up the temporary directory"
