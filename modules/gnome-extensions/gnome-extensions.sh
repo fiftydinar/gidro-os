@@ -72,7 +72,7 @@ if [[ ${#GETTEXT_DOMAIN[@]} -gt 0 ]]; then
       echo "------------------------------DONE----------------------------------"     
   done
 else
-  echo "ERROR: You did not specify gettext-domain"
+  echo "ERROR: You did not specify gettext-domain in module recipe file"
   exit 1
 fi
 
