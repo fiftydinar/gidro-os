@@ -4,7 +4,14 @@
 set -euo pipefail
 
 EXTENSION="night-time-switcher"
-VERSION="75"
+if [[ "${OS_VERSION}" == "39" ]] then;
+  VERSION="75"
+elif [[ "${OS_VERSION}" == "40" ]] then;
+  VERSION="77"
+else
+  echo "This extension does not support the Fedora version of your image"
+  exit 1
+fi
 URL="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/releases/${VERSION}/downloads/nightthemeswitcher.zip"
 
 TMP_DIR="/tmp/${EXTENSION}"
