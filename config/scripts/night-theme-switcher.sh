@@ -41,22 +41,29 @@ else
 fi
 
 # Remove archive
+echo "Removing archive"
 rm "${ARCHIVE_DIR}"
 
+# Extract necessary info from metadata.json
+echo "Extracting necessary info from metadata.json"
 UUID=$(yq '.uuid' < "${TMP_DIR}/metadata.json")
 SCHEMA_ID=$(yq '.settings-schema' < "${TMP_DIR}/metadata.json")
 
 # Install main extension files
+echo "Installing main extension files"
 mkdir -p "/usr/share/gnome-shell/extensions/${UUID}/"
 find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \;
 
 # Install schema
+echo "Installing schema extension file"
 mkdir -p "/usr/share/glib-2.0/schemas/"
 cp "${TMP_DIR}/schemas/${SCHEMA_ID}.gschema.xml" "/usr/share/glib-2.0/schemas/${SCHEMA_ID}.gschema.xml"
 
 # Install languages
+echo "Installing language extension files"
 mkdir -p "/usr/share/locale/"
 cp -r "${TMP_DIR}/locale"/* "/usr/share/locale/"
 
 # Delete the temporary directory
+echo "Cleaning up the temporary directory"
 rm -r "${TMP_DIR}"
