@@ -3,7 +3,7 @@
 # Tell build process to exit if there are any errors.
 set -euo pipefail
 
-EXTENSION="night-time-switcher"
+EXTENSION="Night Time Switcher"
 if [[ "${OS_VERSION}" == "39" ]]; then
   VERSION="75"
   echo "Installing v${VERSION} of the ${EXTENSION} extension for Fedora ${OS_VERSION}"
@@ -28,13 +28,13 @@ curl -L "${URL}" --create-dirs -o "${ARCHIVE_DIR}"
 # Extract archive
 if [[ "${ARCHIVE}" == *.zip ]]; then
     echo "Extracting ZIP archive"
-    unzip "${ARCHIVE_DIR}" -d "${ARCHIVE_DIR}" > /dev/null
+    unzip "${ARCHIVE_DIR}" -d "${TMP_DIR}" > /dev/null
 elif [[ "${ARCHIVE}" == *.tar.gz || "${ARCHIVE_DIR}" == *.tgz ]]; then
     echo "Extracting TAR.GZ archive"
-    tar -xzvf "${ARCHIVE_DIR}" -C "${ARCHIVE_DIR}" > /dev/null
+    tar -xzvf "${ARCHIVE_DIR}" -C "${TMP_DIR}" > /dev/null
 elif [[ "${ARCHIVE}" == *.tar ]]; then
     echo "Extracting TAR archive"
-    tar -xvf "${ARCHIVE_DIR}" -C "${ARCHIVE_DIR}" > /dev/null
+    tar -xvf "${ARCHIVE_DIR}" -C "${TMP_DIR}" > /dev/null
 else
     echo "Unsupported archive format is used for extraction"
     exit 1
