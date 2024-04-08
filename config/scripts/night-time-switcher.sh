@@ -19,7 +19,7 @@ SCHEMA_ID=$(yq '.settings-schema' < ${TMP_DIR}/metadata.json)
 
 # Install main extension files
 mkdir -p "/usr/share/gnome-shell/extensions/${UUID}/"
-find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" ! -path "*resources*" -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \;
+find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -path "*locale*" ! -path "*schemas*" -exec cp -r {} /usr/share/gnome-shell/extensions/"${UUID}"/ \;
 
 # Install schema
 mkdir -p "/usr/share/glib-2.0/schemas/"
