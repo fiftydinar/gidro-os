@@ -4,9 +4,9 @@
 set -euo pipefail
 
 EXTENSION="night-time-switcher"
-if [[ "${OS_VERSION}" == "39" ]] then;
+if [[ "${OS_VERSION}" == "39" ]]; then
   VERSION="75"
-elif [[ "${OS_VERSION}" == "40" ]] then;
+elif [[ "${OS_VERSION}" == "40" ]]; then
   VERSION="77"
 else
   echo "This extension does not support the Fedora version of your image"
