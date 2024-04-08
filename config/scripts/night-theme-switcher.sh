@@ -16,7 +16,7 @@ else
 fi
 
 # Supported archive formats are .zip, .tar.gz, .tgz & .tar
-URL="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/releases/${VERSION}/downloads/nightthemeswitcher.zip"
+URL="https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v${VERSION}.shell-extension.zip"
 
 TMP_DIR="/tmp/${EXTENSION}"
 ARCHIVE=$(basename "${URL}")
