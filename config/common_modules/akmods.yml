@@ -3,7 +3,6 @@ install:
   - nct6687d
   - openrazer
   - openrgb
-  - rtl8814au
   - v4l2loopback
   - xone    
   - xpadneo
