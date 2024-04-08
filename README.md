@@ -56,6 +56,7 @@ Installed extensions:
 - [OpenWeather Refined](https://github.com/penguin-teal/gnome-openweather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
+- [Night Time Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 
 Installed flatpaks:
 - [Boxes](https://apps.gnome.org/en/Boxes/)
@@ -155,6 +156,7 @@ Settings applied by default:
 - Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit, use arrows for wind direction & use packaged icons
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
+- Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
 - Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
