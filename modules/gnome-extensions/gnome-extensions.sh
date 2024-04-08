@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euxo pipefail
+set -euo pipefail
 
 get_yaml_array GETTEXT_DOMAIN '.install.gettext-domain[]' "$1"
 GNOME_VER=$(gnome-shell --version | sed 's/[^0-9]*\([0-9]*\).*/\1/')
