@@ -43,8 +43,8 @@ fi
 # Remove archive
 rm "${ARCHIVE_DIR}"
 
-UUID=$(yq '.uuid' < ${TMP_DIR}/metadata.json)
-SCHEMA_ID=$(yq '.settings-schema' < ${TMP_DIR}/metadata.json)
+UUID=$(yq '.uuid' < "${TMP_DIR}/metadata.json")
+SCHEMA_ID=$(yq '.settings-schema' < "${TMP_DIR}/metadata.json")
 
 # Install main extension files
 mkdir -p "/usr/share/gnome-shell/extensions/${UUID}/"
