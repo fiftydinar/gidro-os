@@ -11,6 +11,8 @@ if [[ ${#GETTEXT_DOMAIN[@]} -gt 0 ]]; then
       TMP_DIR="/tmp/${EXTENSION}"
       ARCHIVE=$(basename "${URL}")
       ARCHIVE_DIR="${TMP_DIR}/${ARCHIVE}"
+      VERSION=$(echo "${EXTENSION}" | grep -oP 'v\d+')
+      echo "Installing ${EXTENSION} Gnome extension with version ${VERSION}"
       # Download archive
        curl -L "${URL}" --create-dirs -o "${ARCHIVE_DIR}"
        # Extract archive
