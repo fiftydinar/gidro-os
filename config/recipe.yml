@@ -15,7 +15,7 @@ modules:
   - from-file: common_modules/files.yml
   - from-file: common_modules/initramfs-setup.yml
   - from-file: common_modules/rpm-ostree.yml
-  - from-file: common_modules/extensions-without-rpm.yml
+  - from-file: common_modules/gnome-extensions.yml
   - type: yafti
   - from-file: common_modules/default-flatpaks.yml
   - from-file: common_modules/bling.yml
