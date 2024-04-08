@@ -15,7 +15,7 @@ What does this module do?
 
 To use this module, you need to input gettext-domain of the extension without @ symbol + the version of the extension in `.v%VERSION%` format.  
 You can see gettext-domain of the extension by looking at the extension repo inside metadata.json  
-or by simply downloading the zip file from https://extensions.gnome.org & than look at the download URL part after `/extension-data/` & before `.v%VERSION%`.
+or by simply downloading the zip file from https://extensions.gnome.org & than looking at the download URL part after `/extension-data/` & before `.v%VERSION%`.
 
 You must assure that version of the extension is compatible with current Gnome version that your image is using.  
 You can easily see this information when downloading extension from https://extensions.gnome.org
