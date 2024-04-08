@@ -12,10 +12,7 @@ repos:
 install:
   - gnome-shell-extension-caffeine
   - gnome-shell-extension-blur-my-shell
-  - gnome-shell-extension-middleclickclose-git
   - gnome-shell-extension-openweatherrefined
-  - gnome-shell-extension-notifications-alert-git
-  - gnome-shell-extension-Bluetooth-Battery-Meter-git
   - rom-properties-gtk3
   - nautilus-python
   - python3-icoextract
