@@ -9,7 +9,7 @@ What does this module do?
 - It downloads the extension directly from https://extensions.gnome.org
 - Downloaded extension archive is then extracted to temporary directory
 - All of its extracted files are copied to the appropriate final directories  
-  (`/usr/share/glib-2.0/schemas`, `/usr/share/gnome-shell/extensions` & `/usr/share/locale`)
+  (`/usr/share/gnome-shell/extensions`, `/usr/share/glib-2.0/schemas`, & `/usr/share/locale`)
 
 # Usage
 
