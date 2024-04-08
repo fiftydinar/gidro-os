@@ -3,7 +3,7 @@
 # Tell build process to exit if there are any errors.
 set -euo pipefail
 
-EXTENSION="Night Time Switcher"
+EXTENSION="Night Theme Switcher"
 if [[ "${OS_VERSION}" == "39" ]]; then
   VERSION="75"
   echo "Installing v${VERSION} of the ${EXTENSION} extension for Fedora ${OS_VERSION}"
