@@ -17,7 +17,6 @@ install:
   - langpacks-en
   - zsync
   - miniaturo
-  - google-chrome
   
 remove:
   - firefox
