@@ -1,6 +1,6 @@
 type: gnome-extensions
-install:                                        # Omit @ symbol from gettext-domain. You can see the gettext-domain by looking into extension metadata.json.
-  - nightthemeswitcherromainvigier.fr.v75       # Version must be specified by adding .v%VERSION% after gettext domain. Extension version must be compatible with current Gnome version.
+install:
+  - nightthemeswitcherromainvigier.fr.v75
   - middleclickclosepaolo.tranquilli.gmail.com.v30
   - notifications-alert-on-user-menuhackedbellini.gmail.com.v50
   - Bluetooth-Battery-Metermaniacx.github.com.v14
