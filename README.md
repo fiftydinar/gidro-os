@@ -55,6 +55,7 @@ Installed extensions:
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - [Night Time Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
+- [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
 
 Installed flatpaks:
 - [Boxes](https://apps.gnome.org/en/Boxes/)
