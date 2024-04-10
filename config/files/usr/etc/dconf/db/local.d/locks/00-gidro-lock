@@ -20,9 +20,6 @@
 # Mouse settings lock
 /org/gnome/desktop/peripherals/mouse/accel-profile
 
-# Touchpad settings lock
-/org/gnome/desktop/peripherals/touchpad/tap-to-click
-
 # Remove old trash files setting lock
 /org/gnome/desktop/privacy/remove-old-trash-files
 
@@ -33,6 +30,7 @@
 /org/gnome/software/allow-updates
 /org/gnome/software/download-updates
 /org/gnome/software/download-updates-notify
+/org/gnome/software/enable-repos-dialog
 /org/gnome/software/packaging-format-preference
 
 # Mutter settings lock

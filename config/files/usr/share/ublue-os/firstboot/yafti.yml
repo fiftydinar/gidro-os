@@ -8,6 +8,9 @@ screens:
       title: "Welcome to Gidro-OS"
       icon: "/path/to/icon"
       description: |
+        ATTENTION!
+        Please wait for notification that all flatpaks are installed before proceeding!
+
         Explore useful apps and options!
   applications:
     source: yafti.screen.package

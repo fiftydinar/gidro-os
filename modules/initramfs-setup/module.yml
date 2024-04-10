@@ -1,6 +1,6 @@
 name: initramfs-setup
 shortdesc: The initramfs-setup module can be used to include file arguments & dracut configs into initramfs, which are useful for modifying hardware behavior.
-readme: https://raw.githubusercontent.com/ublue-os/bling/main/modules/initramfs-setup/README.md
+readme: https://raw.githubusercontent.com/blue-build/modules/main/modules/initramfs-setup/README.md
 example: |
   modules:
     - type: initramfs-setup

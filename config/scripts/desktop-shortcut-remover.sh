@@ -2,5 +2,4 @@
 
 set -euo pipefail
 
-cd /usr/share/applications
-echo 'Hidden=true' >> com.gerbilsoft.rom-properties.rp-config.desktop
+echo 'Hidden=true' >> /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop

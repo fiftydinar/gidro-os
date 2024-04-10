@@ -20,7 +20,8 @@ Your modifications to initramfs are written to this file here:
 
 Your dracut configurations are copied to this location here:
 
-- `/usr/lib/dracut/dracut.conf.d`
+- `/usr/etc/dracut/dracut.conf.d`  
+- `/etc/dracut/dracut.conf.d` (copied automatically by system from `/usr`)
 
 `tracked` file won't get written if you did not include any initramfs modifications. This makes separation between OS & live-user modifications clearer.
 

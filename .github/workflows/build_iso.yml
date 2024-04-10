@@ -1,0 +1,70 @@
+name: Build ISO
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Build & upload ISO every month
+
+  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build_iso.yml'
+
+env:
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    container:
+      image: fedora:${{ matrix.major_version }}
+      options: "--privileged"
+      volumes:
+        - "/:/host"
+    strategy:
+      fail-fast: false
+      matrix:
+        image_name: [gidro-os]
+        major_version: [39]
+        image_tag: [latest]
+    steps:
+      - name: Fetch current date
+        shell: bash
+        run: |
+          TIMESTAMP="$(date +%d-%m-%Y)"
+          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
+
+      - name: Build ISO
+        uses: ublue-os/isogenerator@1.0.9
+        id: build
+        with:
+          ARCH: x86_64
+          VERSION: ${{ matrix.major_version }}
+          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
+          IMAGE_NAME: ${{ matrix.image_name }}
+          IMAGE_TAG: ${{ matrix.image_tag }}
+          VARIANT: 'Kinoite'
+          ENROLLMENT_PASSWORD: 'ublue-os'
+          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+
+      - name: Rename ISO to include date
+        shell: bash
+        run: |
+          mv ${{ steps.build.outputs.output-directory }}/*.iso ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
+          mv ${{ steps.build.outputs.output-directory }}/*-CHECKSUM ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}-CHECKSUM
+
+      - name: Upload ISO to archive.org
+        uses: qoijjj/internet-archive-upload@v7
+        with:
+          access-key: ${{ secrets.IA_ACCESS_KEY }}
+          secret-key: ${{ secrets.IA_SECRET_KEY }}
+          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          files: ${{ steps.build.outputs.output-directory }}

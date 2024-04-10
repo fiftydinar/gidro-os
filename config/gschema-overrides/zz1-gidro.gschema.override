@@ -38,7 +38,7 @@ titlebar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org.gnome.shell]
-enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com']
+enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com']
 favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org.gnome.shell.extensions.blur-my-shell]
@@ -49,6 +49,7 @@ use-system-icons=false
 pressure-unit='mbar'
 show-comment-in-panel=true
 show-sunsetrise-in-panel=true
+wind-direction=true
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
@@ -56,10 +57,15 @@ color='rgb(138,156,184)'
 [org.gnome.shell.extensions.Bluetooth-Battery-Meter]
 enable-battery-level-text=true
 
+[org.gnome.shell.extensions.nightthemeswitcher.time]
+offset=0
+manual-schedule=true
+
 [org.gnome.software]
 allow-updates=false
 download-updates=false
 download-updates-notify=false
+enable-repos-dialog=false
 packaging-format-preference=['flatpak:flathub-user', 'flatpak:flathub-system']
 
 [org.gnome.system.locale]

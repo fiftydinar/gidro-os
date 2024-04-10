@@ -1,6 +1,6 @@
 name: wallpaper
-shortdesc: The `wallpaper` module can be used for including & setting wallpapers into desktop environments.
-readme: https://raw.githubusercontent.com/ublue-os/bling/main/modules/wallpapers/README.md
+shortdesc: The wallpapers module can be used for including & setting wallpapers into desktop environments.
+readme: https://raw.githubusercontent.com/blue-build/modules/main/modules/wallpapers/README.md
 example: |
   type: wallpapers
   #
