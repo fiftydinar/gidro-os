@@ -150,12 +150,9 @@ factory-reset ACTION="prompt":
       gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
       gsettings reset-recursively org.gnome.shell.extensions.Bluetooth-Battery-Meter
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.gtk-variants
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.shell-variants
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.icon-variants
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.cursor-variants
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.commands
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.time
+      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.color-scheme
       dconf reset -f /org/gnome/shell/extensions/caffeine/
       gsettings reset org.gnome.shell enabled-extensions
       gsettings reset org.gnome.shell disabled-extensions
