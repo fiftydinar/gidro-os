@@ -11,11 +11,11 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: common_modules/files.yml
-  - from-file: common_modules/initramfs.yml
   - from-file: common_modules/xdg-autostart-workaround.yml
   - from-file: common_modules/akmods.yml 
   - from-file: common_modules/rpm-ostree.yml
-  - from-file: common_modules/gnome-extensions.yml
+  - from-file: common_modules/gnome-extensions.yml  
+  - from-file: common_modules/initramfs.yml
   - type: yafti
   - from-file: common_modules/default-flatpaks.yml
   - from-file: common_modules/bling.yml
