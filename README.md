@@ -152,7 +152,12 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-- Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit, use arrows for wind direction & use packaged icons
+- Set OpenWeather Refined to
+  - show conditions in top bar
+  - show sunrise/sunset in top bar
+  - use "mbar" as pressure unit
+  - use arrows for wind direction
+  - use packaged icons
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
@@ -167,11 +172,12 @@ Settings applied by default:
 - Hide ROM Properties desktop shortcut
 - [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
 - [Include StevenBlack hosts file for blocking ads, malware, porn & gambling](https://github.com/StevenBlack/hosts)
-- Steam silent auto-start on boot enabled (if app is installed)
-- Discord silent auto-start on boot enabled (if app is installed)
-- Telegram silent auto-start on boot enabled (if app is installed)
-- Deluge auto-start on boot enabled (if app is installed)
-- TutaMail auto-start on boot enabled (if app is installed)
+- Enable silent auto-start on boot for those applications:
+  - Steam
+  - Discord
+  - Telegram
+  - Deluge
+  - TutaMail
 - Set Text Editor to:
   - use Nokia Pure text font
   - disable Restore Session
