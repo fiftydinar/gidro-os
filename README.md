@@ -202,7 +202,7 @@ Settings applied by default:
   - enable switching tabs with mouse-wheel
   - autohide "Downloads" button.
 - G4Music background playback enabled
-- Use cool BlueBuild boot logo instead of Fedora
+- Use cool BlueBuild boot & login-screen logo instead of Fedora
 
 ## Installation (ISO) [Recommended]
 
