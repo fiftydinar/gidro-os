@@ -210,9 +210,9 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 
 ISO doesn't require an active internet connection during its usage.
 
-### [DOWNLOAD LINK](https://archive.org/download/gidro-os_10-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_10-04-2024.iso)
-### [TORRENT LINK](https://archive.org/download/gidro-os_10-04-2024/gidro-os_10-04-2024_archive.torrent)<br/>(higher download speed)
-### [ISO CHECKSUM](https://archive.org/download/gidro-os_10-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_10-04-2024-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
+### [DOWNLOAD LINK](https://archive.org/download/gidro-os_17-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_17-04-2024.iso)
+### [TORRENT LINK](https://archive.org/download/gidro-os_17-04-2024/gidro-os_17-04-2024_archive.torrent)<br/>(higher download speed)
+### [ISO CHECKSUM](https://archive.org/download/gidro-os_17-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_17-04-2024-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
 
 Just download the ISO & proceed with installation.
 
