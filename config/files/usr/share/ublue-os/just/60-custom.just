@@ -61,23 +61,31 @@ configure-grub ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "hide" ]; then
-      sudo grub2-editenv - set menu_auto_hide=1
-      if [ -d /sys/firmware/efi ]; then
-        output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
-            echo 'Hide UEFI GRUB logs during boot setting applied.'  
+      if ! sudo grub2-editenv list | grep -q "menu_auto_hide=1"; then
+        sudo grub2-editenv - set menu_auto_hide=1
+        if [ -d /sys/firmware/efi ]; then
+          output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
+              echo 'Hide UEFI GRUB logs during boot setting applied.'  
+        else
+          output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
+              echo 'Hide BIOS GRUB logs during boot setting applied.'   
+        fi
       else
-        output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
-            echo 'Hide BIOS GRUB logs during boot setting applied.'   
+        printf "\e[1;31mERROR: GRUB screen is already hidden, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
-      sudo grub2-editenv - unset menu_auto_hide
-      if [ -d /sys/firmware/efi ]; then
-        output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
-            echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  
+      if sudo grub2-editenv list | grep -q "menu_auto_hide=1"; then    
+        sudo grub2-editenv - unset menu_auto_hide
+        if [ -d /sys/firmware/efi ]; then
+          output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
+              echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  
+        else
+          output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
+              echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
+        fi
       else
-        output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
-            echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
-      fi
+        printf "\e[1;31mERROR: GRUB screen is already present, no change is made.\e[0m\n" 1>&2
+      fi  
     fi
     
 # Factory-reset Gidro-OS
