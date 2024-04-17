@@ -3,7 +3,6 @@ install:
   - nct6687d
   - openrazer
   - openrgb
-  - v4l2loopback
   - xone    
   - xpadneo
   - winesync
