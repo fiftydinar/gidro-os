@@ -41,7 +41,6 @@ Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
 - [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
 - [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
-- [RTL8814AU](https://github.com/morrownr/8814au) (for supporting mentioned USB Realtek WiFi card model)
 - [XOne](https://github.com/medusalix/xone) (Xbox One RF driver)
 - [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One Bluetooth driver)
 - [XPad](https://github.com/paroj/xpad) (Xbox/Xbox 360 USB & RF driver + Xbox One USB driver - built-in into upstream kernel)
