@@ -132,8 +132,7 @@ Settings applied by default:
 - [Set memlock limit from 64kb to 2GB](https://github.com/RPCS3/rpcs3/issues/9328#issuecomment-732712084) (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
 - [Increased vm.max_map_count value to match SteamOS](https://www.reddit.com/r/linux_gaming/comments/10x1e6u/fix_hogwarts_legacy_loading_screen_crash/) (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - [Disabled kernel split-lock mitigate](https://github.com/doitsujin/dxvk/issues/2938) (for restoring performance of affected games)
-- [Applied fix for non-working trim for LUKS partitions](https://bugzilla.redhat.com/show_bug.cgi?id=1801539)
-- [Applied fix for keyboard language on LUKS unlock screen](https://github.com/fedora-silverblue/issue-tracker/issues/3)
+- [Enabled Nvidia GSP firmware for Nouveau GPU driver](https://nouveau.freedesktop.org/PowerManagement.html) (to enable power-management for Nvidia GTX 1650+ GPUs)
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
@@ -152,7 +151,12 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
 - Set BlurMyShell sigma value to 5, as default value is too strong & looks cheap when using default background
-- Set OpenWeather Refined to show conditions & sunrise/sunset in top bar, use "mbar" as pressure unit, use arrows for wind direction & use packaged icons
+- Set OpenWeather Refined to:
+  - show conditions in top bar
+  - show sunrise/sunset in top bar
+  - use "mbar" as pressure unit
+  - use arrows for wind direction
+  - use packaged icons
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
@@ -167,17 +171,38 @@ Settings applied by default:
 - Hide ROM Properties desktop shortcut
 - [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
 - [Include StevenBlack hosts file for blocking ads, malware, porn & gambling](https://github.com/StevenBlack/hosts)
-- Steam silent auto-start on boot enabled (if app is installed)
-- Discord silent auto-start on boot enabled (if app is installed)
-- Telegram silent auto-start on boot enabled (if app is installed)
-- Deluge auto-start on boot enabled (if app is installed)
-- TutaMail auto-start on boot enabled (if app is installed)
-- Set Text Editor to use Nokia Pure text font, disable Restore Session, use higher contrast theme & highlight line numbers
+- Enable silent auto-start on boot for those applications:
+  - Steam
+  - Discord
+  - Telegram
+  - Deluge
+  - TutaMail
+- Set Text Editor to:
+  - use Nokia Pure text font
+  - disable Restore Session
+  - use higher contrast theme
+  - highlight line numbers
 - Set Calculator to separate thousands
-- Set Clapper (Videos) to use Nokia Pure font for subtitles, 100% volume by default & quit when video ends
-- Set LibreWolf to enable WebGL, disable ResistFingerprinting, disable deleting cookies & cache on exit, enable auto-scroll, disable middle-click paste, disable Ctrl+Q on quit, enable rounded window bottom edge, download to Downloads folder without asking, enable favorite websites in homepage, disable tab manager arrow, enable switching tabs with mouse-wheel & autohide "Downloads" button.  
-(GPU video decoding is not yet enabled by default for AMD & Nvidia GPUs, however, it can be still enabled manually in about:config with `media.ffmpeg.vaapi.enabled` option set to `true` for AMD GPUs.)
+- Set Clapper (Videos) to:
+  - use Nokia Pure font for subtitles
+  - 100% volume by default
+  - quit when video ends
+- Set LibreWolf to:
+  - enable WebGL
+  - disable ResistFingerprinting
+  - disable deleting cookies & cache on exit
+  - enable auto-scroll
+  - disable middle-click paste
+  - disable Ctrl+Q on quit
+  - enable rounded window bottom edge
+  - download to Downloads folder without asking
+  - enable favorite websites in homepage
+  - set 2 rows for favorite websites
+  - disable tab manager arrow
+  - enable switching tabs with mouse-wheel
+  - autohide "Downloads" button.
 - G4Music background playback enabled
+- Use cool BlueBuild boot & login-screen logo instead of Fedora
 
 ## Installation (ISO) [Recommended]
 
@@ -185,9 +210,9 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 
 ISO doesn't require an active internet connection during its usage.
 
-### [DOWNLOAD LINK](https://archive.org/download/gidro-os_10-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_10-04-2024.iso)
-### [TORRENT LINK](https://archive.org/download/gidro-os_10-04-2024/gidro-os_10-04-2024_archive.torrent)<br/>(higher download speed)
-### [ISO CHECKSUM](https://archive.org/download/gidro-os_10-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_10-04-2024-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
+### [DOWNLOAD LINK](https://archive.org/download/gidro-os_17-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_17-04-2024.iso)
+### [TORRENT LINK](https://archive.org/download/gidro-os_17-04-2024/gidro-os_17-04-2024_archive.torrent)<br/>(higher download speed)
+### [ISO CHECKSUM](https://archive.org/download/gidro-os_17-04-2024/__w/_actions/ublue-os/isogenerator/1.0.9/end_iso/gidro-os_17-04-2024-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
 
 Just download the ISO & proceed with installation.
 

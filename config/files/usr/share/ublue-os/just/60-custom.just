@@ -42,9 +42,14 @@ configure-close-button  ACTION="prompt":
 configure-grub ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
+    CURRENT_STATE="Unhidden"
+    if sudo grub2-editenv list | grep -q "menu_auto_hide=1"; then
+      CURRENT_STATE="Hidden"
+    fi
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
     echo "${bold}Configuring GRUB${normal}"
+    echo "GRUB screen is currently: ${bold}${CURRENT_STATE}${normal}"
     echo 'GRUB hiding option can be useful for making boot-times faster.'
     echo 'Hide or Unhide GRUB? Press ESC to exit.'
     OPTION=$(ugum choose "Unhide (Default)" Hide)
@@ -56,27 +61,31 @@ configure-grub ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "hide" ]; then
-      sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
-      output=$(echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
-      output=$(echo 'GRUB_HIDDEN_TIMEOUT=1' | sudo tee -a /etc/default/grub 2>&1) || echo "$output" && false
-      if [ -d /sys/firmware/efi ]; then
-        output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
-            echo 'Hide UEFI GRUB logs during boot setting applied.'  
+      if ! sudo grub2-editenv list | grep -q "menu_auto_hide=1"; then
+        sudo grub2-editenv - set menu_auto_hide=1
+        if [ -d /sys/firmware/efi ]; then
+          output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
+              echo 'Hide UEFI GRUB logs during boot setting applied.'  
+        else
+          output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
+              echo 'Hide BIOS GRUB logs during boot setting applied.'   
+        fi
       else
-        output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
-            echo 'Hide BIOS GRUB logs during boot setting applied.'   
+        printf "\e[1;31mERROR: GRUB screen is already hidden, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
-      sudo sed -i '/GRUB_HIDDEN_TIMEOUT=1/d' /etc/default/grub
-      sudo sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
-      sudo sed -i 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=5/g' /etc/default/grub
-      if [ -d /sys/firmware/efi ]; then
-        output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
-            echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  
+      if sudo grub2-editenv list | grep -q "menu_auto_hide=1"; then    
+        sudo grub2-editenv - unset menu_auto_hide
+        if [ -d /sys/firmware/efi ]; then
+          output=$(sudo grub2-mkconfig -o /etc/grub2-efi.cfg 2>&1) || echo "$output" && false
+              echo 'Reverted setting "UEFI GRUB logs during boot" to defaults.'  
+        else
+          output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
+              echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
+        fi
       else
-        output=$(sudo grub2-mkconfig -o /etc/grub2.cfg 2>&1) || echo "$output" && false
-            echo 'Reverted setting "BIOS GRUB logs during boot" to defaults.'   
-      fi
+        printf "\e[1;31mERROR: GRUB screen is already present, no change is made.\e[0m\n" 1>&2
+      fi  
     fi
     
 # Factory-reset Gidro-OS
