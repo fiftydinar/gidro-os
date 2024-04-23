@@ -64,7 +64,7 @@ echo "Extension '${EXTENSION_NAME}' is successfully installed"
 echo "----------------------------------DONE----------------------------------"
 
 # Workaround the non-updated extension metadata.json
-yq -i '.shell-version = "46"' /usr/share/gnome-shell/extensions/notifications-alert-on-user-menu@hackedbellini.gmail.com/metadata.json
+yq -i '.shell-version = [ "46" ]' /usr/share/gnome-shell/extensions/notifications-alert-on-user-menu@hackedbellini.gmail.com/metadata.json
 
 # Compile gschema to include schemas from extensions
 echo "Compiling gschema to include extension schemas"
