@@ -45,7 +45,6 @@ Installed akmods:
 - [XOne](https://github.com/medusalix/xone) (Xbox One RF driver)
 - [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One Bluetooth driver)
 - [XPad](https://github.com/paroj/xpad) (Xbox/Xbox 360 USB & RF driver + Xbox One USB driver - built-in into upstream kernel)
-- [WineSync](https://github.com/Cat-Lady/winesync-dkms/blob/main/README.md) (for possibly improving Windows apps performance)
 - [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
 
 Installed extensions:
