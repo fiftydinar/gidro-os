@@ -6,5 +6,4 @@ install:
   - v4l2loopback
   - xone    
   - xpadneo
-  - winesync
   - zenergy
