@@ -33,7 +33,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [gidro-os]
-        major_version: [39]
+        major_version: [40]
         image_tag: [latest]
     steps:
       - name: Fetch current date
