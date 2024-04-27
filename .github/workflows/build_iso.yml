@@ -33,7 +33,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [gidro-os]
-        major_version: [40]
+        major_version: [39]
         image_tag: [latest]
     steps:
       - name: Fetch current date
@@ -43,18 +43,23 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Build ISO
-        uses: jasonn3/build-container-installer@v1.2.0
+        uses: ublue-os/isogenerator@1.0.9
         id: build
         with:
-          arch: x86_64
-          image_name: ${{ matrix.image_name }}
-          image_repo: ${{ env.IMAGE_REGISTRY }}
-          variant: 'Kinoite'
-          version: ${{ matrix.major_version }}
-          image_tag: ${{ matrix.image_tag }}
-          secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
-          enrollment_password: 'ublue-os'
-          iso_name: ${{ matrix.image_name }}_F${{ matrix.major_version }}_${{ env.TIMESTAMP }}.iso
+          ARCH: x86_64
+          VERSION: ${{ matrix.major_version }}
+          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
+          IMAGE_NAME: ${{ matrix.image_name }}
+          IMAGE_TAG: ${{ matrix.image_tag }}
+          VARIANT: 'Kinoite'
+          ENROLLMENT_PASSWORD: 'ublue-os'
+          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+
+      - name: Rename ISO to include date
+        shell: bash
+        run: |
+          mv ${{ steps.build.outputs.output-directory }}/*.iso ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
+          mv ${{ steps.build.outputs.output-directory }}/*-CHECKSUM ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}-CHECKSUM
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
