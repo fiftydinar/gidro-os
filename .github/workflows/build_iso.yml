@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   build-iso:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -55,6 +55,9 @@ jobs:
           secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
           enrollment_password: 'ublue-os'
           iso_name: ${{ matrix.image_name }}_F${{ matrix.major_version }}_${{ env.TIMESTAMP }}.iso
+          enable_cache_dnf: "false"
+          enable_cache_skopeo: "false"
+          enable_flatpak_dependencies: "false"
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
