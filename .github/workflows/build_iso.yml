@@ -32,6 +32,9 @@ jobs:
         image_tag: [latest]
 
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@v1.3.1
+        
       - name: Fetch current date
         shell: bash
         run: |
@@ -66,7 +69,7 @@ jobs:
           mkdir /var/tmp || true
           chmod -R 1777 /var/tmp
           flatpak config --system --set languages "*"
-          flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak remote-add --system flathub-system https://flathub.org/repo/flathub.flatpakrepo
           flatpak install --system -y ${FLATPAK_REFS_DIR_LIST}
           ostree refs --repo=\${FLATPAK_SYSTEM_DIR}/repo | grep '^deploy/' | grep -v 'org\.freedesktop\.Platform\.openh264' | sed 's/^deploy\///g' > /output/flatpaks_with_deps
           EOF
