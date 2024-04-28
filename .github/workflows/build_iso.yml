@@ -44,9 +44,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: yq - portable yaml processor
-        uses: mikefarah/yq@v4.43.1
-
       - name: Determine Flatpak Dependencies
         id: flatpak_dependencies
         shell: bash
