@@ -95,7 +95,7 @@ jobs:
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
-          flatpak_remote_refs_dir: ${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}          
+          flatpak_remote_refs_dir: ${{ github.workspace }}/flatpaks
           flatpak_remote_name: "flathub-system"
 
       - name: Move ISO to Upload Directory
@@ -113,5 +113,5 @@ jobs:
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}_test
+          identifier: ${{ matrix.image_name }}_test2
           files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
