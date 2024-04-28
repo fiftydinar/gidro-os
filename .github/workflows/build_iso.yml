@@ -50,12 +50,12 @@ jobs:
         shell: bash
         run: |
           set -ex
-          image="ghcr.io/fiftydinar/${{ matrix.image_name }}:${{ matrix.image_tag }}"
+          image="${{ env.IMAGE_REGISTRY }}/${{ matrix.image_name }}:${{ matrix.image_tag }}"
           # Make temp space
           TEMP_FLATPAK_INSTALL_DIR=$(mktemp -d -p ${{ github.workspace }} flatpak.XXX)
           # Get list of refs from directory
           FLATPAK_REFS_DIR=${{ github.workspace }}/${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}
-          FLATPAK_REFS_DIR_LIST=$(cat ${FLATPAK_REFS_DIR}/flatpaks | tr '\n' ' ' )
+          FLATPAK_REFS_DIR_LIST=$(cat ${FLATPAK_REFS_DIR}/* | tr '\n' ' ' )
           # Generate install script
           cat << EOF > ${TEMP_FLATPAK_INSTALL_DIR}/script.sh
           cat /temp_flatpak_install_dir/script.sh
@@ -63,7 +63,7 @@ jobs:
           mkdir /var/tmp || true
           chmod -R 1777 /var/tmp
           flatpak config --system --set languages "*"
-          flatpak remote-add --system flathub-system https://flathub.org/repo/flathub.flatpakrepo
+          flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
           flatpak install --system -y ${FLATPAK_REFS_DIR_LIST}
           ostree refs --repo=\${FLATPAK_SYSTEM_DIR}/repo | grep '^deploy/' | grep -v 'org\.freedesktop\.Platform\.openh264' | sed 's/^deploy\///g' > /output/flatpaks_with_deps
           EOF
@@ -92,6 +92,7 @@ jobs:
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
+          flatpak_remote_refs_dir: ${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}          
           flatpak_remote_name: "flathub-system"
           
       - name: Upload ISO to archive.org
