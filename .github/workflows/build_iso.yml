@@ -48,7 +48,7 @@ jobs:
         id: generate-flatpak-dir-shortname
         shell: bash
         run: |
-          readarray -t FLATPAK_LIST < <(yq '.system.install[]' < ${{ github.workspace }}/config/common-modules/default-flatpaks.yml)
+          readarray -t FLATPAK_LIST < <(yq '.system.install[]' < ${{ github.workspace }}/recipes/module-recipes/default-flatpaks.yml)
           for ((i=0; i<${#FLATPAK_LIST[@]}; i++)); do
             FLATPAK_LIST[i]="app/${FLATPAK_LIST[i]}/x86_64/stable"
           done
