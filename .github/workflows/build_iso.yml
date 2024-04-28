@@ -100,11 +100,21 @@ jobs:
           enable_flatpak_dependencies: "false"
           flatpak_remote_refs_dir: ${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}          
           flatpak_remote_name: "flathub-system"
-          
+
+      - name: Move ISO to Upload Directory
+        id: upload-directory
+        shell: bash
+        run: |
+          ISO_UPLOAD_DIR=${{ github.workspace }}/upload
+          mkdir ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
+          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT         
+
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
           identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
-          files: ${{ steps.build.outputs.iso_path }}
+          files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
