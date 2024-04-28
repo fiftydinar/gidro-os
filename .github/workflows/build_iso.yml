@@ -57,6 +57,7 @@ jobs:
           # Make temp space
           TEMP_FLATPAK_INSTALL_DIR=$(mktemp -d -p ${{ github.workspace }} flatpak.XXX)
           # Get list of refs from directory
+          FLATPAK_REFS_DIR=${{ github.workspace }}/flatpaks
           FLATPAK_REFS_DIR_LIST=$(echo ${FLATPAK_LIST[@]} | tr '\n' ' ' )
           # Generate install script
           cat << EOF > ${TEMP_FLATPAK_INSTALL_DIR}/script.sh
