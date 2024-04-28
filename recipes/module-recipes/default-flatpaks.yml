@@ -5,7 +5,7 @@ system:
   repo-name: flathub-system
   repo-title: "Flathub (System)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
   install:
-    - org.gnome.Boxes 
+    - org.gnome.Boxes
     - org.gnome.Calculator
     - org.gnome.Calendar
     - org.gnome.Snapshot
@@ -21,7 +21,7 @@ system:
     - io.gitlab.librewolf-community
     - io.missioncenter.MissionCenter
     - org.gnome.World.Secrets
-    - com.belmoussaoui.Authenticator    
+    - com.belmoussaoui.Authenticator
     - com.vixalien.sticky
     - com.github.flxzt.rnote
     - org.localsend.localsend_app

@@ -19,47 +19,105 @@ concurrency:
 
 jobs:
   build-iso:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
       id-token: write
-    container:
-      image: fedora:${{ matrix.major_version }}
-      options: "--privileged"
-      volumes:
-        - "/:/host"
     strategy:
       fail-fast: false
       matrix:
         image_name: [gidro-os]
-        major_version: [39]
+        major_version: [40]
         image_tag: [latest]
+
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@v1.3.1
+        
       - name: Fetch current date
         shell: bash
         run: |
           TIMESTAMP="$(date +%d-%m-%Y)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
-      - name: Build ISO
-        uses: ublue-os/isogenerator@1.0.9
-        id: build
-        with:
-          ARCH: x86_64
-          VERSION: ${{ matrix.major_version }}
-          IMAGE_REPO: ${{ env.IMAGE_REGISTRY }}
-          IMAGE_NAME: ${{ matrix.image_name }}
-          IMAGE_TAG: ${{ matrix.image_tag }}
-          VARIANT: 'Kinoite'
-          ENROLLMENT_PASSWORD: 'ublue-os'
-          SECURE_BOOT_KEY_URL: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-      - name: Rename ISO to include date
+      - name: Gather Flatpak List & Set Flatpaks Directory Shortname
+        id: generate-flatpak-dir-shortname
         shell: bash
         run: |
-          mv ${{ steps.build.outputs.output-directory }}/*.iso ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
-          mv ${{ steps.build.outputs.output-directory }}/*-CHECKSUM ${{ steps.build.outputs.output-directory }}/${{ matrix.image_name }}_${{ env.TIMESTAMP }}-CHECKSUM
+          readarray -t FLATPAK_LIST < <(yq '.system.install[]' < ${{ github.workspace }}/config/common-modules/default-flatpaks.yml)
+          for ((i=0; i<${#FLATPAK_LIST[@]}; i++)); do
+            FLATPAK_LIST[i]="app/${FLATPAK_LIST[i]}/x86_64/stable"
+          done
+          mkdir -p ${{ github.workspace }}/iso_flatpaks
+          for entry in "${FLATPAK_LIST[@]}"; do
+            printf "%s\n" "$entry" >> ${{ github.workspace }}/iso_flatpaks/flatpaks
+          done
+          FLATPAK_DIR_SHORTNAME="iso_flatpaks"
+          echo "flatpak-dir-shortname=${FLATPAK_DIR_SHORTNAME}" >> $GITHUB_OUTPUT
+
+      - name: Determine Flatpak Dependencies
+        id: flatpak_dependencies
+        shell: bash
+        run: |
+          set -ex
+          image="${{ env.IMAGE_REGISTRY }}/${{ matrix.image_name }}:${{ matrix.image_tag }}"
+          # Make temp space
+          TEMP_FLATPAK_INSTALL_DIR=$(mktemp -d -p ${{ github.workspace }} flatpak.XXX)
+          # Get list of refs from directory
+          FLATPAK_REFS_DIR=${{ github.workspace }}/${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}
+          FLATPAK_REFS_DIR_LIST=$(cat ${FLATPAK_REFS_DIR}/* | tr '\n' ' ' )
+          # Generate install script
+          cat << EOF > ${TEMP_FLATPAK_INSTALL_DIR}/script.sh
+          cat /temp_flatpak_install_dir/script.sh
+          mkdir -p /flatpak/flatpak /flatpak/triggers
+          mkdir /var/tmp || true
+          chmod -R 1777 /var/tmp
+          flatpak config --system --set languages "*"
+          flatpak remote-add --system flathub-system https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install --system -y ${FLATPAK_REFS_DIR_LIST}
+          ostree refs --repo=\${FLATPAK_SYSTEM_DIR}/repo | grep '^deploy/' | grep -v 'org\.freedesktop\.Platform\.openh264' | sed 's/^deploy\///g' > /output/flatpaks_with_deps
+          EOF
+          docker run --rm --privileged \
+            --entrypoint bash \
+            -e FLATPAK_SYSTEM_DIR=/flatpak/flatpak \
+            -e FLATPAK_TRIGGERSDIR=/flatpak/triggers \
+            --volume ${FLATPAK_REFS_DIR}:/output \
+            --volume ${TEMP_FLATPAK_INSTALL_DIR}:/temp_flatpak_install_dir \
+            ${image} /temp_flatpak_install_dir/script.sh
+          docker rmi ${image}
+
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@v1.2.0
+        id: build
+        with:
+          arch: x86_64
+          version: ${{ matrix.major_version }}
+          image_repo: ${{ env.IMAGE_REGISTRY }}
+          image_name: ${{ matrix.image_name }}
+          image_tag: ${{ matrix.image_tag }}
+          variant: 'Kinoite'
+          enrollment_password: 'ublue-os'
+          secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
+          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso          
+          enable_cache_dnf: "false"
+          enable_cache_skopeo: "false"
+          enable_flatpak_dependencies: "false"
+          flatpak_remote_refs_dir: ${{ steps.generate-flatpak-dir-shortname.outputs.flatpak-dir-shortname }}          
+          flatpak_remote_name: "flathub-system"
+
+      - name: Move ISO to Upload Directory
+        id: upload-directory
+        shell: bash
+        run: |
+          ISO_UPLOAD_DIR=${{ github.workspace }}/upload
+          mkdir ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
+          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
 
       - name: Upload ISO to archive.org
         uses: qoijjj/internet-archive-upload@v7
@@ -67,4 +125,4 @@ jobs:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
           identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
-          files: ${{ steps.build.outputs.output-directory }}
+          files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
