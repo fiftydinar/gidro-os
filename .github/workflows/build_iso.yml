@@ -124,5 +124,5 @@ jobs:
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}_testing
+          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
           files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
