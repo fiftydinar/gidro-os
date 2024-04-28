@@ -12,7 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - from-file: common-modules/files.yml
   - from-file: common-modules/xdg-autostart-workaround.yml
-  - from-file: common-modules/akmods.yml 
+  #- from-file: common-modules/akmods.yml 
   - from-file: common-modules/rpm-ostree.yml
   - from-file: common-modules/gnome-extensions.yml
   - from-file: common-modules/notifications-alert.yml
