@@ -16,7 +16,7 @@ modules:
   - from-file: common-modules/rpm-ostree.yml
   - from-file: common-modules/gnome-extensions.yml
   - from-file: common-modules/notifications-alert.yml
-  - from-file: common-modules/initramfs.yml
+  #- from-file: common-modules/initramfs.yml
   - type: yafti
   - from-file: common-modules/default-flatpaks.yml
   - from-file: common-modules/bling.yml
