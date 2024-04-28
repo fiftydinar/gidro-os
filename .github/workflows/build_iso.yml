@@ -52,7 +52,7 @@ jobs:
           for ((i=0; i<${#FLATPAK_LIST[@]}; i++)); do
             FLATPAK_LIST[i]="app/${FLATPAK_LIST[i]}/x86_64/stable"
           done
-          mkdir -p ${{ github.workspace }}/iso_flatpaks/flatpaks
+          mkdir -p ${{ github.workspace }}/iso_flatpaks
           for entry in "${FLATPAK_LIST[@]}"; do
             printf "%s\n" "$entry" >> ${{ github.workspace }}/iso_flatpaks/flatpaks
           done
@@ -124,5 +124,5 @@ jobs:
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          identifier: ${{ matrix.image_name }}_testing
           files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
