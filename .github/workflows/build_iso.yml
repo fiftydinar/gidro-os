@@ -57,6 +57,8 @@ jobs:
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
+          flatpak_remote_name: "flathub-system"
+          flatpak_remote_url: "https://flathub.org/repo/flathub.flatpakrepo"
 
       - name: Move ISO to Upload Directory
         id: upload-directory
