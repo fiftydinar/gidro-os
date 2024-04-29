@@ -183,10 +183,7 @@ Settings applied by default:
   - use higher contrast theme
   - highlight line numbers
 - Set Calculator to separate thousands
-- Set Clapper (Videos) to:
-  - use Nokia Pure font for subtitles
-  - 100% volume by default
-  - quit when video ends
+- Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Set LibreWolf to:
   - enable WebGL
   - disable ResistFingerprinting
