@@ -275,8 +275,3 @@ To rebase an existing Silverblue installation to the latest build:
 - [OpenWeather Refined](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweatherrefined/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
-
-## Plans for the future
-- Integrate all post-setup into image as much as possible
-- Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
-- Use upstream isogenerator action instead of my own
