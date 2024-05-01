@@ -183,10 +183,7 @@ Settings applied by default:
   - use higher contrast theme
   - highlight line numbers
 - Set Calculator to separate thousands
-- Set Clapper (Videos) to:
-  - use Nokia Pure font for subtitles
-  - 100% volume by default
-  - quit when video ends
+- Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Set LibreWolf to:
   - enable WebGL
   - disable ResistFingerprinting
@@ -278,8 +275,3 @@ To rebase an existing Silverblue installation to the latest build:
 - [OpenWeather Refined](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweatherrefined/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
-
-## Plans for the future
-- Integrate all post-setup into image as much as possible
-- Find solution for lack of popular used fonts, mostly from Microsoft & Apple (BetterFonts causes font hinting issues, so other solution is needed)
-- Use upstream isogenerator action instead of my own
