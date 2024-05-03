@@ -17,6 +17,7 @@ install:
   - langpacks-en
   - zsync
   - miniaturo
+  - printer-driver-brlaser
   
 remove:
   - firefox
