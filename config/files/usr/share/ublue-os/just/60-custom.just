@@ -277,7 +277,6 @@ proton-ge ACTION="prompt":
         rm -r "$DIR"/*-GE-*
       fi  
         echo 'Old Proton-GE versions deleted.'
-      cd "$HOME"  
       else
         printf "\e[1;31mERROR: Cannot delete old Proton-GE because Steam is not installed.\e[0m\n" 1>&2
       fi
