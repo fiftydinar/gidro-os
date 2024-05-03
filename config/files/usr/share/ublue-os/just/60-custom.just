@@ -269,9 +269,13 @@ proton-ge ACTION="prompt":
     elif [ "$OPTION" == "Remove old Proton-GE" ] || [ "${OPTION,,}" == "remove-old" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-      cd "$HOME"/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d
-      find . -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -r
-      rm -r "$PWD"/*-GE-*
+      DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
+      if [[ -n $(find "$DIR" -name '*GE-Proton*' -print -quit) ]]; then
+        find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -r
+      fi  
+      if [[ -n $(find "$DIR" -name '*-GE-*' -print -quit) ]]; then
+        rm -r "$DIR"/*-GE-*
+      fi  
         echo 'Old Proton-GE versions deleted.'
       cd "$HOME"  
       else
