@@ -262,10 +262,10 @@ proton-ge ACTION="prompt":
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       if [[ -n $(find "$DIR" -name '*GE-Proton*' -print -quit) ]]; then
-        rm -r "$DIR"/GE-Proton*
+        rm -rf "$DIR"/GE-Proton*
       fi
       if [[ -n $(find "$DIR" -name '*-GE-*' -print -quit) ]]; then
-        rm -r "$DIR"/*-GE-*
+        rm -rf "$DIR"/*-GE-*
       fi
         echo 'Proton-GE uninstalled.'
       else
@@ -276,10 +276,10 @@ proton-ge ACTION="prompt":
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       if [[ -n $(find "$DIR" -name '*GE-Proton*' -print -quit) ]]; then
-        find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -r
+        find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
       fi  
       if [[ -n $(find "$DIR" -name '*-GE-*' -print -quit) ]]; then
-        rm -r "$DIR"/*-GE-*
+        rm -rf "$DIR"/*-GE-*
       fi  
         echo 'Old Proton-GE versions deleted.'
       else
