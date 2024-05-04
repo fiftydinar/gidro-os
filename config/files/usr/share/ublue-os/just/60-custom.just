@@ -212,10 +212,11 @@ proton-ge ACTION="prompt":
       echo "${bold}Configuring Proton-GE${normal}"
       echo 'Configure Proton-GE for better games support on Steam.'
       echo 'Install, Uninstall or Remove old Proton-GE? Press ESC to exit.'
-      OPTION=$(ugum choose Uninstall Install "Remove old Proton-GE" Update)
+      OPTION=$(ugum choose Uninstall Install "Remove old Proton-GE" Update "List installed Proton-GE versions")
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust proton-ge <option>"
-      echo "  <option>: Specify the quick option - 'update/upgrade', 'install', 'uninstall' or 'remove-old'"
+      echo "  <option>: Specify the quick option - 'list', 'update/upgrade', 'install', 'uninstall' or 'remove-old'"
+      echo "  Use 'list' to list all installed Proton-GE versions."      
       echo "  Use 'update' or 'upgrade' to update/upgrade Proton-GE."
       echo "  Use 'remove-old' to uninstall old versions of Proton-GE."      
       echo "  Use 'install' to install Proton-GE."
@@ -227,7 +228,7 @@ proton-ge ACTION="prompt":
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
-        if ! [[ -n $(find "$SOURCE" -name '*GE-Proton*' -print -quit) ]]; then
+        if ! [[ -n $(find "$SOURCE" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
           cp -r "$SOURCE"/* "$TARGET"
           echo 'Proton-GE runner for Steam installed, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'
         else
@@ -238,26 +239,30 @@ proton-ge ACTION="prompt":
       fi
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
-      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then      
-        SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
-        TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
-        for folder in "$SOURCE"/GE-Proton*; do
-          SOURCE_VERSION=$(basename "$folder" | grep -oP 'GE-Proton\K\d+-\d+')
-          found_duplicate=false
-          for target_folder in "$TARGET"/GE-Proton*; do
-            TARGET_VERSION=$(basename "$target_folder" | grep -oP 'GE-Proton\K\d+-\d+')
-            if [[ "$SOURCE_VERSION" == "$TARGET_VERSION" ]]; then
-              found_duplicate=true
-              break
-           fi  
-      done
-      if [[ "$found_duplicate" == true ]]; then
-        printf "\e[1;31mERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists.\e[0m\n" 1>&2
-      else 
-        cp -r "$folder" "$TARGET"
-          echo 'Proton-GE runner for Steam updated, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
-      fi
-      done
+      if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
+        if [[ -n $(find "$SOURCE" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
+          SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
+          TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
+          for folder in "$SOURCE"/GE-Proton*; do
+            SOURCE_VERSION=$(basename "$folder" | grep -oP 'GE-Proton\K\d+-\d+')
+            found_duplicate=false
+            for target_folder in "$TARGET"/GE-Proton*; do
+              TARGET_VERSION=$(basename "$target_folder" | grep -oP 'GE-Proton\K\d+-\d+')
+              if [[ "$SOURCE_VERSION" == "$TARGET_VERSION" ]]; then
+                found_duplicate=true
+                break
+             fi  
+        done
+        if [[ "$found_duplicate" == true ]]; then
+          printf "\e[1;31mERROR: Proton-GE runner with latest $SOURCE_VERSION version already exists.\e[0m\n" 1>&2
+        else 
+          cp -r "$folder" "$TARGET"
+            echo 'Proton-GE runner for Steam updated, but not enabled. Enable it in Steam Compatibility settings & restart Steam.'          
+        fi
+        done
+        else
+          printf "\e[1;31mERROR: Proton-GE cannot be updated because Proton-GE is not installed.\e[0m\n" 1>&2
+        fi  
       else
         printf "\e[1;31mERROR: Proton-GE cannot be updated because Steam is not installed.\e[0m\n" 1>&2
       fi  
@@ -265,10 +270,10 @@ proton-ge ACTION="prompt":
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
-      if [[ -n $(find "$DIR" -name '*GE-Proton*' -print -quit) ]]; then
+      if [[ -n $(find "$DIR" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
         rm -rf "$DIR"/GE-Proton*
       fi
-      if [[ -n $(find "$DIR" -name '*-GE-*' -print -quit) ]]; then
+      if [[ -n $(find "$DIR" -maxdepth 1 -type d -name '*-GE-*' -print -quit) ]]; then
         rm -rf "$DIR"/*-GE-*
       fi
         echo 'Proton-GE uninstalled.'
@@ -279,16 +284,23 @@ proton-ge ACTION="prompt":
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
-      if [[ -n $(find "$DIR" -name '*GE-Proton*' -print -quit) ]]; then
+      if [[ -n $(find "$DIR" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
         find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
       fi  
-      if [[ -n $(find "$DIR" -name '*-GE-*' -print -quit) ]]; then
+      if [[ -n $(find "$DIR" -maxdepth 1 -type d -name '*-GE-*' -print -quit) ]]; then
         rm -rf "$DIR"/*-GE-*
       fi  
         echo 'Old Proton-GE versions deleted.'
       else
         printf "\e[1;31mERROR: Cannot delete old Proton-GE because Steam is not installed.\e[0m\n" 1>&2
       fi
+    elif [ "$OPTION" == "List installed Proton-GE versions" ] || [ "${OPTION,,}" == "list" ]; then
+      DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
+      if [[ -n $(find "$DIR" -maxdepth 1 -type d \( -name 'GE-Proton*' -o -name '*-GE-*' \) -printf '%P\n' -quit) ]]; then
+        find "$DIR" -maxdepth 1 -type d \( -name 'GE-Proton*' -o -name '*-GE-*' \) -printf '%P\n'
+      else
+        printf "\e[1;31mERROR: Proton-GE is not installed.\e[0m\n" 1>&2
+      fi  
     fi
     
 # Configure scheduled nightly reboot
