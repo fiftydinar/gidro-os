@@ -240,7 +240,7 @@ proton-ge ACTION="prompt":
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
       FLATPAK=$(flatpak list --user --app --columns=application)
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
-        if [[ -n $(find "$SOURCE" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
+        if [[ -n $(find "$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d" -maxdepth 1 -type d -name '*GE-Proton*' -print -quit) ]]; then
           SOURCE="/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
           TARGET="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"      
           for folder in "$SOURCE"/GE-Proton*; do
