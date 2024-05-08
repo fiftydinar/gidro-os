@@ -1,0 +1,8 @@
+type: chezmoi
+install_chezmoi: true 
+repository: "https://github.com/fiftydinar/homefiles-gidro-os"
+enable_all_users: true
+run_every: '1d' 
+wait_after_boot: '5m' 
+disable_init: false 
+disable_update: false 
