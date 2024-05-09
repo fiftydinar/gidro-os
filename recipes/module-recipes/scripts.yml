@@ -1,6 +1,7 @@
 type: script
 scripts:
   - reload-font-cache.sh
+  - homefiles-to-skel.sh
   - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
   - proton-ge-updater.sh
