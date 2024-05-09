@@ -3,7 +3,7 @@
 set -euo pipefail
 
 wget "https://github.com/fiftydinar/homefiles-gidro-os/archive/refs/heads/main.zip" -O "/tmp/homefiles-gidro-os/homefiles-gidro-os-main.zip"
-unzip "/tmp/homefiles-gidro-os/homefiles-gidro-os-main.zip"
+unzip "/tmp/homefiles-gidro-os/homefiles-gidro-os-main.zip" -d "/tmp/homefiles-gidro-os/"
 
 # Replace "dot_" files & folders with . prefix
 find "/tmp/homefiles-gidro-os/homefiles-gidro-os-main" -depth -name 'dot_*' -execdir bash -c 'mv "$1" "$(echo "$1" | sed "s/dot_/\./")"' _ {} \;
