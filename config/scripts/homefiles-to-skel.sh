@@ -13,4 +13,4 @@ find "/tmp/homefiles-gidro-os/homefiles-gidro-os-main" -depth -type f -name 'emp
 shopt -s dotglob
 cp -r "/tmp/homefiles-gidro-os/homefiles-gidro-os-main"/* "/usr/etc/skel/"
 shopt -u dotglob
-rm -r "/tmp/homefiles-gidro-os
+rm -r "/tmp/homefiles-gidro-os"
