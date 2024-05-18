@@ -50,6 +50,8 @@ pressure-unit='mbar'
 show-comment-in-panel=true
 show-sunsetrise-in-panel=true
 wind-direction=true
+use-default-owm-key=false
+appid='d590dd084a24e33ee2198033e927543e'
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
