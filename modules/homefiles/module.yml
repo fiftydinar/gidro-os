@@ -22,8 +22,8 @@ example: |
     - ./.config/something
     - ./.config/folder/something
   # Homefiles will be copied with this time interval
-  # Optional - Default: '1d' - Possible values: 'Xd' (X indicates number of days, which can be unlimited)
+  # Optional - Default: '1d' - Possible values: 'Xd' (X indicates integer number of days, which can be unlimited)
   run-every: '1d'
   # Homefile updates will wait this long after a boot before running
-  # Optional - Default: '5m' - Possible values: 'Xm' (X indicates number of minutes, which can be unlimited)
+  # Optional - Default: '5m' - Possible values: 'Xm' (X indicates integer number of minutes, which can be unlimited)
   wait-after-boot: '5m'

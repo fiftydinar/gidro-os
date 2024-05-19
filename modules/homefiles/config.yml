@@ -2,7 +2,7 @@
 #
 # vendor: BlueBuild
 # module: homefiles
-# description: System config file for `homefiles` BlueBuild module, which is used to copy homefiles to /home.
+# description: System config file for boot-time `homefiles` BlueBuild module, which is utilized by `homefiles` binary to copy homefiles to /home.
 # note: This module does not support local-user config functionality.
 
 # Configuration section
