@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Directories & file locations
+homefiles_bluebuild="/usr/share/bluebuild/homefiles"
+homefiles_dir="${homefiles_bluebuild}/content"
+homefiles_config="${homefiles_bluebuild}/config.yml"
+
+# Gather homefiles config
+
+user_creation_only_copy=$(yq '.user-creation-only-copy' < "${homefiles_config}")
+user_creation_only_copy_exceptions=$(yq '.user-creation-only-copy-exceptions[]' < "${homefiles_config}")
+duplicate_file_policy=$(yq '.duplicate-file-policy' < "${homefiles_config}")
+duplicate_file_policy_exceptions=$(yq '.duplicate-file-policy-exceptions[]' < "${homefiles_config}")
+
+# Gather which homefiles & homedirs should be copied to ${HOME}
+# Empty homedirs are made inside the repo, hence why it gathers homedirs which contain .gitignore file
+# .gitignore files are omitted from the output if they exist
+# If image-maintainer desires to copy git repo to ${HOME}, he needs to take this scenario into account
+readarray -t input_files < <(find "${homefiles_dir}" -mindepth 1 -type f -not -name '.gitignore' -printf "%P\n")
+readarray -t input_empty_dirs < <(find "${homefiles_dir}" -mindepth 1 -type d -exec test -f '{}/.gitignore' ';' -printf "%P\n")
+
+# If there are homefiles, proceed with operation
+# otherwise, inform that there is nothing to copy
+if [[ ${#input_files[@]} -gt 0 ]]; then
+echo "Copying homefiles to ${HOME}"
+  for input_file in "${input_files[@]}"; do
+      # If homefile contains / symbol, that means that it's inside the directory, since / is forbidden in filenames
+      # Get the directory where homefile resides with dirname
+      if [[ "${input_file}" == *"/" ]]; then
+        file_dir=$(dirname "${input_file}")
+        homedir="${HOME}/${file_dir}"
+        # If ${HOME} doesn't contain the specified directory where homefile resides,
+        # Than make it with mkdir
+        if [[ ! -d "${homedir}" ]]; then
+          mkdir -p -v "${homedir}"
+        fi
+      fi
+      # Copy homefiles to ${HOME}
+      cp -v "${homefiles_dir}/${input_file}" "${HOME}/${input_file}"
+  done
+else
+  echo "There are no homefiles to copy"
+fi
+
+# If there are empty homedirs, proceed with operation
+# otherwise, inform that there is nothing to copy
+if [[ ${#input_empty_dirs[@]} -gt 0 ]]; then
+echo "Copying empty homedirs to ${HOME}"
+  for input_empty_dir in "${input_empty_dirs[@]}"; do
+      # Make empty homedirs in ${HOME}
+      mkdir -p -v "${HOME}/${input_empty_dir}"
+  done
+else
+  echo "There are no empty homedirs to copy"
+fi

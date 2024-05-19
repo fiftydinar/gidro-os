@@ -1,0 +1,13 @@
+[Unit]
+Description=Copy files from skel to home
+After=gnome-session-initialized.target
+PartOf=gnome-session-initialized.target
+ConditionEnvironment=DISPLAY
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/homefiles
+
+[Install]
+WantedBy=gnome-session.target
