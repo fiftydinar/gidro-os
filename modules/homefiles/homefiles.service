@@ -1,7 +1,5 @@
 [Unit]
-Description=Copy files from skel to home
-After=gnome-session-initialized.target
-PartOf=gnome-session-initialized.target
+Description=Copy homefiles to /home
 ConditionEnvironment=DISPLAY
 
 [Service]
@@ -10,4 +8,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/homefiles
 
 [Install]
-WantedBy=gnome-session.target
+WantedBy=default.target

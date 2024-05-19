@@ -1,0 +1,21 @@
+# Information about the config file
+#
+# vendor: BlueBuild
+# module: homefiles
+# description: System config file for `homefiles` BlueBuild module, which is used to copy homefiles to /home.
+# note: This module does not support local-user config functionality.
+
+# Configuration section
+
+# Global policy for copying homefiles on user-creation only (using skel)
+# Optional - Default: false - Possible values: true, false
+user-creation-only-copy: false
+# Specific policy for copying homefiles on user-creation only that need to behave oppositely from global policy (user-creation-only-copy)
+# Optional - Default: empty - Possible values: homefile location
+user-creation-only-copy-exceptions:
+# Global policy for copying homefiles that changed on the disk compared to the image
+# Optional - Default: skip - Possible values: skip, replace
+duplicate-file-policy: skip
+# Specific policy for copying homefiles in duplicate file scenario that need to behave oppositely from global policy (duplicate-file-policy)
+# Optional - Default: empty - Possible values: homefile location
+duplicate-file-policy-exceptions:

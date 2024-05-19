@@ -4,15 +4,19 @@ readme: https://raw.githubusercontent.com/blue-build/modules/main/modules/homefi
 example: |
   type: homefiles
   # Global policy for copying homefiles on user-creation only (using skel)
-  user-creation-only-copy: false  # Optional - Default: false - Possible values: true, false
+  # Optional - Default: false - Possible values: true, false
+  user-creation-only-copy: false
   # Specific policy for copying homefiles on user-creation only that need to behave oppositely from global policy (user-creation-only-copy)
+  # Optional - Default: empty - Possible values: homefile location
   user-creation-only-copy-exceptions:
     - ./.var/app/nothing  # starting dot indicates a subdirectory of /home/user/
     - ./.config/nothing
     - ./.config/folder/nothing
   # Global policy for copying homefiles that changed on the disk compared to the image
-  duplicate-file-policy: skip   # Optional - Default: skip - Possible values: skip, replace
+  # Optional - Default: skip - Possible values: skip, replace
+  duplicate-file-policy: skip
   # Specific policy for copying homefiles in duplicate file scenario that need to behave oppositely from global policy (duplicate-file-policy)
+  # Optional - Default: empty - Possible values: homefile location
   duplicate-file-policy-exceptions:
     - ./.var/app/something  # starting dot indicates a subdirectory of /home/user/
     - ./.config/something
