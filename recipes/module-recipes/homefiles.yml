@@ -1,0 +1,8 @@
+type: homefiles
+files:
+    - source: homefiles/changed-files-skip/
+      destination: ~/
+      changed-file-policy: skip
+    - source: homefiles/changed-files-replace/
+      destination: ~/
+      changed-file-policy: replace

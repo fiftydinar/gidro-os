@@ -11,7 +11,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: module-recipes/files.yml
-  - type: homefiles  
+  - from-file: module-recipes/homefiles.yml
   - from-file: module-recipes/xdg-autostart-workaround.yml
   - from-file: module-recipes/akmods.yml 
   - from-file: module-recipes/rpm-ostree.yml
