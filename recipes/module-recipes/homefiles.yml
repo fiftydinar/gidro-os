@@ -1,8 +1,11 @@
 type: homefiles
 files:
-    - source: homefiles/changed-files-skip/
-      destination: ~/
-      changed-file-policy: skip
-    - source: homefiles/changed-files-replace/
-      destination: ~/
-      changed-file-policy: replace
+    - source: homefiles/Templates/
+      destination: ~/Templates/
+      existing-file-policy: skip
+    - source: homefiles/.var/
+      destination: ~/.var/
+      existing-file-policy: skip
+    - source: homefiles/.var/app/io.gitlab.librewolf-community/.librewolf/
+      destination: ~/.var/app/io.gitlab.librewolf-community/.librewolf/
+      existing-file-policy: replace      

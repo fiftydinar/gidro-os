@@ -6,10 +6,10 @@ example: |
   files:
     - source: dots/
       destination: ~/.config
-      changed-file-policy: skip
+      existing-file-policy: skip
     - source: myappconfig/
       destination: ~/.config/myapp/
-      changed-file-policy: replace
+      existing-file-policy: replace
   # Homefiles will be copied with this time interval
   # Optional - Default: '1d' - Possible values: 'Xd' (X indicates integer number of days, which can be unlimited)
   run-every: '1d'
