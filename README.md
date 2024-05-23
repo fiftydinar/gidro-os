@@ -37,6 +37,7 @@ Installed packages (RPMs):
 - [Zsync](https://web.archive.org/web/20240215223506/http://zsync.moria.org.uk/index) (Needed dependency for some AppImage auto-updates)
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
 - [BrLaser](https://github.com/Owl-Maintain/brlaser) (Driver which supports additional Brother printers)
+- [Epson-inkjet-printer-escpr 1 & 2] (Driver which supports additional Epson printers)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
