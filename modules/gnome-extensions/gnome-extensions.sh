@@ -24,9 +24,11 @@ if [[ ${#INSTALL[@]} -gt 0 ]] then
   for EXTENSION in "${INSTALL[@]}"; do
       # If extension contains .v12 suffix at the end, than it's the legacy install entry
       # 12 number in .v12 is just an example, any integer after it is allowed
+      shopt -s extglob
       if [[ ! "$element" == *".v"*([0-9]) ]]; then
         break
       fi
+      shopt -u extglob
       echo "ATTENTION: This is the legacy method of installing extensions."
       echo "           Change the install entry to literal name of the extension"
       echo "           Please see the latest docs of gnome-extensions module for more details:"
