@@ -7,8 +7,6 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/repo/fedora-%OS_VERSION%/decathorpe-miniaturo-fedora-%OS_VERSION%.repo
 
 install:
-  - gnome-shell-extension-caffeine
-  - gnome-shell-extension-blur-my-shell
   - gnome-shell-extension-openweatherrefined
   - rom-properties-gtk3
   - nautilus-python
