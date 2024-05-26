@@ -154,6 +154,15 @@ factory-reset ACTION="prompt":
       gsettings reset org.gnome.system.locale region
       # This is needed to reset system & user extensions
       gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.appfolder
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.applications
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.dash-to-dock
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.hidetopbar
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.lockscreen
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.overview
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.panel
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.screenshot
+      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.window-list
       gsettings reset-recursively org.gnome.shell.extensions.openweatherrefined
       gsettings reset-recursively org.gnome.shell.extensions.middleclickclose      
       gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
