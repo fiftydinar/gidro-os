@@ -1,7 +1,6 @@
 type: script
 scripts:
   - reload-font-cache.sh
-  - gnome-extensions-uninstall.sh
   - desktop-shortcut-remover.sh
   - proton-ge-updater.sh
   - python3-icoextract.sh
