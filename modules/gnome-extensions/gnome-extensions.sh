@@ -35,7 +35,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
       # Gets suitable extension version for Gnome version from the image
       SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | yq ".shell_version_map[${GNOME_VER}].version")
       if [[ "${SUITABLE_VERSION}" == "null" ]]; then
-        echo "Extension '${EXT_UUID}' is not compatible with Gnome v${GNOME_VER} in your image"
+        echo "Extension '${EXT_NAME}' is not compatible with Gnome v${GNOME_VER} in your image"
         exit 1
       fi
       # Removes every @ symbol from UUID, since extension URL doesn't contain @ symbol
