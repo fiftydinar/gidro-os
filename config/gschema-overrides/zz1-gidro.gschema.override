@@ -41,6 +41,9 @@ power-button-action='interactive'
 enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com']
 favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
+[org.gnome.shell.extensions.blur-my-shell]
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <8>, 'brightness': <0.59999999999999998>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000001'>, 'params': <{'radius': <30>, 'brightness': <0.59999999999999998>}>}>, <{'type': <'corner'>, 'id': <'effect_000000000002'>, 'params': <{'radius': <24>}>}>]>}}
+
 [org.gnome.shell.extensions.openweatherrefined]
 use-system-icons=false
 pressure-unit='mbar'
