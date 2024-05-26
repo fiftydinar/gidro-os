@@ -25,7 +25,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]] then
       # If extension contains .v12 suffix at the end, than it's the legacy install entry
       # 12 number in .v12 is just an example, any integer after it is allowed
       shopt -s extglob
-      if [[ ! "$element" == *".v"*([0-9]) ]]; then
+      if [[ ! "${EXTENSION}" == *".v"*([0-9]) ]]; then
         break
       fi
       shopt -u extglob
