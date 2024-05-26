@@ -27,6 +27,8 @@ if [[ ${#INSTALL[@]} -gt 0 ]] then
       shopt -s extglob
       if [[ ! "${EXTENSION}" == *".v"*([0-9]) ]]; then
         break
+      else
+        LEGACY=true
       fi
       shopt -u extglob
       echo "ATTENTION: This is the legacy method of installing extensions."
@@ -100,7 +102,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]] then
 fi
 
 # New method of installing extensions
-if [[ ${#INSTALL[@]} -gt 0 ]]; then
+if [[ ${#INSTALL[@]} -gt 0 ]] && ! "${LEGACY}"; then
   for INSTALL_EXT in "${INSTALL[@]}"; do
       # Replaces whitespaces with %20 for install entries which contain extension name, since URLs can't contain whitespace
       WHITESPACE_HTML=$(echo "${INSTALL_EXT}" | sed 's/ /%20/g')
