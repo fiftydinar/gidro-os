@@ -27,7 +27,9 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
       URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}")
       QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
       if [[ -z "${QUERIED_EXT}" ]]; then
-        echo "Extension '${INSTALL_EXT}' does not exist in https://extensions.gnome.org/ website"
+        echo "ERROR: Extension '${INSTALL_EXT}' does not exist in https://extensions.gnome.org/ website"
+        echo "       Extension name is case-sensitive, so be sure that you typed it correctly,"
+        echo "       including the correct uppercase & lowercase characters"
         exit 1
       fi
       EXT_UUID=$(echo "${QUERIED_EXT}" | yq ".uuid")
@@ -35,7 +37,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
       # Gets suitable extension version for Gnome version from the image
       SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | yq ".shell_version_map[${GNOME_VER}].version")
       if [[ "${SUITABLE_VERSION}" == "null" ]]; then
-        echo "Extension '${EXT_NAME}' is not compatible with Gnome v${GNOME_VER} in your image"
+        echo "ERROR: Extension '${EXT_NAME}' is not compatible with Gnome v${GNOME_VER} in your image"
         exit 1
       fi
       # Removes every @ symbol from UUID, since extension URL doesn't contain @ symbol
