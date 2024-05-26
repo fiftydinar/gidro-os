@@ -1,8 +1,8 @@
 type: gnome-extensions
 install:
-  - 3193 # Blur my Shell
-  - 517 # Caffeine
-  - 352 # Quick Close in Overview
-  - 6670 # Bluetooth Battery Meter
-  - 2236 # Night Theme Switcher
-  - 5105 # RebootToUEFI
+  - Blur my Shell
+  - Caffeine
+  - Quick Close in Overview
+  - Bluetooth Battery Meter
+  - Night Theme Switcher
+  - RebootToUEFI
