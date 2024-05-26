@@ -43,8 +43,30 @@ favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desk
 
 [org.gnome.shell.extensions.blur-my-shell]
 pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.59999999999999998>, 'unscaled_radius': <8>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000001'>, 'params': <{'radius': <30>, 'brightness': <0.59999999999999998>}>}>, <{'type': <'corner'>, 'id': <'effect_000000000002'>, 'params': <{'radius': <24>}>}>]>}}
+sigma=8
 
 [org.gnome.shell.extensions.blur-my-shell.appfolder]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.applications]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.dash-to-dock]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.lockscreen]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.overview]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.panel]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.screenshot]
+sigma=8
+
+[org.gnome.shell.extensions.blur-my-shell.window-list]
 sigma=8
 
 [org.gnome.shell.extensions.openweatherrefined]
