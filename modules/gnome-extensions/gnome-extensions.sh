@@ -24,25 +24,20 @@ if [[ ${#INSTALL[@]} -gt 0 ]]; then
       # Replaces whitespaces with %20 for install entries which contain extension name, since URLs can't contain whitespace
       WHITESPACE_HTML=$(echo "${INSTALL_EXT}" | sed 's/ /%20/g')
       # If only numbers are provided, than ID is inputted, otherwise, extension name
-      if [[ "${INSTALL_EXT}" =~ ^[0-9]+$ ]]; then
-        URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?pk=${INSTALL_EXT}&shell_version=${GNOME_VER}")
-        QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.pk == ${INSTALL_EXT})")
-      else
-        URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}&shell_version=${GNOME_VER}")
-        QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
-      fi       
+      URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}")
+      QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
       if [[ -z "${QUERIED_EXT}" ]]; then
-        echo "Gnome extension name or UUID does not exist in https://extensions.gnome.org/ website"
+        echo "Extension '${INSTALL_EXT}' does not exist in https://extensions.gnome.org/ website"
         exit 1
-      fi  
+      fi
+      EXT_UUID=$(echo "${QUERIED_EXT}" | yq ".uuid")
+      EXT_NAME=$(echo "${QUERIED_EXT}" | yq ".name")
       # Gets suitable extension version for Gnome version from the image
       SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | yq ".shell_version_map[${GNOME_VER}].version")
       if [[ "${SUITABLE_VERSION}" == "null" ]]; then
-        echo "Gnome extension is not compatible with version of Gnome in your image"
+        echo "Extension '${EXT_UUID}' is not compatible with Gnome v${GNOME_VER} in your image"
         exit 1
-      fi  
-      EXT_UUID=$(echo "${QUERIED_EXT}" | yq ".uuid")
-      EXT_NAME=$(echo "${QUERIED_EXT}" | yq ".name")
+      fi
       # Removes every @ symbol from UUID, since extension URL doesn't contain @ symbol
       URL="https://extensions.gnome.org/extension-data/${EXT_UUID//@/}.v${SUITABLE_VERSION}.shell-extension.zip"
       TMP_DIR="/tmp/${EXT_UUID}"
