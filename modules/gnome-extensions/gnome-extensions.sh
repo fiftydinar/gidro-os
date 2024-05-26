@@ -18,6 +18,7 @@ fi
 
 GNOME_VER=$(gnome-shell --version | sed 's/[^0-9]*\([0-9]*\).*/\1/')
 echo "Gnome version: ${GNOME_VER}"
+LEGACY=false
 
 # Legacy support for installing extensions
 if [[ ${#INSTALL[@]} -gt 0 ]] then
