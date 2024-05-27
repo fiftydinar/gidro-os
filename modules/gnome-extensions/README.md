@@ -1,6 +1,11 @@
 # `gnome-extensions`
 
-The `gnome-extensions` module can be used to install Gnome extensions inside system directory.
+:::caution
+Legacy configuration is still supported, but it is advised to migrate to new configuration, since it offers the benefit of automatic installation of latest Gnome extension with compatible Gnome version of the image. New configuration can be seen in "Example Configuration" section.
+:::
+
+The `gnome-extensions` module can be used to install Gnome extensions inside system directory.  
+It also supports uninstallation as well, for extensions which are not installed through OS package manager.
 
 This module is universally compatible with all distributions which ship Gnome, as it's not tied to specific distribution packaging format for installing extensions.
 
@@ -24,6 +29,8 @@ Uninstallation step is performed similarly, except it obviously removes files fr
 # Usage
 
 ## Extension Installation
+
+By default, latest extension version compatible with Gnome version of your image, is installed.
 
 How to install extensions using the module:  
 1. Go to https://extensions.gnome.org or preferably [Extension Manager](https://github.com/mjakeman/extension-manager) application
