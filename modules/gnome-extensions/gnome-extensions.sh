@@ -20,7 +20,7 @@ GNOME_VER=$(gnome-shell --version | sed 's/[^0-9]*\([0-9]*\).*/\1/')
 echo "Gnome version: ${GNOME_VER}"
 LEGACY=false
 
-# Legacy support for installing extensions
+# Legacy support for installing extensions, to retain compatibility with legacy configs
 if [[ ${#INSTALL[@]} -gt 0 ]] then
   for EXTENSION in "${INSTALL[@]}"; do
       # If extension contains .v12 suffix at the end, than it's the legacy install entry
@@ -98,7 +98,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]] then
       echo "Cleaning up the temporary directory"
       rm -r "${TMP_DIR}"
       echo "Extension '${EXTENSION_NAME}' is successfully installed"
-      echo "----------------------------------DONE----------------------------------"
+      echo "----------------------------------INSTALLATION DONE----------------------------------"
   done
 fi
 
@@ -107,7 +107,6 @@ if [[ ${#INSTALL[@]} -gt 0 ]] && ! "${LEGACY}"; then
   for INSTALL_EXT in "${INSTALL[@]}"; do
       # Replaces whitespaces with %20 for install entries which contain extension name, since URLs can't contain whitespace
       WHITESPACE_HTML=$(echo "${INSTALL_EXT}" | sed 's/ /%20/g')
-      # If only numbers are provided, than ID is inputted, otherwise, extension name
       URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}")
       QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
       if [[ -z "${QUERIED_EXT}" ]]; then
@@ -163,14 +162,61 @@ if [[ ${#INSTALL[@]} -gt 0 ]] && ! "${LEGACY}"; then
       echo "Cleaning up the temporary directory"
       rm -r "${TMP_DIR}"
       echo "Extension '${EXT_NAME}' is successfully installed"
-      echo "----------------------------------DONE----------------------------------"
+      echo "----------------------------------INSTALLATION DONE----------------------------------"
   done
 fi
 
 # Uninstall section goes here
+if [[ ${#UNINSTALL[@]} -gt 0 ]]; then
+  for UNINSTALL_EXT in "${UNINSTALL[@]}"; do
+      # Replaces whitespaces with %20 for install entries which contain extension name, since URLs can't contain whitespace
+      # Getting json query from the website is useful to intuitively uninstall the extension without need to manually input UUID
+      WHITESPACE_HTML=$(echo "${UNINSTALL_EXT}" | sed 's/ /%20/g')
+      URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}")
+      QUERIED_EXT=$(echo "${URL_QUERY}" | yq ".extensions[] | select(.name == \"${UNINSTALL_EXT}\")")
+      if [[ -z "${QUERIED_EXT}" ]]; then
+        echo "ERROR: Extension '${UNINSTALL_EXT}' does not exist in https://extensions.gnome.org/ website"
+        echo "       Extension name is case-sensitive, so be sure that you typed it correctly,"
+        echo "       including the correct uppercase & lowercase characters"
+        exit 1
+      fi
+      EXT_UUID=$(echo "${QUERIED_EXT}" | yq ".uuid")
+      EXT_NAME=$(echo "${QUERIED_EXT}" | yq ".name")
+      # This is where uninstall step goes, above step is reused from install part
+      EXT_FILES="/usr/share/gnome-shell/extensions/${EXT_UUID}"
+      UNINSTALL_METADATA="${EXT_FILES}/metadata.json"
+      GETTEXT_DOMAIN=$(yq -I=0 ".gettext-domain" < "${UNINSTALL_METADATA}")
+      SETTINGS_SCHEMA=$(yq -I=0 ".settings-schema" < "${UNINSTALL_METADATA}")
+      LANGUAGE_LOCATION="/usr/share/locale"
+      # If settings-schema YAML key exists, than use that, if it doesn't
+      # Than substract the schema ID before @ symbol
+      if [[ ! "${SETTINGS_SCHEMA}" == "null" ]]; then
+        SCHEMA_LOCATION="/usr/share/glib-2.0/schemas/${SETTINGS_SCHEMA}.gschema.xml"
+      else
+        SUBSTRACTED_UUID=$(echo "${EXT_UUID}" | cut -d'@' -f1)
+        SCHEMA_LOCATION="/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.${SUBSTRACTED_UUID}.gschema.xml"
+      fi  
+      # Remove languages
+      if [[ ! "${GETTEXT_DOMAIN}" == "null" ]]; then
+        find "${LANGUAGE_LOCATION}" -type f -name "${GETTEXT_DOMAIN}.mo" -exec rm {} \;
+      else
+        echo "There are no extension languages to remove, since extension doesn't contain them"
+      fi
+      # Remove gschema xml
+      if [[ ! "${SETTINGS_SCHEMA}" == "null" ]] && [[ -f "${SCHEMA_LOCATION}" ]]; then
+        rm "${SCHEMA_LOCATION}"
+      else
+        echo "There is no gschema xml to remove, since extension doesn't have any settings"
+      fi
+      # Removing main extension files
+      echo "Removing main extension files"
+      rm -r "${EXT_FILES}"
+      echo "----------------------------------UNINSTALLATION DONE----------------------------------"
+  done    
+fi
 
-# Compile gschema to include schemas from extensions
-echo "Compiling gschema to include extension schemas"
+# Compile gschema to include schemas from extensions  & to refresh schema state after uninstall is done
+echo "Compiling gschema to include extension schemas & to refresh the schema state"
 glib-compile-schemas "/usr/share/glib-2.0/schemas/" &>/dev/null
 
-echo "Finished the installation of Gnome extensions"
+echo "Finished the setup of gnome-extensions module"
