@@ -18,6 +18,7 @@ modules:
   - from-file: module-recipes/notifications-alert.yml
   - from-file: module-recipes/initramfs.yml
   - type: yafti
+  - type: brew
   - from-file: module-recipes/default-flatpaks.yml
   - from-file: module-recipes/bling.yml
   - from-file: module-recipes/systemd.yml
