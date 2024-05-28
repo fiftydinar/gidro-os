@@ -1,8 +1,9 @@
 type: gnome-extensions
 install:
-  - blur-my-shellaunetx.v61
-  - caffeinepatapon.info.v54
-  - middleclickclosepaolo.tranquilli.gmail.com.v30
-  - Bluetooth-Battery-Metermaniacx.github.com.v14
-  - nightthemeswitcherromainvigier.fr.v77
-  - reboottouefiubaygd.com.v20  
+  - Blur my Shell
+  - Caffeine
+  - Quick Close in Overview
+  - OpenWeather Refined
+  - Bluetooth Battery Meter
+  - Night Theme Switcher
+  - RebootToUEFI

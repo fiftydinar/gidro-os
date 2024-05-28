@@ -50,13 +50,13 @@ Installed akmods:
 - [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
 
 Installed extensions:
-- [Blur My Shell](https://github.com/aunetx/blur-my-shell)
+- [Blur my Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
 - [OpenWeather Refined](https://github.com/penguin-teal/gnome-openweather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
-- [Night Time Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
+- [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 - [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
 
 Installed flatpaks:
@@ -152,7 +152,7 @@ Settings applied by default:
 - Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
-- Set Blur My Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
+- Set Blur my Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
 - Set OpenWeather Refined to:
   - show conditions in top bar
   - show sunrise/sunset in top bar
@@ -275,6 +275,5 @@ To rebase an existing Silverblue installation to the latest build:
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
-- [OpenWeather Refined](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-shell-extension-openweatherrefined/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
