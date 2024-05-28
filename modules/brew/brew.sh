@@ -193,18 +193,134 @@ else
     systemctl disable brew-upgrade.timer
 fi
 
-CURRENT_ULIMIT_SOFT=$(ulimit -Sn)
-CURRENT_ULIMIT_HARD=$(ulimit -Hn)
-CURRENT_SYSTEMD_SOFT=$(systemctl show -all | grep -oP 'DefaultLimitNOFILESoft=\K.*')
-CURRENT_SYSTEMD_HARD=$(systemctl show -all | grep -oP 'DefaultLimitNOFILE=\K.*')
-echo "CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT}"
-echo "CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD}"
-echo "CURRENT_SYSTEMD_SOFT=${CURRENT_SYSTEMD_SOFT}"
-echo "CURRENT_SYSTEMD_HARD=${CURRENT_SYSTEMD_HARD}"
-
 # Apply nofile limits if enabled
 if [[ "${NOFILE_LIMITS}" == true ]]; then
+
+  if [[ -d "/etc/security/limits.d/" ]]; then
+    readarray -t LIMITS_D_RESULTS < <(find /etc/security/limits.d/ -maxdepth 1 -type f -name '*.conf' -printf "%f\n")
+  else
+    LIMITS_D_RESULTS=()
+  fi  
+  # Highest SystemD number location has the most preference.
+  if [[ -d "/etc/systemd/user.conf.d/" ]]; then
+    readarray -t SYSTEMD_USER_4 < <(find /etc/systemd/user.conf.d/ -maxdepth 1 -type f -name '*.conf' -printf "%f\n")
+  else
+    SYSTEMD_USER_4=()
+  fi
+  if [[ -d "/etc/systemd/system.conf.d/" ]]; then
+    readarray -t SYSTEMD_SYS_4 < <(find /etc/systemd/system.conf.d/ -maxdepth 1 -type f -name '*.conf' -printf "%f\n")
+  else
+    SYSTEMD_SYS_4=()
+  fi  
+  SYSTEMD_USER_3="/etc/systemd/user.conf"
+  SYSTEMD_SYS_3="/etc/systemd/system.conf"
+  if [[ -d "/usr/lib/systemd/user.conf.d/" ]]; then  
+    readarray -t SYSTEMD_USER_2 < <(find /usr/lib/systemd/user.conf.d/ -maxdepth 1 -type f -name '*.conf' -printf "%f\n")
+  else
+    SYSTEMD_USER_2=()
+  fi
+  if [[ -d "/usr/lib/systemd/system.conf.d/" ]]; then    
+    readarray -t SYSTEMD_SYS_2 < <(find /usr/lib/systemd/system.conf.d/ -maxdepth 1 -type f -name '*.conf' -printf "%f\n")
+  else
+    SYSTEMD_SYS_2=()
+  fi  
+  SYSTEMD_USER_1="/usr/lib/systemd/system.conf"
+  SYSTEMD_SYS_1="/usr/lib/systemd/system.conf"
+
+  if [[ ${#LIMITS_D_RESULTS[@]} -gt 0 ]]; then
+    CURRENT_ULIMIT_SOFT=$(cat /etc/security/limits.d/* | grep -oP "soft nofile \K.*")
+    echo "CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT}"
+    CURRENT_ULIMIT_HARD=$(cat /etc/security/limits.d/* | grep -oP "hard nofile \K.*")
+    echo "CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD}"
+  else
+    CURRENT_ULIMIT_SOFT=0
+    CURRENT_ULIMIT_HARD=0
+  fi
+  # From most preferred to least preferred
+  # Commented "DefaultLimitNOFILE" value is ignored
+  if [[ ${#SYSTEMD_USER_4[@]} -gt 0 ]]; then
+    CURRENT_SYSTEMD_USER_SOFT_4=$(cat /etc/systemd/user.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_USER_HARD_4=$(cat /etc/systemd/user.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_USER_SOFT_4=${CURRENT_SYSTEMD_USER_SOFT_4}"
+    echo "CURRENT_SYSTEMD_USER_HARD_4=${CURRENT_SYSTEMD_USER_HARD_4}"
+  else
+    CURRENT_SYSTEMD_USER_SOFT_4=0
+    CURRENT_SYSTEMD_USER_HARD_4=0
+  fi
+  if [[ ${#SYSTEMD_SYS_4[@]} -gt 0 ]]; then
+    CURRENT_SYSTEMD_SYSTEM_SOFT_4=$(cat /etc/systemd/system.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_SYSTEM_HARD_4=$(cat /etc/systemd/system.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_SYSTEM_SOFT_4=${CURRENT_SYSTEMD_SYSTEM_SOFT_4}"
+    echo "CURRENT_SYSTEMD_SYSTEM_HARD_4=${CURRENT_SYSTEMD_SYSTEM_HARD_4}"
+  else
+    CURRENT_SYSTEMD_SYSTEM_SOFT_4=0
+    CURRENT_SYSTEMD_SYSTEM_HARD_4=0
+  fi
+  #
+  if [[ ${#SYSTEMD_USER_4[@]}  -eq 0 ]] && [[ -f "${SYSTEMD_USER_3}" ]]; then
+    CURRENT_SYSTEMD_USER_SOFT_3=$(cat "${SYSTEMD_USER_3}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_USER_HARD_3=$(cat "${SYSTEMD_USER_3}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_USER_SOFT_3=${CURRENT_SYSTEMD_USER_SOFT_3}"
+    echo "CURRENT_SYSTEMD_USER_HARD_3=${CURRENT_SYSTEMD_USER_HARD_3}"
+  else
+    CURRENT_SYSTEMD_USER_SOFT_3=0
+    CURRENT_SYSTEMD_USER_HARD_3=0
+  fi
+  if [[ ${#SYSTEMD_SYS_4[@]}  -eq 0 ]] && [[ -f "${SYSTEMD_SYS_3}" ]]; then
+    CURRENT_SYSTEMD_SYSTEM_SOFT_3=$(cat "${SYSTEMD_SYS_3}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_SYSTEM_HARD_3=$(cat "${SYSTEMD_SYS_3}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_SYSTEM_SOFT_3=${CURRENT_SYSTEMD_SYSTEM_SOFT_3}"
+    echo "CURRENT_SYSTEMD_SYSTEM_HARD_3=${CURRENT_SYSTEMD_SYSTEM_HARD_3}"
+  else
+    CURRENT_SYSTEMD_SYSTEM_SOFT_3=0
+    CURRENT_SYSTEMD_SYSTEM_HARD_3=0
+  fi
+  #
+  if [[ ${#SYSTEMD_USER_4[@]}  -eq 0 ]] && [[ ! -f "${SYSTEMD_USER_3}" ]] && [[ ${#SYSTEMD_USER_2[@]} -gt 0 ]]; then
+    CURRENT_SYSTEMD_USER_SOFT_2=$(cat /usr/lib/systemd/user.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_USER_HARD_2=$(cat /usr/lib/systemd/user.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_USER_SOFT_2=${CURRENT_SYSTEMD_USER_SOFT_2}"
+    echo "CURRENT_SYSTEMD_USER_HARD_2=${CURRENT_SYSTEMD_USER_HARD_2}"
+  else
+    CURRENT_SYSTEMD_USER_SOFT_2=0
+    CURRENT_SYSTEMD_USER_HARD_2=0  
+  fi
+  if [[ ${#SYSTEMD_SYS_4[@]}  -eq 0 ]] && [[ ! -f "${SYSTEMD_SYS_3}" ]] && [[ ${#SYSTEMD_SYS_2[@]} -gt 0 ]]; then
+    CURRENT_SYSTEMD_SYSTEM_SOFT_2=$(cat /usr/lib/systemd/system.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_SYSTEM_HARD_2=$(cat /usr/lib/systemd/system.conf.d/* | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_SYSTEM_SOFT_2=${CURRENT_SYSTEMD_SYSTEM_SOFT_2}"
+    echo "CURRENT_SYSTEMD_SYSTEM_HARD_2=${CURRENT_SYSTEMD_SYSTEM_HARD_2}"
+  else
+    CURRENT_SYSTEMD_SYSTEM_SOFT_2=0
+    CURRENT_SYSTEMD_SYSTEM_HARD_2=0 
+  fi
+  #
+  if [[ ${#SYSTEMD_USER_4[@]}  -eq 0 ]] && [[ ! -f "${SYSTEMD_USER_3}" ]] && [[ ${#SYSTEMD_USER_2[@]} -eq 0 ]] && [[ -f "${SYSTEMD_USER_1}" ]]; then
+    CURRENT_SYSTEMD_USER_SOFT_1=$(cat "${SYSTEMD_USER_1}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_USER_HARD_1=$(cat "${SYSTEMD_USER_1}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_USER_SOFT_1=${CURRENT_SYSTEMD_USER_SOFT_1}"
+    echo "CURRENT_SYSTEMD_USER_HARD_1=${CURRENT_SYSTEMD_USER_HARD_1}"
+  else
+    CURRENT_SYSTEMD_USER_SOFT_1=0
+    CURRENT_SYSTEMD_USER_HARD_1=0
+  fi
+  if [[ ${#SYSTEMD_SYS_4[@]}  -eq 0 ]] && [[ ! -f "${SYSTEMD_SYS_3}" ]] && [[ ${#SYSTEMD_SYS_2[@]} -eq 0 ]] && [[ -f "${SYSTEMD_SYS_1}" ]]; then
+    CURRENT_SYSTEMD_SYSTEM_SOFT_1=$(cat "${SYSTEMD_SYS_1}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $2}')
+    CURRENT_SYSTEMD_SYSTEM_HARD_1=$(cat "${SYSTEMD_SYS_1}" | awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print $3}')
+    echo "CURRENT_SYSTEMD_SYSTEM_SOFT_1=${CURRENT_SYSTEMD_SYSTEM_SOFT_1}"
+    echo "CURRENT_SYSTEMD_SYSTEM_HARD_1=${CURRENT_SYSTEMD_SYSTEM_HARD_1}"
+  else
+    CURRENT_SYSTEMD_SYSTEM_SOFT_1=0
+    CURRENT_SYSTEMD_SYSTEM_HARD_1=0
+  fi
+
     echo "Applying nofile limits..."
+    
+    if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
+      mkdir -p "/usr/etc/security/limits.d/"
+    fi
+    if [[ ${CURRENT_ULIMIT_SOFT} -lt 4096 ]]; then
+    echo "Writing soft nofile ulimit"
     cat >/usr/etc/security/limits.d/30-brew-limits.conf > /dev/null <<EOF
 # This file sets the resource limits for users logged in via PAM,
 # more specifically, users logged in via SSH or tty (console).
@@ -214,9 +330,13 @@ if [[ "${NOFILE_LIMITS}" == true ]]; then
 # This file overrides defaults set in /etc/security/limits.conf
 
 * soft nofile 4096
-* hard nofile 524288
 EOF
-
+  fi
+  if [[ ${CURRENT_ULIMIT_HARD} -lt 524288 ]]; then
+    echo "Writing hard nofile ulimit"
+    echo "* hard nofile 524288" >> /usr/etc/security/limits.d/30-brew-limits.conf
+  fi
+    
     cat >/usr/lib/systemd/system/system.conf.d/30-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:524288
