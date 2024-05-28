@@ -19,6 +19,9 @@ modules:
   - from-file: module-recipes/initramfs.yml
   - type: yafti
   - type: brew
+    packages:
+      - oil
+      - wget2
   - from-file: module-recipes/default-flatpaks.yml
   - from-file: module-recipes/bling.yml
   - from-file: module-recipes/systemd.yml
