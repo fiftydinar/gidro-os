@@ -195,6 +195,14 @@ fi
 
 # Apply nofile limits if enabled
 if [[ "${NOFILE_LIMITS}" == true ]]; then
+  CURRENT_ULIMIT_SOFT=$(ulimit -Sn)
+  CURRENT_ULIMIT_HARD=$(ulimit -Hn)
+  CURRENT_SYSTEMD_SOFT=$(systemctl show -all | grep -oP 'DefaultLimitNOFILESoft=\K.*')
+  CURRENT_SYSTEMD_HARD=$(systemctl show -all | grep -oP 'DefaultLimitNOFILE=\K.*')
+  echo "CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT}"
+  echo "CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD}"
+  echo "CURRENT_SYSTEMD_SOFT=${CURRENT_SYSTEMD_SOFT}"
+  echo "CURRENT_SYSTEMD_HARD=${CURRENT_SYSTEMD_HARD}"
     echo "Applying nofile limits..."
     cat >/usr/etc/security/limits.d/30-brew-limits.conf > /dev/null <<EOF
 # This file sets the resource limits for users logged in via PAM,
