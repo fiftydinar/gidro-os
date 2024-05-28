@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 # Convince the installer that we are in CI
 touch /.dockerenv
@@ -9,6 +9,15 @@ touch /.dockerenv
 DEBUG="${DEBUG:-false}"
 if [[ "${DEBUG}" == true ]]; then
     set -x
+fi
+
+# Check if gcc is installed
+if ! command -v gcc &> /dev/null
+then
+    echo "ERROR: \"gcc\" package could not be found."
+    echo "       Brew depends on \"gcc\" in order to function"
+    echo "       Please include \"gcc\" in the list of packages to install with the system package manager"
+    exit 1
 fi
 
 # Module-specific directories and paths
@@ -46,6 +55,16 @@ fi
 AUTO_UPGRADE=$(echo "${1}" | yq -I=0 ".auto_upgrade")
 if [[ -z "${AUTO_UPGRADE}" || "${AUTO_UPGRADE}" == "null" ]]; then
     AUTO_UPGRADE=true
+fi
+
+NOFILE_LIMITS=$(echo "${1}" | yq -I=0 ".nofile_limits")
+if [[ -z "${NOFILE_LIMITS}" || "${NOFILE_LIMITS}" == "null" ]]; then
+    NOFILE_LIMITS=false
+fi
+
+BREW_ANALYTICS=$(echo "${1}" | yq -I=0 ".brew-analytics")
+if [[ -z "${BREW_ANALYTICS}" || "${BREW_ANALYTICS}" == "null" ]]; then
+    BREW_ANALYTICS=true
 fi
 
 # Create necessary directories
@@ -172,6 +191,38 @@ if [[ "${AUTO_UPGRADE}" == true ]]; then
     systemctl enable brew-upgrade.timer
 else
     systemctl disable brew-upgrade.timer
+fi
+
+# Apply nofile limits if enabled
+if [[ "${NOFILE_LIMITS}" == true ]]; then
+    echo "Applying nofile limits..."
+    cat >/usr/etc/security/limits.d/30-brew-limits.conf > /dev/null <<EOF
+# This file sets the resource limits for users logged in via PAM,
+# more specifically, users logged in via SSH or tty (console).
+# Limits related to terminals in Wayland/Xorg sessions depend on a
+# change to /etc/systemd/user.conf.
+# This does not affect resource limits of the system services.
+# This file overrides defaults set in /etc/security/limits.conf
+
+* soft nofile 4096
+* hard nofile 524288
+EOF
+
+    cat >/usr/lib/systemd/system/system.conf.d/30-brew-limits.conf > /dev/null <<EOF
+[Manager]
+DefaultLimitNOFILE=4096:524288
+EOF
+
+    cat >/usr/lib/systemd/user/user.conf.d/30-brew-limits.conf > /dev/null <<EOF
+[Manager]
+DefaultLimitNOFILE=4096:524288
+EOF
+fi
+
+# Disable homebrew analytics if the flag is set to false
+# like secureblue: https://github.com/secureblue/secureblue/blob/live/config/scripts/homebrewanalyticsoptout.sh
+if [[ "${BREW_ANALYTICS}" == false ]]; then
+    echo "HOMEBREW_NO_ANALYTICS=1" >> /usr/etc/environment
 fi
 
 # Install specified Brew packages if any
