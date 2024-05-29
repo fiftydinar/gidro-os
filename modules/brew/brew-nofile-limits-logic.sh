@@ -137,8 +137,8 @@ echo "SystemD user hard nofile limit: $(check_and_print ${CURRENT_SYSTEMD_USER_H
 
 # Write SSH/TTY nolimit values
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] || [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
-  if [[ ! -d "${SSH_TTY_LIMIT_ORDER[1]}" ]]; then
-    mkdir -p "${SSH_TTY_LIMIT_ORDER[1]}"
+  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
+    mkdir -p "/usr/etc/security/limits.d/"
   fi
   echo "# This file sets the resource limits for users logged in via PAM,
 # more specifically, users logged in via SSH or tty (console).
@@ -147,42 +147,42 @@ if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] || [[ "${CU
 # This does not affect resource limits of the system services.
 # This file overrides defaults set in /etc/security/limits.conf
 
-" > "${SSH_TTY_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+" > "/usr/etc/security/limits.d/zz1-brew-limits.conf"
 fi
 
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -ge "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SSH/TTY soft nofile limit value"
-  echo "* soft nofile ${DESIRED_SOFT_LIMIT}" >> "${SSH_TTY_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+  echo "* soft nofile ${DESIRED_SOFT_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
 else
   echo "Required SSH/TTY soft nofile limit value is already satisfied!"
 fi
 
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SSH/TTY soft nofile limit value"
-  echo "* hard nofile ${DESIRED_HARD_LIMIT}" >> "${SSH_TTY_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+  echo "* hard nofile ${DESIRED_HARD_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
 else
   echo "Required SSH/TTY hard nofile limit value is already satisfied!"
 fi
 
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SSH/TTY soft & hard nofile limit value"
-  echo "* soft nofile ${DESIRED_SOFT_LIMIT}" >> "${SSH_TTY_LIMIT_ORDER[1]}zz1-brew-limits.conf"
-  echo "* hard nofile ${DESIRED_HARD_LIMIT}" >> "${SSH_TTY_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+  echo "* soft nofile ${DESIRED_SOFT_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
+  echo "* hard nofile ${DESIRED_HARD_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
 fi
 
 # Write SystemD nolimit values
 
 # Writing SystemD system nolimit values
 if [[ "${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] || [[ "${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
-  if [[ ! -d "${SYSTEMD_SYSTEM_LIMIT_ORDER[1]}" ]]; then
-    mkdir -p "${SYSTEMD_SYSTEM_LIMIT_ORDER[1]}"
+  if [[ ! -d "/usr/lib/systemd/system.conf.d/" ]]; then
+    mkdir -p "/usr/lib/systemd/system.conf.d/"
   fi
 fi
 
 if [[ "${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" -ge "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SystemD system soft nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" > "${SYSTEMD_SYSTEM_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" > "/usr/lib/systemd/system.conf.d/zz1-brew-limits.conf"
 else
   echo "Required SystemD system soft nofile limit value is already satisfied!"
 fi
@@ -190,7 +190,7 @@ fi
 if [[ "${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SystemD system hard nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}:${DESIRED_HARD_LIMIT}" > "${SYSTEMD_SYSTEM_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/system.conf.d/zz1-brew-limits.conf"
 else
   echo "Required SystemD system hard nofile limit value is already satisfied!"
 fi
@@ -198,20 +198,20 @@ fi
 if [[ "${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then<
   echo "Writing increased SystemD system soft & hard nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "${SYSTEMD_SYSTEM_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/system.conf.d/zz1-brew-limits.conf"
 fi
 
 # Writing SystemD user nolimit values
 if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] || [[ "${CURRENT_SYSTEMD_USER_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
-  if [[ ! -d "${SYSTEMD_USER_LIMIT_ORDER[1]}" ]]; then
-    mkdir -p "${SYSTEMD_USER_LIMIT_ORDER[1]}"
+  if [[ ! -d "/usr/lib/systemd/user.conf.d/" ]]; then
+    mkdir -p "/usr/lib/systemd/user.conf.d/"
   fi
 fi
 
 if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_USER_HARD_VALUE}" -ge "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SystemD user soft nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${CURRENT_SYSTEMD_USER_HARD_VALUE}" > "${SYSTEMD_USER_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${CURRENT_SYSTEMD_USER_HARD_VALUE}" > "/usr/lib/systemd/user.conf.d/zz1-brew-limits.conf"
 else
   echo "Required SystemD user soft nofile limit value is already satisfied!"
 fi
@@ -219,7 +219,7 @@ fi
 if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_USER_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SystemD user hard nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${CURRENT_SYSTEMD_USER_SOFT_VALUE}:${DESIRED_HARD_LIMIT}" > "${SYSTEMD_USER_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${CURRENT_SYSTEMD_USER_SOFT_VALUE}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/zz1-brew-limits.conf"
 else
   echo "Required SystemD user hard nofile limit value is already satisfied!"
 fi
@@ -227,7 +227,7 @@ fi
 if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SYSTEMD_USER_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SystemD user soft & hard nofile limit value"
   echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "${SYSTEMD_USER_LIMIT_ORDER[1]}zz1-brew-limits.conf"
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/zz1-brew-limits.conf"
 fi
 
 echo "Modified nofile limit values:"
