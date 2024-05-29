@@ -195,7 +195,7 @@ fi
 
 # Apply nofile limits if enabled
 if [[ "${NOFILE_LIMITS}" == true ]]; then
-  source "${MODULE_DIRECTORY}"/brew/brew_nolimits_logic.sh
+  source "${MODULE_DIRECTORY}"/brew/brew-nofile-limits-logic.sh
 fi
 
 # Disable homebrew analytics if the flag is set to false
