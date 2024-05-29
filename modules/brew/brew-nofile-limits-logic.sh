@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 # Script used to read nofile limits from the base image, since issuing easy systemctl status commands don't work in build-time.
 # Takes into account config priorities & current config settings regarding nofile limits
@@ -314,8 +314,8 @@ limits_inform
 
 # Security limits.d
 if [[ "${security_limits_soft}" -lt 4096 ]] || [[ "${security_limits_hard}" -lt 524288 ]]; then
-  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
-    mkdir -p "/usr/etc/security/limits.d/"
+  if [[ ! -d /usr/etc/security/limits.d/ ]]; then
+    mkdir -p /usr/etc/security/limits.d/
   fi
   cat >/usr/etc/security/limits.d/zz1-brew-limits.conf > /dev/null <<EOF
 # This file sets the resource limits for users logged in via PAM,
@@ -330,21 +330,21 @@ fi
 
 if [[ ${security_limits_soft} -lt 4096 ]]; then
   echo "Writing soft nofile limit for SSH/TTY sessions"  
-  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
-    mkdir -p "/usr/etc/security/limits.d/"
+  if [[ ! -d /usr/etc/security/limits.d/ ]]; then
+    mkdir -p /usr/etc/security/limits.d/
   fi
-  if [[ ! -f "/usr/etc/security/limits.d/zz1-brew-limits.conf" ]]; then
-    touch "/usr/etc/security/limits.d/zz1-brew-limits.conf"
+  if [[ ! -f /usr/etc/security/limits.d/zz1-brew-limits.conf ]]; then
+    touch /usr/etc/security/limits.d/zz1-brew-limits.conf
   fi
   echo "* soft nofile 4096" >> /usr/etc/security/limits.d/zz1-brew-limits.conf
 fi  
 if [[ ${security_limits_hard} -lt 524288 ]]; then
   echo "Writing hard nofile limit for SSH/TTY sessions"
-  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
-    mkdir -p "/usr/etc/security/limits.d/"
+  if [[ ! -d /usr/etc/security/limits.d/ ]]; then
+    mkdir -p /usr/etc/security/limits.d/
   fi    
-  if [[ ! -f "/usr/etc/security/limits.d/zz1-brew-limits.conf" ]]; then
-    touch "/usr/etc/security/limits.d/zz1-brew-limits.conf"
+  if [[ ! -f /usr/etc/security/limits.d/zz1-brew-limits.conf ]]; then
+    touch /usr/etc/security/limits.d/zz1-brew-limits.conf
   fi
   echo "* hard nofile 524288" > /usr/etc/security/limits.d/zz1-brew-limits.conf
 fi
@@ -352,10 +352,10 @@ fi
 # Systemd system soft limit
 if [[ "${systemd_sys_soft}" -lt 4096 ]] && [[ ${systemd_sys_hard} -ge 524288 ]]; then
   echo "Writing 'system' soft nofile limit for DE sessions using SystemD"
-  if [[ ! -d "/usr/etc/systemd/system/system.conf.d/" ]]; then
-    mkdir -p "/usr/etc/systemd/system/system.conf.d/"
+  if [[ ! -d /usr/etc/systemd/system/system.conf.d/ ]]; then
+    mkdir -p /usr/etc/systemd/system/system.conf.d/
   fi    
-  if [[ ! -f "/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf" ]]; then  
+  if [[ ! -f /usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf ]]; then  
   cat >/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:${systemd_sys_hard}
@@ -366,10 +366,10 @@ fi
 # Systemd system hard limit
 if [[ "${systemd_sys_soft}" -ge 4096 ]] && [[ ${systemd_sys_hard} -lt 524288 ]]; then
   echo "Writing 'system' hard nofile limit for DE sessions using SystemD"
-  if [[ ! -d "/usr/etc/systemd/system/system.conf.d/" ]]; then
-    mkdir -p "/usr/etc/systemd/system/system.conf.d/"
+  if [[ ! -d /usr/etc/systemd/system/system.conf.d/ ]]; then
+    mkdir -p /usr/etc/systemd/system/system.conf.d/
   fi    
-  if [[ ! -f "/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf" ]]; then  
+  if [[ ! -f /usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf ]]; then  
   cat >/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=${systemd_sys_soft}:524288
@@ -380,10 +380,10 @@ fi
 # Systemd system soft & hard limit
 if [[ "${systemd_sys_soft}" -lt 4096 ]] && [[ ${systemd_sys_hard} -lt 524288 ]]; then
   echo "Writing 'system' soft & hard nofile limit for DE sessions using SystemD"
-  if [[ ! -d "/usr/etc/systemd/system/system.conf.d/" ]]; then
-    mkdir -p "/usr/etc/systemd/system/system.conf.d/"
+  if [[ ! -d /usr/etc/systemd/system/system.conf.d/ ]]; then
+    mkdir -p /usr/etc/systemd/system/system.conf.d/
   fi    
-    if [[ ! -f "/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf" ]]; then   
+    if [[ ! -f /usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf ]]; then   
   cat >/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:524288
@@ -394,10 +394,10 @@ fi
 # Systemd user soft limit
 if [[ "${systemd_user_soft}" -lt 4096 ]] && [[ ${systemd_user_hard} -ge 524288 ]]; then
   echo "Writing 'user' soft nofile limit for DE sessions using SystemD"
-  if [[ ! -d "/usr/etc/systemd/system/user.conf.d/" ]]; then
-    mkdir -p "/usr/etc/systemd/system/user.conf.d/"
+  if [[ ! -d /usr/etc/systemd/system/user.conf.d/ ]]; then
+    mkdir -p /usr/etc/systemd/system/user.conf.d/
   fi  
-  if [[ ! -f "/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf" ]]; then     
+  if [[ ! -f /usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf ]]; then     
   cat >/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:${systemd_sys_hard}
@@ -408,10 +408,10 @@ fi
 # Systemd user hard limit
 if [[ "${systemd_user_soft}" -ge 4096 ]] && [[ ${systemd_user_hard} -lt 524288 ]]; then
   echo "Writing 'user' hard nofile limit for DE sessions using SystemD"
-  if [[ ! -d "/usr/etc/systemd/system/user.conf.d/" ]]; then
-    mkdir -p "/usr/etc/systemd/system/user.conf.d/"
+  if [[ ! -d /usr/etc/systemd/system/user.conf.d/ ]]; then
+    mkdir -p /usr/etc/systemd/system/user.conf.d/
   fi
-  if [[ ! -f "/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf" ]]; then       
+  if [[ ! -f /usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf ]]; then       
   cat >/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=${systemd_sys_soft}:524288
@@ -422,10 +422,10 @@ fi
 # Systemd user soft & hard limit
 if [[ "${systemd_user_soft}" -lt 4096 ]] && [[ ${systemd_user_hard} -lt 524288 ]]; then
   echo "Writing 'user' soft & hard nofile limit for DE sessions using SystemD"
-  if [[ ! -f "/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf" ]]; then
-    touch "/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf"
+  if [[ ! -f /usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf ]]; then
+    touch /usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf
   fi
-  if [[ ! -f "/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf" ]]; then         
+  if [[ ! -f /usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf ]]; then         
   cat >/usr/etc/systemd/system/user.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:524288
