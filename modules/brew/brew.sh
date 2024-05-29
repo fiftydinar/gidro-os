@@ -377,6 +377,7 @@ EOF
 DefaultLimitNOFILE=${CURRENT_SYSTEMD_USER_SOFT}:524288
 EOF
   fi
+fi
 
 # Disable homebrew analytics if the flag is set to false
 # like secureblue: https://github.com/secureblue/secureblue/blob/live/config/scripts/homebrewanalyticsoptout.sh
