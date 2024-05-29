@@ -153,14 +153,14 @@ fi
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -ge "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Writing increased SSH/TTY soft nofile limit value"
   echo "* soft nofile ${DESIRED_SOFT_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
-else
+elif [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]]; then
   echo "Required SSH/TTY soft nofile limit value is already satisfied!"
 fi
 
 if [[ "${CURRENT_SSH_TTY_SOFT_VALUE}" -ge "${DESIRED_SOFT_LIMIT}" ]] && [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -lt "${DESIRED_HARD_LIMIT}" ]]; then
-  echo "Writing increased SSH/TTY soft nofile limit value"
+  echo "Writing increased SSH/TTY hard nofile limit value"
   echo "* hard nofile ${DESIRED_HARD_LIMIT}" >> "/usr/etc/security/limits.d/zz1-brew-limits.conf"
-else
+elif [[ "${CURRENT_SSH_TTY_HARD_VALUE}" -ge "${DESIRED_HARD_LIMIT}" ]]; then
   echo "Required SSH/TTY hard nofile limit value is already satisfied!"
 fi
 
