@@ -337,6 +337,8 @@ if [[ ${security_limits_soft} -lt 4096 ]]; then
     echo "" > "/usr/etc/security/limits.d/zz1-brew-limits.conf"
   fi
   echo "* soft nofile 4096" >> /usr/etc/security/limits.d/zz1-brew-limits.conf
+else
+  echo "There is no need to increase 'ulimits soft' nofile limit, you're all set!"
 fi  
 if [[ ${security_limits_hard} -lt 524288 ]]; then
   echo "Writing hard nofile limit for SSH/TTY sessions"
@@ -347,6 +349,8 @@ if [[ ${security_limits_hard} -lt 524288 ]]; then
     echo "" > "/usr/etc/security/limits.d/zz1-brew-limits.conf"
   fi
   echo "* hard nofile 524288" > /usr/etc/security/limits.d/zz1-brew-limits.conf
+else
+  echo "There is no need to increase 'ulimits hard' nofile limit, you're all set!"
 fi
 
 # Systemd system soft limit
@@ -361,6 +365,8 @@ if [[ "${systemd_sys_soft}" -lt 4096 ]] && [[ ${systemd_sys_hard} -ge 524288 ]];
 DefaultLimitNOFILE=4096:${systemd_sys_hard}
 EOF
   fi
+else
+  echo "There is no need to increase 'systemd system soft' nofile limit, you're all set!"
 fi
 
 # Systemd system hard limit
@@ -375,6 +381,8 @@ if [[ "${systemd_sys_soft}" -ge 4096 ]] && [[ ${systemd_sys_hard} -lt 524288 ]];
 DefaultLimitNOFILE=${systemd_sys_soft}:524288
 EOF
   fi
+else
+  echo "There is no need to increase 'systemd system hard' nofile limit, you're all set!"
 fi
 
 # Systemd system soft & hard limit
@@ -383,12 +391,14 @@ if [[ "${systemd_sys_soft}" -lt 4096 ]] && [[ ${systemd_sys_hard} -lt 524288 ]];
   if [[ ! -d "/usr/etc/systemd/system.conf.d/" ]]; then
     mkdir -p "/usr/etc/systemd/system.conf.d/"
   fi    
-    if [[ ! -f "/usr/etc/systemd/system.conf.d/zz1-brew-limits.conf" ]]; then   
+  if [[ ! -f "/usr/etc/systemd/system.conf.d/zz1-brew-limits.conf" ]]; then   
   cat >/usr/etc/systemd/system.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=4096:524288
 EOF
-    fi
+  fi
+else
+  echo "There is no need to increase 'systemd system soft & hard' nofile limit, you're all set!"
 fi
 
 # Systemd user soft limit
@@ -403,6 +413,8 @@ if [[ "${systemd_user_soft}" -lt 4096 ]] && [[ ${systemd_user_hard} -ge 524288 ]
 DefaultLimitNOFILE=4096:${systemd_sys_hard}
 EOF
   fi
+else
+  echo "There is no need to increase 'systemd user soft' nofile limit, you're all set!"
 fi
 
 # Systemd user hard limit
@@ -417,6 +429,8 @@ if [[ "${systemd_user_soft}" -ge 4096 ]] && [[ ${systemd_user_hard} -lt 524288 ]
 DefaultLimitNOFILE=${systemd_sys_soft}:524288
 EOF
   fi
+else
+  echo "There is no need to increase 'systemd user hard' nofile limit, you're all set!"
 fi
 
 # Systemd user soft & hard limit
@@ -431,4 +445,6 @@ if [[ "${systemd_user_soft}" -lt 4096 ]] && [[ ${systemd_user_hard} -lt 524288 ]
 DefaultLimitNOFILE=4096:524288
 EOF
   fi
+else
+  echo "There is no need to increase 'systemd user soft & hard' nofile limit, you're all set!"
 fi
