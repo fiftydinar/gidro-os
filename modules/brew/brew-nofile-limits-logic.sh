@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#set -euo pipefail
+set -euo pipefail
 
 # Script used to read nofile limits from the base image, since issuing easy systemctl status commands don't work in build-time.
 # Takes into account config priorities & current config settings regarding nofile limits
