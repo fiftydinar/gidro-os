@@ -432,7 +432,3 @@ DefaultLimitNOFILE=4096:524288
 EOF
   fi
 fi
-
-echo "Modified nofile values in the base image:"
-echo
-limits_inform
