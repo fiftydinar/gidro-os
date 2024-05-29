@@ -232,21 +232,28 @@ if [[ "${NOFILE_LIMITS}" == true ]]; then
   if [[ -f "${LIMITS_CONFIG}" ]]; then
     CURRENT_ULIMIT_SOFT_LP=$(awk '/soft\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print}' /etc/security/limits.conf)
     CURRENT_ULIMIT_HARD_LP=$(awk '/hard\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print}' /etc/security/limits.conf)
+  fi  
   if [[ ${#LIMITS_D_RESULTS[@]} -gt 0 ]]; then
     CURRENT_ULIMIT_SOFT_MP=$(awk '/soft\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print}' /etc/security/limits.d/*)
     echo "CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT}"
     CURRENT_ULIMIT_HARD_MP=$(awk '/hard\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print}' /etc/security/limits.d/*)
     echo "CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD}"
+  fi  
   if [[ -n ${CURRENT_ULIMIT_SOFT_MP} ]]; then
     CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT_MP}
+  fi  
   if [[ -n ${CURRENT_ULIMIT_HARD_MP} ]]; then
     CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD_MP}
+  fi  
   if [[ -z ${CURRENT_ULIMIT_SOFT_MP} ]] && [[ -n ${CURRENT_ULIMIT_SOFT_LP} ]]; then
     CURRENT_ULIMIT_SOFT=${CURRENT_ULIMIT_SOFT_LP}
-  if [[ -z ${CURRENT_ULIMIT_HARD_MP} ]] && [[ -n ${CURRENT_ULIMIT_SOFT_LP} ]]; then
+  fi  
+  if [[ -z ${CURRENT_ULIMIT_HARD_MP} ]] && [[ -n ${CURRENT_ULIMIT_HARD_LP} ]]; then
     CURRENT_ULIMIT_HARD=${CURRENT_ULIMIT_HARD_LP}
+  fi  
   if [[ -z ${CURRENT_ULIMIT_SOFT_LP} ]]; then
     CURRENT_ULIMIT_SOFT=0
+  fi  
   if [[ -z ${CURRENT_ULIMIT_HARD_LP} ]]; then
     CURRENT_ULIMIT_HARD=0  
   fi
@@ -371,7 +378,7 @@ EOF
   fi
 
   if [[ ${CURRENT_SYSTEMD_SYSTEM_HARD} -lt 524288 ]]; then
-    echo "Writing hard & soft nofile limit for DE sessionsusing SystemD"
+    echo "Writing hard & soft nofile limit for DE sessions using SystemD"
     cat >/usr/etc/systemd/system/system.conf.d/zz1-brew-limits.conf > /dev/null <<EOF
 [Manager]
 DefaultLimitNOFILE=${CURRENT_SYSTEMD_USER_SOFT}:524288
