@@ -229,11 +229,3 @@ if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ 
   echo "[Manager]
 DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/zz1-brew-limits.conf"
 fi
-
-echo "Modified nofile limit values:"
-echo "SSH/TTY soft nofile limit: $(check_and_print ${CURRENT_SSH_TTY_SOFT_VALUE})"
-echo "SSH/TTY hard nofile limit: $(check_and_print ${CURRENT_SSH_TTY_HARD_VALUE})"
-echo "SystemD system soft nofile limit: $(check_and_print ${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE})"
-echo "SystemD system hard nofile limit: $(check_and_print ${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE})"
-echo "SystemD user soft nofile limit: $(check_and_print ${CURRENT_SYSTEMD_USER_SOFT_VALUE})"
-echo "SystemD user hard nofile limit: $(check_and_print ${CURRENT_SYSTEMD_USER_HARD_VALUE})"
