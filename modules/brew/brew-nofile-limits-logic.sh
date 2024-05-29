@@ -230,53 +230,10 @@ if [[ "${CURRENT_SYSTEMD_USER_SOFT_VALUE}" -lt "${DESIRED_SOFT_LIMIT}" ]] && [[ 
 DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/zz1-brew-limits.conf"
 fi
 
-# Print modified values
-SSH_TTY_SOFT_INFO_MODIFIED=$(find "${SSH_TTY_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -v OFS='\t' '/soft\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print FILENAME, $0}' {} + | tail -n 1)
-if [[ -n "${SSH_TTY_SOFT_INFO_MODIFIED}" ]]; then
-  MODIFIED_SSH_TTY_SOFT_VALUE=$(echo "${SSH_TTY_SOFT_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SSH_TTY_SOFT_VALUE=0
-fi
-
-SSH_TTY_HARD_INFO_MODIFIED=$(find "${SSH_TTY_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -v OFS='\t' '/hard\s+nofile/ && !/^#/ {sub(/.*nofile/, ""); gsub(/^[ \t]+/, ""); print FILENAME, $0}' {} + | tail -n 1)
-if [[ -n "${SSH_TTY_HARD_INFO_MODIFIED}" ]]; then
-  MODIFIED_SSH_TTY_HARD_VALUE=$(echo "${SSH_TTY_HARD_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SSH_TTY_HARD_VALUE=0
-fi
-
-SYSTEMD_SYSTEM_SOFT_INFO_MODIFIED=$(find "${SYSTEMD_SYSTEM_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print FILENAME, $2}' {} + | tail -n 1)
-if [[ -n "${SYSTEMD_SYSTEM_SOFT_INFO_MODIFIED}" ]]; then
-  MODIFIED_SYSTEMD_SYSTEM_SOFT_VALUE=$(echo "${SYSTEMD_SYSTEM_SOFT_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SYSTEMD_SYSTEM_SOFT_VALUE=0
-fi
-
-SYSTEMD_SYSTEM_HARD_INFO_MODIFIED=$(find "${SYSTEMD_SYSTEM_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print FILENAME, $3}' {} + | tail -n 1)
-if [[ -n "${SYSTEMD_SYSTEM_HARD_INFO_MODIFIED}" ]]; then
-  MODIFIED_SYSTEMD_SYSTEM_HARD_VALUE=$(echo "${SYSTEMD_SYSTEM_HARD_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SYSTEMD_SYSTEM_HARD_VALUE=0
-fi
-
-SYSTEMD_USER_SOFT_INFO_MODIFIED=$(find "${SYSTEMD_USER_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print FILENAME, $2}' {} + | tail -n 1)
-if [[ -n "${SYSTEMD_USER_SOFT_INFO_MODIFIED}" ]]; then
-  MODIFIED_SYSTEMD_USER_SOFT_VALUE=$(echo "${SYSTEMD_USER_SOFT_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SYSTEMD_USER_SOFT_VALUE=0
-fi
-
-SYSTEMD_USER_HARD_INFO_MODIFIED=$(find "${SYSTEMD_USER_LIMIT_ORDER[@]}" -type f -name "*.conf" -exec awk -F'[:=]' '/^[^#]*DefaultLimitNOFILE/ {print FILENAME, $3}' {} + | tail -n 1)
-if [[ -n "${SYSTEMD_USER_HARD_INFO_MODIFIED}" ]]; then
-  MODIFIED_SYSTEMD_USER_HARD_VALUE=$(echo "${SYSTEMD_USER_HARD_INFO_MODIFIED}" | awk '{print $2}')
-else
-  MODIFIED_SYSTEMD_USER_HARD_VALUE=0
-fi
-
 echo "Modified nofile limit values:"
-echo "SSH/TTY soft nofile limit: $(check_and_print ${MODIFIED_SSH_TTY_SOFT_VALUE})"
-echo "SSH/TTY hard nofile limit: $(check_and_print ${MODIFIED_SSH_TTY_HARD_VALUE})"
-echo "SystemD system soft nofile limit: $(check_and_print ${MODIFIED_SYSTEMD_SYSTEM_SOFT_VALUE})"
-echo "SystemD system hard nofile limit: $(check_and_print ${MODIFIED_SYSTEMD_SYSTEM_HARD_VALUE})"
-echo "SystemD user soft nofile limit: $(check_and_print ${MODIFIED_SYSTEMD_USER_SOFT_VALUE})"
-echo "SystemD user hard nofile limit: $(check_and_print ${MODIFIED_SYSTEMD_USER_HARD_VALUE})"
+echo "SSH/TTY soft nofile limit: $(check_and_print ${CURRENT_SSH_TTY_SOFT_VALUE})"
+echo "SSH/TTY hard nofile limit: $(check_and_print ${CURRENT_SSH_TTY_HARD_VALUE})"
+echo "SystemD system soft nofile limit: $(check_and_print ${CURRENT_SYSTEMD_SYSTEM_SOFT_VALUE})"
+echo "SystemD system hard nofile limit: $(check_and_print ${CURRENT_SYSTEMD_SYSTEM_HARD_VALUE})"
+echo "SystemD user soft nofile limit: $(check_and_print ${CURRENT_SYSTEMD_USER_SOFT_VALUE})"
+echo "SystemD user hard nofile limit: $(check_and_print ${CURRENT_SYSTEMD_USER_HARD_VALUE})"
