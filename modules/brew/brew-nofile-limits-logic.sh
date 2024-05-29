@@ -334,7 +334,7 @@ if [[ ${security_limits_soft} -lt 4096 ]]; then
     mkdir -p "/usr/etc/security/limits.d/"
   fi
   if [[ ! -f "/usr/etc/security/limits.d/zz1-brew-limits.conf" ]]; then
-    touch "/usr/etc/security/limits.d/zz1-brew-limits.conf"
+    echo "" > "/usr/etc/security/limits.d/zz1-brew-limits.conf"
   fi
   echo "* soft nofile 4096" >> /usr/etc/security/limits.d/zz1-brew-limits.conf
 fi  
@@ -344,7 +344,7 @@ if [[ ${security_limits_hard} -lt 524288 ]]; then
     mkdir -p "/usr/etc/security/limits.d/"
   fi    
   if [[ ! -f "/usr/etc/security/limits.d/zz1-brew-limits.conf" ]]; then
-    touch "/usr/etc/security/limits.d/zz1-brew-limits.conf"
+    echo "" > "/usr/etc/security/limits.d/zz1-brew-limits.conf"
   fi
   echo "* hard nofile 524288" > /usr/etc/security/limits.d/zz1-brew-limits.conf
 fi
