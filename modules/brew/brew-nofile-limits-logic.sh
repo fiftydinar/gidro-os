@@ -172,8 +172,8 @@ if [[ -d "${SYSTEMD_SYS_DIR[0]}" ]] && [[ "${systemd_sys_hard}" == 0 ]]; then
 fi
 
 # SystemD user limit
-SYSTEMD_USER_DIR=("/etc/systemd/user.conf.d/" "/usr/lib/systemd/user.conf.d/")
-SYSTEMD_USER_FILE=("/etc/systemd/user.conf" "/usr/lib/systemd/user.conf")
+SYSTEMD_USER_DIR=("/etc/systemd/user.conf.d/" "/usr/etc/systemd/user.conf.d/" "/usr/lib/systemd/user.conf.d/")
+SYSTEMD_USER_FILE=("/etc/systemd/user.conf" "/usr/etc/systemd/user.conf" "/usr/lib/systemd/user.conf")
 
 # SystemD user soft limit
 
