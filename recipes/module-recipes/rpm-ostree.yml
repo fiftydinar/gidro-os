@@ -16,6 +16,7 @@ install:
   - printer-driver-brlaser
   - epson-inkjet-printer-escpr
   - epson-inkjet-printer-escpr2
+  - sg3_utils
   
 remove:
   - firefox
