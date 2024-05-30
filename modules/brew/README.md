@@ -4,15 +4,11 @@ The brew module installs Homebrew (Brew) on your system and ensures the package 
 
 ## Features
 - Installs Brew at build-time.
-- Configures and installs specified Brew packages.
 - Sets up systemd services to update Brew packages automatically.
 - Sets up systemd services to upgrade the Brew binary to the latest version.
 - Options to control the frequency of updates and upgrades.
 
 ## Configuration Options
-
-### `packages` (required: list of strings)
-A list of Brew packages to be installed. This is a mandatory configuration and must be provided.
 
 ### `update-interval` (optional: string, default: '6h')
 Defines how often the Brew update service should run. The string is passed directly to `OnUnitInactiveSec` in systemd timer. (Syntax: ['1d', '6h', '10m']).
