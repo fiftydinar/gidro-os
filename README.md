@@ -38,6 +38,7 @@ Installed packages (RPMs):
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
 - [BrLaser](https://github.com/Owl-Maintain/brlaser) (Driver which supports additional Brother printers)
 - [Epson-inkjet-printer-escpr 1 & 2] (Driver which supports additional Epson printers)
+- [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
@@ -138,6 +139,7 @@ Settings applied by default:
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
+- Udev rule to make Apple SuperDrive work
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
 - Set font hinting to "None"
