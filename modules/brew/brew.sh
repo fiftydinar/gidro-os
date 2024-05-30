@@ -201,15 +201,17 @@ fi
 # Disable homebrew analytics if the flag is set to false
 # like secureblue: https://github.com/secureblue/secureblue/blob/live/config/scripts/homebrewanalyticsoptout.sh
 if [[ "${BREW_ANALYTICS}" == false ]]; then
-    echo "HOMEBREW_NO_ANALYTICS=1" >> /usr/etc/environment
+  su -c "/home/linuxbrew/.linuxbrew/bin/brew analytics off" -s /bin/bash linuxbrew
+elif [[ "${BREW_ANALYTICS}" == true ]]; then
+  su -c "/home/linuxbrew/.linuxbrew/bin/brew analytics on" -s /bin/bash linuxbrew
 fi
 
 # Install specified Brew packages if any
 if [[ "${#PACKAGE_LIST[@]}" -gt 0 ]]; then
-    echo "Installing specified Brew packages..."
-    su -c "/home/linuxbrew/.linuxbrew/bin/brew install ${PACKAGE_LIST[*]}" -s /bin/bash linuxbrew
+  echo "Installing specified Brew packages..."
+  su -c "/home/linuxbrew/.linuxbrew/bin/brew install ${PACKAGE_LIST[*]}" -s /bin/bash linuxbrew
 else
-    echo "No Brew packages specified for installation."
+  echo "No Brew packages specified for installation."
 fi
 
 echo "Brew setup completed."
