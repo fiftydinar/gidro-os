@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 # Convince the installer that we are in CI
 touch /.dockerenv
@@ -139,10 +139,10 @@ EOF
 # Write systemd timer files dynamically
 echo "Writing brew-update timer"
 if [[ -n "${WAIT_AFTER_BOOT_UPDATE}" ]] && [[ "${WAIT_AFTER_BOOT_UPDATE}" != "10min" ]]; then
-  echo "Applying custom 'wait-after-boot' value in ${WAIT_AFTER_BOOT_UPDATE} time interval for brew update timer"
+  echo "Applying custom 'wait-after-boot' value in '${WAIT_AFTER_BOOT_UPDATE}' time interval for brew update timer"
 fi
 if [[ -n "${UPDATE_INTERVAL}" ]] && [[ "${UPDATE_INTERVAL}" != "6h" ]]; then
-  echo "Applying custom 'update-interval' value in ${UPDATE_INTERVAL} time interval for brew update timer"
+  echo "Applying custom 'update-interval' value in '${UPDATE_INTERVAL}' time interval for brew update timer"
 fi
 cat >/usr/lib/systemd/system/brew-update.timer <<EOF
 [Unit]
@@ -160,10 +160,10 @@ EOF
 
 echo "Writing brew-upgrade timer"
 if [[ -n "${WAIT_AFTER_BOOT_UPGRADE}" ]] && [[ "${WAIT_AFTER_BOOT_UPGRADE}" != "30min" ]]; then
-  echo "Applying custom 'wait-after-boot' value in ${WAIT_AFTER_BOOT_UPGRADE} time interval for brew upgrade timer"
+  echo "Applying custom 'wait-after-boot' value in '${WAIT_AFTER_BOOT_UPGRADE}' time interval for brew upgrade timer"
 fi
 if [[ -n "${UPGRADE_INTERVAL}" ]] && [[ "${UPGRADE_INTERVAL}" != "8h" ]]; then
-  echo "Applying custom 'update-interval' value in ${UPGRADE_INTERVAL} time interval for brew upgrade timer"
+  echo "Applying custom 'upgrade-interval' value in '${UPGRADE_INTERVAL}' time interval for brew upgrade timer"
 fi
 cat >/usr/lib/systemd/system/brew-upgrade.timer <<EOF
 [Unit]
@@ -202,7 +202,7 @@ if [[ "${AUTO_UPDATE}" == true ]]; then
     echo "Enabling auto-updates for brew packages"
     systemctl enable brew-update.timer
 else
-    echo "Disabling auto-upgrades for brew packages"
+    echo "Disabling auto-updates for brew packages"
     systemctl disable brew-update.timer
 fi
 
@@ -216,38 +216,7 @@ fi
 
 # Apply nofile limits if enabled
 if [[ "${NOFILE_LIMITS}" == true ]]; then
-  echo "Increasing nofile limits"
-  
-  BREW_LIMITS_CONFIG="zz1-brew-limits.conf"
-  DESIRED_SOFT_LIMIT=4096
-  DESIRED_HARD_LIMIT=524288
-  
-  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
-    mkdir -p "/usr/etc/security/limits.d/"
-  fi
-  echo "# This file sets the resource limits for users logged in via PAM,
-# more specifically, users logged in via SSH or tty (console).
-# Limits related to terminals in Wayland/Xorg sessions depend on a
-# change to /etc/systemd/user.conf.
-# This does not affect resource limits of the system services.
-# This file overrides defaults set in /etc/security/limits.conf
-
-* soft nofile ${DESIRED_SOFT_LIMIT}
-* hard nofile ${DESIRED_HARD_LIMIT}" > "/usr/etc/security/limits.d/${BREW_LIMITS_CONFIG}"
-
-  if [[ ! -d "/usr/lib/systemd/system.conf.d/" ]]; then
-    mkdir -p "/usr/lib/systemd/system.conf.d/"
-  fi
-  echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/system.conf.d/${BREW_LIMITS_CONFIG}"
-
-  
-  if [[ ! -d "/usr/lib/systemd/user.conf.d/" ]]; then
-    mkdir -p "/usr/lib/systemd/user.conf.d/"
-  fi
-  echo "[Manager]
-DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/${BREW_LIMITS_CONFIG}"
-
+  source "${MODULE_DIRECTORY}"/brew/brew-nofile-limits-logic.sh
 fi
 
 # Disable homebrew analytics if the flag is set to false
@@ -258,7 +227,7 @@ if [[ "${BREW_ANALYTICS}" == false ]]; then
   fi  
   CURRENT_HOMEBREW_CONFIG=$(awk -F= '/HOMEBREW_NO_ANALYTICS/ {print $0}' "/usr/etc/environment")
   if [[ "${CURRENT_HOMEBREW_CONFIG}" == "HOMEBREW_NO_ANALYTICS=0" ]]; then
-    echo "Disabling Brew analytics"
+    echo "Disabling Brew analytics"  
     sed -i 's/HOMEBREW_NO_ANALYTICS=0/HOMEBREW_NO_ANALYTICS=1/' "/usr/etc/environment"
   elif [[ -z "${CURRENT_HOMEBREW_CONFIG}" ]]; then
     echo "Disabling Brew analytics"
