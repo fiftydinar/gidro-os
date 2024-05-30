@@ -201,17 +201,27 @@ fi
 # Disable homebrew analytics if the flag is set to false
 # like secureblue: https://github.com/secureblue/secureblue/blob/live/config/scripts/homebrewanalyticsoptout.sh
 if [[ "${BREW_ANALYTICS}" == false ]]; then
-  su -c "/home/linuxbrew/.linuxbrew/bin/brew analytics off" -s /bin/bash linuxbrew
-elif [[ "${BREW_ANALYTICS}" == true ]]; then
-  su -c "/home/linuxbrew/.linuxbrew/bin/brew analytics on" -s /bin/bash linuxbrew
+  if [[ ! -f "/usr/etc/environment" ]]; then
+    echo "" > "/usr/etc/environment" # touch fails for some reason, probably a bug with it
+  fi  
+  CURRENT_HOMEBREW_CONFIG=$(cat "/usr/etc/environment" | grep -o "HOMEBREW_NO_ANALYTICS=0")
+  if [[ "${CURRENT_HOMEBREW_CONFIG}" == "HOMEBREW_NO_ANALYTICS=0" ]]; then
+    echo "Disabling Brew analytics"  
+    sed -i 's/HOMEBREW_NO_ANALYTICS=0/HOMEBREW_NO_ANALYTICS=1/' "/usr/etc/environment"
+  elif [[ -z "${CURRENT_HOMEBREW_CONFIG}" ]]; then
+    echo "Disabling Brew analytics"
+    echo "HOMEBREW_NO_ANALYTICS=1" >> "/usr/etc/environment"
+  elif [[ "${CURRENT_HOMEBREW_CONFIG}" == "HOMEBREW_NO_ANALYTICS=1" ]]; then
+    echo "Brew analytics are already disabled!"
+  fi
 fi
 
 # Install specified Brew packages if any
 if [[ "${#PACKAGE_LIST[@]}" -gt 0 ]]; then
-  echo "Installing specified Brew packages..."
-  su -c "/home/linuxbrew/.linuxbrew/bin/brew install ${PACKAGE_LIST[*]}" -s /bin/bash linuxbrew
+    echo "Installing specified Brew packages..."
+    su -c "/home/linuxbrew/.linuxbrew/bin/brew install ${PACKAGE_LIST[*]}" -s /bin/bash linuxbrew
 else
-  echo "No Brew packages specified for installation."
+    echo "No Brew packages specified for installation."
 fi
 
 echo "Brew setup completed."
