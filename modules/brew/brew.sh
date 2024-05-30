@@ -216,7 +216,38 @@ fi
 
 # Apply nofile limits if enabled
 if [[ "${NOFILE_LIMITS}" == true ]]; then
-  source "${MODULE_DIRECTORY}"/brew/brew-nofile-limits-logic.sh
+  echo "Increasing nofile limits"
+  
+  BREW_LIMITS_CONFIG="zz1-brew-limits.conf"
+  DESIRED_SOFT_LIMIT=4096
+  DESIRED_HARD_LIMIT=524288
+  
+  if [[ ! -d "/usr/etc/security/limits.d/" ]]; then
+    mkdir -p "/usr/etc/security/limits.d/"
+  fi
+  echo "# This file sets the resource limits for users logged in via PAM,
+# more specifically, users logged in via SSH or tty (console).
+# Limits related to terminals in Wayland/Xorg sessions depend on a
+# change to /etc/systemd/user.conf.
+# This does not affect resource limits of the system services.
+# This file overrides defaults set in /etc/security/limits.conf
+
+* soft nofile ${DESIRED_SOFT_LIMIT}
+* hard nofile ${DESIRED_HARD_LIMIT}" > "/usr/etc/security/limits.d/${BREW_LIMITS_CONFIG}"
+
+  if [[ ! -d "/usr/lib/systemd/system.conf.d/" ]]; then
+    mkdir -p "/usr/lib/systemd/system.conf.d/"
+  fi
+  echo "[Manager]
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/system.conf.d/${BREW_LIMITS_CONFIG}"
+
+  
+  if [[ ! -d "/usr/lib/systemd/user.conf.d/" ]]; then
+    mkdir -p "/usr/lib/systemd/user.conf.d/"
+  fi
+  echo "[Manager]
+DefaultLimitNOFILE=${DESIRED_SOFT_LIMIT}:${DESIRED_HARD_LIMIT}" > "/usr/lib/systemd/user.conf.d/${BREW_LIMITS_CONFIG}"
+
 fi
 
 # Disable homebrew analytics if the flag is set to false
