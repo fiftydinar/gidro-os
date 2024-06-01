@@ -7,5 +7,5 @@ assignees: ''
 
 ---
 
-Please read & respect "Unsupported Operations" before submitting the issue in Wiki:  
+Please read & respect "Unsupported Operations" in Wiki before submitting the issue:  
 https://github.com/fiftydinar/gidro-os/wiki/Unsupported-Operations
