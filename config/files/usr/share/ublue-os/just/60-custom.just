@@ -121,7 +121,7 @@ factory-reset ACTION="prompt":
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.commands
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.time
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.color-scheme
-      dconf reset -f /org/gnome/shell/extensions/caffeine/
+      gsettings reset-recursively org.gnome.shell.extensions.caffeine
       gsettings reset org.gnome.shell enabled-extensions
       gsettings reset org.gnome.shell disabled-extensions
         echo 'Factory-reset of Gidro-OS settings only completed.'
