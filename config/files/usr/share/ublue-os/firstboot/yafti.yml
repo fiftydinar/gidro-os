@@ -70,11 +70,6 @@ screens:
       show_terminal: true
       package_manager: yafti.plugin.run
       groups:         
-        Hide GRUB:
-          description: Hides GRUB text output on boot.
-          default: false
-          packages:
-          - Hide GRUB: pkexec ujust configure-grub hide
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false
