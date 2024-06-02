@@ -118,6 +118,7 @@ if [[ ${#INSTALL[@]} -gt 0 ]] && ! "${LEGACY}"; then
   for INSTALL_EXT in "${INSTALL[@]}"; do
       # Replaces whitespaces with %20 for install entries which contain extension name, since URLs can't contain whitespace
       WHITESPACE_HTML="${INSTALL_EXT// /%20}"
+      # Gathers if extension name exists
       URL_QUERY_NAME=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}")
       QUERIED_EXT_NAME=$(echo "${URL_QUERY_NAME}" | jq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
       if [[ -z "${QUERIED_EXT_NAME}" ]]; then
@@ -127,9 +128,14 @@ if [[ ${#INSTALL[@]} -gt 0 ]] && ! "${LEGACY}"; then
         exit 1
       fi
       URL_QUERY=$(curl -s "https://extensions.gnome.org/extension-query/?search=${WHITESPACE_HTML}&shell_version=${GNOME_VER}")
-      QUERIED_EXT=$(echo "${URL_QUERY}" | jq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")      
-      EXT_UUID=$(echo "${QUERIED_EXT}" | jq -r '.["uuid"]')
-      EXT_NAME=$(echo "${QUERIED_EXT}" | jq -r '.["name"]')
+      QUERIED_EXT=$(echo "${URL_QUERY}" | jq ".extensions[] | select(.name == \"${INSTALL_EXT}\")")
+      readarray -t EXT_UUID < <(echo "${QUERIED_EXT}" | jq -r '.["uuid"]')
+      readarray -t EXT_NAME < <(echo "${QUERIED_EXT}" | jq -r '.["name"]')
+      # If multiple extensions with same name exist, which are compatible with the current Gnome version, then error out the build
+      if [[ ${#EXT_UUID[@]} -gt 1 ]] || [[ ${#EXT_NAME[@]} -gt 1 ]]; then
+        echo "Multiple compatible Gnome extensions with the same name are found, which this module cannot select"
+        exit 1
+      fi
       # Gets suitable extension version for Gnome version from the image
       SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | jq ".shell_version_map[\"${GNOME_VER}\"].version")
       if [[ "${SUITABLE_VERSION}" == "null" ]]; then
