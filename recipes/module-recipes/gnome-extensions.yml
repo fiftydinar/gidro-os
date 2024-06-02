@@ -1,9 +1,3 @@
 type: gnome-extensions
 install:
-  - Blur my Shell
-  - Caffeine
-  - Quick Close in Overview
-  - OpenWeather Refined
-  - Bluetooth Battery Meter
-  - Night Theme Switcher
-  - RebootToUEFI
+  - Panel Date Format
