@@ -1,9 +1,3 @@
 type: gnome-extensions
 install:
-  - 3193 # Blur my Shell
-  - 517 # Caffeine
-  - 352 # Quick Close in Overview
-  - 6655 # OpenWeather Refined
-  - 6670 # Bluetooth Battery Meter
-  - 2236 # Night Theme Switcher
-  - 5105 # RebootToUEFI
+  - blur-my-shellaunetx.v62
