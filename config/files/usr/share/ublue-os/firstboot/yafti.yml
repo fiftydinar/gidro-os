@@ -39,6 +39,7 @@ screens:
              - Mousai (Shazam alt.): io.github.seadve.Mousai
              - NewsFlash: io.gitlab.news_flash.NewsFlash
              - LibreOffice: org.libreoffice.LibreOffice
+             - Morphosis (Document Converter): garden.jamie.Morphosis
              - Tagger: org.nickvision.tagger
              - Parabolic (YouTube Downloader): org.nickvision.tubeconverter
              - Nicotine+ (Soulseek alt.): org.nicotine_plus.Nicotine
@@ -69,7 +70,7 @@ screens:
       title: Additional Gidro-OS packages & configs
       show_terminal: true
       package_manager: yafti.plugin.run
-      groups:         
+      groups:
         Remove window close button:
           description: Removes window close button. Useful for mouses which have special button mapped for window closing.
           default: false

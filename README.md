@@ -100,6 +100,7 @@ Optional flatpaks:
 - [Mousai (Shazam alt.)](https://apps.gnome.org/en/Mousai/)
 - [NewsFlash](https://apps.gnome.org/en/NewsFlash/)
 - [LibreOffice](https://flathub.org/apps/org.libreoffice.LibreOffice)
+- [Morphosis (Document Converter)](https://flathub.org/apps/garden.jamie.Morphosis)
 - [Tagger](https://flathub.org/apps/org.nickvision.tagger)
 - [Parabolic (YouTube Downloader)](https://flathub.org/apps/org.nickvision.tubeconverter)
 - [Nicotine+ (Soulseek alt.)](https://flathub.org/apps/org.nicotine_plus.Nicotine)
