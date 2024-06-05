@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euo pipefail
+set -euxo pipefail
 
 get_yaml_array INSTALL '.install[]' "$1"
 get_yaml_array UNINSTALL '.uninstall[]' "$1"
