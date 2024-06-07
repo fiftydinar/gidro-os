@@ -7,6 +7,6 @@ install:
   - Bluetooth Battery Meter
   - Night Theme Switcher
   - RebootToUEFI
-  - Quick Settings Audio Device Renamer
-  - Quick Settings Audio Device Hider
+  - Quick Settings Audio Devices Renamer
+  - Quick Settings Audio Devices Hider
   - Remove World Clocks
