@@ -103,27 +103,7 @@ factory-reset ACTION="prompt":
       gsettings reset org.gnome.shell favorite-apps
       gsettings reset org.gnome.system.locale region
       # This is needed to reset system & user extensions
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.appfolder
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.applications
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.dash-to-dock
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.hidetopbar
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.lockscreen
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.overview
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.panel
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.screenshot
-      gsettings reset-recursively org.gnome.shell.extensions.blur-my-shell.window-list
-      gsettings reset-recursively org.gnome.shell.extensions.openweatherrefined
-      gsettings reset-recursively org.gnome.shell.extensions.middleclickclose      
-      gsettings reset-recursively org.gnome.shell.extensions.notifications-alert
-      gsettings reset-recursively org.gnome.shell.extensions.Bluetooth-Battery-Meter
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.commands
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.time
-      gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.color-scheme
-      gsettings reset-recursively org.gnome.shell.extensions.caffeine
-      gsettings reset-recursively org.gnome.shell.extensions.quicksettings-audio-devices-renamer
-      gsettings reset-recursively org.gnome.shell.extensions.quicksettings-audio-devices-hider
+      dconf reset -f /org/gnome/shell/extensions/
       gsettings reset org.gnome.shell enabled-extensions
       gsettings reset org.gnome.shell disabled-extensions
         echo 'Factory-reset of Gidro-OS settings only completed.'
