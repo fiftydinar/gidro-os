@@ -191,6 +191,7 @@ Settings applied by default:
   - disable Restore Session
   - use higher contrast theme
   - highlight line numbers
+- Set Folio to use Nokia Pure text font
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
 - Set LibreWolf to:
