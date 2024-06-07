@@ -59,6 +59,9 @@ Installed extensions:
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 - [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
+- [Quick Settings Audio Device Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/)
+- [Quick Settings Audio Device Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/)
+- [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
 
 Installed flatpaks:
 - [Boxes](https://apps.gnome.org/en/Boxes/)

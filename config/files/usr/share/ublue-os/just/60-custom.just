@@ -122,6 +122,8 @@ factory-reset ACTION="prompt":
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.time
       gsettings reset-recursively org.gnome.shell.extensions.nightthemeswitcher.color-scheme
       gsettings reset-recursively org.gnome.shell.extensions.caffeine
+      gsettings reset-recursively org.gnome.shell.extensions.quicksettings-audio-devices-renamer
+      gsettings reset-recursively org.gnome.shell.extensions.quicksettings-audio-devices-hider
       gsettings reset org.gnome.shell enabled-extensions
       gsettings reset org.gnome.shell disabled-extensions
         echo 'Factory-reset of Gidro-OS settings only completed.'
