@@ -23,6 +23,7 @@ system:
     - org.gnome.World.Secrets
     - com.belmoussaoui.Authenticator
     - com.vixalien.sticky
+    - com.toolstack.Folio
     - com.github.flxzt.rnote
     - org.localsend.localsend_app
     - com.dec05eba.gpu_screen_recorder

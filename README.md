@@ -77,6 +77,7 @@ Installed flatpaks:
 - [Secrets](https://apps.gnome.org/en/Secrets/)
 - [Authenticator](https://flathub.org/apps/com.belmoussaoui.Authenticator)
 - [Sticky Notes](https://flathub.org/apps/com.vixalien.sticky)
+- [Folio](https://flathub.org/apps/com.toolstack.Folio)
 - [Rnote](https://flathub.org/apps/com.github.flxzt.rnote)
 - [LocalSend](https://flathub.org/apps/org.localsend.localsend_app)
 - [GPU Screen Recorder](https://flathub.org/apps/com.dec05eba.gpu_screen_recorder)
