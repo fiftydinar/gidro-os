@@ -47,15 +47,16 @@ factory-reset ACTION="prompt":
     echo "${bold}Configuring Factory-reset for Gidro-OS${normal}"
     echo 'Factory-reset of Gidro-OS can be used to solve or troubleshoot issues you may have.'
     echo 'Please select following factory-reset options. Press ESC to exit.'
-    OPTION=$(ugum choose "Factory-reset Gidro-OS modified apps settings only" "Factory-reset apps" "Factory-reset Gidro-OS modified settings only" "Factory-reset OS settings" "Factory-reset everything")
+    OPTION=$(ugum choose "Factory-reset Gnome extensions settings" "Factory-reset Gidro-OS modified apps settings only" "Factory-reset apps" "Factory-reset Gidro-OS modified settings only" "Factory-reset OS settings" "Factory-reset everything")
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust factory-reset <option>"
-      echo "  <option>: Specify the quick option - 'all', 'settings', 'settings-gidro-os', 'apps' or 'apps-gidro-os'"
+      echo "  <option>: Specify the quick option - 'all', 'settings', 'settings-gidro-os', 'apps', 'apps-gidro-os' or 'gnome-extensions'"
       echo "  Use 'all' to to factory-reset everything."
       echo "  Use 'settings' to factory-reset settings."
       echo "  Use 'settings-gidro-os' to factory-reset Gidro-OS modified settings only."
       echo "  Use 'apps' to factory-reset apps."
       echo "  Use 'apps-gidro-os' to factory-reset Gidro-OS modified apps settings only."
+      echo "  Use 'gnome-extensions' to factory-reset modified settings for Gnome extensions only."
       exit 0
     fi
     if [ "$OPTION" == "Factory-reset everything" ] || [ "${OPTION,,}" == "all" ]; then
@@ -142,6 +143,11 @@ factory-reset ACTION="prompt":
         echo "${app} pre-configured settings applied."
       done
       echo 'Factory reset of Gidro-OS modified app settings completed.'
+    elif [ "$OPTION" == "Factory-reset Gnome extensions settings" ] || [ "${OPTION,,}" == "gnome-extensions" ]; then
+      dconf reset -f /org/gnome/shell/extensions/
+      gsettings reset org.gnome.shell enabled-extensions
+      gsettings reset org.gnome.shell disabled-extensions
+        echo 'Factory-reset of Gnome extensions settings completed.'
     fi
     
 # Configure Proton-GE
