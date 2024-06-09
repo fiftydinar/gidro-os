@@ -76,6 +76,7 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
+        ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
       for app in "${!apps[@]}"; do
         cp -r "${apps[$app]}" "$HOME/.var/app/"
@@ -123,6 +124,7 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
+        ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
       for app in "${!apps[@]}"; do
         cp -r "${apps[$app]}" "$HOME/.var/app/"
@@ -137,6 +139,7 @@ factory-reset ACTION="prompt":
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
         ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["G4Music"]="$flatpak_data/com.github.neithern.g4music"
+        ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
       for app in "${!apps[@]}"; do
         cp -r "${apps[$app]}" "$HOME/.var/app/"
