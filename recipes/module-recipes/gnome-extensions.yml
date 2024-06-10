@@ -4,6 +4,7 @@ install:
   - Caffeine
   - Quick Close in Overview
   - OpenWeather Refined
+  - Notifications Alert
   - Bluetooth Battery Meter
   - Night Theme Switcher
   - RebootToUEFI
