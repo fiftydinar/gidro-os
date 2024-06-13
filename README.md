@@ -37,7 +37,8 @@ Installed packages (RPMs):
 - [Zsync](https://web.archive.org/web/20240215223506/http://zsync.moria.org.uk/index) (Needed dependency for some AppImage auto-updates)
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
 - [BrLaser](https://github.com/Owl-Maintain/brlaser) (Driver which supports additional Brother printers)
-- [Epson-inkjet-printer-escpr 1 & 2] (Driver which supports additional Epson printers)
+- [Epson-inkjet-printer-escpr 1 & 2] (Driver which supports some additional Epson printers)
+- [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 
 Installed akmods:
