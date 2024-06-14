@@ -235,7 +235,7 @@ proton-ge ACTION="prompt":
       if grep -q 'com.valvesoftware.Steam' <<< "${FLATPAK}"; then
       DIR="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d"
       if [[ -n $(find "$DIR" -maxdepth 1 -type d -name 'GE-Proton*') ]]; then
-        find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | xargs -r rm -rf
+        find "$DIR" -maxdepth 1 -type d -name "GE-Proton*" -printf '%P\n' | sort -V | head -n -1 | while IFS= read -r dir; do rm -rf "$DIR/$dir"; done
       fi  
       if [[ -n $(find "$DIR" -maxdepth 1 -type d -name '*-GE-*') ]]; then
         rm -rf "$DIR"/*-GE-*
