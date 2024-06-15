@@ -72,7 +72,7 @@ Installed flatpaks:
 - [Contacts](https://apps.gnome.org/en/Contacts/)
 - [Clocks](https://apps.gnome.org/en/Clocks/)
 - [Decoder](https://flathub.org/apps/com.belmoussaoui.Decoder)
-- [Document Viewer](https://apps.gnome.org/en/Evince/)
+- [Papers](https://apps.gnome.org/en/Papers/)
 - [Maps](https://apps.gnome.org/en/Maps/)
 - [Text Editor](https://apps.gnome.org/en/TextEditor/)
 - [G4Music](https://flathub.org/apps/com.github.neithern.g4music)
