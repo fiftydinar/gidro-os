@@ -38,6 +38,7 @@ Installed packages (RPMs):
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
 - [BrLaser](https://github.com/Owl-Maintain/brlaser) (Driver which supports additional Brother printers)
 - Epson-inkjet-printer-escpr 1 & 2 (Driver which supports some additional Epson printers)
+- [HPlip](https://developers.hp.com/hp-linux-imaging-and-printing) (Driver which supports some additional HP printers)
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 
