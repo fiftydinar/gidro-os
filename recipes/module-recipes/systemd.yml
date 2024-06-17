@@ -6,6 +6,7 @@ user:
   enabled:
     - flatpak-gidro@deluge.service
     - flatpak-gidro@discord.service
+    - flatpak-gidro@armcord.service
     - flatpak-gidro@steam.service
     - flatpak-gidro@telegram.service
     - flatpak-gidro@tutamail.service

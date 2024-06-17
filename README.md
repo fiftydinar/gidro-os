@@ -184,6 +184,7 @@ Settings applied by default:
 - Enable silent auto-start on boot for those applications:
   - Steam
   - Discord
+  - Armcord
   - Telegram
   - Deluge
   - TutaMail
