@@ -12,7 +12,7 @@ image-version: 40-20240617 # latest is also supported if you want new updates AS
 modules:
   - from-file: module-recipes/files.yml
   - from-file: module-recipes/xdg-autostart-workaround.yml
-  - from-file: module-recipes/akmods.yml 
+  - #from-file: module-recipes/akmods.yml 
   - from-file: module-recipes/rpm-ostree.yml
   - from-file: module-recipes/gnome-extensions.yml
   - from-file: module-recipes/initramfs.yml
