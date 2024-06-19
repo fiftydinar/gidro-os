@@ -5,13 +5,14 @@ description: My personalized custom OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 40-20240617 # latest is also supported if you want new updates ASAP
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
   - from-file: module-recipes/files.yml
   - from-file: module-recipes/xdg-autostart-workaround.yml
+  - from-file: module-recipes/akmods.yml 
   - from-file: module-recipes/rpm-ostree.yml
   - from-file: module-recipes/gnome-extensions.yml
   - from-file: module-recipes/initramfs.yml
