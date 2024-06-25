@@ -4,4 +4,4 @@
 set -euo pipefail
 
 # Update bootloader
-/usr/bin/bootupctl backend generate-update-metadata
+bootupctl backend generate-update-metadata
