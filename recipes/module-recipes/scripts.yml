@@ -8,4 +8,4 @@ scripts:
   - block-ads.sh
   - zluda.sh
   - binutils-workaround.sh
-  - bootc-update-bootloader.sh
+  - bootupd-update-bootloader.sh
