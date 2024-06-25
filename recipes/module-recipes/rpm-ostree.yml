@@ -19,6 +19,7 @@ install:
   - hplip
   - foo2zjs
   - sg3_utils
+  - bootc
   
 remove:
   - firefox

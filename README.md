@@ -41,6 +41,7 @@ Installed packages (RPMs):
 - [HPlip](https://developers.hp.com/hp-linux-imaging-and-printing) (Driver which supports some additional HP printers)
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
+- [bootc](https://github.com/containers/bootc) (Used for updating bootloader & maybe the system in the future)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
