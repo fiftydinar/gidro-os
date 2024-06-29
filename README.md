@@ -131,6 +131,7 @@ Settings applied by default:
   - use "mbar" as pressure unit
   - use arrows for wind direction
   - use packaged icons
+  - use custom OpenWeatherMap API key (solves "too many users" issue)
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
