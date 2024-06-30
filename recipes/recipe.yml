@@ -15,6 +15,7 @@ modules:
   - from-file: module-recipes/akmods.yml 
   - from-file: module-recipes/rpm-ostree.yml
   - from-file: module-recipes/gnome-extensions.yml
+  - from-file: module-recipes/justfiles.yml
   - from-file: module-recipes/initramfs.yml
   - type: yafti
   - from-file: module-recipes/default-flatpaks.yml

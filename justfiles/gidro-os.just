@@ -1,5 +1,3 @@
-# Include some of your custom scripts here!
-
 # Configure window close button
 configure-close-button  ACTION="prompt":
     #!/usr/bin/env bash
