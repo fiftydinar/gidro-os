@@ -8,4 +8,3 @@ scripts:
   - block-ads.sh
   - zluda.sh
   - binutils-workaround.sh
-  - openweather-refined-openweathermap-key.sh
