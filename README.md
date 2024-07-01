@@ -8,7 +8,7 @@ Thanks to Fedora for developing the original [Fedora Silverblue](https://fedorap
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
-[**Why did I make the custom image?**](https://github.com/fiftydinar/gidro-os/wiki#my-reason-for-making-the-customized-image)
+[**Why did I make the custom image?**](https://github.com/fiftydinar/gidro-os/wiki/1.-OS-Scope-&-Vision)
 
 ## Modifications
 
@@ -93,8 +93,8 @@ Installed flatpaks:
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
 
 Optional config:
-- [Hide close button from windows](https://github.com/fiftydinar/gidro-os/wiki/Gidro%E2%80%90OS-Config#how-to-apply-hide-close-button-from-windows-config) (useful for mouses which have a special key for closing applications window)
-- [Scheduled nightly reboot](https://github.com/fiftydinar/gidro-os/wiki/Gidro%E2%80%90OS-Config#how-to-apply-scheduled-nightly-reboot-config) (useful for applying system updates if you're leaving your PC turned on 24/7)
+- [Hide close button from windows](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-apply-hide-close-button-from-windows-config) (useful for mouses which have a special key for closing applications window)
+- [Scheduled nightly reboot](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-apply-scheduled-nightly-reboot-config) (useful for applying system updates if you're leaving your PC turned on 24/7)
 
 Settings applied by default:
 - [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
