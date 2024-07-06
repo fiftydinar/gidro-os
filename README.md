@@ -258,4 +258,3 @@ To rebase an existing Silverblue installation to the latest build:
 ## Note for myself regarding what I do after install
 
 - I use `amd_pstate=active` kernel argument to force pstate for my supported CPU (Ryzen 5 5600X, waiting for upstream to enable it by default)
-- I use `preempt=full` kernel argument to make my system less prone to audio stutters + crackling (using EasyEffects convolver & EQ)
