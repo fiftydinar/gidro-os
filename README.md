@@ -124,7 +124,7 @@ Settings applied by default:
 - Power button powers off PC instead of suspending it
 - Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat
-- Disabled mouse middle-click to paste (and possibly touchpad 3-click to paste)
+- Disabled mouse middle-click to paste & touchpad 3-click to paste for GTK applications
 - Set Blur my Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
 - Set OpenWeather Refined to:
   - show conditions in top bar
