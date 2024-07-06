@@ -38,7 +38,7 @@ titlebar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org.gnome.shell]
-enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com', 'quicksettings-audio-devices-renamer@marcinjahn.com', 'quicksettings-audio-devices-hider@marcinjahn.com']
+enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com']
 favorite-apps=['io.gitlab.librewolf-community.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org.gnome.shell.extensions.blur-my-shell]
