@@ -20,6 +20,7 @@ install:
   - foo2zjs
   - sg3_utils
   - bootc
+  - android-tools
   
 remove:
   - firefox
