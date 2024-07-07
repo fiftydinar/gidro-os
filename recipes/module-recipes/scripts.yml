@@ -7,6 +7,5 @@ scripts:
   - morewaita.sh
   - block-ads.sh
   - zluda.sh
-  - install-android-tools.sh
   - bootc-update-bootloader.sh
   - initramfs.sh
