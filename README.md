@@ -42,7 +42,6 @@ Installed packages (RPMs):
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
-- [android-tools](https://github.com/nmeum/android-tools) (Android platform-tools, which includes additional binaries outside of ADB & Fastboot)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
