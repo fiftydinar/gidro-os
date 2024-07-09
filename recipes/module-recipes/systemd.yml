@@ -2,6 +2,7 @@ type: systemd
 system:
   enabled:
     - minimum-free-zram.service
+    - adbusers-append.service
 user:
   enabled:
     - flatpak-gidro@deluge.service
