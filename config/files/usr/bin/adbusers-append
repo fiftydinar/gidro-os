@@ -18,6 +18,5 @@ for user in "${AVAILABLE_USERS[@]}"; do
     sudo gpasswd -a "${user}" adbusers
   else
     echo "Group adbusers is already assigned to the user '${user}'"
-    exit 0
   fi
 done
