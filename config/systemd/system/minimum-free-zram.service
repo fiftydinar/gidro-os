@@ -1,6 +1,5 @@
 [Unit]
 Description=Minimum-free ZRAM setup
-After=initramfs-setup.service
 Before=systemd-user-sessions.service
 
 [Service]
