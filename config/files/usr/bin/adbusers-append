@@ -15,8 +15,19 @@ readarray -t AVAILABLE_USERS < <(getent passwd | awk -F: '/\/home/ {print $1}')
 
 for user in "${AVAILABLE_USERS[@]}"; do
   if [[ ! "${GROUP}" =~ "${user}" ]]; then
-    sudo gpasswd -a "${user}" adbusers
+    gpasswd -a "${user}" adbusers
   else
     echo "Group adbusers is already assigned to the user '${user}'"
   fi
 done
+
+# Remove # symbol below when it's desired to remove adbusers group from the users
+
+#for user in "${AVAILABLE_USERS[@]}"; do
+  #if [[ "${GROUP}" =~ "${user}" ]]; then
+    #echo "Removed user '${user}' from the adbusers group"
+    #gpasswd -d "${user}" adbusers
+  #else
+    #echo "Group adbusers is already removed from the user '${user}'"
+  #fi
+#done
