@@ -9,4 +9,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/adbusers-append
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
