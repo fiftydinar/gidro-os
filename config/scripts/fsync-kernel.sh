@@ -13,6 +13,8 @@ wget https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/repo/fedora-${O
 
 rpm-ostree override replace --experimental --from repo='copr:copr.fedorainfracloud.org:sentry:kernel-fsync' \
 kernel \
-kernel-core-* \
-kernel-modules-* \
-kernel-uki-virt-*
+kernel-core \
+kernel-modules \
+kernel-modules-core \
+kernel-modules-extra \
+kernel-uki-virt
