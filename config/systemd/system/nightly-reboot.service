@@ -1,6 +1,6 @@
- [Unit]
- Description=Scheduled Reboot
+[Unit]
+Description=Scheduled Reboot
 
- [Service]
- Type=oneshot
- ExecStart=/usr/bin/systemctl --force reboot
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --force reboot
