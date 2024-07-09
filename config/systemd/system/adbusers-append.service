@@ -1,7 +1,5 @@
 [Unit]
 Description=Append user to adbusers group to make Android udev rules working
-ConditionEnvironment=DISPLAY
-After=gnome-session-initialized.target
 
 [Service]
 Type=oneshot
@@ -9,4 +7,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/adbusers-append
 
 [Install]
-WantedBy=graphical.target
+WantedBy=multi-user.target
