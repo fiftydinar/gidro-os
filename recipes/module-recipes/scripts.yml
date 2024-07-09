@@ -9,4 +9,5 @@ scripts:
   - zluda.sh
   - android-udev-rule-workaround.sh
   - bootc-update-bootloader.sh
+  - fsync-kernel.sh
   - initramfs.sh

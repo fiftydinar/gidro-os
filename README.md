@@ -21,6 +21,7 @@ Removed packages (RPMs):
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
    (for better, more suitable first-time install experience)
+- [Fsync custom kernel](https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/) instead of Fedora vanilla one (for more features & better compatibility)
 
 Replaced packages (RPMs) with flatpaks:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
@@ -46,7 +47,6 @@ Installed packages (RPMs):
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
 - [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
-- [OpenRGB](https://openrgb.org/) (for supporting RGB devices)
 - [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing you to create virtual video devices to apply some cool effects to real video devices)
 - [XOne](https://github.com/medusalix/xone) (Xbox One RF driver)
 - [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One Bluetooth driver)
@@ -101,7 +101,6 @@ Optional config:
 
 Settings applied by default:
 - [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
-- [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
 - [Enabled CUDA translation layer called ZLUDA for AMD GPUs](https://github.com/vosen/ZLUDA) (allows to run Nvidia AI applications on AMD GPUs)
 - [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
 - [ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop](https://github.com/pop-os/default-settings/pull/163) (avoids OOM situations better & it also improves responsiveness under I/O load)
@@ -111,7 +110,6 @@ Settings applied by default:
 - [Enabled Nvidia GSP firmware for Nouveau GPU driver](https://nouveau.freedesktop.org/PowerManagement.html) (to enable power-management for Nvidia GTX 1650+ GPUs)
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
-- [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
 - Udev rule to make Apple SuperDrive work
 - Applied workaround for quick update of [advanced Android udev rules](https://github.com/M0Rf30/android-udev-rules), along with automatic assignment of `adbusers` group to all users (so Android platform-tools is ready to be used without tinkering)
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
@@ -256,6 +254,7 @@ To rebase an existing Silverblue installation to the latest build:
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
+- [Fsync custom kernel](https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/)
 
 ## Note for myself regarding what I do after install
 
