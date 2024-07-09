@@ -97,7 +97,7 @@ Installed flatpaks:
 Optional config:
 - [Hide close button from windows](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-apply-hide-close-button-from-windows-config) (useful for mouses which have a special key for closing applications window)
 - [Scheduled nightly reboot](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-apply-scheduled-nightly-reboot-config) (useful for applying system updates if you're leaving your PC turned on 24/7)
-- [Management of official Android platform-tools](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-manage-android-platform-tools) (useful for easy installing, updating & removing of Android platform-tools pulled from official Google source. `android-tools` official package is broken, so relying on this solution is better + it pairs nicely with existing udev rules)
+- [Management of official Android platform-tools](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-Config#how-to-manage-android-platform-tools) (useful for easy installing, updating & removing of Android platform-tools pulled from official Google source. `android-tools` official package is broken, so relying on this solution is better + it pairs nicely with existing Android udev rules)
 
 Settings applied by default:
 - [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
@@ -113,6 +113,7 @@ Settings applied by default:
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
 - Udev rule to make Apple SuperDrive work
+- Applied workaround for quick update of advanced Android udev rules, along with automatic assignment of `adbusers` group to all users (so Android platform-tools is ready to be used without tinkering)
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
 - Set font hinting to "None"
