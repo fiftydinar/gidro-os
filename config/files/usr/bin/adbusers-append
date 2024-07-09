@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Make Android udev rules working by appending user to adbusers group
+
+GROUP="$(cat "/etc/group" | grep "adbusers")"
+
+if [[ -z "${GROUP}" ]]; then
+  echo "Group adbusers does not exist, please assure that it's created correctly"
+  exit 1
+fi
+
+if [[ ! "${GROUP}" =~ "${USER}" ]]; then
+  gpasswd -a "${USER}" adbusers
+else
+  echo "Group adbusers is already assigned to the user"
+  exit 0
+fi
