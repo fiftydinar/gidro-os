@@ -44,15 +44,6 @@ Installed packages (RPMs):
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 
-Installed akmods:
-- [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
-- [OpenRazer](https://openrazer.github.io/) (for supporting Razer devices)
-- [V4L2-loopback](https://github.com/umlaeute/v4l2loopback) (for allowing you to create virtual video devices to apply some cool effects to real video devices)
-- [XOne](https://github.com/medusalix/xone) (Xbox One RF driver)
-- [XPadNeo](https://github.com/atar-axis/xpadneo) (Xbox One Bluetooth driver)
-- [XPad](https://github.com/paroj/xpad) (Xbox/Xbox 360 USB & RF driver + Xbox One USB driver - built-in into upstream kernel)
-- [Zenergy](https://github.com/BoukeHaarsma23/zenergy) (AMD Ryzen/Threadripper CPU sensor reading driver)
-
 Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
