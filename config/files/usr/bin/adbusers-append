@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Make Android udev rules working by appending user to adbusers group
+
+GROUP="$(getent group adbusers)"
+
+if [[ -z "${GROUP}" ]]; then
+  echo "Group adbusers does not exist, please assure that it's created correctly"
+  exit 1
+fi
+
+readarray -t AVAILABLE_USERS < <(getent passwd | awk -F: '/\/home/ {print $1}')
+
+for user in "${AVAILABLE_USERS[@]}"; do
+  if [[ ! "${GROUP}" =~ "${user}" ]]; then
+    gpasswd -a "${user}" adbusers
+  else
+    echo "Group adbusers is already assigned to the user '${user}'"
+  fi
+done
+
+# Remove # symbol below when it's desired to remove adbusers group from the users
+
+#for user in "${AVAILABLE_USERS[@]}"; do
+  #if [[ "${GROUP}" =~ "${user}" ]]; then
+    #echo "Removed user '${user}' from the adbusers group"
+    #gpasswd -d "${user}" adbusers
+  #else
+    #echo "Group adbusers is already removed from the user '${user}'"
+  #fi
+#done
