@@ -13,6 +13,11 @@ fi
 
 readarray -t AVAILABLE_USERS < <(getent passwd | awk -F: '/\/home/ {print $1}')
 
+if [[ ${#AVAILABLE_USERS[@]} -eq 0 ]]; then
+  echo "There are no users to append adbusers group to"
+  exit 1
+fi
+
 for user in "${AVAILABLE_USERS[@]}"; do
   if [[ ! "${GROUP}" =~ "${user}" ]]; then
     gpasswd -a "${user}" adbusers
