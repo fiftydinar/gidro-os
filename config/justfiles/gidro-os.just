@@ -310,6 +310,7 @@ android-tools ACTION="prompt":
       if [[ -n "${VERSION}" ]]; then
         echo "Installed version: ${bold}${VERSION}${normal}"
       fi
+      echo "Check which version of the release is the latest here: https://developer.android.com/tools/releases/platform-tools#revisions"
       echo "Pulls source directly from Google, since distro-packaged versions are broken"
       echo "Contains ADB & Fastboot among other binaries for debugging Android devices"
       echo "Installs to system-wide directory by default (/usr/local/bin/)"
