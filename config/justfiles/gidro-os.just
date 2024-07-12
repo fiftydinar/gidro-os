@@ -327,49 +327,55 @@ android-tools ACTION="prompt":
     if [ "${OPTION,,}" == "install" ]; then
       if [[ "${CURRENT_STATE}" == "Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is already installed.\e[0m\n" 1>&2
-      fi  
-      echo "Installing Android platform-tools..."
-      mkdir -p /tmp/platform-tools/
-      wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
-      unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
-      PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-      echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
-      sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
-      sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
-      rm -r /tmp/platform-tools/
-      echo "Android platform-tools is installed"
+      elif [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
+        echo "Installing Android platform-tools..."
+        mkdir -p /tmp/platform-tools/
+        wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
+        unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
+        PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
+        echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
+        sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
+        sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
+        rm -r /tmp/platform-tools/
+        echo "Android platform-tools is installed"
+      fi
     elif [ "${OPTION,,}" == "update" ]; then
       if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
-      fi
-      echo "Removing old Android platform-tools files"
-      readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-      for file in "${FILE_LIST[@]}"; do
-          if [[ -e "${file}" ]]; then
-            sudo rm -r "${file}"
-          else
-            echo "${file} is already removed"
-          fi  
-      done
-      echo "Downloading new Android platform-tools version"
-      mkdir -p /tmp/platform-tools/
-      wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
-      unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
-      PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-      echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
-      sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
-      sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
-      rm -r /tmp/platform-tools/
-      echo "Android platform-tools is installed"      
+      elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
+        echo "Removing old Android platform-tools files"
+        readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
+        for file in "${FILE_LIST[@]}"; do
+            if [[ -e "${file}" ]]; then
+              sudo rm -r "${file}"
+            else
+              echo "${file} is already removed"
+            fi  
+        done
+        echo "Downloading new Android platform-tools version"
+        mkdir -p /tmp/platform-tools/
+        wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
+        unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
+        PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
+        echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
+        sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
+        sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
+        rm -r /tmp/platform-tools/
+        echo "Android platform-tools is installed"
+      fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
-      readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-      for file in "${FILE_LIST[@]}"; do
-          if [[ -e "${file}" ]]; then
-            sudo rm -r "${file}"
-          else
-            echo "${file} is already removed"
-          fi  
-      done
-      sudo rm /usr/local/bin/platform-tools-file-list
-      echo "Android platform-tools is uninstalled"
+      if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
+        printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
+      elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
+        readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
+        for file in "${FILE_LIST[@]}"; do
+            if [[ -e "${file}" ]]; then
+              sudo rm -r "${file}"
+            else
+              echo "${file} is already removed"
+            fi  
+        done
+        sudo rm /usr/local/bin/platform-tools-file-list
+        echo "Android platform-tools is uninstalled"
+      fi  
     fi
