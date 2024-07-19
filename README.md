@@ -66,6 +66,7 @@ Installed extensions:
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
 - [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
 - [Sleep Through Notifications](https://gitlab.gnome.org/rhendric/sleep-through-notifications) (disabled by default, useful for setups where screen wake on new notifications is annoying, while retaining notifications functionality)
+- [Unblank lock screen](https://github.com/sunwxg/gnome-shell-extension-unblank) (disabled by default, useful if you don't want the behavior of locking the screen to also turn off your screen)
 
 Installed flatpaks:
 - [Boxes](https://apps.gnome.org/en/Boxes/)
