@@ -79,8 +79,8 @@ Installed flatpaks:
 - [Papers](https://apps.gnome.org/en/Papers/)
 - [Maps](https://apps.gnome.org/en/Maps/)
 - [Text Editor](https://apps.gnome.org/en/TextEditor/)
-- [G4Music](https://flathub.org/apps/com.github.neithern.g4music)
-- [Clapper](https://flathub.org/apps/com.github.rafostar.Clapper)
+- [Gapless Music Player](https://flathub.org/apps/com.github.neithern.g4music)
+- [Clapper Video Player](https://flathub.org/apps/com.github.rafostar.Clapper)
 - [Image Viewer](https://apps.gnome.org/en/Loupe/)
 - [Secrets](https://apps.gnome.org/en/Secrets/)
 - [Authenticator](https://flathub.org/apps/com.belmoussaoui.Authenticator)
@@ -179,7 +179,7 @@ Settings applied by default:
   - disable tab manager arrow
   - enable switching tabs with mouse-wheel
   - autohide "Downloads" button.
-- G4Music background playback enabled
+- Gapless background playback enabled
 - Use cool BlueBuild boot & login-screen logo instead of Fedora
 
 ## Installation (ISO) [Recommended]
