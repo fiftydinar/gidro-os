@@ -1,4 +1,4 @@
 type: files
 files:
-  - source: system
+  - source: 0-system
     destination: /
