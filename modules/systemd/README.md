@@ -4,12 +4,12 @@ The `systemd` module streamlines the management of systemd units during image bu
 
 You can also include your systemd units to be copied into system directories into these locations,  
 depending if your unit is `system` or `user` based:  
-`files/systemd/system`  
-`files/systemd/user`
+`files/systemd/system/`  
+`files/systemd/user/`
 
 Those units are then copied into these folders (depending on unit base):  
-`/usr/lib/systemd/system`  
-`/usr/lib/systemd/user`
+`/usr/lib/systemd/system/`  
+`/usr/lib/systemd/user/`
 
 Specific systemd config can be included in these directories, depending on certain usecases:  
 `files/systemd/system.conf.d/`  
