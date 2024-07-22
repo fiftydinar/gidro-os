@@ -153,9 +153,9 @@ done
 
 ############################### INSTALLATION CHECKS ###################################
 
-# Fail if no wallpapers are detected in `config/wallpapers` directory.
+# Fail if no wallpapers are detected in `files/wallpapers` directory.
 if [ ! -d "$wallpaper_include_dir" ] || [[ ! $(find "$wallpaper_include_dir" -type f) ]]; then
-  echo "Module failed because wallpapers aren't included in config/wallpapers directory"
+  echo "Module failed because wallpapers aren't included in files/wallpapers directory"
   exit 1
 fi
 
