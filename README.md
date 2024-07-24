@@ -195,7 +195,7 @@ ISO doesn't require an active internet connection during its usage.
 Just download the ISO & proceed with installation.
 
 If you are on UEFI system, you will notice blue MOK screen after installer, which is used for enrolling security keys.
-You will need to "Enroll key" with a password `ublue-os` (type minus on a keyboard as - sign if you get errors).
+You will need to "Enroll key" with a password `universalblue`.
 This needs to be done even if you're not using Secure Boot.
 
 Otherwise, continue boot.
@@ -207,7 +207,7 @@ Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proce
 Rebasing is only supported from Fedora Silverblue edition.
 
 You will need to enroll security key before rebase with the command below, even if you're not using Secure Boot (requires internet).
-It will prompt you for sudo user password, so type that, then type the password for secure key, which is `ublue-os`:
+It will prompt you for sudo user password, so type that, then type the password for secure key, which is `universalblue`:
 
 ```
 wget -q https://github.com/ublue-os/akmods/raw/main/certs/public_key.der -O /tmp/akmods-ublue.der && sudo mokutil --timeout -1 && sudo mokutil --import /tmp/akmods-ublue.der && rm /tmp/akmods-ublue.der
@@ -240,7 +240,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
 
 - You will be prompted with blue MOK screen, which is used for enrolling security keys.
-  Choose "Enroll key" & type `ublue-os` as a password (type minus on a keyboard as - sign if you get errors). Continue boot afterwards.
+  Choose "Enroll key" & type `universalblue` as a password. Continue boot afterwards.
 
 - Then rebase to the signed image, like so:
   ```
