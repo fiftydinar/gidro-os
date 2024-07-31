@@ -4,7 +4,8 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/repo/fedora-%OS_VERSION%/fiftydinar-gnome-randr-rust-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/elxreno/zsync/repo/fedora-%OS_VERSION%/elxreno-zsync-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/repo/fedora-%OS_VERSION%/decathorpe-miniaturo-fedora-%OS_VERSION%.repo
-
+  - https://negativo17.org/repos/fedora-uld.repo
+  
 install:
   - rom-properties-gtk3
   - nautilus-python
