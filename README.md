@@ -40,6 +40,7 @@ Installed packages (RPMs):
 - Epson-inkjet-printer-escpr 1 & 2 (Driver which supports some additional Epson printers)
 - [HPlip](https://developers.hp.com/hp-linux-imaging-and-printing) (Driver which supports some additional HP printers)
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
+- [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 

@@ -18,9 +18,10 @@ install:
   - epson-inkjet-printer-escpr2
   - hplip
   - foo2zjs
+  - uld
   - sg3_utils
   - bootc
-  
+
 remove:
   - firefox
   - firefox-langpacks
