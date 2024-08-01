@@ -35,7 +35,7 @@ jobs:
       - name: Fetch current date
         shell: bash
         run: |
-          TIMESTAMP="$(date +%d-%m-%Y)"
+          TIMESTAMP="02-08-2024"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Checkout Repo
