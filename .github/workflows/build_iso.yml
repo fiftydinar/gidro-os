@@ -2,7 +2,7 @@ name: Build ISO
 
 on:
   schedule:
-    - cron: "0 0 1 * *" # Build & upload ISO every month
+    - cron: "0 0 1 * *" # Build & upload ISO every months
 
   workflow_dispatch:
     branches:
