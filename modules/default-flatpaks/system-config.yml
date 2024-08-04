@@ -1,0 +1,9 @@
+# Information about the config file
+#
+# vendor: BlueBuild
+# module: default-flatpaks
+# description: System config file for `default-flatpaks` BlueBuild module, which is used to install + remove flatpak apps or modify flatpak repos.
+# instructions: Read this system config in order to know what is currently configured by the system & what to potentially modify in local-user config (/etc/bluebuild/default-flatpaks/config.yml).
+
+# Configuration section
+notify: true

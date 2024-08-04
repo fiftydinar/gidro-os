@@ -1,0 +1,30 @@
+# Information about the config file
+#
+# vendor: BlueBuild
+# module: default-flatpaks
+# description: Local-user config file for `default-flatpaks` BlueBuild module, which is used to install + remove flatpak apps or modify flatpak repos.
+# instructions: Template of all supported options is in a example below. Modify the options you need & set "active" key to true.
+
+# Configuration section
+active: false
+notify: true # possible options: true/false
+system:
+  repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  repo-name: flathub-system
+  repo-title: "Flathub (System)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+  install:
+    - org.gnome.Boxes 
+    - org.gnome.Calculator
+    - org.gnome.Calendar
+    - org.gnome.Snapshot
+    - org.gnome.Contacts
+  remove:
+    - org.gnome.TextEditor
+user:
+  repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  repo-name: flathub-user
+  repo-title: "Flathub (User)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+  install:
+    - org.gnome.World.Secrets
+  remove:
+    - org.gnome.Contacts
