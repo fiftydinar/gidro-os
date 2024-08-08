@@ -5,7 +5,6 @@ scripts:
   - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
-  - block-ads.sh
   - android-udev-rule-workaround.sh
   - bootc-update-bootloader.sh
   - initramfs.sh
