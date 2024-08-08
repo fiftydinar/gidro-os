@@ -53,4 +53,4 @@ install() {
     fi
 }
 
-install "/usr/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
+install "/etc/skel/.var/app/com.valvesoftware.Steam/.local/share/Steam/compatibilitytools.d/"
