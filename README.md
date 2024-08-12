@@ -178,7 +178,7 @@ Settings applied by default:
   - disable tab manager arrow
   - enable switching tabs with mouse-wheel
   - autohide "Downloads" button.
-- Set Gapless to enable background playback enabled
+- Set Gapless to enable background playback
 - Use cool BlueBuild boot & login-screen logo instead of Fedora
 
 ## Installation (ISO) [Recommended]
