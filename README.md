@@ -63,6 +63,7 @@ Installed extensions:
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 - [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
+- [Gnome 4x UI Improvements](https://github.com/axxapy/gnome-ui-tune)
 - [Quick Settings Audio Devices Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/) (disabled by default)
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
 - [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
@@ -139,6 +140,7 @@ Settings applied by default:
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to show battery percentage
 - Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
+- Set Gnome 4x UI Improvements to only enable wallpaper thumbnails in workspace switcher
 - Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)

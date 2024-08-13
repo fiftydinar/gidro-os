@@ -87,6 +87,12 @@ enable-battery-level-text=true
 offset=0
 manual-schedule=true
 
+[org.gnome.shell.extensions.gnome-ui-tune]
+increase-thumbnails-size='100%'
+hide-search=false
+always-show-thumbnails=false
+overview-firefox-pip=false
+
 [org.gnome.software]
 allow-updates=false
 download-updates=false
