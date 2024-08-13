@@ -146,7 +146,7 @@ Settings applied by default:
 - Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
 - Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
-- [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
+- [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
 - [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
 - Enable silent auto-start on boot for those applications:
