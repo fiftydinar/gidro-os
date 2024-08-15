@@ -343,7 +343,7 @@ android-tools ACTION="prompt":
     elif [ "${OPTION,,}" == "update" ]; then
       if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
-      elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" -gt "${VERSION}" ]]; then
+      elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" > "${VERSION}" ]]; then
         echo "Removing old Android platform-tools files"
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
         for file in "${FILE_LIST[@]}"; do
