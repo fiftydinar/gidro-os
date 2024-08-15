@@ -319,8 +319,8 @@ android-tools ACTION="prompt":
       OPTION=$(ugum choose Uninstall Install Update)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust android-tools <option>"
-      echo "  <option>: Specify the quick option - 'update', 'install' or 'uninstall'"
-      echo "  Use 'update' to update Android platform-tools to latest version."
+      echo "  <option>: Specify the quick option - 'update/upgrade', 'install' or 'uninstall'"
+      echo "  Use 'update' or 'upgrade' to update/upgrade Android platform-tools to latest version."
       echo "  Use 'install' to install Android platform-tools."
       echo "  Use 'uninstall' to uninstall Android platform-tools."      
       exit 0
@@ -340,7 +340,7 @@ android-tools ACTION="prompt":
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
       fi
-    elif [ "${OPTION,,}" == "update" ]; then
+    elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
       if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" > "${VERSION}" ]]; then
