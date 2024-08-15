@@ -310,7 +310,8 @@ android-tools ACTION="prompt":
       if [[ -n "${VERSION}" ]]; then
         echo "Installed version: ${bold}${VERSION}${normal}"
       fi
-      echo "Check which version of the release is the latest here: https://developer.android.com/tools/releases/platform-tools#revisions"
+      LATEST_VERSION="$(curl -Ls https://developer.android.com/tools/releases/platform-tools | grep -Po '(?<=data-text=")[^"]*' | grep -Eo "([0-9]{1,}\.)+[0-9]{1,}" | head -1)"
+      echo "Latest version: ${bold}${LATEST_VERSION}${normal}"
       echo "Pulls source directly from Google, since distro-packaged versions are broken"
       echo "Contains ADB & Fastboot among other binaries for debugging Android devices"
       echo "Installs to system-wide directory by default (/usr/local/bin/)"
@@ -342,7 +343,7 @@ android-tools ACTION="prompt":
     elif [ "${OPTION,,}" == "update" ]; then
       if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
-      elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
+      elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" -gt "${VERSION}" ]]; then
         echo "Removing old Android platform-tools files"
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
         for file in "${FILE_LIST[@]}"; do
@@ -362,6 +363,8 @@ android-tools ACTION="prompt":
         sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
+      else
+        printf "\e[1;31mERROR: Latest Android platform-tools version is already installed.\e[0m\n" 1>&2
       fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
       if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
