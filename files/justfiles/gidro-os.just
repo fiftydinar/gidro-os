@@ -382,3 +382,13 @@ android-tools ACTION="prompt":
         echo "Android platform-tools is uninstalled"
       fi  
     fi
+
+# Replace Universal Blue version of the update script, as it's not well done for this image usecase
+update
+    #!/usr/bin/env bash
+    echo "Updating system"
+    rpm-ostree update
+    echo "Updating system applications"
+    flatpak --system update -y
+    echo "Updating user applications"
+    flatpak --user update -y

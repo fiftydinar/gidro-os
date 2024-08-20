@@ -182,6 +182,7 @@ Settings applied by default:
   - autohide "Downloads" button.
 - Set Gapless to enable background playback
 - Use cool BlueBuild boot & login-screen logo instead of Fedora
+- Replace Universal Blue's `ujust update` with my own more suitable version
 
 ## Installation (ISO) [Recommended]
 
