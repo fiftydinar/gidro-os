@@ -179,7 +179,8 @@ Settings applied by default:
   - set 2 rows for favorite websites
   - disable tab manager arrow
   - enable switching tabs with mouse-wheel
-  - autohide "Downloads" button.
+  - autohide "Downloads" button
+  - disable offline translation
 - Set Gapless to enable background playback
 - Use cool BlueBuild boot & login-screen logo instead of Fedora
 
