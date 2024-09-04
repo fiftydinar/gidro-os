@@ -2,7 +2,6 @@
 Description=Autostart Flatpak app (%i)
 After=gnome-session-initialized.target
 PartOf=gnome-session-initialized.target
-ConditionEnvironment=DISPLAY
 
 [Service]
 Type=exec
