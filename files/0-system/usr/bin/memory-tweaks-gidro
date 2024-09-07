@@ -81,7 +81,7 @@ else
 fi
 
 # vm.dirty_background_ratio
-# if 'vm.dirty_background_ratio > 0', then it takes the advantage over 'vm.dirty_bytes'
+# if 'vm.dirty_background_ratio > 0', then it takes the advantage over 'vm.dirty_background_bytes'
 # Depending on the current condition, either ratio or dirty_background_bytes is modified
 
 echo "Modifying 'vm.dirty_background_bytes' or 'ratio' process begins"
