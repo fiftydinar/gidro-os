@@ -2,8 +2,18 @@
 
 # Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
-max_bytes=16777216
 strict_limit=1
 
-echo "${max_bytes}" > "/sys/block/${1}/bdi/max_bytes"
+# block device is passed in $1
+# speed is passed as $2
+
+# speed defined values
+max_bytes_12=10485
+max_bytes_480=629145
+max_bytes_5000=655369
+max_bytes_10000=13107200
+max_bytes_custom="max_bytes_${2}"
+
 echo "${strict_limit}" > "/sys/block/${1}/bdi/strict_limit"
+# apply bandwidth defined value
+echo "${!max_bytes_custom}" > "/sys/block/${1}/bdi/max_bytes"
