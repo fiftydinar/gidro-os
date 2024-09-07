@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
 
-minimum_free_zram=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
+# Thanks to this guide:
+# https://gist.github.com/ahydronous/7ceaa00df96ef99131600edd4c2c73f2#file-vm-settings-L42
+# & to the original creators of the best value logic for vm.min_free_kbytes:
+# https://gitlab.com/cscs/maxperfwiz
+
 current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
+mem_by_core=$(echo $(( $(vmstat -s | head -n1 | awk '{print $1;}')/$(nproc) )))
+best_minimum_free_zram=$(echo "scale=0; "${mem_by_core}"*0.058" | bc | awk '{printf "%.0f\n", $1}')
 
 # Minimum-free ZRAM
-printf "Current minimum-free ZRAM value: %s\n" "$current_free_zram"
+printf "Current minimum-free ZRAM value: %s\n" "${current_free_zram}"
 
-if ((minimum_free_zram > current_free_zram)); then
-    sysctl -w "vm.min_free_kbytes=${minimum_free_zram}"
-    printf "Found needed minimum-free ZRAM changes, applying the following: %s\n" "$minimum_free_zram"
+# Check if best_minimum_free_zram is dividable to 4KB ZRAM blocksize (4096)
+if [ $((best_minimum_free_zram % 4096)) -eq 0 ]; then
+    echo "Best minimum-free ZRAM value ${best_minimum_free_zram} is matching the 4KB ZRAM blocksize."
 else
-  echo "No minimum-free ZRAM changes needed"
+    # Calculate the next higher value that is divisible by 4096
+    best_minimum_free_zram=$(( (best_minimum_free_zram / 4096 + 1) * 4096 ))
+    echo "Adjusted the best minimum-free ZRAM value to ${best_minimum_free_zram} for 4KB alignment."
 fi
 
+printf "Applying the following best minimum-free ZRAM value: %s\n" "${best_minimum_free_zram}"
+sysctl -w "vm.min_free_kbytes=${best_minimum_free_zram}"
