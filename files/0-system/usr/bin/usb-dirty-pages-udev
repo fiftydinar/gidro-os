@@ -1,0 +1,13 @@
+#!/bin/sh
+##################################
+#  Author Create: Bruno Gonçalves (www.biglinux.com.br) 
+#  Create Date:    2023/03/12
+#  
+#  Licensed by GPL V3 or greater
+##################################
+
+
+if [ -z "$(df --output=source '/' | grep $1)" ]; then
+    echo 1 > /sys/block/$1/bdi/strict_limit
+    echo 16777216 > /sys/block/$1/bdi/max_bytes
+fi
