@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+
+# Memory tweaks, which are dynamic depending on the current memory configuration
+
+# Thanks to this guide:
+# https://gist.github.com/ahydronous/7ceaa00df96ef99131600edd4c2c73f2#file-vm-settings-L42
+# & to the original creators of the best value logic for vm.min_free_kbytes & dirty bytes:
+# https://gitlab.com/cscs/maxperfwiz
+
+# Best minimum-free ZRAM value, aka
+# vm.min_free_kbytes
+
+echo "Modifying 'vm.min_free_kbytes' process begins"
+
+current_free_zram=$(sysctl vm.min_free_kbytes | awk '{print $3}')
+mem_by_core=$(echo $(( $(vmstat -s | head -n1 | awk '{print $1;}')/$(nproc) )))
+best_minimum_free_zram=$(echo "scale=0; "${mem_by_core}"*0.058" | bc | awk '{printf "%.0f\n", $1}')
+
+printf "Current minimum-free ZRAM value: %s\n" "${current_free_zram}"
+
+# Check if best_minimum_free_zram is dividable to 4KB ZRAM blocksize (4096)
+if [ $((best_minimum_free_zram % 4096)) -eq 0 ]; then
+    echo "Best minimum-free ZRAM value ${best_minimum_free_zram} is matching the 4KB ZRAM blocksize."
+else
+    # Calculate the next higher value that is divisible by 4096
+    best_minimum_free_zram=$(( (best_minimum_free_zram / 4096 + 1) * 4096 ))
+    echo "Adjusted the best minimum-free ZRAM value to ${best_minimum_free_zram} for 4KB alignment."
+fi
+
+printf "Applying the following best minimum-free ZRAM value: %s\n" "${best_minimum_free_zram}"
+sysctl -w "vm.min_free_kbytes=${best_minimum_free_zram}"
+
+# vm.dirty_ratio
+# if 'vm.dirty_ratio > 0', then it takes the advantage over 'vm.dirty_bytes'
+# Depending on the current condition, either ratio or dirty_bytes is modified
+
+echo "Modifying 'vm.dirty_bytes' or 'ratio' process begins"
+
+current_dirty_bytes=$(sysctl vm.dirty_bytes | awk '{print $3}')
+current_dirty_ratio=$(sysctl vm.dirty_ratio | awk '{print $3}')
+
+printf "Current 'vm.dirty_bytes' value: %s\n" "${current_dirty_bytes}"
+printf "Current 'vm.dirty_ratio' value: %s\n" "${current_dirty_ratio}"
+
+memmeg=$(echo $(vmstat -sS M | head -n1 | awk '{print $1;}'))
+memperc=10
+if (( "${memmeg}" > 4500 )); then
+  memperc=9
+fi
+if (( "${memmeg}" > 5000 )); then
+  memperc=8
+fi
+if (( "${memmeg}" > 5800 )); then
+  memperc=7
+fi
+if (( "${memmeg}" > 6600 )); then
+  memperc=6
+fi
+if (( "${memmeg}" > 8000 )); then
+  memperc=5
+fi
+if (( "${memmeg}" > 10000 )); then
+  memperc=4
+fi  
+if (( "${memmeg}" > 13400 )); then
+  memperc=3
+fi
+if (( "${memmeg}" > 20000 )); then
+  memperc=2
+fi
+if (( "${memmeg}" > 39000 )); then
+  memperc=1
+fi
+
+if (( "${memmeg}" > 13900 )); then
+  printf "Applying the following vm.dirty_bytes value: %s\n" "419430400"
+  sysctl -w "vm.dirty_bytes=419430400"
+else
+  printf "Applying the following vm.dirty_ratio value: %s\n" "${memperc}"
+  sysctl -w "vm.dirty_ratio=${memperc}"
+fi
+
+# vm.dirty_background_ratio
+# if 'vm.dirty_background_ratio > 0', then it takes the advantage over 'vm.dirty_bytes'
+# Depending on the current condition, either ratio or dirty_background_bytes is modified
+
+echo "Modifying 'vm.dirty_background_bytes' or 'ratio' process begins"
+
+current_dirty_background_bytes=$(sysctl vm.dirty_background_bytes | awk '{print $3}')
+current_dirty_backgroud_ratio=$(sysctl vm.dirty_background_ratio | awk '{print $3}')
+
+printf "Current 'vm.dirty_background_bytes' value: %s\n" "${current_dirty_background_bytes}"
+printf "Current 'vm.dirty_background_ratio' value: %s\n" "${current_dirty_backgroud_ratio}"
+
+memperc=10
+if (( "${memmeg}" > 4500 )); then
+  memperc=6
+fi
+if (( "${memmeg}" > 5000 )); then
+  memperc=5
+fi
+if (( "${memmeg}" > 5800 )); then
+  memperc=4
+fi
+if (( "${memmeg}" > 7000 )); then
+  memperc=3
+fi
+if (( "${memmeg}" > 10000 )); then
+  memperc=2
+fi  
+if (( "${memmeg}" > 18000 )); then
+  memperc=1
+fi 
+
+if (( "${memmeg}" > 13900 )); then
+  printf "Applying the following vm.dirty_background_bytes value: %s\n" "209715200"
+  sysctl -w "vm.dirty_background_bytes=209715200"
+else
+  printf "Applying the following vm.dirty_background_ratio value: %s\n" "${memperc}"
+  sysctl -w "vm.dirty_background_ratio=${memperc}"
+fi
