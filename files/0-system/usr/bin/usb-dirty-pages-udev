@@ -1,13 +1,9 @@
-#!/bin/sh
-##################################
-#  Author Create: Bruno Gonçalves (www.biglinux.com.br) 
-#  Create Date:    2023/03/12
-#  
-#  Licensed by GPL V3 or greater
-##################################
+#!/usr/bin/env bash
 
+# Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
-if [ -z "$(df --output=source '/' | grep $1)" ]; then
-    echo 1 > /sys/block/$1/bdi/strict_limit
-    echo 16777216 > /sys/block/$1/bdi/max_bytes
-fi
+max_bytes=16777216
+strict_limit=1
+
+echo "${max_bytes}" > "/sys/block/${1}/bdi/max_bytes"
+echo "${strict_limit}" > "/sys/block/${1}/bdi/strict_limit"
