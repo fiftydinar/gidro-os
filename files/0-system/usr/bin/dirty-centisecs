@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+OS_INSTALLED_DISK=$(lsblk -ls | awk '$NF == "/boot" { m = 1; next } m && $NF == "disk" { print $1 ; exit}')
+
+if [[ -z "${OS_INSTALLED_DISK}" ]]; then
+  echo "Cannot determine OS installed disk, exiting"
+  exit 1
+fi
+
+# Check if the disk is rotational
+if [[ -e "/sys/block/${OS_INSTALLED_DISK}/queue/rotational" ]]; then
+  ROTATION=$(cat /sys/block/${OS_INSTALLED_DISK}/queue/rotational)
+  if [[ "${ROTATION}" == 1 ]]; then
+    ROTATIONAL=true
+  else
+    ROTATIONAL=false
+  fi
+else
+  echo "There is no rotational value for the OS installed disk."
+fi
+
+if [[ "${OS_INSTALLED_DISK}" == nvme?n? ]] && ! "${ROTATIONAL}"; then
+  echo "Writing 'vm.dirty_expire_centisecs' value to 500 for NVME."
+  sysctl -w "vm.dirty_expire_centisecs=500"
+  echo "Writing 'vm.dirty_writeback_centisecs' value to 250 for NVME."
+  sysctl -w "vm.dirty_writeback_centisecs=250"
+fi
+
+if [[ "${OS_INSTALLED_DISK}" == mmcblk? ]]; then
+  echo "Writing 'vm.dirty_expire_centisecs' value to 3000 for microSD/eMMC."
+  sysctl -w "vm.dirty_expire_centisecs=3000"
+  echo "Writing 'vm.dirty_writeback_centisecs' value to 1500 for microSD/eMMC."
+  sysctl -w "vm.dirty_writeback_centisecs=1500"
+fi
+
+if [[ "${OS_INSTALLED_DISK}" == sd? ]] && ! "${ROTATIONAL}"; then
+  echo "Writing 'vm.dirty_expire_centisecs' value to 500 for SATA SSD."
+  sysctl -w "vm.dirty_expire_centisecs=500"
+  echo "Writing 'vm.dirty_writeback_centisecs' value to 250 for SATA SSD."
+  sysctl -w "vm.dirty_writeback_centisecs=250"
+fi
+
+if [[ "${OS_INSTALLED_DISK}" == sd? ]] && "${ROTATIONAL}"; then
+  echo "Writing 'vm.dirty_expire_centisecs' value to 3000 for HDD."
+  sysctl -w "vm.dirty_expire_centisecs=3000"
+  echo "Writing 'vm.dirty_writeback_centisecs' value to 1500 for HDD."
+  sysctl -w "vm.dirty_writeback_centisecs=1500"
+fi

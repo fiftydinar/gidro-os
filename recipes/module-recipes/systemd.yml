@@ -1,6 +1,7 @@
 type: systemd
 system:
   enabled:
+    - dirty-centisecs.service
     - memory-tweaks-gidro.service
     - adbusers-append.service
 user:

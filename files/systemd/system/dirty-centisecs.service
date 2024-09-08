@@ -1,0 +1,11 @@
+[Unit]
+Description=Dynamic dirty centisecs disk tuning for Gidro-OS
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/dirty-centisecs
+
+[Install]
+WantedBy=multi-user.target
