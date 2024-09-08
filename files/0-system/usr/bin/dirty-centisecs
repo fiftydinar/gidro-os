@@ -9,7 +9,7 @@ fi
 
 # Check if the disk is rotational
 if [[ -e "/sys/block/${OS_INSTALLED_DISK}/queue/rotational" ]]; then
-  ROTATION=$(cat /sys/block/${OS_INSTALLED_DISK}/queue/rotational)
+  ROTATION=$(cat "/sys/block/${OS_INSTALLED_DISK}/queue/rotational")
   if [[ "${ROTATION}" == 1 ]]; then
     ROTATIONAL=true
   else
