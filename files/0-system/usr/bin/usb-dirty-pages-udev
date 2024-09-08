@@ -2,6 +2,9 @@
 
 set -x
 
+# Try to apply dirty bytes consistently
+sleep 0.5
+
 # Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
 strict_limit=1
