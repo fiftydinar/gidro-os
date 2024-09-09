@@ -9,7 +9,7 @@ set -x
 # model id is passed as ${3}
 
 # Determine current USB device speed, as ATTRS{speed} is unreliable - it detects xHCI USB speed instead of proper USB speed
-current_usb_speed=$(lsusb -t -v | awk -v vendor_id="${2}" -v module_id="${3}" '$0 ~ vendor_id ":" module_id {split(prev, a, " "); print a[length(a)]} {prev=$0}' | grep -o '[0-9]*')
+current_usb_speed=$(lsusb -t -v | awk -v vendor_id="${2}" -v module_id="${3}" '$0 ~ vendor_id ":" module_id {split(prev, a, " "); print a[length(a)]} {prev=$0}' | grep -o '[0-9]*\.[0-9]*\|[0-9]*')
 
 # If current USB speed is somehow not determined or wrongly parsed, then stop the script
 # if it's empty or if USB speed is not in integer or floats
