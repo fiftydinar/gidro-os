@@ -1,39 +1,18 @@
 #!/usr/bin/env bash
 
-set -x
-
 # Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
-# block device is passed in ${1}
-# vendor id is passed as ${2}
-# model id is passed as ${3}
+block_device="${1}"
+current_usb_speed="${2}"
 
-# Determine current USB device speed, as ATTRS{speed} is unreliable - it detects xHCI USB speed instead of proper USB speed
-current_usb_speed=$(lsusb -t -v | awk -v vendor_id="${2}" -v module_id="${3}" '$0 ~ vendor_id ":" module_id {split(prev, a, " "); print a[length(a)]} {prev=$0}' | grep -o '[0-9]*\.[0-9]*\|[0-9]*')
-
-# Handle the case if float is with , as decimal separator
-if [[ $(echo "${current_usb_speed}" | wc -l) -gt 1 ]]; then
-  echo "Cannot determine current USB speed for the device to write custom max_bytes dirty value"
-  echo "Exiting"
-  exit 1
-fi
-
-# If current USB speed is somehow not determined or wrongly parsed, then stop the script
-# if it's empty or if USB speed is not in integer or floats
-if [[ -z "${current_usb_speed}" ]] || [[ ! "${current_usb_speed}" =~ ^-?[0-9]+(\.[0-9]+)?$ ]]; then
-  echo "Cannot determine current USB speed for the device to write custom max_bytes dirty value"
-  echo "Exiting"
-  exit 1
-fi
-
-# apply strict limit to dirty bytes
+# apply strict limit to dirty bytes & 50% of the RAM as an USB cache maximum
 strict_limit=1
 max_ratio=50
-echo "${strict_limit}" > "/sys/block/${1}/bdi/strict_limit"
-echo "${max_ratio}" > "/sys/block/${1}/bdi/max_ratio"
+echo "${strict_limit}" > "/sys/block/${block_device}/bdi/strict_limit"
+echo "${max_ratio}" > "/sys/block/${block_device}/bdi/max_ratio"
     
 max_bytes_calculation=$(echo "scale=0; ((${current_usb_speed} / 8) * 0.05 * 1.3) * 1024 * 1024" | bc)
 max_bytes=$(printf "%d\n" "${max_bytes_calculation}")
 
 # apply bandwidth defined value
-echo "${max_bytes}" > "/sys/block/${1}/bdi/max_bytes"
+echo "${max_bytes}" > "/sys/block/${block_device}/bdi/max_bytes"
