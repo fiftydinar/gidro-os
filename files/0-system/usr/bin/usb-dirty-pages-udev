@@ -28,9 +28,11 @@ fi
 
 # apply strict limit to dirty bytes
 strict_limit=1
+max_ratio=50
 echo "${strict_limit}" > "/sys/block/${1}/bdi/strict_limit"
-
-max_bytes_calculation=$(echo "scale=0; (${current_usb_speed} / 8) * 1024 * 1024 / 100" | bc)
+echo "${max_ratio}" > "/sys/block/${1}/bdi/max_ratio"
+    
+max_bytes_calculation=$(echo "scale=0; ((${current_usb_speed} / 8) * 0.05 * 1.3) * 1024 * 1024" | bc)
 max_bytes=$(printf "%d\n" "${max_bytes_calculation}")
 
 # apply bandwidth defined value
