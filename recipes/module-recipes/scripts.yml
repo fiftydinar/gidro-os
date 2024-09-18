@@ -1,4 +1,4 @@
-type: scripts
+type: script
 source: ghcr.io/fiftydinar/modules:script-to-scripts
 scripts:
   - reload-font-cache.sh
