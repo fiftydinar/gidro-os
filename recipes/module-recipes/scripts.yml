@@ -1,5 +1,5 @@
 type: script
-source: ghcr.io/fiftydinar/modules@sha256:cf7649e8421471a4df3c56e1453554b1282b372d7866181cf083ba169002c78e
+source: ghcr.io/fiftydinar/modules:script-to-scripts
 scripts:
   - reload-font-cache.sh
   - desktop-shortcut-remover.sh
