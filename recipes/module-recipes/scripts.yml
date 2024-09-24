@@ -2,7 +2,6 @@ type: script
 scripts:
   - reload-font-cache.sh
   - desktop-shortcut-remover.sh
-  - proton-ge-updater.sh
   - python3-icoextract.sh
   - morewaita.sh
   - android-udev-rule-workaround.sh

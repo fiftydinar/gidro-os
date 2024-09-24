@@ -151,7 +151,6 @@ Settings applied by default:
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
 - [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
-- [Include latest auto-downloaded Proton-GE for Steam](https://github.com/GloriousEggroll/proton-ge-custom) (you still need to manually enable it, including when new version comes out)
 - Enable silent auto-start on boot for those applications:
   - Steam
   - Discord
