@@ -29,7 +29,7 @@ jobs:
       matrix:
         image_name: [gidro-os]
         major_version: [40]
-        image_tag: [br-dconf-distro-instead-of-local]
+        image_tag: [latest]
 
     steps:
       - name: Fetch current date
