@@ -19,7 +19,7 @@ readonly -f SET_HIGHER_PRIORITY_AKMODS_REPO
 
 get_yaml_array INSTALL '.install[]' "$1"
 
-readonly INSTALL_STR=("/tmp/rpms/kmods/"*"${INSTALL[@]}"*".rpm")
+readonly INSTALL_STR=("${INSTALL[@]/#/\/tmp\/rpms\/kmods\/*}*.rpm")
 
 if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
