@@ -19,11 +19,11 @@ readonly -f SET_HIGHER_PRIORITY_AKMODS_REPO
 
 get_yaml_array INSTALL '.install[]' "$1"
 
-readonly INSTALL_STR=(echo "/tmp/rpms/kmods/*${INSTALL[@]}*.rpm" | tr -d '\n')
+readonly INSTALL_STR=("/tmp/rpms/kmods/*${INSTALL[@]}*.rpm")
 
 if [[ ${#INSTALL[@]} -gt 0 ]]; then
   echo "Installing akmods"
-  echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
+  echo "Installing: ${INSTALL[*]}"
   SET_HIGHER_PRIORITY_AKMODS_REPO
   ENABLE_MULTIMEDIA_REPO
   rpm-ostree install ${INSTALL_STR}
