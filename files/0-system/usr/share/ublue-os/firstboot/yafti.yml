@@ -62,7 +62,6 @@ screens:
             - simple64 (N64 Emulator): io.github.simple64.simple64
             - Dolphin Emulator (GameCube/Wii/TriForce Emulator): org.DolphinEmu.dolphin-emu
             - MelonDS (DS/DSi Emulator): net.kuribo64.melonDS
-            - Ryujinx (Switch Emulator): org.ryujinx.Ryujinx
             - DOSBox Staging (DOS Emulator): io.github.dosbox-staging
   configure-gidro-os:
     source: yafti.screen.package
