@@ -87,21 +87,27 @@ factory-reset ACTION="prompt":
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified settings only" ] || [ "${OPTION,,}" == "settings-gidro-os" ]; then
-      gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ name
-      gsettings reset org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ apps
-      gsettings reset org.gnome.desktop.app-folders folder-children
-      gsettings reset org.gnome.desktop.background picture-options
-      gsettings reset org.gnome.desktop.background picture-uri
-      gsettings reset org.gnome.desktop.background picture-uri-dark
-      gsettings reset org.gnome.desktop.background primary-color
-      gsettings reset org.gnome.desktop.background secondary-color
-      gsettings reset org.gnome.desktop.input-sources sources
-      gsettings reset org.gnome.desktop.input-sources mru-sources
-      gsettings reset org.gnome.desktop.interface show-battery-percentage
-      gsettings reset org.gnome.desktop.peripherals.keyboard numlock-state
-      gsettings reset org.gnome.settings-daemon.plugins.power power-button-action
-      gsettings reset org.gnome.shell favorite-apps
-      gsettings reset org.gnome.system.locale region
+      GSCHEMA_PRE_KEYS=($(read-gschema-keys "/usr/share/glib-2.0/schemas/zz1-gidro.gschema.override" "/usr/share/glib-2.0/schemas/zz2-bluebuild-wallpapers.gschema.override"))
+      # New array to hold merged elements
+      GSCHEMA_KEYS=()
+      # Loop through the original array
+      for ((i=0; i<${#GSCHEMA_PRE_KEYS[@]}; i+=2)); do
+          # Check if the next element exists
+          if [[ $((i+1)) -lt ${#GSCHEMA_PRE_KEYS[@]} ]]; then
+              # Merge current and next element
+              GSCHEMA_KEYS+=("${GSCHEMA_PRE_KEYS[i]} ${GSCHEMA_PRE_KEYS[i+1]}")
+          else
+              # If odd number of elements, add the last one as is
+              GSCHEMA_KEYS+=("${GSCHEMA_PRE_KEYS[i]}")
+          fi
+      done
+      DCONF_KEYS=($(read-gschema-keys "/etc/dconf/db/distro.d/01-gidro"))
+      for gschema_key in "${GSCHEMA_KEYS[@]}"; do
+        gsettings reset "${gschema_key}"
+      done
+      for dconf_key in "${DCONF_KEYS[@]}"; do
+        dconf reset "${dconf_key}"
+      done  
       # This is needed to reset system & user extensions
       dconf reset -f /org/gnome/shell/extensions/
       gsettings reset org.gnome.shell enabled-extensions

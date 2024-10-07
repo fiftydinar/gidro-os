@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Read gschema keys from dconf &/or gschema-overrides
+
+declare -a GSCHEMA
+declare -a GSCHEMA_KEYS
+declare -a GSCHEMA_RESULTS
+
+for file in "$@"; do
+    while IFS= read -r line; do
+        # Check for lines starting with [
+        if [[ $line =~ \[(.*)\] ]]; then
+            extracted_word="${BASH_REMATCH[1]}"
+            if [[ $extracted_word == *"/"* ]]; then
+                extracted_word="/$extracted_word"
+            fi
+            GSCHEMA+=("$extracted_word")
+            j=0
+            while IFS= read -r next_line; do
+                if [[ -z $next_line || $next_line =~ ^# ]]; then
+                    break
+                fi
+                if [[ $next_line =~ ^([^=]*)= ]]; then
+                    GSCHEMA_KEYS[j]="${BASH_REMATCH[1]}"
+                    if [[ $extracted_word == *"/"* ]]; then
+                        GSCHEMA_RESULTS+=("${GSCHEMA[i]}/${GSCHEMA_KEYS[j]}")
+                    else
+                        GSCHEMA_RESULTS+=("${GSCHEMA[i]} ${GSCHEMA_KEYS[j]}")
+                    fi  
+                    ((j++))
+                fi
+            done
+            ((i++))
+        fi
+    done < "$file"
+done
+
+# Output the results
+printf "%s\n" "${GSCHEMA_RESULTS[@]}"
+
