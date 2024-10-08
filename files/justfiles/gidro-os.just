@@ -87,23 +87,10 @@ factory-reset ACTION="prompt":
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed. Please restart your system.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified settings only" ] || [ "${OPTION,,}" == "settings-gidro-os" ]; then
-      GSCHEMA_PRE_KEYS=($(read-gschema-keys "/usr/share/glib-2.0/schemas/zz1-gidro.gschema.override" "/usr/share/glib-2.0/schemas/zz2-bluebuild-wallpapers.gschema.override"))
-      # New array to hold merged elements
-      GSCHEMA_KEYS=()
-      # Loop through the original array
-      for ((i=0; i<${#GSCHEMA_PRE_KEYS[@]}; i+=2)); do
-          # Check if the next element exists
-          if [[ $((i+1)) -lt ${#GSCHEMA_PRE_KEYS[@]} ]]; then
-              # Merge current and next element
-              GSCHEMA_KEYS+=("${GSCHEMA_PRE_KEYS[i]} ${GSCHEMA_PRE_KEYS[i+1]}")
-          else
-              # If odd number of elements, add the last one as is
-              GSCHEMA_KEYS+=("${GSCHEMA_PRE_KEYS[i]}")
-          fi
-      done
+      GSCHEMA_KEYS=($(read-gschema-keys "/usr/share/glib-2.0/schemas/zz1-gidro.gschema.override" "/usr/share/glib-2.0/schemas/zz2-bluebuild-wallpapers.gschema.override"))
       DCONF_KEYS=($(read-gschema-keys "/etc/dconf/db/distro.d/01-gidro"))
-      for gschema_key in "${GSCHEMA_KEYS[@]}"; do
-        gsettings reset "${gschema_key}"
+      for ((i=0; i<${#GSCHEMA_KEYS[@]}; i+=2)); do
+        gsettings reset "${GSCHEMA_KEYS[i]}" "${GSCHEMA_KEYS[i+1]}"
       done
       for dconf_key in "${DCONF_KEYS[@]}"; do
         dconf reset "${dconf_key}"
