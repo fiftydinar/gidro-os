@@ -275,3 +275,44 @@ android-tools ACTION="prompt":
         echo "Android platform-tools is uninstalled"
       fi  
     fi
+
+# Configure window close button
+configure-bluetooth-headset-profile  ACTION="prompt":
+    #!/usr/bin/env bash
+    source /usr/lib/ujust/ujust.sh
+    CURRENT_STATE="Enabled"
+    if [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
+      CURRENT_STATE="Disabled"
+    fi
+    OPTION={{ ACTION }}
+    if [ "$OPTION" == "prompt" ]; then
+    echo "${bold}Configuring Bluetooth headset profile behavior${normal}"    
+    echo "Bluetooth headset profile is currently: ${bold}${CURRENT_STATE}${normal}"
+    echo 'Disabling Bluetooth headset profile can be useful if you do not use mic from Bluetooth headphones & want to avoid lower audio quality from sudden headset profile switch.'
+    echo 'Enable or Disable Bluetooth headset profile? Press ESC to exit.'
+    OPTION=$(ugum choose "Enable (Default)" Disable)
+    elif [ "$OPTION" == "help" ]; then
+      echo "Usage: ujust configure-bluetooth-headset-profile <option>"
+      echo "  <option>: Specify the quick option - 'disable' or 'enable'"
+      echo "  Use 'disable' to disable Bluetooth headset profile."
+      echo "  Use 'enable' to revert to defaults."
+      exit 0
+    fi    
+    if [ "${OPTION,,}" == "disable" ]; then
+      if ! [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
+        mkdir -p "/etc/wireplumber/wireplumber.conf.d/"
+        cp "/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf" "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+          systemctl --user restart wireplumber
+          echo 'Disable Bluetooth headset profile setting applied.'
+      else
+        printf "\e[1;31mERROR: Bluetooth headset profile is already disabled, no change is made.\e[0m\n" 1>&2
+      fi  
+    elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
+      if [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
+        rm "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+        systemctl --user restart wireplumber
+          echo 'Reverted setting "Bluetooth headset profile" to defaults.'
+      else
+        printf "\e[1;31mERROR: Bluetooth headset profile is already enabled, no change is made.\e[0m\n" 1>&2
+      fi
+    fi
