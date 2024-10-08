@@ -300,8 +300,8 @@ configure-bluetooth-headset-profile  ACTION="prompt":
     fi    
     if [ "${OPTION,,}" == "disable" ]; then
       if ! [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
-        mkdir -p "/etc/wireplumber/wireplumber.conf.d/"
-        cp "/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf" "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+        sudo mkdir -p "/etc/wireplumber/wireplumber.conf.d/"
+        sudo cp "/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf" "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
           systemctl --user restart wireplumber
           echo 'Disable Bluetooth headset profile setting applied.'
       else
@@ -309,7 +309,7 @@ configure-bluetooth-headset-profile  ACTION="prompt":
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
-        rm "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+        sudo rm "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       else
