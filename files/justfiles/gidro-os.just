@@ -315,7 +315,7 @@ configure-bluetooth-headset-profile  ACTION="prompt":
         sudo rm -r "${WIREPLUMBER_DIR}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
-      else
+      elif [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
