@@ -276,7 +276,7 @@ android-tools ACTION="prompt":
       fi  
     fi
 
-# Configure window close button
+# Configure Bluetooth headset profile
 configure-bluetooth-headset-profile  ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
