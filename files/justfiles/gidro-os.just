@@ -313,11 +313,13 @@ configure-bluetooth-headset-profile  ACTION="prompt":
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         sudo rm -r "${WIREPLUMBER_DIR}"
-      else
-        sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
-      fi  
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
+      else
+        sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        systemctl --user restart wireplumber
+          echo 'Reverted setting "Bluetooth headset profile" to defaults.'
+      fi  
       if [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         printf "\e[1;31mERROR: Bluetooth headset profile is already enabled, no change is made.\e[0m\n" 1>&2
       fi
