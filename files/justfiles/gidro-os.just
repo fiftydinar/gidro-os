@@ -312,7 +312,7 @@ configure-bluetooth-headset-profile  ACTION="prompt":
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo rm -r "${WIREPLUMBER_DIR}
+        sudo rm -r "${WIREPLUMBER_DIR}"
       else
         sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
       fi  
