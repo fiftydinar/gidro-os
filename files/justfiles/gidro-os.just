@@ -318,7 +318,7 @@ configure-bluetooth-headset-profile  ACTION="prompt":
       fi  
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
-      else
+      if [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         printf "\e[1;31mERROR: Bluetooth headset profile is already enabled, no change is made.\e[0m\n" 1>&2
       fi
     fi
