@@ -281,7 +281,10 @@ configure-bluetooth-headset-profile  ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Enabled"
-    if [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
+    FILE_CONF="/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf"
+    WIREPLUMBER_DIR="/etc/wireplumber/wireplumber.conf.d"
+    WIREPLUMBER_FILE="51-disable-bluetooth-headphone-profile-switch.conf"
+    if [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
       CURRENT_STATE="Disabled"
     fi
     OPTION={{ ACTION }}
@@ -299,17 +302,20 @@ configure-bluetooth-headset-profile  ACTION="prompt":
       exit 0
     fi    
     if [ "${OPTION,,}" == "disable" ]; then
-      if ! [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
-        sudo mkdir -p "/etc/wireplumber/wireplumber.conf.d/"
-        sudo cp "/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf" "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+      if ! [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
+        sudo mkdir -p "${WIREPLUMBER_DIR}"
+        sudo cp "${FILE_CONF}" "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
           systemctl --user restart wireplumber
           echo 'Disable Bluetooth headset profile setting applied.'
       else
         printf "\e[1;31mERROR: Bluetooth headset profile is already disabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
-      if [ -f "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf" ]; then
-        sudo rm "/etc/wireplumber/wireplumber.conf.d/51-disable-bluetooth-headphone-profile-switch.conf"
+      if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
+        sudo rm -r "${WIREPLUMBER_DIR}
+      else
+        sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+      fi  
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       else
