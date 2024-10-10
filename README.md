@@ -84,6 +84,7 @@ Installed flatpaks:
 - [Gapless Music Player](https://flathub.org/apps/com.github.neithern.g4music)
 - [Clapper Video Player](https://flathub.org/apps/com.github.rafostar.Clapper)
 - [Image Viewer](https://apps.gnome.org/en/Loupe/)
+- [Fotema] (https://flathub.org/apps/app.fotema.Fotema)
 - [Secrets](https://apps.gnome.org/en/Secrets/)
 - [Authenticator](https://flathub.org/apps/com.belmoussaoui.Authenticator)
 - [Sticky Notes](https://flathub.org/apps/com.vixalien.sticky)

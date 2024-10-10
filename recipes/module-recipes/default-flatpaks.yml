@@ -18,6 +18,7 @@ system:
     - com.github.neithern.g4music
     - com.github.rafostar.Clapper
     - org.gnome.Loupe
+    - app.fotema.Fotema
     - io.gitlab.librewolf-community
     - io.missioncenter.MissionCenter
     - org.gnome.World.Secrets
