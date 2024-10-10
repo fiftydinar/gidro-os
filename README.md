@@ -43,7 +43,7 @@ Installed packages (RPMs):
 - [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
-- [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (WinRAR CLI package)
+- [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)
