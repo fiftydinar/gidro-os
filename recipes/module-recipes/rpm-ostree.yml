@@ -21,6 +21,7 @@ install:
   - uld
   - sg3_utils
   - bootc
+  - rar
 
 remove:
   - firefox
