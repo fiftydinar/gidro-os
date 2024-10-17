@@ -84,7 +84,7 @@ Installed flatpaks:
 - [Gapless Music Player](https://flathub.org/apps/com.github.neithern.g4music)
 - [Clapper Video Player](https://flathub.org/apps/com.github.rafostar.Clapper)
 - [Image Viewer](https://apps.gnome.org/en/Loupe/)
-- [Fotema] (https://flathub.org/apps/app.fotema.Fotema)
+- [Fotema](https://flathub.org/apps/app.fotema.Fotema)
 - [Secrets](https://apps.gnome.org/en/Secrets/)
 - [Authenticator](https://flathub.org/apps/com.belmoussaoui.Authenticator)
 - [Sticky Notes](https://flathub.org/apps/com.vixalien.sticky)
@@ -94,7 +94,6 @@ Installed flatpaks:
 - [GPU Screen Recorder](https://flathub.org/apps/com.dec05eba.gpu_screen_recorder)
 - [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal)
 - [Warehouse](https://flathub.org/apps/io.github.flattool.Warehouse)
-- [PinApp](https://flathub.org/apps/io.github.fabrialberio.pinapp)
 - [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
 
