@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Make Yubikey rules working by appending user to plugdev group
+
+GROUP="$(getent group plugdev)"
+
+if [[ -z "${GROUP}" ]]; then
+  echo "Group plugdev does not exist, please assure that it's created correctly"
+  exit 1
+fi
+
+readarray -t AVAILABLE_USERS < <(getent passwd | awk -F: '/\/home/ {print $1}')
+
+if [[ ${#AVAILABLE_USERS[@]} -eq 0 ]]; then
+  echo "There are no users to append plugdev group to"
+  exit 1
+fi
+
+for user in "${AVAILABLE_USERS[@]}"; do
+  if [[ ! "${GROUP}" =~ "${user}" ]]; then
+    gpasswd -a "${user}" plugdev
+  else
+    echo "Group plugdev is already assigned to the user '${user}'"
+  fi
+done
+
+# Remove # symbol below when it's desired to remove plugdev group from the users
+
+#for user in "${AVAILABLE_USERS[@]}"; do
+  #if [[ "${GROUP}" =~ "${user}" ]]; then
+    #echo "Removed user '${user}' from the plugdev group"
+    #gpasswd -d "${user}" plugdev
+  #else
+    #echo "Group plugdev is already removed from the user '${user}'"
+  #fi
+#done
