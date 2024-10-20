@@ -117,7 +117,7 @@ Settings applied by default:
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
 - Applied workaround for quick update of [advanced Android udev rules](https://github.com/M0Rf30/android-udev-rules), along with automatic assignment of `adbusers` group to all users (so Android platform-tools is ready to be used without tinkering)
-- Append `plugdev` group to users, to make some udev rules like Yubikey working
+- Appended `plugdev` group to users, to make some udev rules like Yubikey working
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
 - Set font hinting to "None"
