@@ -1,0 +1,10 @@
+[Unit]
+Description=Append user to plugdev group to make Yubikey udev rules working
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/plugdev-append
+
+[Install]
+WantedBy=multi-user.target

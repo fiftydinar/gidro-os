@@ -4,6 +4,7 @@ system:
     - dirty-centisecs.service
     - memory-tweaks-gidro.service
     - adbusers-append.service
+    - plugdev-append.service
 user:
   enabled:
     - flatpak-gidro@deluge.service
