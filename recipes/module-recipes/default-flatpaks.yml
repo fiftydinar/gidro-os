@@ -32,8 +32,6 @@ system:
     - io.github.flattool.Warehouse
     - com.mattjakeman.ExtensionManager
     - com.github.wwmm.easyeffects
-  remove:
-    - io.github.fabrialberio.pinapp
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user
