@@ -22,7 +22,6 @@ install:
   - sg3_utils
   - bootc
   - rar
-  - diffpdf
   
 remove:
   - firefox
