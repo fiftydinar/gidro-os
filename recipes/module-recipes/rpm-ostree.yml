@@ -20,6 +20,7 @@ install:
   - foo2zjs
   - uld
   - sg3_utils
+  - bootc
   - rar
   - pandoc
   - power-profiles-daemon
