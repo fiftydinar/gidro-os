@@ -23,7 +23,6 @@ fi
 GNOME_VER=46
 INSTALL_EXT=6892
 
-      if [[ ! "${INSTALL_EXT}" =~ ^[0-9]+$ ]]; then
         # PK ID extension config fallback if specified
         URL_QUERY=$(curl -sf "https://extensions.gnome.org/extension-info/?pk=${INSTALL_EXT}")
         PK_EXT=$(echo "${URL_QUERY}" | jq -r '.["pk"]' 2>/dev/null)
@@ -35,8 +34,7 @@ INSTALL_EXT=6892
         fi
         EXT_UUID=$(echo "${URL_QUERY}" | jq -r '.["uuid"]')
         EXT_NAME=$(echo "${URL_QUERY}" | jq -r '.["name"]')
-        SUITABLE_VERSION=$(echo "${URL_QUERY}" | jq ".shell_version_map[\"${GNOME_VER}\"].version")
-      fi  
+        SUITABLE_VERSION=$(echo "${URL_QUERY}" | jq ".shell_version_map[\"${GNOME_VER}\"].version")  
       # Removes every @ symbol from UUID, since extension URL doesn't contain @ symbol
       URL="https://extensions.gnome.org/extension-data/${EXT_UUID//@/}.v${SUITABLE_VERSION}.shell-extension.zip"
       TMP_DIR="/tmp/${EXT_UUID}"
