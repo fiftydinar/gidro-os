@@ -4,4 +4,5 @@ install:
   - openrazer
   - v4l2loopback
   - xone    
+  #- xpadneo
   - zenergy

@@ -12,5 +12,5 @@ install:
   - Quick Settings Audio Devices Renamer
   - Quick Settings Audio Devices Hider
   - Remove World Clocks
-  - Sleep Through Notifications
+  #- Sleep Through Notifications
   - Unblank lock screen
