@@ -20,11 +20,12 @@ install:
   - foo2zjs
   - uld
   - sg3_utils
-  - bootc
   - rar
   - pandoc
+  - power-profiles-daemon
   
 remove:
+  - tuned
   - firefox
   - firefox-langpacks
   - htop

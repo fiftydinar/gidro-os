@@ -21,6 +21,8 @@ Removed packages (RPMs):
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
    (for better, more suitable first-time install experience)
+- [Power Profiles Daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon) instead of [Tuned](https://tuned-project.org/)  
+   (because Power Profiles Daemon is simpler & more reliable than Tuned for power-saving)
 
 Replaced packages (RPMs) with flatpaks:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
@@ -42,7 +44,6 @@ Installed packages (RPMs):
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
-- [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
 
