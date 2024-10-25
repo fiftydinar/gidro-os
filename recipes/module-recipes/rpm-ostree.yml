@@ -27,6 +27,7 @@ install:
   
 remove:
   - tuned
+  - tuned-ppd
   - firefox
   - firefox-langpacks
   - htop
