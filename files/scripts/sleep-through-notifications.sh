@@ -96,8 +96,6 @@ INSTALL_EXT=6892
       rm -r "${TMP_DIR}"
       echo "Extension '${EXT_NAME}' is successfully installed"
       echo "----------------------------------INSTALLATION DONE----------------------------------"
-  done
-fi
 
 # Compile gschema to include schemas from extensions  & to refresh schema state after uninstall is done
 echo "Compiling gschema to include extension schemas & to refresh the schema state"
