@@ -44,7 +44,7 @@ Installed packages (RPMs):
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
-- [bootc](https://github.com/containers/bootc)(Required package for the bootloader update when using ISO)
+- [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
 
