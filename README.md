@@ -22,7 +22,7 @@ Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
    (for better, more suitable first-time install experience)
 - [Power Profiles Daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon) instead of [Tuned](https://tuned-project.org/)  
-   (because Power Profiles Daemon is simpler & more reliable than Tuned for power-saving)
+   (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
 
 Replaced packages (RPMs) with flatpaks:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
