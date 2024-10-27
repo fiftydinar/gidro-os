@@ -30,6 +30,7 @@ system:
     - com.dec05eba.gpu_screen_recorder
     - com.github.tchx84.Flatseal
     - io.github.flattool.Warehouse
+    - page.codeberg.libre_menu_editor.LibreMenuEditor
     - com.mattjakeman.ExtensionManager
     - com.github.wwmm.easyeffects
 user:

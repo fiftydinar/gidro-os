@@ -97,6 +97,7 @@ Installed flatpaks:
 - [GPU Screen Recorder](https://flathub.org/apps/com.dec05eba.gpu_screen_recorder)
 - [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal)
 - [Warehouse](https://flathub.org/apps/io.github.flattool.Warehouse)
+- [Main Menu](https://flathub.org/apps/page.codeberg.libre_menu_editor.LibreMenuEditor)
 - [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager)
 - [Easy Effects](https://flathub.org/apps/com.github.wwmm.easyeffects)
 
