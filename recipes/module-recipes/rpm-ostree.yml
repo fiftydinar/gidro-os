@@ -23,8 +23,11 @@ install:
   - bootc
   - rar
   - pandoc
+  - power-profiles-daemon
   
 remove:
+  - tuned
+  - tuned-ppd
   - firefox
   - firefox-langpacks
   - htop
@@ -39,5 +42,4 @@ remove:
   - gnome-shell-extension-places-menu
   - gnome-shell-extension-window-list
   - gnome-classic-session
-  - gnome-classic-session-xsession
   - gnome-tweaks

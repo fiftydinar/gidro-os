@@ -4,5 +4,5 @@ scripts:
   - desktop-shortcut-remover.sh
   - python3-icoextract.sh
   - morewaita.sh
-  - bootc-update-bootloader.sh
   - initramfs.sh
+  - sleep-through-notifications.sh
