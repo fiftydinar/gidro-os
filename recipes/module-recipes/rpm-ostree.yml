@@ -32,7 +32,6 @@ remove:
   - firefox-langpacks
   - htop
   - nvtop
-  - gnome-software-rpm-ostree
   - gnome-tour
   - gnome-initial-setup
   - gnome-system-monitor
