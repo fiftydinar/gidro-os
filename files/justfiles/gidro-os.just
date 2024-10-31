@@ -251,7 +251,7 @@ android-tools ACTION="prompt":
         printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-        run0 --background="" bash -c "for file in \"${FILE_LIST[@]}\"; do [[ -e \"${file}\" ]] && rm -r \"${file}\" || echo \"${file} is already removed\"; done; rm /usr/local/bin/platform-tools-file-list"
+        run0 --background="" bash -c 'for file in "${@}"; do [[ -e "${file}" ]] && rm -r "${file}" || echo "${file} is already removed"; done; rm /usr/local/bin/platform-tools-file-list' _ "${FILE_LIST[@]}"
         echo "Android platform-tools is uninstalled"
       fi  
     fi
