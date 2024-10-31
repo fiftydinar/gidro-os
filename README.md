@@ -46,6 +46,7 @@ Installed packages (RPMs):
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
+- [totem-video-thumbnailer](https://packages.fedoraproject.org/pkgs/totem/totem-video-thumbnailer/) (installed to retain good amount of supported thumbnails, until something better comes in)
 
 Installed akmods:
 - [NCT6687D](https://github.com/Fred78290/nct6687d) (AMD B550 chipset temperature driver)

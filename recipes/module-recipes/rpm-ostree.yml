@@ -24,7 +24,8 @@ install:
   - rar
   - pandoc
   - power-profiles-daemon
-  
+  - totem-video-thumbnailer
+
 remove:
   - tuned
   - tuned-ppd
