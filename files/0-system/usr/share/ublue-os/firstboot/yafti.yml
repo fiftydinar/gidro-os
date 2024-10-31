@@ -79,7 +79,7 @@ screens:
           description: Enables scheduled nightly reboot to happen in 03:00. Useful for users who leave their PCs on 24/7, but still want system updates applied.
           default: false
           packages:
-          - Scheduled nightly reboot: pkexec ujust scheduled-reboot enable         
+          - Scheduled nightly reboot: ujust scheduled-reboot enable         
          
   final-screen:
     source: yafti.screen.title

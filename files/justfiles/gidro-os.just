@@ -168,16 +168,14 @@ scheduled-reboot ACTION="prompt":
     fi
     if [ "${OPTION,,}" == "enable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q disabled; then
-        sudo systemctl enable nightly-reboot.timer
-        sudo systemctl start nightly-reboot.timer
+        run0 bash -c "systemctl enable nightly-reboot.timer; systemctl start nightly-reboot.timer"
         echo "Nightly scheduled reboot is enabled!"
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already enabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
-        sudo systemctl disable nightly-reboot.timer
-        sudo systemctl stop nightly-reboot.timer
+        run0 bash -c "systemctl disable nightly-reboot.timer; systemctl stop nightly-reboot.timer"
         echo 'Reverted setting "nightly scheduled reboot" to defaults.'
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
@@ -227,9 +225,7 @@ android-tools ACTION="prompt":
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
         unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
         PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-        echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
-        sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
-        sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
+        run0 bash -c "echo -e \"${PLATFORM_TOOLS_FILES}\" > /usr/local/bin/platform-tools-file-list; sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list; cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/"
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
       fi
@@ -239,21 +235,12 @@ android-tools ACTION="prompt":
       elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" > "${VERSION}" ]]; then
         echo "Removing old Android platform-tools files"
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-        for file in "${FILE_LIST[@]}"; do
-            if [[ -e "${file}" ]]; then
-              sudo rm -r "${file}"
-            else
-              echo "${file} is already removed"
-            fi  
-        done
         echo "Downloading new Android platform-tools version"
         mkdir -p /tmp/platform-tools/
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
         unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
         PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-        echo -e "${PLATFORM_TOOLS_FILES}" | sudo tee /usr/local/bin/platform-tools-file-list >/dev/null
-        sudo sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
-        sudo cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
+        run0 bash -c "for file in \"${FILE_LIST[@]}\"; do [[ -e \"${file}\" ]] && rm -r \"${file}\" || echo \"${file} is already removed\"; done; sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list; echo -e \"${PLATFORM_TOOLS_FILES}\" > /usr/local/bin/platform-tools-file-list; cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/"
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
       else
@@ -264,14 +251,7 @@ android-tools ACTION="prompt":
         printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-        for file in "${FILE_LIST[@]}"; do
-            if [[ -e "${file}" ]]; then
-              sudo rm -r "${file}"
-            else
-              echo "${file} is already removed"
-            fi  
-        done
-        sudo rm /usr/local/bin/platform-tools-file-list
+        run0 bash -c "for file in \"${FILE_LIST[@]}\"; do [[ -e \"${file}\" ]] && rm -r \"${file}\" || echo \"${file} is already removed\"; done; rm /usr/local/bin/platform-tools-file-list"
         echo "Android platform-tools is uninstalled"
       fi  
     fi
@@ -303,8 +283,7 @@ configure-bluetooth-headset-profile  ACTION="prompt":
     fi    
     if [ "${OPTION,,}" == "disable" ]; then
       if ! [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo mkdir -p "${WIREPLUMBER_DIR}"
-        sudo cp "${FILE_CONF}" "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        run0 bash -c "mkdir -p \"${WIREPLUMBER_DIR}\"; cp \"${FILE_CONF}\" \"${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}\""
           systemctl --user restart wireplumber
           echo 'Disable Bluetooth headset profile setting applied.'
       else
@@ -312,11 +291,11 @@ configure-bluetooth-headset-profile  ACTION="prompt":
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo rm -r "${WIREPLUMBER_DIR}"
+        run0 rm -r "${WIREPLUMBER_DIR}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       elif [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        run0 rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       elif [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
