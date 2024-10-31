@@ -4,4 +4,4 @@
 set -euo pipefail
 
 # Remove avif thumbnailer, as heif thumbnailer already caches it
-rm -f "/usr/share/thumbnailers/avif.thumbnailer"
+rm "/usr/share/thumbnailers/avif.thumbnailer"
