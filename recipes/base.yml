@@ -59,8 +59,10 @@ modules:
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import /usr/share/ublue-os/just/60-custom.just" >> /usr/share/ublue-os/just/justfile
       ## Copy ujust & ugum binary
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust; chmod -x /usr/bin/ujust
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum; chmod -x /usr/bin/ugum
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust
+      - chmod 755 /usr/bin/ujust
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum
+      - chmod 755 /usr/bin/ugum
       ## Copy ujust libraries
       - mkdir -p /usr/lib/ujust/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
