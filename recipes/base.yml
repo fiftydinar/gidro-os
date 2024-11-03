@@ -72,7 +72,7 @@ modules:
   # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
   # Also install gum
   # The operations above cannot be covered in rpm-ostree module, so it's used as a script
-  - type: scripts
+  - type: script
     snippets:
       # Install Negativo repo
       - echo "Installing Negativo repo"
@@ -142,6 +142,6 @@ modules:
       - wireguard-tools
   # My additions to the base image, which are not present in Ublue    
   # Remove avif thumbnailer, as HEIF thumbnailer already covers it    
-  - type: scripts
+  - type: script
     snippets:
       - rm /usr/share/thumbnailers/avif.thumbnailer
