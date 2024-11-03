@@ -28,7 +28,7 @@ Replaced packages (RPMs):
 Replaced packages (RPMs) with flatpaks:
 - [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
    (it has better defaults, like Ublock Origin out-of-the-box, doesn't send telemetry & it offers easy customization to fix some LibreWolf quirks)
-- [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor), [nvtop](https://github.com/Syllo/nvtop) & [htop](https://github.com/htop-dev/htop)  
+- [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
    (it's a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
