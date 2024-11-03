@@ -1,6 +1,6 @@
-# Update system & flatpaks
-
 alias upgrade := update
+
+# Update system & flatpaks
 
 update:
     #!/usr/bin/env bash
@@ -23,9 +23,9 @@ changelog:
     echo ""
     flatpak --user history
 
-# Turn automatic updates on or off
-
 alias toggle-upgrades := toggle-updates
+
+# Turn automatic updates on or off
 
 toggle-updates ACTION="prompt":
     #!/usr/bin/env bash
@@ -62,9 +62,9 @@ toggle-updates ACTION="prompt":
       fi  
     fi
 
-# Update device firmware
-
 alias upgrade-firmware := update-firmware
+
+# Update device firmware
 
 [no-exit-message]
 update-firmware:
@@ -73,9 +73,9 @@ update-firmware:
     fwupdmgr get-updates
     fwupdmgr update
 
-# Boot into this device's UEFI screen
-
 alias uefi := bios
+
+# Boot into this device's UEFI screen
 
 bios:
     #!/usr/bin/env bash
