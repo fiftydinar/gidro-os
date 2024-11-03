@@ -5,142 +5,142 @@ modules:
 # - android-udev-rules
 # - ublue-os-update-services
 # - ublue-os-just (stripped version: without motd tips, Ublue justfiles, non-needed brew profile.d script & Ublue distrobox+podman manifest files)
-- type: script
-  snippets:
-    # Download Universal Blue config zip
-    - echo "Downloading Universal Blue config zip file"
-    - curl -fLs --create-dirs https://github.com/ublue-os/config/archive/refs/heads/main.zip -o /tmp/ublue-config/main.zip
-    - echo "Unzipping the file"
-    - unzip -q /tmp/ublue-config/main.zip -d /tmp/ublue-config/
-    - rm /tmp/ublue-config/main.zip
-    # Universal Blue udev rules    
-    - echo "Copying udev rules from Universal Blue"
-    - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
-    # Game-device-udev rules
-    - echo "Downloading game-device-udev zip file"    
-    - curl -fLs --create-dirs https://codeberg.org/fabiscafe/game-devices-udev/archive/main.zip -o /tmp/ublue-config/game-devices-udev/main.zip
-    - echo "Unzipping the file"
-    - unzip -q /tmp/ublue-config/game-devices-udev/main.zip -d /tmp/ublue-config/game-devices-udev/
-    - rm /tmp/ublue-config/game-devices-udev/main.zip
-    - echo "Copying udev rules from Game-device-udev"
-    - cp /tmp/ublue-config/game-devices-udev/game-devices-udev-main/game-devices-udev/*.rules /usr/lib/udev/rules.d/
-    - echo "Putting uinput to be loaded as a module in modules-load.d"
-    - echo "uinput" > /usr/lib/modules-load.d/uinput.conf
-    # Android udev rule
-    - echo "Downloading Android udev rule"
-    - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -O /usr/lib/udev/rules.d/
-    - echo "Adding adbusers group to sysusers.d"
-    - echo "g adbusers - -" > /usr/lib/sysusers.d/android-udev.conf
-    # rpm-ostree & flatpak updaters
-    ## rpm-ostree updater
-    - echo "Copying rpm-ostree updater"
-    - mkdir -p /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/ /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/
-    - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
-    - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.service.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/override.conf
-    - echo "Enabling rpm-ostree updates in config"
-    - sed -i 's/^AutomaticUpdatePolicy=.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
-    ## flatpak updater
-    - echo "Copying flatpak updater"
-    - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
-    - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
-    - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
-    - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
-    - echo "Enabling systemd timers for flatpak updaters"
-    - systemctl --system enable flatpak-system-update.timer
-    - systemctl --global enable flatpak-user-update.timer
-    # Add just config from Universal Blue
-    - echo "Adding just config from Universal Blue"
-    - echo "Excluding motd tips, Ublue justfiles, distrobox+podman manifest files & brew profile.d script (not needed)"
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/etc-profile.d/ublue-os-just.sh /etc/profile.d/ublue-os-just.sh
-    - mkdir -p /usr/share/ublue-os/just/
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/just/justfile
-    ## Include Gidro-OS justfile
-    - echo "Only including Gidro-OS justfile"
-    - echo "import /usr/share/ublue-os/just/60-custom.just" >> /usr/share/ublue-os/just/justfile
-    ## Copy ujust & ugum binary
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust; chmod -x /usr/bin/ujust
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum; chmod -x /usr/bin/ugum
-    ## Copy ujust libraries
-    - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
-    # Use ZSTD compression for initramfs
-    echo "compress=\"zstd\"" > /usr/lib/dracut/dracut.conf.d/10-compression.conf
-    # Remove temporary directory
-    - rm -r /tmp/ublue-config/
+  - type: script
+    snippets:
+      # Download Universal Blue config zip
+      - echo "Downloading Universal Blue config zip file"
+      - curl -fLs --create-dirs https://github.com/ublue-os/config/archive/refs/heads/main.zip -o /tmp/ublue-config/main.zip
+      - echo "Unzipping the file"
+      - unzip -q /tmp/ublue-config/main.zip -d /tmp/ublue-config/
+      - rm /tmp/ublue-config/main.zip
+      # Universal Blue udev rules    
+      - echo "Copying udev rules from Universal Blue"
+      - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
+      # Game-device-udev rules
+      - echo "Downloading game-device-udev zip file"    
+      - curl -fLs --create-dirs https://codeberg.org/fabiscafe/game-devices-udev/archive/main.zip -o /tmp/ublue-config/game-devices-udev/main.zip
+      - echo "Unzipping the file"
+      - unzip -q /tmp/ublue-config/game-devices-udev/main.zip -d /tmp/ublue-config/game-devices-udev/
+      - rm /tmp/ublue-config/game-devices-udev/main.zip
+      - echo "Copying udev rules from Game-device-udev"
+      - cp /tmp/ublue-config/game-devices-udev/game-devices-udev-main/game-devices-udev/*.rules /usr/lib/udev/rules.d/
+      - echo "Putting uinput to be loaded as a module in modules-load.d"
+      - echo "uinput" > /usr/lib/modules-load.d/uinput.conf
+      # Android udev rule
+      - echo "Downloading Android udev rule"
+      - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -O /usr/lib/udev/rules.d/
+      - echo "Adding adbusers group to sysusers.d"
+      - echo "g adbusers - -" > /usr/lib/sysusers.d/android-udev.conf
+      # rpm-ostree & flatpak updaters
+      ## rpm-ostree updater
+      - echo "Copying rpm-ostree updater"
+      - mkdir -p /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/ /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/
+      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
+      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.service.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/override.conf
+      - echo "Enabling rpm-ostree updates in config"
+      - sed -i 's/^AutomaticUpdatePolicy=.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
+      ## flatpak updater
+      - echo "Copying flatpak updater"
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
+      - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
+      - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
+      - echo "Enabling systemd timers for flatpak updaters"
+      - systemctl --system enable flatpak-system-update.timer
+      - systemctl --global enable flatpak-user-update.timer
+      # Add just config from Universal Blue
+      - echo "Adding just config from Universal Blue"
+      - echo "Excluding motd tips, Ublue justfiles, distrobox+podman manifest files & brew profile.d script (not needed)"
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/etc-profile.d/ublue-os-just.sh /etc/profile.d/ublue-os-just.sh
+      - mkdir -p /usr/share/ublue-os/just/
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/just/justfile
+      ## Include Gidro-OS justfile
+      - echo "Only including Gidro-OS justfile"
+      - echo "import /usr/share/ublue-os/just/60-custom.just" >> /usr/share/ublue-os/just/justfile
+      ## Copy ujust & ugum binary
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust; chmod -x /usr/bin/ujust
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum; chmod -x /usr/bin/ugum
+      ## Copy ujust libraries
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
+      # Use ZSTD compression for initramfs
+      echo "compress=\"zstd\"" > /usr/lib/dracut/dracut.conf.d/10-compression.conf
+      # Remove temporary directory
+      - rm -r /tmp/ublue-config/ 
 
-# Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
-# Also install gum
-# The operations above cannot be covered in rpm-ostree module, so it's used as a script
-- type: scripts
-  snippets:
-    # Install Negativo repo
-    - echo "Installing Negativo repo"
-    - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -O /etc/yum.repos.d/
-    - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-    # Replace Fedora packages with Negativos (Mesa & HEIF)
-    - echo "Replacing Fedora packages with Negativos"
-    - rpm-ostree override replace --experimental from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
-    # Install gum
-    - echo "Downloading & Installing gum"
-    - LATEST_RELEASE=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r '.tag_name')
-    - DOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"
-    - curl -fLs --create-dirs ${DOWNLOAD_URL} -o /usr/bin/gum
+  # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
+  # Also install gum
+  # The operations above cannot be covered in rpm-ostree module, so it's used as a script
+  - type: scripts
+    snippets:
+      # Install Negativo repo
+      - echo "Installing Negativo repo"
+      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -O /etc/yum.repos.d/
+      - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+      # Replace Fedora packages with Negativos (Mesa & HEIF)
+      - echo "Replacing Fedora packages with Negativos"
+      - rpm-ostree override replace --experimental from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
+      # Install gum
+      - echo "Downloading & Installing gum"
+      - LATEST_RELEASE=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r '.tag_name')
+      - DOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"
+      - curl -fLs --create-dirs ${DOWNLOAD_URL} -o /usr/bin/gum
 
-- type: rpm-ostree
-  remove:
-    - fdk-aac-free
-    - ffmpeg-free
-    - libavcodec-free
-    - libavdevice-free
-    - libavfilter-free
-    - libavformat-free
-    - libavutil-free
-    - libpostproc-free
-    - libswresample-free
-    - libswscale-free
-    - default-fonts-cjk-sans
-    - google-noto-sans-cjk-vf-fonts
-  install:
-    # Font stuff
-    - google-noto-sans-balinese-fonts
-    - google-noto-sans-cjk-fonts
-    - google-noto-sans-javanese-fonts
-    - google-noto-sans-sundanese-fonts
-    # Graphic stuff
-    - intel-vaapi-driver
-    - libva-utils
-    # Audio stuff
-    - alsa-firmware
-    - pipewire-libs-extra
-    # Thumbnailing
-    - ffmpegthumbnailer
-    - ffmpeg
-    - ffmpeg-libs
-    # Codecs
-    - libfdk-aac
-    - heif-pixbuf-loader
-    # Just
-    - just
-    # Some additional udev rules
-    - openrgb-udev-rules
-    - solaar-udev
-    - oversteer-udev
-    # Yubikey stuff
-    - pam-u2f
-    - pam_yubico
-    - pamu2fcfg
-    - yubikey-manager 
-    # Gnome-specific
-    - adw-gtk3-theme
-    - gnome-epub-thumbnailer
-    - gvfs-nfs
-    # Regular packages    
-    - openssl
-    - libratbag-ratbagd
-    - zstd
-    - wireguard-tools
-# My additions to the base image, which are not present in Ublue    
-# Remove avif thumbnailer, as HEIF thumbnailer already covers it    
-- type: scripts
-  snippets:
-    - rm /usr/share/thumbnailers/avif.thumbnailer
+  - type: rpm-ostree
+    remove:
+      - fdk-aac-free
+      - ffmpeg-free
+      - libavcodec-free
+      - libavdevice-free
+      - libavfilter-free
+      - libavformat-free
+      - libavutil-free
+      - libpostproc-free
+      - libswresample-free
+      - libswscale-free
+      - default-fonts-cjk-sans
+      - google-noto-sans-cjk-vf-fonts
+    install:
+      # Font stuff
+      - google-noto-sans-balinese-fonts
+      - google-noto-sans-cjk-fonts
+      - google-noto-sans-javanese-fonts
+      - google-noto-sans-sundanese-fonts
+      # Graphic stuff
+      - intel-vaapi-driver
+      - libva-utils
+      # Audio stuff
+      - alsa-firmware
+      - pipewire-libs-extra
+      # Thumbnailing
+      - ffmpegthumbnailer
+      - ffmpeg
+      - ffmpeg-libs
+      # Codecs
+      - libfdk-aac
+      - heif-pixbuf-loader
+      # Just
+      - just
+      # Some additional udev rules
+      - openrgb-udev-rules
+      - solaar-udev
+      - oversteer-udev
+      # Yubikey stuff
+      - pam-u2f
+      - pam_yubico
+      - pamu2fcfg
+      - yubikey-manager 
+      # Gnome-specific
+      - adw-gtk3-theme
+      - gnome-epub-thumbnailer
+      - gvfs-nfs
+      # Regular packages    
+      - openssl
+      - libratbag-ratbagd
+      - zstd
+      - wireguard-tools
+  # My additions to the base image, which are not present in Ublue    
+  # Remove avif thumbnailer, as HEIF thumbnailer already covers it    
+  - type: scripts
+    snippets:
+      - rm /usr/share/thumbnailers/avif.thumbnailer
