@@ -1,3 +1,96 @@
+# Update system & flatpaks
+alias upgrade := update
+update:
+    #!/usr/bin/env bash
+    rpm-ostree upgrade
+    flatpak --system upgrade
+    flatpak --user upgrade
+
+# Show changelog & history for system & flatpak updates
+changelog:
+    #!/usr/bin/env bash
+    echo "System update changelog"
+    echo ""
+    rpm-ostree db diff --changelogs
+    echo ""
+    echo "System flatpaks changelog"
+    echo ""
+    flatpak --system history
+    echo ""
+    echo "User flatpaks changelog"
+    echo ""
+    flatpak --user history
+
+# Turn automatic updates on or off
+toggle-updates ACTION="prompt":
+    #!/usr/bin/env bash
+    source /usr/lib/ujust/ujust.sh
+    CURRENT_STATE="Disabled"
+    if systemctl -q is-enabled rpm-ostreed-automatic.timer; then
+      CURRENT_STATE="Enabled"
+    fi
+    OPTION={{ ACTION }}
+    if [ "$OPTION" == "prompt" ]; then
+      echo "Automatic updates are currently: ${bold}${CURRENT_STATE}${normal}"
+      echo "Enable or Disable automatic updates? Press ESC to exit."
+      OPTION=$(ugum choose Enable (Default) Disable)
+    elif [ "$OPTION" == "help" ]; then
+      echo "Usage: ujust toggle-updates <option>"
+      echo "  <option>: Specify the quick option - 'enable' or 'disable'"
+      echo "  Use 'enable' to Enable automatic updates."
+      echo "  Use 'disable' to Disable automatic updates."
+      exit 0
+    fi
+    if [ "${OPTION,,}" == "enable" ]; then
+      run0 --background="" systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
+      systemctl enable --now --user flatpak-user-update.timer
+    elif [ "${OPTION,,}" == "disable" ]; then
+      run0 --background="" systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
+      systemctl disable --now --user flatpak-user-update.timer
+    fi
+
+# Update device firmware
+alias upgrade-firmware := update-firmware
+[no-exit-message]
+update-firmware:
+    #!/usr/bin/env bash
+    fwupdmgr refresh --force
+    fwupdmgr get-updates
+    fwupdmgr update
+
+# Boot into this device's UEFI screen
+bios:
+    #!/usr/bin/env bash
+    if [[ "$(bootctl reboot-to-firmware)" == "supported" ]]; then
+      systemctl reboot --firmware-setup
+    else
+      echo "Rebooting to BIOS/UEFI from OS is not supported."
+    fi
+
+# Show all messages from this boot
+logs-this-boot:
+    #!/usr/bin/env bash
+    run0 --background="" journalctl -b 0
+
+# Show all messages from last boot
+logs-last-boot:
+    #!/usr/bin/env bash
+    run0 --background="" journalctl -b -1
+
+# Check for local overrides in /etc/ vs /usr/etc/
+check-local-overrides:
+    #!/usr/bin/env bash
+    run0 --background="" ostree admin config-diff
+
+# Clean up old up unused podman images, volumes, flatpak packages and rpm-ostree content
+clean-system:
+    #!/usr/bin/env bash
+    podman image prune -af
+    podman volume prune -f
+    flatpak uninstall --system --unused
+    flatpak uninstall --user --unused
+    rpm-ostree cleanup -bm
+
 # Configure window close button
 configure-close-button  ACTION="prompt":
     #!/usr/bin/env bash
