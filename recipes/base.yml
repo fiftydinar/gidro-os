@@ -62,6 +62,7 @@ modules:
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust; chmod -x /usr/bin/ujust
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum; chmod -x /usr/bin/ugum
       ## Copy ujust libraries
+      - mkdir -p /usr/lib/ujust/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
       # Use ZSTD compression for initramfs
       - echo "compress=\"zstd\"" > /usr/lib/dracut/dracut.conf.d/10-compression.conf
