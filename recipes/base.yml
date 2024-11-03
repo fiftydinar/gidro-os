@@ -55,7 +55,8 @@ modules:
       - mkdir -p /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
-      - sed -i '/echo "\$(Urllink "https:\/\/docs\.projectbluefin\.io\/administration#community-aliases-and-workarounds" "Click here to view the Universal Blue just documentation")"/d' /usr/share/ublue-os/justfile
+      ## Don't show link for Universal Blue documentation when invoking `ujust`
+      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile
       ## Include Gidro-OS justfile
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
