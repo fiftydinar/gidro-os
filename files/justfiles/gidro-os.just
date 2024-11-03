@@ -66,7 +66,7 @@ bios:
     if [[ "$(bootctl reboot-to-firmware)" == "supported" ]]; then
       systemctl reboot --firmware-setup
     else
-      echo "Rebooting to BIOS/UEFI from OS is not supported."
+      printf "\e[1;31mERROR: Rebooting to BIOS/UEFI from OS is not supported.\e[0m\n" 1>&2
     fi
 
 # Show all messages from this boot
