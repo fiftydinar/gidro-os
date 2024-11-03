@@ -2,8 +2,11 @@
 
 ![](assets/bg.webp)
 
-My customized image, based on slightly customized [Silverblue-main](https://universal-blue.discourse.group/docs?topic=868) base image, which is derived from the amazing [Universal Blue](https://universal-blue.org/) project.  
-Thanks to Fedora for developing the original [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) Linux distribution.
+My customized image, based on [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/).
+
+Gidro-OS was based on [Universal Blue's](https://universal-blue.org/) `silverblue-main` image in the past, but now, I just take some stuff that I need from them in a convenient recipe as a base.  
+Reasoning for that is to have more control over the Universal Blue's base, which would make it possible for me to react immediately with changes if needed, to avoid some questionable additions to the base, to make image smaller (and with it, updates faster) etc.  
+You can see my changes to the base recipe [here](https://github.com/fiftydinar/gidro-os/blob/main/recipes/base.yml).
 
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
@@ -15,7 +18,6 @@ It is similar to making custom ROMs in the Android community, but in a much easi
 Removed packages (RPMs):
 - [Gnome classic session](https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en)
 - Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
-- [Gnome Tweaks](https://gitlab.gnome.org/GNOME/gnome-tweaks) (It's lowly maintained & It's not officially supported by Gnome)
 
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
@@ -193,24 +195,11 @@ ISO doesn't require an active internet connection during its usage.
 
 Just download the ISO & proceed with installation.
 
-If you are on UEFI system, you will notice blue MOK screen after installer, which is used for enrolling security keys.
-You will need to "Enroll key" with a password `universalblue`.
-This needs to be done even if you're not using Secure Boot.
-
-Otherwise, continue boot.
-
 ## Installation (Rebase)
 
 Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
 
 Rebasing is only supported from Fedora Silverblue edition.
-
-You will need to enroll security key before rebase with the command below, even if you're not using Secure Boot (requires internet).
-It will prompt you for sudo user password, so type that, then type the password for secure key, which is `universalblue`:
-
-```
-wget -q https://github.com/ublue-os/akmods/raw/main/certs/public_key.der -O /tmp/akmods-ublue.der && sudo mokutil --timeout -1 && sudo mokutil --import /tmp/akmods-ublue.der && rm /tmp/akmods-ublue.der
-```
 
 To rebase an existing Silverblue installation to the latest build:
 
@@ -237,10 +226,6 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   systemctl reboot
   ```
-
-- You will be prompted with blue MOK screen, which is used for enrolling security keys.
-  Choose "Enroll key" & type `universalblue` as a password. Continue boot afterwards.
-
 - Then rebase to the signed image, like so:
   ```
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
