@@ -1,8 +1,0 @@
-type: akmods
-install:
-  - nct6687d
-  - openrazer
-  - v4l2loopback
-  - xone    
-  - xpadneo
-  - zenergy

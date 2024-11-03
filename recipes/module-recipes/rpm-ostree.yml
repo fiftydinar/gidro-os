@@ -24,15 +24,12 @@ install:
   - rar
   - pandoc
   - power-profiles-daemon
-  - totem-video-thumbnailer
 
 remove:
   - tuned
   - tuned-ppd
   - firefox
   - firefox-langpacks
-  - htop
-  - nvtop
   - gnome-tour
   - gnome-initial-setup
   - gnome-system-monitor

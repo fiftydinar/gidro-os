@@ -6,4 +6,3 @@ scripts:
   - morewaita.sh
   - initramfs.sh
   - sleep-through-notifications.sh
-  - remove-redundant-avif-thumbnailer.sh
