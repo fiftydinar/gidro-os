@@ -28,7 +28,7 @@ modules:
       - echo "uinput" > /usr/lib/modules-load.d/uinput.conf
       # Android udev rule
       - echo "Downloading Android udev rule"
-      - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -O /usr/lib/udev/rules.d/
+      - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -o /usr/lib/udev/rules.d/51-android.rules
       - echo "Adding adbusers group to sysusers.d"
       - echo "g adbusers - -" > /usr/lib/sysusers.d/android-udev.conf
       # rpm-ostree & flatpak updaters
@@ -75,7 +75,7 @@ modules:
     snippets:
       # Install Negativo repo
       - echo "Installing Negativo repo"
-      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -O /etc/yum.repos.d/
+      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo "Replacing Fedora packages with Negativos"
