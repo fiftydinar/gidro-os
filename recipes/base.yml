@@ -84,7 +84,7 @@ modules:
       - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
       # Install gum
       - echo "Downloading & Installing gum"
-      - echo -e '#!/usr/bin/env bash\n\ncurl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r ".tag_name"\nDOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"\ncurl -fLs --create-dirs "${DOWNLOAD_URL}" -o /usr/bin/gum\nchmod -x /usr/bin/gum' > /tmp/install-gum.sh
+      - echo -e '#!/usr/bin/env bash\n\ncurl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r ".tag_name"\nDOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"\ncurl -fLs --create-dirs "${DOWNLOAD_URL}" -o /tmp/gum.rpm\nrpm-ostree install /tmp/gum.rpm' > /tmp/install-gum.sh
       - chmod +x /tmp/install-gum.sh
       - /tmp/install-gum.sh
       - rm /tmp/install-gum.sh
