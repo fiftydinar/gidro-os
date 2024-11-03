@@ -54,7 +54,7 @@ modules:
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/etc-profile.d/ublue-os-just.sh /etc/profile.d/ublue-os-just.sh
       - mkdir -p /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/just/justfile
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
       ## Include Gidro-OS justfile
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
