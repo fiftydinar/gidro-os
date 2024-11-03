@@ -76,19 +76,30 @@ modules:
   - type: script
     snippets:
       # Install Negativo repo
-      - echo -e "\e[90mInstalling Negativo repo\e[0m"
+      - echo "Installing Negativo repo"
       - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo "Replacing Fedora packages with Negativos"
       - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
       # Install gum
-      - echo "Downloading repo & Installing gum"
+      - echo "Downloading charm repo"
       - echo -e '[charm]\nname=Charm\nbaseurl=https://repo.charm.sh/yum/\nenabled=1\ngpgcheck=1\ngpgkey=https://repo.charm.sh/yum/gpg.key' > /etc/yum.repos.d/charm.repo
+      - echo "Installing gum"
       - rpm-ostree install gum
       # Remove chsh
+      - echo "Removing chsh"
       - rm /usr/bin/chsh
-
+      # Install oversteer udev rules
+      - echo "Downloading Oversteer udev zip file"
+      - curl -fLs --create-dirs  https://github.com/berarma/oversteer/archive/refs/heads/master.zip -o /tmp/oversteer-udev/master.zip
+      - echo "Unzipping Oversteer udev zip file"
+      - unzip -q /tmp/oversteer-udev/master.zip -d /tmp/oversteer-udev/
+      - rm /tmp/oversteer-udev/master.zip
+      - echo "Copying Oversteer udev rules"
+      - cp /tmp/oversteer-udev/oversteer-master/data/udev/*.rules /usr/lib/udev/rules.d/
+      - rm -r /tmp/oversteer-udev/
+      
   - type: rpm-ostree
     remove:
       - fdk-aac-free
@@ -127,7 +138,6 @@ modules:
       # Some additional udev rules
       - openrgb-udev-rules
       - solaar-udev
-      - oversteer-udev
       # Yubikey stuff
       - pam-u2f
       - pam_yubico
