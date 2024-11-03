@@ -1,5 +1,7 @@
 # Update system & flatpaks
+
 alias upgrade := update
+
 update:
     #!/usr/bin/env bash
     rpm-ostree upgrade
@@ -22,7 +24,9 @@ changelog:
     flatpak --user history
 
 # Turn automatic updates on or off
+
 alias toggle-upgrades := toggle-updates
+
 toggle-updates ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
@@ -51,7 +55,9 @@ toggle-updates ACTION="prompt":
     fi
 
 # Update device firmware
+
 alias upgrade-firmware := update-firmware
+
 [no-exit-message]
 update-firmware:
     #!/usr/bin/env bash
@@ -60,7 +66,9 @@ update-firmware:
     fwupdmgr update
 
 # Boot into this device's UEFI screen
+
 alias uefi := bios
+
 bios:
     #!/usr/bin/env bash
     if [[ "$(bootctl reboot-to-firmware)" == "supported" ]]; then
@@ -94,7 +102,7 @@ clean-system:
     rpm-ostree cleanup -bm
 
 # Configure window close button
-configure-close-button  ACTION="prompt":
+configure-close-button ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Present"
@@ -130,7 +138,7 @@ configure-close-button  ACTION="prompt":
         printf "\e[1;31mERROR: Close button is already present, no change is made.\e[0m\n" 1>&2
       fi
     fi
-    
+
 # Factory-reset Gidro-OS
 factory-reset ACTION="prompt":
     #!/usr/bin/env bash
@@ -238,7 +246,7 @@ factory-reset ACTION="prompt":
       gsettings reset org.gnome.shell disabled-extensions
         echo 'Factory-reset of Gnome extensions settings completed.'
     fi
-    
+
 # Configure scheduled nightly reboot
 scheduled-reboot ACTION="prompt":
     #!/usr/bin/env bash
@@ -352,7 +360,7 @@ android-tools ACTION="prompt":
     fi
 
 # Configure Bluetooth headset profile
-configure-bluetooth-headset-profile  ACTION="prompt":
+configure-bluetooth-headset-profile ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Enabled"
