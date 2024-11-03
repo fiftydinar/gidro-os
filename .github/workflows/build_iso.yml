@@ -51,8 +51,6 @@ jobs:
           image_name: ${{ matrix.image_name }}
           image_tag: ${{ matrix.image_tag }}
           variant: 'Kinoite'
-          enrollment_password: 'universalblue'
-          secure_boot_key_url: 'https://github.com/ublue-os/akmods/raw/main/certs/public_key.der'
           iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
