@@ -38,7 +38,7 @@ modules:
       - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
       - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.service.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/override.conf
       - echo -e "\033[90mEnabling rpm-ostree updates in config\033[0m"
-      - sed -i 's/^AutomaticUpdatePolicy=.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
+      - sed -i '/^#*AutomaticUpdatePolicy=.*/s/.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
       ## flatpak updater
       - echo -e "\033[90mCopying flatpak updater\033[0m"
       - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
