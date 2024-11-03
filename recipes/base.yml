@@ -1,0 +1,170 @@
+modules:
+# Covering ublue-os config here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
+# Added:
+# - ublue-os-udev-rules
+# - android-udev-rules
+# - ublue-os-update-services
+# - ublue-os-just (stripped version: without motd tips, Ublue justfiles, non-needed brew profile.d script & Ublue distrobox+podman manifest files)
+  - type: script
+    snippets:
+      # Download Universal Blue config zip
+      - echo -e "\033[90mDownloading Universal Blue config zip file\033[0m"
+      - curl -fLs --create-dirs https://github.com/ublue-os/config/archive/refs/heads/main.zip -o /tmp/ublue-config/main.zip
+      - echo -e "\033[90mUnzipping the file\033[0m"
+      - unzip -q /tmp/ublue-config/main.zip -d /tmp/ublue-config/
+      - rm /tmp/ublue-config/main.zip
+      # Universal Blue udev rules    
+      - echo -e "\033[90mCopying udev rules from Universal Blue\033[0m"
+      - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
+      ## Add plugdev group to sysusers.d (needed for Yubikey udev rules)
+      - echo -e "\033[90mAdd plugdev group to sysuser.d (not done in Ublue)\033[0m"      
+      - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
+      # Game-device-udev rules
+      - echo -e "\033[90mDownloading game-device-udev zip file\033[0m"    
+      - curl -fLs --create-dirs https://codeberg.org/fabiscafe/game-devices-udev/archive/main.zip -o /tmp/ublue-config/game-devices-udev/main.zip
+      - echo -e "\033[90mUnzipping the file\033[0m"
+      - unzip -q /tmp/ublue-config/game-devices-udev/main.zip -d /tmp/ublue-config/game-devices-udev/
+      - rm /tmp/ublue-config/game-devices-udev/main.zip
+      - echo -e "\033[90mCopying udev rules from Game-device-udev\033[0m"
+      - cp /tmp/ublue-config/game-devices-udev/game-devices-udev/*.rules /usr/lib/udev/rules.d/
+      - echo -e "\033[90mPutting uinput to be loaded as a module in modules-load.d\033[0m"
+      - echo "uinput" > /usr/lib/modules-load.d/uinput.conf
+      # Android udev rule
+      - echo -e "\033[90mDownloading Android udev rule\033[0m"
+      - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -o /usr/lib/udev/rules.d/51-android.rules
+      - echo -e "\033[90mAdding adbusers group to sysusers.d\033[0m"
+      - echo "g adbusers - -" > /usr/lib/sysusers.d/android-udev.conf
+      # rpm-ostree & flatpak updaters
+      ## rpm-ostree updater
+      - echo -e "\033[90mCopying rpm-ostree updater\033[0m"
+      - mkdir -p /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/ /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/
+      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
+      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.service.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/override.conf
+      - echo -e "\033[90mEnabling rpm-ostree updates in config\033[0m"
+      - sed -i '/^#*AutomaticUpdatePolicy=.*/s/.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
+      ## flatpak updater
+      - echo -e "\033[90mCopying flatpak updater\033[0m"
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
+      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
+      - echo -e "\033[90mEnabling systemd timers for flatpak updaters\033[0m"
+      - systemctl --system enable flatpak-system-update.timer
+      - systemctl --global enable flatpak-user-update.timer
+      # Add just config from Universal Blue
+      - echo -e "\033[90mAdding just config from Universal Blue\033[0m"
+      - echo -e "\033[90mExcluding motd tips, Ublue justfiles, distrobox+podman manifest files & brew profile.d script (not needed)\033[0m"
+      ## Copy profile.d just script
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/etc-profile.d/ublue-os-just.sh /etc/profile.d/ublue-os-just.sh
+      ## Add function to invoke ujust when typing just
+      - echo -e "\033[90mAdd function to execute ujust when typing just (not done in Ublue)\033[0m"      
+      - echo -e "# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ] && [ ! \"\${1}\" = \"--choose\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \"; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
+      ## Copy 60-custom.just template & ublue-os justfile template
+      - mkdir -p /usr/share/ublue-os/just/
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
+      ## Don't show link for Universal Blue documentation when invoking `ujust`
+      - echo -e "\033[90mDon't show link for Ublue docs when executing ujust (not done in Ublue)\033[0m"      
+      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile      
+      ## Include Gidro-OS justfile
+      - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
+      - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
+      ## Copy ujust & ugum binary
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust
+      - chmod 755 /usr/bin/ujust
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum
+      - chmod 755 /usr/bin/ugum
+      ## Copy ujust libraries
+      - mkdir -p /usr/lib/ujust/
+      - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
+      # Use ZSTD compression for initramfs
+      - echo "compress=\"zstd\"" > /usr/lib/dracut/dracut.conf.d/10-compression.conf
+      # Remove temporary directory
+      - rm -r /tmp/ublue-config/ 
+
+  # Covering ublue-os/main here
+  # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
+  # Remove chsh & install oversteer-udev rules, as I don't want to rely on potentially outdated RPM
+  # The operations below cannot be covered in rpm-ostree module, so it's used as a script
+  - type: script
+    snippets:
+      # Install Negativo repo
+      - echo -e "\033[90mInstalling Negativo repo\033[0m"
+      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+      - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+      # Remove redundant RPMFusion repos
+      - echo -e "\033[90mRemove redundant RPMFusion repos (not done in Ublue)\033[0m"
+      - rm /etc/yum.repos.d/rpmfusion-*.repo
+      # Replace Fedora packages with Negativos (Mesa & HEIF)
+      - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
+      - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
+      # Remove chsh
+      - echo -e "\033[90mRemoving chsh\033[0m"
+      - rm /usr/bin/chsh
+      # Install oversteer udev rules
+      - echo -e "\033[90mDownloading Oversteer udev zip file\033[0m"
+      - curl -fLs --create-dirs  https://github.com/berarma/oversteer/archive/refs/heads/master.zip -o /tmp/oversteer-udev/master.zip
+      - echo -e "\033[90mUnzipping Oversteer udev zip file\033[0m"
+      - unzip -q /tmp/oversteer-udev/master.zip -d /tmp/oversteer-udev/
+      - rm /tmp/oversteer-udev/master.zip
+      - echo -e "\033[90mCopying Oversteer udev rules\033[0m"
+      - cp /tmp/oversteer-udev/oversteer-master/data/udev/*.rules /usr/lib/udev/rules.d/
+      - rm -r /tmp/oversteer-udev/
+      # Remove avif thumbnailer, as HEIF thumbnailer already covers it
+      - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
+      - rm /usr/share/thumbnailers/avif.thumbnailer
+      
+  - type: rpm-ostree
+    remove:
+      - fdk-aac-free
+      - ffmpeg-free
+      - libavcodec-free
+      - libavdevice-free
+      - libavfilter-free
+      - libavformat-free
+      - libavutil-free
+      - libpostproc-free
+      - libswresample-free
+      - libswscale-free
+      - default-fonts-cjk-sans
+      - google-noto-sans-cjk-vf-fonts
+      - gnome-software-rpm-ostree
+    install:
+      # Font stuff
+      - google-noto-sans-balinese-fonts
+      - google-noto-sans-cjk-fonts
+      - google-noto-sans-javanese-fonts
+      - google-noto-sans-sundanese-fonts
+      # Graphic stuff
+      - intel-vaapi-driver
+      - libva-utils
+      # Audio stuff
+      - alsa-firmware
+      - pipewire-libs-extra
+      # Thumbnailing
+      - ffmpegthumbnailer
+      - ffmpeg
+      - ffmpeg-libs
+      # Codecs
+      - libfdk-aac
+      - heif-pixbuf-loader
+      # Just
+      - just
+      - fzf
+      # Some additional udev rules
+      - openrgb-udev-rules
+      - solaar-udev
+      # Yubikey stuff
+      - pam-u2f
+      - pam_yubico
+      - pamu2fcfg
+      - yubikey-manager 
+      # Gnome-specific
+      - adw-gtk3-theme
+      - gnome-epub-thumbnailer
+      - gvfs-nfs
+      # Regular packages    
+      - openssl
+      - libratbag-ratbagd
+      - zstd
+      - wireguard-tools
