@@ -1,3 +1,4 @@
+modules:
 # Covering ublue-os config here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
 # Added:
 # - ublue-os-udev-rules
