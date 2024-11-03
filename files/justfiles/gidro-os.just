@@ -1,6 +1,6 @@
-alias upgrade := update
-
 # Update system & flatpaks
+
+alias upgrade := update
 
 update:
     #!/usr/bin/env bash
@@ -31,9 +31,9 @@ changelog:
     echo ""
     flatpak --user history
 
-alias toggle-upgrades := toggle-updates
-
 # Turn automatic updates on or off
+
+alias toggle-upgrades := toggle-updates
 
 toggle-updates ACTION="prompt":
     #!/usr/bin/env bash
@@ -70,9 +70,9 @@ toggle-updates ACTION="prompt":
       fi  
     fi
 
-alias upgrade-firmware := update-firmware
-
 # Update device firmware
+
+alias upgrade-firmware := update-firmware
 
 [no-exit-message]
 update-firmware:
@@ -81,9 +81,9 @@ update-firmware:
     fwupdmgr get-updates
     fwupdmgr update
 
-alias uefi := bios
-
 # Boot into this device's UEFI screen
+
+alias uefi := bios
 
 bios:
     #!/usr/bin/env bash
