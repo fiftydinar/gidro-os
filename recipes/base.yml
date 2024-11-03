@@ -69,9 +69,10 @@ modules:
       # Remove temporary directory
       - rm -r /tmp/ublue-config/ 
 
+  # Covering ublue-os/main here
   # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
   # Also install gum
-  # The operations above cannot be covered in rpm-ostree module, so it's used as a script
+  # The operations below cannot be covered in rpm-ostree module, so it's used as a script
   - type: script
     snippets:
       # Install Negativo repo
@@ -80,12 +81,15 @@ modules:
       - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo "Replacing Fedora packages with Negativos"
-      - rpm-ostree override replace --experimental from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
+      - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
       # Install gum
       - echo "Downloading & Installing gum"
       - LATEST_RELEASE=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r '.tag_name')
       - DOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"
       - curl -fLs --create-dirs ${DOWNLOAD_URL} -o /usr/bin/gum
+      # Remove chsh & lchsh
+      rm /usr/bin/chsh
+      rm /usr/bin/lchsh
 
   - type: rpm-ostree
     remove:
