@@ -169,3 +169,8 @@ modules:
       - libratbag-ratbagd
       - zstd
       - wireguard-tools
+
+  - type: script
+    snippets:
+      # Workaround non-working Asian fonts
+      - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
