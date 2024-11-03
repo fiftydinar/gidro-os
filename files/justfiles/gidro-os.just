@@ -47,11 +47,19 @@ toggle-updates ACTION="prompt":
       exit 0
     fi
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
-      run0 --background="" systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
-      systemctl enable --now --user flatpak-user-update.timer
+      if [ "${CURRENT_STATE}" == "Disabled" ]; then
+        run0 --background="" systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
+        systemctl enable --now --user flatpak-user-update.timer
+      else
+        printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
+      fi
     elif [ "${OPTION,,}" == "disable" ]; then
-      run0 --background="" systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
-      systemctl disable --now --user flatpak-user-update.timer
+      if [ "${CURRENT_STATE}" == "Enabled" ]; then
+        run0 --background="" systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
+        systemctl disable --now --user flatpak-user-update.timer
+      else
+        printf "\e[1;31mERROR: Automatic updates are already disabled, no change is made.\e[0m\n" 1>&2
+      fi  
     fi
 
 # Update device firmware
