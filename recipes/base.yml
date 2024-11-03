@@ -16,6 +16,9 @@ modules:
       # Universal Blue udev rules    
       - echo -e "\033[90mCopying udev rules from Universal Blue\033[0m"
       - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
+      ## Add plugdev group to sysusers.d (needed for Yubikey udev rules)
+      - echo -e "\033[90mAdd plugdev group to sysuser.d (not done in Ublue)\033[0m"      
+      - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
       # Game-device-udev rules
       - echo -e "\033[90mDownloading game-device-udev zip file\033[0m"    
       - curl -fLs --create-dirs https://codeberg.org/fabiscafe/game-devices-udev/archive/main.zip -o /tmp/ublue-config/game-devices-udev/main.zip
@@ -51,12 +54,18 @@ modules:
       # Add just config from Universal Blue
       - echo -e "\033[90mAdding just config from Universal Blue\033[0m"
       - echo -e "\033[90mExcluding motd tips, Ublue justfiles, distrobox+podman manifest files & brew profile.d script (not needed)\033[0m"
-      # Copy profile.d just script
+      ## Copy profile.d just script
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/etc-profile.d/ublue-os-just.sh /etc/profile.d/ublue-os-just.sh
-      # Copy 60-custom.just template & ublue-os justfile template
+      ## Add function to invoke ujust when typing just
+      - echo -e "\033[90mAdd function to execute ujust when typing just (not done in Ublue)\033[0m"      
+      - echo -e "# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ] && [ ! \"\${1}\" = \"--choose\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \"; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
+      ## Copy 60-custom.just template & ublue-os justfile template
       - mkdir -p /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
+      ## Don't show link for Universal Blue documentation when invoking `ujust`
+      - echo -e "\033[90mDon't show link for Ublue docs when executing ujust (not done in Ublue)\033[0m"      
+      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile      
       ## Include Gidro-OS justfile
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
@@ -83,6 +92,9 @@ modules:
       - echo -e "\033[90mInstalling Negativo repo\033[0m"
       - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+      # Remove redundant RPMFusion repos
+      - echo -e "\033[90mRemove redundant RPMFusion repos (not done in Ublue)\033[0m"
+      - rm /etc/yum.repos.d/rpmfusion-*.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
       - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
@@ -98,6 +110,9 @@ modules:
       - echo -e "\033[90mCopying Oversteer udev rules\033[0m"
       - cp /tmp/oversteer-udev/oversteer-master/data/udev/*.rules /usr/lib/udev/rules.d/
       - rm -r /tmp/oversteer-udev/
+      # Remove avif thumbnailer, as HEIF thumbnailer already covers it
+      - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
+      - rm /usr/share/thumbnailers/avif.thumbnailer
       
   - type: rpm-ostree
     remove:
@@ -152,17 +167,3 @@ modules:
       - libratbag-ratbagd
       - zstd
       - wireguard-tools
-      
-  # My additions to the base image, which are not present in Ublue    
-  - type: script
-    snippets:
-      # Remove avif thumbnailer, as HEIF thumbnailer already covers it        
-      - rm /usr/share/thumbnailers/avif.thumbnailer
-      # Don't show link for Universal Blue documentation when invoking `ujust`
-      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile      
-      # Add function to invoke ujust when typing just
-      - echo -e "# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ] && [ ! \"\${1}\" = \"--choose\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \"; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
-      # Add plugdev group to sysusers.d (needed for Yubikey udev rules)
-      - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
-      # Remove redundant RPMFusion repos
-      - rm /etc/yum.repos.d/rpmfusion-*.repo
