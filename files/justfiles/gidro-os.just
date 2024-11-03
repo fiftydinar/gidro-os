@@ -38,15 +38,15 @@ toggle-updates ACTION="prompt":
     if [ "$OPTION" == "prompt" ]; then
       echo "Automatic updates are currently: ${bold}${CURRENT_STATE}${normal}"
       echo "Enable or Disable automatic updates? Press ESC to exit."
-      OPTION=$(ugum choose Enable (Default) Disable)
+      OPTION=$(ugum choose "Enable (Default)" Disable)
     elif [ "$OPTION" == "help" ]; then
       echo "Usage: ujust toggle-updates <option>"
       echo "  <option>: Specify the quick option - 'enable' or 'disable'"
-      echo "  Use 'enable' to Enable automatic updates."
-      echo "  Use 'disable' to Disable automatic updates."
+      echo "  Use 'enable' to revert to defaults."
+      echo "  Use 'disable' to disable automatic updates."
       exit 0
     fi
-    if [ "${OPTION,,}" == "enable" ]; then
+    if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       run0 --background="" systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer
       systemctl enable --now --user flatpak-user-update.timer
     elif [ "${OPTION,,}" == "disable" ]; then
