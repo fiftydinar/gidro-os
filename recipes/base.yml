@@ -86,11 +86,6 @@ modules:
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
       - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
-      # Install gum
-      - echo -e "\033[90mDownloading charm repo\033[0m"
-      - echo -e '[charm]\nname=Charm\nbaseurl=https://repo.charm.sh/yum/\nenabled=1\ngpgcheck=1\ngpgkey=https://repo.charm.sh/yum/gpg.key' > /etc/yum.repos.d/charm.repo
-      - echo -e "\033[90mInstalling gum\033[0m"
-      - rpm-ostree install gum
       # Remove chsh
       - echo -e "\033[90mRemoving chsh\033[0m"
       - rm /usr/bin/chsh
@@ -139,6 +134,7 @@ modules:
       - heif-pixbuf-loader
       # Just
       - just
+      - fzf
       # Some additional udev rules
       - openrgb-udev-rules
       - solaar-udev
