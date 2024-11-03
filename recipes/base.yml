@@ -88,8 +88,8 @@ modules:
       - DOWNLOAD_URL="https://github.com/charmbracelet/gum/releases/download/${LATEST_RELEASE}/gum-${LATEST_RELEASE}-1.x86_64.rpm"
       - curl -fLs --create-dirs ${DOWNLOAD_URL} -o /usr/bin/gum
       # Remove chsh & lchsh
-      rm /usr/bin/chsh
-      rm /usr/bin/lchsh
+      - rm /usr/bin/chsh
+      - rm /usr/bin/lchsh
 
   - type: rpm-ostree
     remove:
