@@ -22,6 +22,7 @@ changelog:
     flatpak --user history
 
 # Turn automatic updates on or off
+alias toggle-upgrades := toggle-updates
 toggle-updates ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
@@ -59,6 +60,7 @@ update-firmware:
     fwupdmgr update
 
 # Boot into this device's UEFI screen
+alias uefi := bios
 bios:
     #!/usr/bin/env bash
     if [[ "$(bootctl reboot-to-firmware)" == "supported" ]]; then
