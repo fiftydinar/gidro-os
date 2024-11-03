@@ -4,9 +4,17 @@ alias upgrade := update
 
 update:
     #!/usr/bin/env bash
+    echo "System update section"
+    echo ""
     rpm-ostree upgrade
-    flatpak --system upgrade
-    flatpak --user upgrade
+    echo ""
+    echo "System flatpak section"
+    echo ""
+    flatpak --system update -y
+    echo ""
+    echo "User flatpak section"
+    echo ""
+    flatpak --user update -y
 
 # Show changelog & history for system & flatpak updates
 changelog:
