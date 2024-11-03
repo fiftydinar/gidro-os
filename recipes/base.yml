@@ -57,8 +57,6 @@ modules:
       - mkdir -p /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
-      ## Don't show link for Universal Blue documentation when invoking `ujust`
-      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile
       ## Include Gidro-OS justfile
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
@@ -164,5 +162,9 @@ modules:
     snippets:
       # Remove avif thumbnailer, as HEIF thumbnailer already covers it        
       - rm /usr/share/thumbnailers/avif.thumbnailer
+      # Don't show link for Universal Blue documentation when invoking `ujust`
+      - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile      
       # Add function to invoke ujust when typing just
       - echo -e "# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ] && [ ! \"\${1}\" = \"--choose\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \"; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
+      # Add plugdev group to sysusers.d (needed for Yubikey udev rules)
+      - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
