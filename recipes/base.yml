@@ -43,8 +43,8 @@ modules:
       - echo "Copying flatpak updater"
       - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
       - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
-      - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
-      - cp /tmp/ublue-config/config-main/files/usr/lib/user/system/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
+      - cp /tmp/ublue-config/config-main/files/usr/lib/user/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
+      - cp /tmp/ublue-config/config-main/files/usr/lib/user/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
       - echo "Enabling systemd timers for flatpak updaters"
       - systemctl --system enable flatpak-system-update.timer
       - systemctl --global enable flatpak-user-update.timer
