@@ -132,11 +132,10 @@ modules:
       - gnome-software-rpm-ostree
     install:
       # Font stuff
-      # Balinese, Sundanese & Javanese fonts are installed by Better-fonts package afterwards with google-noto-sans-fonts dependency package
-      #- google-noto-sans-balinese-fonts
+      - google-noto-sans-balinese-fonts
       - google-noto-sans-cjk-fonts
-      #- google-noto-sans-javanese-fonts
-      #- google-noto-sans-sundanese-fonts
+      - google-noto-sans-javanese-fonts
+      - google-noto-sans-sundanese-fonts
       # Graphic stuff
       - intel-vaapi-driver
       - libva-utils
