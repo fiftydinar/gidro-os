@@ -46,7 +46,7 @@ toggle-updates ACTION="prompt":
       echo "Enable or Disable automatic updates? Press ESC to exit."
       OPTION=$(ugum choose "Enable (Default)" Disable)
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust toggle-updates <option>"
+      echo "Usage: just toggle-updates <option>"
       echo "  <option>: Specify the quick option - 'enable' or 'disable'"
       echo "  Use 'enable' to revert to defaults."
       echo "  Use 'disable' to disable automatic updates."
@@ -129,7 +129,7 @@ configure-close-button ACTION="prompt":
     echo 'Hide or Unhide close button? Press ESC to exit.'
     OPTION=$(ugum choose "Unhide (Default)" Hide)
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust configure-close-button <option>"
+      echo "Usage: just configure-close-button <option>"
       echo "  <option>: Specify the quick option - 'hide' or 'unhide'"
       echo "  Use 'hide' to hide close button."
       echo "  Use 'unhide' to revert to defaults."
@@ -162,7 +162,7 @@ factory-reset ACTION="prompt":
     echo 'Please select following factory-reset options. Press ESC to exit.'
     OPTION=$(ugum choose "Factory-reset Gnome extensions settings" "Factory-reset Gidro-OS modified apps settings only" "Factory-reset apps" "Factory-reset Gidro-OS modified settings only" "Factory-reset OS settings" "Factory-reset everything")
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust factory-reset <option>"
+      echo "Usage: just factory-reset <option>"
       echo "  <option>: Specify the quick option - 'all', 'settings', 'settings-gidro-os', 'apps', 'apps-gidro-os' or 'gnome-extensions'"
       echo "  Use 'all' to to factory-reset everything."
       echo "  Use 'settings' to factory-reset settings."
@@ -272,7 +272,7 @@ scheduled-reboot ACTION="prompt":
       echo 'Enable or Disable scheduled nightly reboot? Press ESC to exit.'
       OPTION=$(ugum choose "Disable (Default)" Enable)
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust configure-scheduled-reboot <option>"
+      echo "Usage: just configure-scheduled-reboot <option>"
       echo "  <option>: Specify the quick option - 'enable' or 'disable'"
       echo "  Use 'enable' to enable scheduled nightly reboot systemd service."
       echo "  Use 'disable' to revert to defaults."      
@@ -321,7 +321,7 @@ android-tools ACTION="prompt":
       echo 'Install, Update or Uninstall Android platform-tools? Press ESC to exit.'
       OPTION=$(ugum choose Uninstall Install Update)
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust android-tools <option>"
+      echo "Usage: just android-tools <option>"
       echo "  <option>: Specify the quick option - 'update/upgrade', 'install' or 'uninstall'"
       echo "  Use 'update' or 'upgrade' to update/upgrade Android platform-tools to latest version."
       echo "  Use 'install' to install Android platform-tools."
@@ -387,7 +387,7 @@ configure-bluetooth-headset-profile ACTION="prompt":
     echo 'Enable or Disable Bluetooth headset profile? Press ESC to exit.'
     OPTION=$(ugum choose "Enable (Default)" Disable)
     elif [ "$OPTION" == "help" ]; then
-      echo "Usage: ujust configure-bluetooth-headset-profile <option>"
+      echo "Usage: just configure-bluetooth-headset-profile <option>"
       echo "  <option>: Specify the quick option - 'disable' or 'enable'"
       echo "  Use 'disable' to disable Bluetooth headset profile."
       echo "  Use 'enable' to revert to defaults."
