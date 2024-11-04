@@ -24,12 +24,12 @@ Replaced packages (RPMs):
    (for better, more suitable first-time install experience)
 - [Power Profiles Daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon) instead of [Tuned](https://tuned-project.org/)  
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
+- [Hardened Chromium](https://github.com/secureblue/hardened-chromium) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
+   (it is a more secure browser, has support for web applications, working hardware-accelerated video decoding out-of-the-box & ads blocker)
 
 Replaced packages (RPMs) with flatpaks:
-- [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
-   (it has better defaults, like Ublock Origin out-of-the-box, doesn't send telemetry & it offers easy customization to fix some LibreWolf quirks)
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
-   (it's a much better looking task manager with more useful functionality)
+   (it is a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
