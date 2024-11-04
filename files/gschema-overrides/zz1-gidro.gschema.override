@@ -76,6 +76,7 @@ pressure-unit='mbar'
 show-comment-in-panel=true
 show-sunsetrise-in-panel=true
 wind-direction=true
+weather-provider='openweathermap'
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
@@ -109,6 +110,9 @@ experimental-features=['variable-refresh-rate']
 
 [org.gnome.login-screen]
 logo='/usr/share/pixmaps/gidro-gdm-logo.png'
+
+[org.gnome.Ptyxis]
+restore-session=false
 
 #-------------- RELOCATABLE SCHEMAS IN THIS SECTION ARE LOCATED IN DCONF --------------#
 
