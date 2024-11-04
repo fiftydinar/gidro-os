@@ -24,12 +24,12 @@ Replaced packages (RPMs):
    (for better, more suitable first-time install experience)
 - [Power Profiles Daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon) instead of [Tuned](https://tuned-project.org/)  
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
+- [Hardened Chromium](https://github.com/secureblue/hardened-chromium) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
+   (it is a more secure browser, has support for web applications, working hardware-accelerated video decoding out-of-the-box & ads blocker)
 
 Replaced packages (RPMs) with flatpaks:
-- [LibreWolf](https://flathub.org/apps/io.gitlab.librewolf-community) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
-   (it has better defaults, like Ublock Origin out-of-the-box, doesn't send telemetry & it offers easy customization to fix some LibreWolf quirks)
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
-   (it's a much better looking task manager with more useful functionality)
+   (it is a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
@@ -166,21 +166,6 @@ Settings applied by default:
 - Set Folio to use Nokia Pure text font
 - Set Calculator to separate thousands
 - Set Clapper (Videos) to use Nokia Pure font for subtitles
-- Set LibreWolf to:
-  - enable WebGL
-  - disable ResistFingerprinting
-  - disable deleting cookies & cache on exit
-  - enable auto-scroll
-  - disable middle-click paste
-  - disable Ctrl+Q on quit
-  - enable rounded window bottom edge
-  - download to Downloads folder without asking
-  - enable favorite websites in homepage
-  - set 2 rows for favorite websites
-  - disable tab manager arrow
-  - enable switching tabs with mouse-wheel
-  - autohide "Downloads" button
-  - disable offline translation
 - Set Gapless to enable background playback
 - Set Terminal (Ptyxis) to don't restore session by default
 - Use cool BlueBuild boot & login-screen logo instead of Fedora
