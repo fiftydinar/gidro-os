@@ -242,6 +242,7 @@ To rebase an existing Silverblue installation to the latest build:
 - [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
+- [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
 
 ## Note for myself regarding what I do after install
 
