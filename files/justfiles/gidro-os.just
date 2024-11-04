@@ -3,30 +3,30 @@ alias upgrade := update
 # Update system & flatpaks
 update:
     #!/usr/bin/env bash
-    echo "System update section"
+    echo "----------System update section----------"
     echo ""
     rpm-ostree upgrade
     echo ""
-    echo "System flatpak section"
+    echo "----------System flatpak section----------"
     echo ""
     flatpak --system update -y
     echo ""
-    echo "User flatpak section"
+    echo "----------User flatpak section----------"
     echo ""
     flatpak --user update -y
 
 # Show changelog & history for system & flatpak updates
 changelog:
     #!/usr/bin/env bash
-    echo "System update changelog"
+    echo "----------System update changelog----------"
     echo ""
     rpm-ostree db diff --changelogs
     echo ""
-    echo "System flatpaks changelog"
+    echo "----------System flatpaks changelog----------"
     echo ""
     flatpak --system history
     echo ""
-    echo "User flatpaks changelog"
+    echo "----------User flatpaks changelog----------"
     echo ""
     flatpak --user history
 
@@ -104,7 +104,7 @@ check-local-overrides:
     #!/usr/bin/env bash
     run0 --background="" ostree admin config-diff
 
-# Clean up old up unused podman images, volumes, flatpak packages and rpm-ostree content
+# Clean up old + unused podman images, volumes, flatpak packages & rpm-ostree content
 clean-system:
     #!/usr/bin/env bash
     podman image prune -af
