@@ -48,7 +48,7 @@ Installed packages (RPMs):
 - [bootc](https://github.com/containers/bootc) (Required package for the bootloader update when using ISO)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
-- [totem-video-thumbnailer](https://packages.fedoraproject.org/pkgs/totem/totem-video-thumbnailer/) (installed to retain good amount of supported thumbnails, until something better comes in)
+- [fontconfig-font-replacements](https://github.com/hyperreal64/fedora-better-fonts) (Also known as `better-fonts`. It fills the gap of missing proprietary fonts with the open-source font replacements)
 
 Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
