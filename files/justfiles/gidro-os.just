@@ -187,7 +187,6 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["Gapless"]="$flatpak_data/com.github.neithern.g4music"
         ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
@@ -228,7 +227,6 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["Gapless"]="$flatpak_data/com.github.neithern.g4music"
         ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
@@ -243,7 +241,6 @@ factory-reset ACTION="prompt":
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
         ["Calculator"]="$flatpak_data/org.gnome.Calculator"
         ["Clapper"]="$flatpak_data/com.github.rafostar.Clapper"
-        ["LibreWolf"]="$flatpak_data/io.gitlab.librewolf-community"
         ["Gapless"]="$flatpak_data/com.github.neithern.g4music"
         ["Folio"]="$flatpak_data/com.toolstack.Folio"
       )
