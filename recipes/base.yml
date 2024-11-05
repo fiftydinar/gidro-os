@@ -43,6 +43,8 @@ modules:
       - echo -e "\033[90mEnabling rpm-ostree updates in config\033[0m"
       - sed -i '/^#*AutomaticUpdatePolicy=.*/s/.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
       - systemctl enable rpm-ostreed-automatic.timer
+      - echo -e "\033[90mDisabling the posibility of layering (not done in Ublue)\033[0m"
+      - sed -i '/^#*LockLayering=.*/s/.*/LockLayering=true/' /etc/rpm-ostreed.conf
       ## flatpak updater
       - echo -e "\033[90mCopying flatpak updater\033[0m"
       - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
