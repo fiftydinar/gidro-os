@@ -54,13 +54,13 @@ toggle-updates ACTION="prompt":
     fi
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
-        run0 --background="" bash -c "systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl enable --now --global flatpak-user-update.timer"
+        run0 --background="" bash -c "systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl enable --global flatpak-user-update.timer"
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
       if [ "${CURRENT_STATE}" == "Enabled" ]; then
-        run0 --background="" bash -c "systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl disable --now --global flatpak-user-update.timer"
+        run0 --background="" bash -c "systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl disable --global flatpak-user-update.timer"
       else
         printf "\e[1;31mERROR: Automatic updates are already disabled, no change is made.\e[0m\n" 1>&2
       fi  
