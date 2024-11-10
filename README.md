@@ -181,12 +181,11 @@ Settings applied by default:
 > [!CAUTION]
 > This ISO installation guide assumes that you want to install Gidro-OS on single-boot single-disk setup.
 
-ISO doesn't require an active internet connection during its usage (but it is recommended to make NTP working).
-
 ### [DOWNLOAD LINK](https://archive.org/download/gidro-os_10-11-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_10-11-2024.iso)
 ### [TORRENT LINK](https://archive.org/download/gidro-os_10-11-2024/gidro-os_10-11-2024_archive.torrent)<br/>(higher download speed)
 ### [ISO CHECKSUM](https://archive.org/download/gidro-os_10-11-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_10-11-2024.iso-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
 
+- ISO doesn't require an active internet connection during its usage (but it is recommended to have it, to make NTP working).
 - Download the ISO & proceed with installation.
 - When ISO is booted, finish the following mandatory tasks:
   - In "Installation Destination", select on which disk to install Gidro-OS, select "Storage Configuration" to Automatic & select "Free up space by removing or shrinking existing partitions".  
