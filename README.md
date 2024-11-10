@@ -202,14 +202,10 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
   ```
-- Do the reset of OS settings
+- Do the factory-reset
   ```
-  just factory-reset settings
-  ```   
-- Copy additional files from `skel` to `/var/home/${USER}/`
+  just factory-reset all
   ```
-  cp -r /usr/etc/skel/{*,.*} "${HOME}"
-  ```  
 
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
