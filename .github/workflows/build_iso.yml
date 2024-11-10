@@ -69,7 +69,7 @@ jobs:
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
 
       - name: Upload ISO to archive.org
-        uses: qoijjj/internet-archive-upload@v7
+        uses: RoyalOughtness/internet-archive-upload@v7
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
