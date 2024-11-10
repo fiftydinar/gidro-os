@@ -190,37 +190,26 @@ Rebasing is only supported from Fedora Silverblue edition.
 
 To rebase an existing Silverblue installation to the latest build:
 
-- Reset any package overrides that you might have:
+- Reset any package overrides & other mutations that are done to the image:
   ```
-  rpm-ostree override reset --all
+  rpm-ostree reset --overlays --overrides --initramfs && rpm-ostree override reset --all
   ```
-- Remove all packages that you layered:
+- Rebase to the unsigned image, to get the proper signing keys and policies installed (system will reboot):
   ```
-  rpm-ostree uninstall --all
+  rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
-- Reset any initramfs modifications that you might have:
+- Then rebase to the signed image, like this (system will reboot):
   ```
-  rpm-ostree initramfs --disable
+  rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
   ```
+- Do the reset of OS settings
   ```
-  rpm-ostree initramfs-etc --untrack-all
+  dconf reset -f /
+  ```   
+- Copy additional files from `skel` to `${HOME}`
   ```
-- Rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+  cp -r /usr/etc/skel/{*,.*} "${HOME}"
+  ```  
 
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
