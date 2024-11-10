@@ -206,7 +206,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   dconf reset -f /
   ```   
-- Copy additional files from `skel` to `${HOME}`
+- Copy additional files from `skel` to `/var/home/${USER}/`
   ```
   cp -r /usr/etc/skel/{*,.*} "${HOME}"
   ```  
