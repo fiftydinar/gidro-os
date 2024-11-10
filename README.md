@@ -178,13 +178,23 @@ Settings applied by default:
 > [!IMPORTANT]  
 > Backup your important data before proceeding with the installation.
 
-ISO doesn't require an active internet connection during its usage.
+> [!CAUTION]
+> This ISO installation guide assumes that you want to install Gidro-OS on single-boot single-disk setup.
+
+ISO doesn't require an active internet connection during its usage (but it is recommended to make NTP working).
 
 ### [DOWNLOAD LINK](https://archive.org/download/gidro-os_10-11-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_10-11-2024.iso)
 ### [TORRENT LINK](https://archive.org/download/gidro-os_10-11-2024/gidro-os_10-11-2024_archive.torrent)<br/>(higher download speed)
 ### [ISO CHECKSUM](https://archive.org/download/gidro-os_10-11-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_10-11-2024.iso-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
 
-Just download the ISO & proceed with installation.
+- Download the ISO & proceed with installation.
+- When ISO is booted, finish the following mandatory tasks:
+  - In "Installation Destination", select on which disk to install Gidro-OS, select "Storage Configuration" to Automatic & select "Free up space by removing or shrinking existing partitions".  
+    "Reclaim disk space" screen will pop-up. Click "Delete all" & "Reclaim space".
+  - In "User Creation", input full name, user name & password. Click Done.
+- Optionally do tasks of "Keyboard", "Language Support", "Time & Date", etc.
+- Click "Begin Installation"
+- When ISO finished the installation, follow the instructions of the 1st-time setup pop-up & finish it.
 
 ## Installation (Rebase)
 
@@ -215,6 +225,8 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   just factory-reset all
   ```
+- 1st-time setup should pop-up, just follow the instructions of it & finish it  
+  (don't worry if you didn't finish it before, 1st-time setup remembers the setup state & it will be present until finished)
 
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
