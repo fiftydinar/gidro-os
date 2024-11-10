@@ -198,6 +198,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
   ```
+- Complete the first-time setup 
 - Then rebase to the signed image, like this (system will reboot):
   ```
   rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
