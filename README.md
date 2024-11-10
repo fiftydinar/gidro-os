@@ -172,7 +172,11 @@ Settings applied by default:
 
 ## Installation (ISO) [Recommended]
 
-Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
+> [!IMPORTANT]  
+> Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
+
+> [!IMPORTANT]  
+> Backup your important data before proceeding with the installation.
 
 ISO doesn't require an active internet connection during its usage.
 
@@ -184,9 +188,14 @@ Just download the ISO & proceed with installation.
 
 ## Installation (Rebase)
 
-Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
+> [!IMPORTANT]  
+> Please read the [Wiki](https://github.com/fiftydinar/gidro-os/wiki) before proceeding with the installation.
 
-Rebasing is only supported from Fedora Silverblue edition.
+> [!IMPORTANT]  
+> Backup your important data before proceeding with the installation.
+
+> [!CAUTION]
+> Rebasing is only supported from Fedora Silverblue edition.
 
 To rebase an existing Silverblue installation to the latest build:
 
