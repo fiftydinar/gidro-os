@@ -55,12 +55,14 @@ toggle-updates ACTION="prompt":
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
         run0 --background="" bash -c "systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl enable --global flatpak-user-update.timer"
+        echo 'Reverted setting "automatic updates" to defaults.'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
       if [ "${CURRENT_STATE}" == "Enabled" ]; then
         run0 --background="" bash -c "systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl disable --global flatpak-user-update.timer"
+        echo 'Disable automatic updates setting applied.'
       else
         printf "\e[1;31mERROR: Automatic updates are already disabled, no change is made.\e[0m\n" 1>&2
       fi  
@@ -171,6 +173,7 @@ factory-reset ACTION="prompt":
       exit 0
     fi
     if [ "$OPTION" == "Factory-reset everything" ] || [ "${OPTION,,}" == "all" ]; then
+      mkdir -p "${HOME}"/.var/app/
       flatpak --system repair
       flatpak --user repair
         echo 'Repaired possibly non-working flatpaks.'
@@ -213,6 +216,7 @@ factory-reset ACTION="prompt":
       gsettings reset org.gnome.shell disabled-extensions
         echo 'Factory-reset of Gidro-OS settings only completed.'
     elif [ "$OPTION" == "Factory-reset apps" ] || [ "${OPTION,,}" == "apps" ]; then
+      mkdir -p "${HOME}"/.var/app/
       flatpak --system repair
       flatpak --user repair
         echo 'Repaired possibly non-working flatpaks.'
@@ -234,6 +238,7 @@ factory-reset ACTION="prompt":
       done 
       echo 'Factory reset of all apps completed.'
     elif [ "$OPTION" == "Factory-reset Gidro-OS modified apps settings only" ] || [ "${OPTION,,}" == "apps-gidro-os" ]; then
+      mkdir -p "${HOME}"/.var/app/
       flatpak_data="/usr/etc/skel/.var/app"
       declare -A apps=(
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
