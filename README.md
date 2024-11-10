@@ -204,7 +204,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
 - Do the reset of OS settings
   ```
-  dconf reset -f /
+  just factory-reset settings
   ```   
 - Copy additional files from `skel` to `/var/home/${USER}/`
   ```
