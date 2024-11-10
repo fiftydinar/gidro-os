@@ -179,7 +179,12 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -r "$HOME"/.var/app/*
+      if [[ -n "$(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d)" ]]; then
+        rm -r "$HOME"/.var/app/*
+        echo 'Removed all flatpak data.'
+      else
+        echo 'Flatpak data is already removed.'      
+      fi
         echo 'Removed all flatpak data.'
       cp -r /usr/etc/skel/Templates "$HOME"/
         echo '"New documents" context menu entry in Nautilus created.'    
@@ -222,8 +227,12 @@ factory-reset ACTION="prompt":
         echo 'Repaired possibly non-working flatpaks.'
       flatpak --user uninstall --all --delete-data
         echo 'Uninstalled all user flatpaks.'
-      rm -r "$HOME"/.var/app/*
+      if [[ -n "$(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d)" ]]; then
+        rm -r "$HOME"/.var/app/*
         echo 'Removed all flatpak data.'
+      else
+        echo 'Flatpak data is already removed.'      
+      fi
       flatpak_data="/usr/etc/skel/.var/app"
       declare -A apps=(
         ["Text Editor"]="$flatpak_data/org.gnome.TextEditor"
