@@ -32,8 +32,6 @@ system:
     - page.codeberg.libre_menu_editor.LibreMenuEditor
     - com.mattjakeman.ExtensionManager
     - com.github.wwmm.easyeffects
-  remove:
-    - io.gitlab.librewolf-community 
 user:
   repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
   repo-name: flathub-user
