@@ -210,7 +210,7 @@ To rebase an existing Silverblue installation to the latest build:
 
 - Reset any package overrides & other mutations that are done to the image:
   ```
-  rpm-ostree reset --overlays --overrides --initramfs && rpm-ostree override reset --all
+  rpm-ostree reset
   ```
 - Update your current system to latest version (system will reboot if update is available):
   ```
