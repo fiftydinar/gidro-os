@@ -14,7 +14,7 @@ modules:
   - from-file: module-recipes/files.yml
   - from-file: module-recipes/rpm-ostree.yml
   - from-file: module-recipes/gnome-extensions.yml
-  - from-file: module-recipes/justfiles.yml
+  - type: justfiles
   - type: yafti
   - from-file: module-recipes/default-flatpaks.yml
   - from-file: module-recipes/bling.yml
