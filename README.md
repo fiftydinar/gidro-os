@@ -212,6 +212,10 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree reset --overlays --overrides --initramfs && rpm-ostree override reset --all
   ```
+- Update your current system to latest version (system will reboot):
+  ```
+  rpm-ostree update --reboot
+  ```
 - Rebase to the unsigned image, to get the proper signing keys and policies installed (system will reboot):
   ```
   rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
