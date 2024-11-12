@@ -39,10 +39,10 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Checkout Repo
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Build ISO
-        uses: jasonn3/build-container-installer@a1ce6da2d6c1af0561bec053366d0f3aa7e38743 # v1.2.3
+        uses: jasonn3/build-container-installer@v1.2.3
         id: build
         with:
           arch: x86_64
@@ -69,7 +69,7 @@ jobs:
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
 
       - name: Upload ISO to archive.org
-        uses: RoyalOughtness/internet-archive-upload@4b89018c28e247e2236504812c3e63b8f81faa5b # v7
+        uses: RoyalOughtness/internet-archive-upload@v7
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
