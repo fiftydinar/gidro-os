@@ -212,7 +212,7 @@ To rebase an existing Silverblue installation to the latest build:
   ```
   rpm-ostree reset
   ```
-- Update your current system to latest version (system will reboot if update is available):
+- Update your current system to the latest version (system will reboot if update is available):
   ```
   rpm-ostree update --reboot
   ```
