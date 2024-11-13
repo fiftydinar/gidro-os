@@ -12,4 +12,4 @@ snippets:
   # python3-icoextract EXE thumbnailer  
   - wget https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -O /usr/share/thumbnailers/exe-thumbnailer.thumbnailer
   # Patch Media Progress Gnome extension to use system Nokia Pure Text font instead of the hardcoded one
-  - sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css
+  - "sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css"
