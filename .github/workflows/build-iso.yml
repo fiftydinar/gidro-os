@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/build_iso.yml'
+      - '.github/workflows/build-iso.yml'
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
