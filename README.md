@@ -60,6 +60,7 @@ Installed extensions:
 - [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 - [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
 - [Gnome 4x UI Improvements](https://github.com/axxapy/gnome-ui-tune)
+- [Media Progress](https://github.com/Krypion17/media-progress)
 - [Quick Settings Audio Devices Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/) (disabled by default)
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
 - [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
