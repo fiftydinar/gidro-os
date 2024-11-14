@@ -161,8 +161,8 @@ Settings applied by default:
   - Deluge
   - TutaMail
 - Set Text Editor to:
-  - use Nokia Pure Text T font
-  - increase the font size to 20
+  - use Nokia Pure Text font
+  - increase the font size to 16
   - disable Restore Session
   - use higher contrast theme
   - highlight line numbers
