@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 get_yaml_array INCLUDE '.include[]' "$1"
 
@@ -59,7 +59,7 @@ if [[ ${#INCLUDE[@]} -gt 0 ]]; then
     cp "${file_path}" "${SCHEMA_TEST_LOCATION}"
   done
 else
-  for file in "${c[@]}"; do
+  for file in "${SCHEMA_MODULE_FILES[@]}"; do
     file_path="${SCHEMA_INCLUDE_LOCATION}/${file}"
     cp "${file_path}" "${SCHEMA_TEST_LOCATION}"
   done
