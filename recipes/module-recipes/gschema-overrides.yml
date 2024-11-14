@@ -1,3 +1,4 @@
 type: gschema-overrides
 include:
-  - zz1-gidros.gschema.override
+  - zz1-gidro.gschema.override
+  - zz1-gidros2.gschema.override
