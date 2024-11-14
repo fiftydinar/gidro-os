@@ -27,14 +27,20 @@ fi
 # Abort the build if recipe input does not match any of the included files
 if [[ ${#INCLUDE[@]} -gt 0 ]]; then
   for input in "${INCLUDE[@]}"; do
+    match_found=false
     for file in "${SCHEMA_MODULE_FILES[@]}"; do
-      if [[ ! "${input}" == "${file}" ]]; then
-        echo "ERROR: Module failed because '${input}' file specified in module recipe doesn't match any of the included files in '${SCHEMA_INCLUDE_LOCATION/#\/tmp/}/' location inside the repo"
-        exit 1
+      if [[ "${input}" == "${file}" ]]; then
+        match_found=true
+        break
       fi
     done
+    if [[ "${match_found}" == false ]]; then
+      echo "ERROR: Module failed because '${input}' file specified in module recipe doesn't match any of the included files."
+      exit 1
+    fi
   done
 fi
+
 
 # Apply gschema-override when all conditions above are satisfied
 
