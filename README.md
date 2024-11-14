@@ -143,7 +143,7 @@ Settings applied by default:
 - Set Bluetooth Battery Meter to show battery percentage
 - Set Night Time Switcher time offset to 0 & set manual time (time based on automatic location is not accurate. Manual location can be specified instead)
 - Set Gnome 4x UI Improvements to only enable wallpaper thumbnails in workspace switcher
-- Set Media Progress to use Nokia Pure Text font instead of the hardcoded one
+- Set Media Progress to use Nokia Pure Text T font instead of the hardcoded one
 - Enabled Nautilus "Sort folders before files"
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
@@ -161,13 +161,13 @@ Settings applied by default:
   - Deluge
   - TutaMail
 - Set Text Editor to:
-  - use Nokia Pure text font
+  - use Nokia Pure Text T font
   - disable Restore Session
   - use higher contrast theme
   - highlight line numbers
-- Set Folio to use Nokia Pure text font
+- Set Folio to use Nokia Pure Text font
 - Set Calculator to separate thousands
-- Set Clapper (Videos) to use Nokia Pure font for subtitles
+- Set Clapper (Videos) to use Nokia Pure Text font for subtitles
 - Set Gapless to enable background playback
 - Set Terminal (Ptyxis) to don't restore session by default
 - Use cool BlueBuild boot & login-screen logo instead of Fedora

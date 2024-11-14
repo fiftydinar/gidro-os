@@ -1,6 +1,6 @@
 [org/gnome/TextEditor]
 use-system-font=false
-custom-font='Nokia Pure Text 16'
+custom-font='Nokia Pure Text T 16'
 restore-session=false
 show-line-numbers=true
 style-scheme='kate'
