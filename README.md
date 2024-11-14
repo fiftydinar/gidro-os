@@ -240,6 +240,7 @@ To rebase an existing Silverblue installation to the latest build:
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
+- [Hardened Chromium](https://copr.fedorainfracloud.org/coprs/secureblue/hardened-chromium/)
 
 ## Note for myself regarding what I do after install
 
