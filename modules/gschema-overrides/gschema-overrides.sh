@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -euxo pipefail
 
 get_yaml_array INCLUDE '.include[]' "$1"
 
