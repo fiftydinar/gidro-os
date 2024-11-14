@@ -162,6 +162,7 @@ Settings applied by default:
   - TutaMail
 - Set Text Editor to:
   - use Nokia Pure Text T font
+  - increase the font size to 20
   - disable Restore Session
   - use higher contrast theme
   - highlight line numbers
