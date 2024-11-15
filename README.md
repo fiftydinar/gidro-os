@@ -119,6 +119,7 @@ Settings applied by default:
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)
 - Enabled num-lock by default
 - Set font hinting to "None"
+- Force font hinting to be manual, instead of automatic based on display resolution
 - Set Nokia Pure Text font as default
 - Set a beautiful Symbian^3 picture as a wallpaper, including dark variant
 - [Set light & dark theme to AdwGtk3 for GTK3 applications](https://github.com/lassekongo83/adw-gtk3) (to make Adwaita design more consistent)

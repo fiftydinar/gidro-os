@@ -16,6 +16,7 @@ show-battery-percentage=true
 clock-show-weekday=true
 document-font-name='Nokia Pure Text 11'
 font-hinting='none'
+font-rendering='manual'
 font-name='Nokia Pure Text 11'
 gtk-theme='adw-gtk3'
 icon-theme='MoreWaita'
