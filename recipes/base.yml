@@ -17,7 +17,7 @@ modules:
       - echo -e "\033[90mCopying udev rules from Universal Blue\033[0m"
       - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
       ## Add plugdev group to sysusers.d (needed for Yubikey udev rules) (not done in Ublue)
-      - echo -e "\033[90mAdd plugdev group to sysuser.d (not done in Ublue)\033[0m"      
+      - echo -e "\033[90mAdd plugdev group to sysusers.d (not done in Ublue)\033[0m"      
       - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
       # Game-device-udev rules
       - echo -e "\033[90mDownloading game-device-udev zip file\033[0m"    
