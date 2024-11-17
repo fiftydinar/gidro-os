@@ -242,7 +242,3 @@ To rebase an existing Silverblue installation to the latest build:
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
 - [Hardened Chromium](https://copr.fedorainfracloud.org/coprs/secureblue/hardened-chromium/)
-
-## Note for myself regarding what I do after install
-
-- I use `amd_pstate=active` kernel argument to force pstate for my supported CPU (Ryzen 5 5600X, waiting for upstream to enable it by default)
