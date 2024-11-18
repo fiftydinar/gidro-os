@@ -207,10 +207,7 @@ Settings applied by default:
 > [!IMPORTANT]  
 > Backup your important data before proceeding with the installation.
 
-> [!CAUTION]
-> Rebasing is only supported from Fedora Silverblue edition.
-
-To rebase an existing Silverblue installation to the latest build:
+To rebase an existing installation to the latest build:
 
 - Reset any package overrides & other mutations that are done to the image:
   ```
