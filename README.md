@@ -49,6 +49,7 @@ Installed packages (RPMs):
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
 - [fontconfig-font-replacements](https://github.com/hyperreal64/fedora-better-fonts) (Also known as `better-fonts`. It fills the gap of missing proprietary fonts with the open-source font replacements)
+- [dr14_t.meter](https://github.com/simon-r/dr14_t.meter) (support for reading dynamic range of audio files)
 
 Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
@@ -239,3 +240,4 @@ To rebase an existing installation to the latest build:
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
 - [Hardened Chromium](https://copr.fedorainfracloud.org/coprs/secureblue/hardened-chromium/)
+- [DR14 T Meter](https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/)

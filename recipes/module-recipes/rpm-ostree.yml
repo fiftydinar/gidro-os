@@ -6,6 +6,7 @@ repos:
   - https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/repo/fedora-%OS_VERSION%/decathorpe-miniaturo-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/repo/fedora-%OS_VERSION%/hyperreal-better_fonts-fedora-%OS_VERSION%.repo
   - https://copr.fedorainfracloud.org/coprs/secureblue/hardened-chromium/repo/fedora-%OS_VERSION%/secureblue-hardened-chromium-fedora-%OS_VERSION%.repo
+  - https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/repo/fedora-%OS_VERSION/sassam-dr14_tmeter-fedora-%OS_VERSION.repo
 
 remove:
   - tuned
@@ -43,3 +44,4 @@ install:
   - power-profiles-daemon
   - fontconfig-font-replacements
   - hardened-chromium
+  - dr14_t.meter
