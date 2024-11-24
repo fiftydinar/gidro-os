@@ -55,7 +55,7 @@ toggle-updates ACTION="prompt":
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
         run0 --background="" bash -c "systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl enable --global flatpak-user-update.timer"
-        echo 'Reverted setting "automatic updates" to defaults.'
+        echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
@@ -134,7 +134,7 @@ configure-close-button ACTION="prompt":
     elif [ "$OPTION" == "Unhide (Default)" ] || [ "${OPTION,,}" == "unhide" ]; then
       if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
         gsettings reset org.gnome.desktop.wm.preferences button-layout
-          echo 'Reverted setting "window close button" to defaults.'
+          echo 'Reverted setting "window close button" to defaults (Present).'
       else
         printf "\e[1;31mERROR: Close button is already present, no change is made.\e[0m\n" 1>&2
       fi
@@ -316,7 +316,7 @@ scheduled-reboot ACTION="prompt":
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
         run0 --background="" bash -c "systemctl disable nightly-reboot.timer; systemctl stop nightly-reboot.timer"
-        echo 'Reverted setting "nightly scheduled reboot" to defaults.'
+        echo 'Reverted setting "nightly scheduled reboot" to defaults (Disabled).'
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
       fi
@@ -326,7 +326,7 @@ scheduled-reboot ACTION="prompt":
 android-tools ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
-    CURRENT_STATE="Not Installed (Default)"
+    CURRENT_STATE="Not Installed"
     if command -v adb &> /dev/null && command -v fastboot &> /dev/null; then
       CURRENT_STATE="Installed"
     fi
@@ -359,7 +359,7 @@ android-tools ACTION="prompt":
     if [ "${OPTION,,}" == "install" ]; then
       if [[ "${CURRENT_STATE}" == "Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is already installed.\e[0m\n" 1>&2
-      elif [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
+      elif [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         echo "Installing Android platform-tools..."
         mkdir -p /tmp/platform-tools/
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
@@ -370,7 +370,7 @@ android-tools ACTION="prompt":
         echo "Android platform-tools is installed"
       fi
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
-      if [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
+      if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" > "${VERSION}" ]]; then
         echo "Removing old Android platform-tools files"
@@ -387,7 +387,7 @@ android-tools ACTION="prompt":
         printf "\e[1;31mERROR: Latest Android platform-tools version is already installed.\e[0m\n" 1>&2
       fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
-      if [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
+      if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
@@ -437,7 +437,7 @@ configure-bluetooth-headset-profile ACTION="prompt":
       elif [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         run0 --background="" rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
-          echo 'Reverted setting "Bluetooth headset profile" to defaults.'
+          echo 'Reverted setting "Bluetooth headset profile" to defaults (Enabled).'
       elif [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
         printf "\e[1;31mERROR: Bluetooth headset profile is already enabled, no change is made.\e[0m\n" 1>&2
       fi
