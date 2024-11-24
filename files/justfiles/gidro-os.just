@@ -38,7 +38,7 @@ toggle-updates ACTION="prompt":
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled"
     if systemctl -q is-enabled rpm-ostreed-automatic.timer; then
-      CURRENT_STATE="Enabled"
+      CURRENT_STATE="Enabled (Default)"
     fi
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
@@ -60,7 +60,7 @@ toggle-updates ACTION="prompt":
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
-      if [ "${CURRENT_STATE}" == "Enabled" ]; then
+      if [ "${CURRENT_STATE}" == "Enabled (Default)" ]; then
         run0 --background="" bash -c "systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl disable --global flatpak-user-update.timer"
         echo 'Disable automatic updates setting applied.'
       else
@@ -106,7 +106,7 @@ clean-system:
 configure-close-button ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
-    CURRENT_STATE="Present"
+    CURRENT_STATE="Present (Default)"
     if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
       CURRENT_STATE="Hidden"
     fi
@@ -288,7 +288,7 @@ factory-reset ACTION="prompt":
 scheduled-reboot ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
-    CURRENT_STATE="Disabled"
+    CURRENT_STATE="Disabled (Default)"
     if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
       CURRENT_STATE="Enabled"
     fi  
@@ -326,7 +326,7 @@ scheduled-reboot ACTION="prompt":
 android-tools ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
-    CURRENT_STATE="Not Installed"
+    CURRENT_STATE="Not Installed (Default)"
     if command -v adb &> /dev/null && command -v fastboot &> /dev/null; then
       CURRENT_STATE="Installed"
     fi
@@ -359,7 +359,7 @@ android-tools ACTION="prompt":
     if [ "${OPTION,,}" == "install" ]; then
       if [[ "${CURRENT_STATE}" == "Installed" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is already installed.\e[0m\n" 1>&2
-      elif [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
+      elif [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
         echo "Installing Android platform-tools..."
         mkdir -p /tmp/platform-tools/
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
@@ -370,7 +370,7 @@ android-tools ACTION="prompt":
         echo "Android platform-tools is installed"
       fi
     elif [ "${OPTION,,}" == "update" ] || [ "${OPTION,,}" == "upgrade" ]; then
-      if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
+      if [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so nothing can be updated.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]] && [[ "${LATEST_VERSION}" > "${VERSION}" ]]; then
         echo "Removing old Android platform-tools files"
@@ -387,7 +387,7 @@ android-tools ACTION="prompt":
         printf "\e[1;31mERROR: Latest Android platform-tools version is already installed.\e[0m\n" 1>&2
       fi  
     elif [ "${OPTION,,}" == "uninstall" ]; then
-      if [[ "${CURRENT_STATE}" == "Not Installed" ]]; then
+      if [[ "${CURRENT_STATE}" == "Not Installed (Default)" ]]; then
         printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
@@ -400,7 +400,7 @@ android-tools ACTION="prompt":
 configure-bluetooth-headset-profile ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
-    CURRENT_STATE="Enabled"
+    CURRENT_STATE="Enabled (Default)"
     FILE_CONF="/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf"
     WIREPLUMBER_DIR="/etc/wireplumber/wireplumber.conf.d"
     WIREPLUMBER_FILE="51-disable-bluetooth-headphone-profile-switch.conf"
