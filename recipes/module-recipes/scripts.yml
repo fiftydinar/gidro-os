@@ -5,6 +5,8 @@ scripts:
   - sleep-through-notifications.sh
 
 snippets:
+  - "rm /etc/skel/.bashrc"
+  - "rm /etc/skel/.bash_profile"
   # Clear font cache
   - "fc-cache --system-only --really-force /usr/share/fonts/nokia-font"
   # Hide ROM Properties desktop shortcut  
