@@ -4,8 +4,8 @@ name: gidro-os
 description: My personalized custom OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: quay.io/fedora-ostree-desktops/silverblue
-image-version: 41 # latest is also supported if you want new updates ASAP
+base-image: quay.io/fedora/fedora-silverblue
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
