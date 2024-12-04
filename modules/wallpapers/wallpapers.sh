@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
     
 set -euo pipefail    
-    
-############################### VARIABLE FUNCTIONS ###################################
 
-get_yaml_array() {
-    # Workaround for trimming newlines until this is implemented in build.sh
-    readarray -t "$1" < <(echo "$3" | yq -I=0 "$2")
-}
+# Install `yq` dependency if it's not installed (needed for manipulation of XML files)
+
+if [[ ! -f "/usr/bin/yq" ]]; then
+  rpm-ostree install yq
+fi
+
+############################### VARIABLE FUNCTIONS ###################################
 
 sanitize_file_names() {
     if [ -z "$1" ]; then
@@ -111,10 +112,10 @@ gschema_override_destination="/usr/share/glib-2.0/schemas"
 # Wallpaper variables (for Gnome)
 
 # Default wallpapers
-get_yaml_array DEFAULT_WALLPAPER '.default.wallpaper[]' "$1"
+get_json_array DEFAULT_WALLPAPER 'try .["default"].["wallpaper"][]' "${1}"
 sanitize_file_names DEFAULT_WALLPAPER
 #
-get_yaml_array DEFAULT_WALLPAPER_LIGHT_DARK '.default.wallpaper-light-dark[]' "$1"
+get_json_array DEFAULT_WALLPAPER_LIGHT_DARK 'try .["default"].["wallpaper-light-dark"][]' "${1}"
 sanitize_file_names DEFAULT_WALLPAPER_LIGHT_DARK
 #
 extract_default_wallpaper_light DEFAULT_WALLPAPER_LIGHT
