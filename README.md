@@ -102,7 +102,7 @@ Optional just config:
 - [Disable Bluetooth headset profile (HSP/HFP)](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-disable-bluetooth-headset-profile) (useful if you don't use mic from Bluetooth headphones, so you don't get surprisingly switched to lower audio quality headset profile)
 
 Settings applied by default:
-- Disabled option for installing system packages, aka layering through `rpm-ostree` & `dnf` (to ensure that system integrity & reliability remains untouched)
+- [Disabled option for installing system packages, aka layering through `rpm-ostree` & `dnf`](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-rpm-ostree-installremove-or-dnf-installremove-doesnt-work-to-installremove-some-applications-) (to ensure that system integrity & reliability remains untouched)
 - [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
 - [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
 - [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
