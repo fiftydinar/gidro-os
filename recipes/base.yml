@@ -7,7 +7,7 @@ modules:
 # - ublue-os-just (stripped version: without motd tips, Ublue justfiles, non-needed brew profile.d script & Ublue distrobox+podman manifest files)
   - type: script
     snippets:
-      - "[ ! -w "/usr/" ] && echo "The folder '/usr/' is read-only." || echo "The folder '/usr/' is writable.""
+      - "[ ! -w /usr/ ] && echo 'The folder '/usr/' is read-only.' || echo 'The folder '/usr/' is writable.'"
       # Download Universal Blue config zip
       - echo -e "\033[90mDownloading Universal Blue config zip file\033[0m"
       - curl -fLs --create-dirs https://github.com/ublue-os/config/archive/refs/heads/main.zip -o /tmp/ublue-config/main.zip
