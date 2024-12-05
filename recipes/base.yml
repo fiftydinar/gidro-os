@@ -96,9 +96,6 @@ modules:
       - echo -e "\033[90mInstalling Negativo repo\033[0m"
       - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
       - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-      # Remove redundant RPMFusion repos (not done in Ublue)
-      - echo -e "\033[90mRemove redundant RPMFusion repos (not done in Ublue)\033[0m"
-      - rm /etc/yum.repos.d/rpmfusion-*.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
       - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
