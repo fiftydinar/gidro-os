@@ -3,6 +3,7 @@ scripts:
   - morewaita.sh
   - initramfs.sh
   - sleep-through-notifications.sh
+  - disable-layering.sh
 
 snippets:
   # Clear font cache
