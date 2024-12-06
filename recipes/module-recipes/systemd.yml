@@ -1,4 +1,5 @@
 type: systemd
+source: local
 system:
   enabled:
     - dirty-centisecs.service
