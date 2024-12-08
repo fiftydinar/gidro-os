@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euxo pipefail
+set -euo pipefail
 
 CONTAINER_DIR="/etc/containers"
 MODULE_DIRECTORY="${MODULE_DIRECTORY:-"/tmp/modules"}"
@@ -14,7 +14,7 @@ if ! [ -d "${CONTAINER_DIR}" ]; then
   mkdir -p "${CONTAINER_DIR}"
 fi
 
-if ! [ -d ${CONTAINER_DIR}/registries.d ]; then
+if ! [ -d "${CONTAINER_DIR}/registries.d" ]; then
   mkdir -p "${CONTAINER_DIR}/registries.d"
 fi
 
@@ -23,7 +23,9 @@ if ! [ -d "/etc/pki/containers" ]; then
 fi
 
 if ! [ -f "/etc/pki/containers/${IMAGE_NAME_FILE}.pub" ]; then
-    cp "/usr/share/ublue-os/cosign.pub" "/etc/pki/containers/${IMAGE_NAME_FILE}.pub"
+  echo "ERROR: Cannot find '${IMAGE_NAME_FILE}.pub' image key in '/etc/pki/containers/'"
+  echo "       BlueBuild CLI should have copied it, but it didn't"
+  exit 1
 fi
 
 TEMPLATE_POLICY="${MODULE_DIRECTORY}/signing/policy.json"
