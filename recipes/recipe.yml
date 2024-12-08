@@ -22,3 +22,4 @@ modules:
   - from-file: module-recipes/scripts.yml
   - from-file: module-recipes/wallpapers.yml  
   - type: signing
+    source: local
