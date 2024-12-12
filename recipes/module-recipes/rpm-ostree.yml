@@ -41,6 +41,7 @@ modules:
       - power-profiles-daemon
       - fontconfig-font-replacements
       - hardened-chromium
+      - hardened-chromium-subresource-filter
 
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: script

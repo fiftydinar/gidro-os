@@ -4,7 +4,7 @@ scripts:
   - initramfs.sh
   - sleep-through-notifications.sh
   - disable-layering.sh
-  - hardened-chromium-gpu-acceleration-patch.sh
+  - hardened-chromium-patches.sh
 
 snippets:
   # Clear font cache
