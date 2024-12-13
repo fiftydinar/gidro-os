@@ -4,7 +4,7 @@ set -euo pipefail
 
 # WARNING!
 # Won't work when Fedora starts to utilize UKIs (Unified Kernel Images).
-# UKIs contain kernel + initramfs + microcode (& maybe some other stuff)
+# UKIs will contain kernel + initramfs + bootloader
 
 readarray -t QUALIFIED_KERNEL < <(find "/lib/modules/" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
 
