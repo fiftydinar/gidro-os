@@ -5,6 +5,7 @@ set -euo pipefail
 # WARNING!
 # Won't work when Fedora starts to utilize UKIs (Unified Kernel Images).
 # UKIs contain kernel + initramfs + microcode (& maybe some other stuff)
-QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(\d+\.\d+\.\d+)' | sed -E 's/kernel-//')"
+QUALIFIED_KERNEL="$(find "/lib/modules/" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")"
+echo "Initramfs regeneration is performing for kernel version: ${QUALIFIED_KERNEL}"
 /usr/bin/dracut --no-hostonly --kver "${QUALIFIED_KERNEL}" --reproducible -v --add ostree -f "/lib/modules/${QUALIFIED_KERNEL}/initramfs.img"
 chmod 0600 "/lib/modules/${QUALIFIED_KERNEL}/initramfs.img"
