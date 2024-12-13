@@ -6,7 +6,7 @@ set -euo pipefail
 # Won't work when Fedora starts to utilize UKIs (Unified Kernel Images).
 # UKIs will contain kernel + initramfs + bootloader
 
-readarray -t QUALIFIED_KERNEL < <(find "/lib/modules/" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
+readarray -t QUALIFIED_KERNEL < <(find "/usr/lib/modules/" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
 
 if [[ "${#QUALIFIED_KERNEL[@]}" -gt 1 ]]; then
   echo "ERROR: There are several versions of kernel's initramfs"
@@ -17,5 +17,5 @@ if [[ "${#QUALIFIED_KERNEL[@]}" -gt 1 ]]; then
 fi
 
 echo "Initramfs regeneration is performing for kernel version: ${QUALIFIED_KERNEL[*]}"
-/usr/bin/dracut --no-hostonly --kver "${QUALIFIED_KERNEL[*]}" --reproducible -v --add ostree -f "/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
-chmod 0600 "/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
+/usr/bin/dracut --no-hostonly --kver "${QUALIFIED_KERNEL[*]}" --reproducible -v --add ostree -f "/usr/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
+chmod 0600 "/usr/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
