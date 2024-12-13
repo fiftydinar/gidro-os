@@ -17,5 +17,5 @@ if [[ "${#QUALIFIED_KERNEL[@]}" -gt 1 ]]; then
 fi
 
 echo "Initramfs regeneration is performing for kernel version: ${QUALIFIED_KERNEL[*]}"
-/usr/bin/dracut --no-hostonly --kver "${QUALIFIED_KERNEL[*]}" --reproducible -v --add ostree -f "/usr/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
+dracut --no-hostonly --kver "${QUALIFIED_KERNEL[*]}" --reproducible -v --add ostree -f "/usr/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
 chmod 0600 "/usr/lib/modules/${QUALIFIED_KERNEL[*]}/initramfs.img"
