@@ -6,8 +6,8 @@ set -euo pipefail
 # Won't work when Fedora starts to utilize UKIs (Unified Kernel Images).
 # UKIs will contain kernel + initramfs + bootloader
 
-readarray -t QUALIFIED_KERNEL < <(find "${KERNEL_MODULES_PATH}" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
 KERNEL_MODULES_PATH="/usr/lib/modules"
+readarray -t QUALIFIED_KERNEL < <(find "${KERNEL_MODULES_PATH}" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
 INITRAMFS_IMAGE_FILENAME="initramfs.img"
 INITRAMFS_IMAGE="${KERNEL_MODULES_PATH}/${QUALIFIED_KERNEL[*]}/${INITRAMFS_IMAGE}"
 
