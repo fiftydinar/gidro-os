@@ -163,3 +163,6 @@ modules:
     snippets:
       # Workaround non-working Chinese, Japanese & Korean fonts
       - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
+      # Workaround OpenCL bug
+      # https://github.com/ublue-os/main/pull/692
+      - "rpm-ostree override replace --from repo='fedora' --experimental --remove=OpenCL-ICD-Loader ocl-icd || true"
