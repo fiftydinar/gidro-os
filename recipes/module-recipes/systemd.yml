@@ -6,6 +6,7 @@ system:
     - memory-tweaks-gidro.service
     - adbusers-append.service
     - plugdev-append.service
+    - bootc-auto-update-without-reboot.timer
 user:
   enabled:
     - flatpak-gidro@deluge.service

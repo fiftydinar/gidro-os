@@ -5,7 +5,7 @@ update:
     #!/usr/bin/env bash
     echo "----------System update section----------"
     echo ""
-    rpm-ostree upgrade
+    sudo bootc upgrade
     echo ""
     echo "----------System flatpak section----------"
     echo ""
@@ -37,7 +37,7 @@ toggle-updates ACTION="prompt":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled"
-    if systemctl -q is-enabled rpm-ostreed-automatic.timer; then
+    if systemctl -q is-enabled bootc-auto-update-without-reboot.timer; then
       CURRENT_STATE="Enabled (Default)"
     fi
     OPTION={{ ACTION }}
@@ -54,14 +54,14 @@ toggle-updates ACTION="prompt":
     fi
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
-        sudo bash -c "systemctl enable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl enable --global flatpak-user-update.timer"
+        sudo bash -c "systemctl enable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer; systemctl enable --global flatpak-user-update.timer"
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
       if [ "${CURRENT_STATE}" == "Enabled (Default)" ]; then
-        sudo bash -c "systemctl disable --now flatpak-system-update.timer rpm-ostreed-automatic.timer; systemctl disable --global flatpak-user-update.timer"
+        sudo bash -c "systemctl disable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer; systemctl disable --global flatpak-user-update.timer"
         echo 'Disable automatic updates setting applied.'
       else
         printf "\e[1;31mERROR: Automatic updates are already disabled, no change is made.\e[0m\n" 1>&2
@@ -93,14 +93,13 @@ check-local-overrides:
     #!/usr/bin/env bash
     sudo ostree admin config-diff
 
-# Clean up old + unused podman images, volumes, flatpak packages & rpm-ostree content
+# Clean up old + unused podman images, volumes & flatpak packages
 clean-system:
     #!/usr/bin/env bash
     podman image prune -af
     podman volume prune -f
     flatpak uninstall --system --unused
     flatpak uninstall --user --unused
-    rpm-ostree cleanup -bm
 
 # Configure window close button
 configure-close-button ACTION="prompt":

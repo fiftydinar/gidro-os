@@ -1,0 +1,14 @@
+[Unit]
+Description=Apply bootc updates without reboot
+Documentation=man:bootc(8)
+ConditionPathExists=/run/ostree-booted
+
+[Timer]
+OnBootSec=1h
+OnUnitInactiveSec=1d
+RandomizedDelaySec=10m
+OnCalendar=*-*-* 4:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

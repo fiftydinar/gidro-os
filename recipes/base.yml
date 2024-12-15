@@ -34,15 +34,7 @@ modules:
       - curl -fLs --create-dirs https://raw.githubusercontent.com/M0Rf30/android-udev-rules/refs/heads/main/51-android.rules -o /usr/lib/udev/rules.d/51-android.rules
       - echo -e "\033[90mAdding adbusers group to sysusers.d\033[0m"
       - echo "g adbusers - -" > /usr/lib/sysusers.d/android-udev.conf
-      # rpm-ostree & flatpak updaters
-      ## rpm-ostree updater
-      - echo -e "\033[90mCopying rpm-ostree updater\033[0m"
-      - mkdir -p /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/ /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/
-      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
-      - cp /tmp/ublue-config/config-main/files/etc/systemd/system/rpm-ostreed-automatic.service.d/override.conf /usr/lib/systemd/system/rpm-ostreed-automatic.service.d/override.conf
-      - echo -e "\033[90mEnabling rpm-ostree updates in config\033[0m"
-      - sed -i '/^#*AutomaticUpdatePolicy=.*/s/.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
-      - systemctl enable rpm-ostreed-automatic.timer
+      # flatpak updaters (rpm-ostree updater ommited because bootc update is used instead)
       ## flatpak updater
       - echo -e "\033[90mCopying flatpak updater\033[0m"
       - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
