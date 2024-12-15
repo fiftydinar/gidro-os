@@ -1,0 +1,1 @@
+kargs = ["mitigations=auto,nosmt"]
