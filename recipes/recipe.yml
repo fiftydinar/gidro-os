@@ -21,5 +21,6 @@ modules:
   - from-file: module-recipes/systemd.yml
   - type: gschema-overrides
   - from-file: module-recipes/scripts.yml
-  - from-file: module-recipes/wallpapers.yml  
+  - from-file: module-recipes/wallpapers.yml
+  - type: initramfs
   - type: signing
