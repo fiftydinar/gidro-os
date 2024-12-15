@@ -210,21 +210,17 @@ Settings applied by default:
 
 To rebase an existing installation to the latest build:
 
-- Reset any package overrides & other mutations that are done to the image:
-  ```
-  rpm-ostree reset
-  ```
 - Update your current system to the latest version (system will reboot if update is available):
   ```
-  rpm-ostree update --reboot
+  bootc upgrade --apply
   ```
 - Rebase to the unsigned image, to get the proper signing keys and policies installed (system will reboot):
   ```
-  rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/fiftydinar/gidro-os:latest
+  bootc switch --apply ghcr.io/fiftydinar/gidro-os:latest
   ```
 - Then rebase to the signed image, like this (system will reboot):
   ```
-  rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/fiftydinar/gidro-os:latest
+  bootc switch --apply --enforce-container-sigpolicy ghcr.io/fiftydinar/gidro-os:latest
   ```
 - Do the factory-reset
   ```
