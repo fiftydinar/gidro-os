@@ -210,17 +210,17 @@ Settings applied by default:
 
 To rebase an existing installation to the latest build:
 
-- Update your current system to the latest version (system will reboot if update is available):
+- Update your current system to the latest version (system will reboot):
   ```
-  bootc upgrade --apply
+  sudo bootc upgrade --apply
   ```
 - Rebase to the unsigned image, to get the proper signing keys and policies installed (system will reboot):
   ```
-  bootc switch --apply ghcr.io/fiftydinar/gidro-os:latest
+  sudo bootc switch --apply ghcr.io/fiftydinar/gidro-os:latest
   ```
 - Then rebase to the signed image, like this (system will reboot):
   ```
-  bootc switch --apply --enforce-container-sigpolicy ghcr.io/fiftydinar/gidro-os:latest
+  sudo bootc switch --enforce-container-sigpolicy --apply ghcr.io/fiftydinar/gidro-os:latest
   ```
 - Do the factory-reset
   ```
