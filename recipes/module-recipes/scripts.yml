@@ -3,6 +3,7 @@ scripts:
   - morewaita.sh
   - sleep-through-notifications.sh
   - disable-layering.sh
+  - prefer-bootc-over-rpm-ostree.sh
   - hardened-chromium-disable-network-sandbox.sh
 
 snippets:
