@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cat << EOF > /etc/profile.d/prefer-bootc-over-rpm-ostree.sh
+cat << 'EOF' > /etc/profile.d/prefer-bootc-over-rpm-ostree.sh
 # Prefer 'bootc update/upgrade' & 'bootc switch' over rpm-ostree's equivalent functionality
 rpm-ostree() {
   if [[ ${#} -eq 0 ]]; then
