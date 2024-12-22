@@ -2,12 +2,12 @@ modules:
   - type: dnf
     source: local
     repos:
-      - copr: kylegospo/rom-properties
-      - copr: fiftydinar/gnome-randr-rust
-      - copr: elxreno/zsync
-      - copr: decathorpe/miniaturo
-      - copr: hyperreal/better_fonts
-      - copr: secureblue/hardened-chromium
+      - COPR kylegospo/rom-properties
+      - COPR fiftydinar/gnome-randr-rust
+      - COPR elxreno/zsync
+      - COPR decathorpe/miniaturo
+      - COPR hyperreal/better_fonts
+      - COPR secureblue/hardened-chromium
     remove:
       - tuned
       - tuned-ppd
@@ -47,8 +47,8 @@ modules:
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: script
     snippets:
-      - "rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
-      - "rpm-ostree install faad2"
-      - "rpm-ostree uninstall rpmfusion-free-release"
-      - "curl -fLs --create-dirs -O https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/repo/fedora-$(rpm -E %fedora)/sassam-dr14_tmeter-fedora-$(rpm -E %fedora).repo --output-dir /etc/yum.repos.d/"
-      - "rpm-ostree install dr14_t.meter"
+      - "dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+      - "dnf -y install faad2"
+      - "dnf -y uninstall rpmfusion-free-release"
+      - "dnf -y copr enable sassam/dr14_tmeter"
+      - "dnf -y install dr14_t.meter"
