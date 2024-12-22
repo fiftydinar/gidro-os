@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euxo pipefail
+set -euo pipefail
 
 # Fail the build if dnf5 isn't installed
 if ! rpm -q dnf5 &>/dev/null; then
@@ -24,6 +24,10 @@ if [[ ${#REPOS[@]} -gt 0 ]]; then
   for i in "${!REPOS[@]}"; do
       repo="${REPOS[$i]}"
       repo="${repo//%OS_VERSION%/${OS_VERSION}}"
+      # Extract copr repo array element properly here without JSON brackets
+      if [[ "${repo}" == "{\"copr\":\""*"\"}" ]]; then
+        repo="$(echo "copr: $(echo "${repo}" | jq -r '.copr')")"
+      fi  
       REPOS[$i]="${repo//[$'\t\r\n ']}"
   done
   # dnf config-manager & dnf copr don't support adding multiple repositories at once, hence why for/done loop is used
