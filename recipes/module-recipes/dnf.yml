@@ -1,5 +1,6 @@
 modules:
   - type: dnf
+    source: local
     repos:
       - copr: kylegospo/rom-properties
       - copr: fiftydinar/gnome-randr-rust
