@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euxo pipefail
+set -euo pipefail
 
 # Fail the build if dnf5 isn't installed
 if ! rpm -q dnf5 &>/dev/null; then
