@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Tell build process to exit if there are any errors.
-set -euxo pipefail
+set -euo pipefail
 
 # Fail the build if dnf5 isn't installed
 if ! rpm -q dnf5 &>/dev/null; then
@@ -33,12 +33,13 @@ if [[ ${#REPOS[@]} -gt 0 ]]; then
   for i in "${!REPOS[@]}"; do
       repo="${REPOS[$i]}"
       repo="${repo//%OS_VERSION%/${OS_VERSION}}"
+      REPOS[$i]="${repo//[$'\t\r\n ']}"
       # Remove spaces/newlines for all repos other than COPR
       if [[ "${repo}" != "COPR "* ]]; then
         REPOS[$i]="${repo//[$'\t\r\n ']}"
       else
         REPOS[$i]="${repo}"
-      fi  
+      fi
   done
   # dnf config-manager & dnf copr don't support adding multiple repositories at once, hence why for/done loop is used
   for repo in "${REPOS[@]}"; do
@@ -46,8 +47,8 @@ if [[ ${#REPOS[@]} -gt 0 ]]; then
         echo "Adding repository URL: '${repo}'"
         dnf -y config-manager addrepo --from-repofile="${repo}"
       elif [[ "${repo}" == *".repo" ]] && [[ -f "${CONFIG_DIRECTORY}/dnf/${repo}" ]]; then
-        echo "Adding repository file: '${repo}'"    
-        dnf -y config-manager addrepo --from-repofile="${repo}"
+        echo "Adding repository file: '${repo##*/}'"
+        dnf -y config-manager addrepo --from-repofile="${CONFIG_DIRECTORY}/dnf/${repo}"
       elif [[ "${repo}" == "COPR "* ]]; then
         echo "Adding COPR repository: '${repo#COPR }'"
         dnf -y copr enable "${repo#COPR }"
@@ -82,6 +83,26 @@ if [[ ${#OPTFIX[@]} -gt 0 ]]; then
     done
 fi
 
+# Install & remove group packages
+get_json_array GROUP_INSTALL 'try .["group-install"][]' "${1}"
+get_json_array GROUP_REMOVE 'try .["group-remove"][]' "${1}"
+
+if [[ ${#GROUP_INSTALL[@]} -gt 0 && ${#GROUP_REMOVE[@]} -gt 0 ]]; then
+    echo "Removing & Installing RPM groups"
+    echo "Removing: ${GROUP_REMOVE[*]}"
+    echo "Installing: ${GROUP_INSTALL[*]}"
+    dnf -y group remove "${GROUP_REMOVE[@]}"
+    dnf -y "${WEAK_DEPS_FLAG}" group install --refresh "${GROUP_INSTALL[@]}"
+elif [[ ${#GROUP_INSTALL[@]} -gt 0 ]]; then
+    echo "Installing RPM groups"
+    echo "Installing: ${GROUP_INSTALL[*]}"
+    dnf -y "${WEAK_DEPS_FLAG}" group install --refresh "${GROUP_INSTALL[@]}"
+elif [[ ${#GROUP_REMOVE[@]} -gt 0 ]]; then
+    echo "Removing RPM groups"
+    echo "Removing: ${GROUP_REMOVE[*]}"
+    dnf -y remove "${GROUP_REMOVE[@]}"
+fi
+
 get_json_array INSTALL_PKGS 'try .["install"][]' "${1}"
 get_json_array REMOVE_PKGS 'try .["remove"][]' "${1}"
 
@@ -97,9 +118,9 @@ if [[ ${#INSTALL_PKGS[@]} -gt 0 ]]; then
         INSTALL_PKGS[$i]="${PKG//%OS_VERSION%/${OS_VERSION}}"
         HTTPS_INSTALL=true
         HTTPS_PKGS+=("${INSTALL_PKGS[$i]}")
-      elif [[ ! "${PKG}" =~ ^https?:\/\/.* ]] && [[ -f "${CONFIG_DIRECTORY}/rpm-ostree/${PKG}" ]]; then
+      elif [[ ! "${PKG}" =~ ^https?:\/\/.* ]] && [[ -f "${CONFIG_DIRECTORY}/dnf/${PKG}" ]]; then
         LOCAL_INSTALL=true
-        LOCAL_PKGS+=("${CONFIG_DIRECTORY}/rpm-ostree/${PKG}")
+        LOCAL_PKGS+=("${CONFIG_DIRECTORY}/dnf/${PKG}")
       else
         CLASSIC_INSTALL=true
         CLASSIC_PKGS+=("${PKG}")
@@ -136,7 +157,7 @@ if [[ ${#INSTALL_PKGS[@]} -gt 0 && ${#REMOVE_PKGS[@]} -gt 0 ]]; then
     echo "Removing & Installing RPMs"
     echo "Removing: ${REMOVE_PKGS[*]}"
     echo_rpm_install
-    dnf -y "${WEAK_DEPS_FLAG}" remove "${REMOVE_PKGS[@]}"
+    dnf -y remove "${REMOVE_PKGS[@]}"
     dnf -y "${WEAK_DEPS_FLAG}" install --refresh "${INSTALL_PKGS[@]}"
 elif [[ ${#INSTALL_PKGS[@]} -gt 0 ]]; then
     echo "Installing RPMs"
@@ -145,7 +166,7 @@ elif [[ ${#INSTALL_PKGS[@]} -gt 0 ]]; then
 elif [[ ${#REMOVE_PKGS[@]} -gt 0 ]]; then
     echo "Removing RPMs"
     echo "Removing: ${REMOVE_PKGS[*]}"
-    dnf -y "${WEAK_DEPS_FLAG}" remove "${REMOVE_PKGS[@]}"
+    dnf -y remove "${REMOVE_PKGS[@]}"
 fi
 
 get_json_array REPLACE 'try .["replace"][]' "$1"

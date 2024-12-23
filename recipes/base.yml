@@ -79,15 +79,37 @@ modules:
   # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
   # Remove chsh & install oversteer-udev rules, as I don't want to rely on potentially outdated RPM
   # The operations below cannot be covered in rpm-ostree module, so it's used as a script
+  - type: dnf
+    source: local
+    repos:
+      - https://negativo17.org/repos/fedora-multimedia.repo
+
   - type: script
     snippets:
-      # Install Negativo repo
-      - echo -e "\033[90mInstalling Negativo repo\033[0m"
-      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-      - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+      - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/fedora-multimedia.repo
       # Replace Fedora packages with Negativos (Mesa & HEIF)
       - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
-      - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libglapi mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
+
+  - type: dnf
+    source: local
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - libheif
+          - libva
+          - libva-intel-media-driver
+          - mesa-dri-drivers
+          - mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libgbm
+          - mesa-libglapi
+          - mesa-libxatracker
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
+      
+  - type: script
+    snippets:
       # Remove chsh
       - echo -e "\033[90mRemoving chsh\033[0m"
       - rm /usr/bin/chsh
@@ -104,7 +126,8 @@ modules:
       - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
       - rm /usr/share/thumbnailers/avif.thumbnailer
       
-  - type: rpm-ostree
+  - type: dnf
+    source: local
     remove:
       - fdk-aac-free
       - ffmpeg-free
@@ -163,6 +186,12 @@ modules:
     snippets:
       # Workaround non-working Chinese, Japanese & Korean fonts
       - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
-      # Workaround OpenCL bug
-      # https://github.com/ublue-os/main/pull/692
-      - "rpm-ostree override replace --from repo='fedora' --experimental --remove=OpenCL-ICD-Loader ocl-icd || true"
+
+  # Workaround OpenCL bug
+  - type: dnf
+    source: local
+    remove:
+      - OpenCL-ICD-Loader
+    install:
+      - ocl-icd
+        
