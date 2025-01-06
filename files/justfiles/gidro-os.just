@@ -34,7 +34,7 @@ alias toggle-upgrades := toggle-updates
 
 # Turn automatic updates on or off
 toggle-updates ACTION="prompt":
-    #!/usr/bin/env bash
+    #!/usr/bin/run0 /usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled"
     if systemctl -q is-enabled bootc-auto-update-without-reboot.timer; then
@@ -54,14 +54,16 @@ toggle-updates ACTION="prompt":
     fi
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
-        sudo bash -c "systemctl enable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer; systemctl enable --global flatpak-user-update.timer"
+        systemctl enable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer
+        systemctl enable --global flatpak-user-update.timer
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
       if [ "${CURRENT_STATE}" == "Enabled (Default)" ]; then
-        sudo bash -c "systemctl disable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer; systemctl disable --global flatpak-user-update.timer"
+        systemctl disable --now flatpak-system-update.timer bootc-auto-update-without-reboot.timer
+        systemctl disable --global flatpak-user-update.timer
         echo 'Disable automatic updates setting applied.'
       else
         printf "\e[1;31mERROR: Automatic updates are already disabled, no change is made.\e[0m\n" 1>&2
@@ -80,18 +82,18 @@ update-firmware:
 
 # Show all messages from this boot
 logs-this-boot:
-    #!/usr/bin/env bash
-    sudo journalctl -b 0
+    #!/usr/bin/run0 /usr/bin/bash
+    journalctl -b 0
 
 # Show all messages from last boot
 logs-last-boot:
-    #!/usr/bin/env bash
-    sudo journalctl -b -1
+    #!/usr/bin/run0 /usr/bin/bash
+    journalctl -b -1
 
 # Check for local overrides in /etc/ vs /usr/etc/
 check-local-overrides:
-    #!/usr/bin/env bash
-    sudo ostree admin config-diff
+    #!/usr/bin/run0 /usr/bin/bash
+    ostree admin config-diff
 
 # Clean up old + unused podman images, volumes & flatpak packages
 clean-system:
@@ -285,7 +287,7 @@ factory-reset ACTION="prompt":
 
 # Configure scheduled nightly reboot
 scheduled-reboot ACTION="prompt":
-    #!/usr/bin/env bash
+    #!/usr/bin/run0 /usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled (Default)"
     if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
@@ -307,14 +309,16 @@ scheduled-reboot ACTION="prompt":
     fi
     if [ "${OPTION,,}" == "enable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q disabled; then
-        sudo bash -c "systemctl enable nightly-reboot.timer; systemctl start nightly-reboot.timer"
+        systemctl enable nightly-reboot.timer
+        systemctl start nightly-reboot.timer
         echo "Nightly scheduled reboot is enabled!"
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already enabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
-        sudo bash -c "systemctl disable nightly-reboot.timer; systemctl stop nightly-reboot.timer"
+        systemctl disable nightly-reboot.timer
+        systemctl stop nightly-reboot.timer"
         echo 'Reverted setting "nightly scheduled reboot" to defaults (Disabled).'
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
@@ -323,7 +327,7 @@ scheduled-reboot ACTION="prompt":
 
 # Install or update Android platform-tools
 android-tools ACTION="prompt":
-    #!/usr/bin/env bash
+    #!/usr/bin/run0 /usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Not Installed"
     if command -v adb &> /dev/null && command -v fastboot &> /dev/null; then
@@ -364,7 +368,9 @@ android-tools ACTION="prompt":
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
         unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
         PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-        sudo bash -c "echo -e \"${PLATFORM_TOOLS_FILES}\" > /usr/local/bin/platform-tools-file-list; sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list; cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/"
+        echo -e "${PLATFORM_TOOLS_FILES}" > /usr/local/bin/platform-tools-file-list
+        sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
+        cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
       fi
@@ -379,7 +385,16 @@ android-tools ACTION="prompt":
         wget "${URL}" -O /tmp/platform-tools/platform-tools-latest-linux.zip
         unzip /tmp/platform-tools/platform-tools-latest-linux.zip -d /tmp/platform-tools/
         PLATFORM_TOOLS_FILES="$(find /tmp/platform-tools/platform-tools/*)"
-        sudo bash -c "for file in \"${FILE_LIST[@]}\"; do [[ -e \"${file}\" ]] && rm -r \"${file}\" || echo \"${file} is already removed\"; done; sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list; echo -e \"${PLATFORM_TOOLS_FILES}\" > /usr/local/bin/platform-tools-file-list; cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/"
+        for file in "${FILE_LIST[@]}"; do
+          if [[ -e "${file}" ]]; then
+            rm -r "${file}"
+          else
+            echo "${file} is already removed"
+          fi
+        done
+        sed -i 's/\/tmp\/platform-tools\/platform-tools\//\/usr\/local\/bin\//g' /usr/local/bin/platform-tools-file-list
+        echo -e "${PLATFORM_TOOLS_FILES}" > /usr/local/bin/platform-tools-file-list
+        cp -r /tmp/platform-tools/platform-tools/* /usr/local/bin/
         rm -r /tmp/platform-tools/
         echo "Android platform-tools is installed"
       else
@@ -390,14 +405,21 @@ android-tools ACTION="prompt":
         printf "\e[1;31mERROR: Android platform-tools is not installed, so there is no need to uninstall.\e[0m\n" 1>&2
       elif [[ "${CURRENT_STATE}" == "Installed" ]]; then
         readarray -t FILE_LIST < <(cat /usr/local/bin/platform-tools-file-list)
-        sudo bash -c 'for file in "${@}"; do [[ -e "${file}" ]] && rm -r "${file}" || echo "${file} is already removed"; done; rm /usr/local/bin/platform-tools-file-list' _ "${FILE_LIST[@]}"
+        for file in "${FILE_LIST[@]}"; do
+          if [[ -e "${file}" ]]; then
+            rm -r "${file}"
+          else
+            echo "${file} is already removed"
+          fi
+        done
+        rm /usr/local/bin/platform-tools-file-list
         echo "Android platform-tools is uninstalled"
       fi  
     fi
 
 # Configure Bluetooth headset profile
 configure-bluetooth-headset-profile ACTION="prompt":
-    #!/usr/bin/env bash
+    #!/usr/bin/run0 /usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Enabled (Default)"
     FILE_CONF="/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf"
@@ -422,19 +444,20 @@ configure-bluetooth-headset-profile ACTION="prompt":
     fi    
     if [ "${OPTION,,}" == "disable" ]; then
       if ! [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo bash -c "mkdir -p \"${WIREPLUMBER_DIR}\"; cp \"${FILE_CONF}\" \"${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}\""
-          systemctl --user restart wireplumber
+        mkdir -p "${WIREPLUMBER_DIR}"
+        cp "${FILE_CONF}" "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        systemctl --user restart wireplumber
           echo 'Disable Bluetooth headset profile setting applied.'
       else
         printf "\e[1;31mERROR: Bluetooth headset profile is already disabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo rm -r "${WIREPLUMBER_DIR}"
+        rm -r "${WIREPLUMBER_DIR}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       elif [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        sudo rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults (Enabled).'
       elif [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
