@@ -2,7 +2,6 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-%OS_VERSION%/kylegospo-rom-properties-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/repo/fedora-%OS_VERSION%/fiftydinar-gnome-randr-rust-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/elxreno/zsync/repo/fedora-%OS_VERSION%/elxreno-zsync-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/repo/fedora-%OS_VERSION%/decathorpe-miniaturo-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/repo/fedora-%OS_VERSION%/hyperreal-better_fonts-fedora-%OS_VERSION%.repo
@@ -25,7 +24,6 @@ modules:
       - rom-properties-gtk3
       - nautilus-python
       - python3-icoextract
-      - gnome-randr-rust
       - langpacks-en
       - zsync
       - miniaturo

@@ -35,7 +35,6 @@ Installed packages (RPMs):
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
-- [Gnome-randr-rust](https://github.com/maxwellainatchi/gnome-randr-rust) (xrandr equivalent for Gnome Wayland)
 - [Langpacks-EN](https://packages.fedoraproject.org/pkgs/langpacks/langpacks-en/) (for avoiding Gnome Software's message about it & for potentially solving flatpak mixed locale issues)
 - [Zsync](https://web.archive.org/web/20240215223506/http://zsync.moria.org.uk/index) (Needed dependency for some AppImage auto-updates)
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
@@ -231,7 +230,6 @@ To rebase an existing installation to the latest build:
 
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
-- [Gnome-randr-rust](https://copr.fedorainfracloud.org/coprs/fiftydinar/gnome-randr-rust/)
 - [Zsync](https://copr.fedorainfracloud.org/coprs/elxreno/zsync/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
