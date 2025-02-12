@@ -114,6 +114,7 @@ Settings applied by default:
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
 - [Increased file nolimits](https://github.com/lutris/docs/blob/master/HowToEsync.md) (for preventing non-working Esync)
 - [BBR TCP congestion algorithm & FQ network packet scheduling](https://docs.google.com/spreadsheets/d/1I1NcVVbuC7aq4nGalYxMNz9pgS9OLKcFHssIBlj9xXI/edit#gid=1142336892) (for better network performance, especially in low-signal situations)
+- [Use beaconDB geolocation service instead of defunct Mozilla Location Services](https://fedoramagazine.org/the-state-of-the-location-permission-on-fedora-linux-in-2025/) (fixes non-working location)
 - Applied workaround for automatic assignment of `adbusers` group to all users (so Android platform-tools is ready to be used without tinkering)
 - Appended `plugdev` group to users, to make some udev rules like Yubikey working
 - [Partially fixed caps-lock delay](https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868) (which is present in all other Linux distributions)

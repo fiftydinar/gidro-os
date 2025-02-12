@@ -5,6 +5,7 @@ scripts:
   - disable-layering.sh
   - prefer-bootc-over-rpm-ostree.sh
   - trivalent-disable-network-sandbox.sh
+  - fix-geolocation.sh
 
 snippets:
   # Clear font cache
