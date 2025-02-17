@@ -15,10 +15,6 @@ formatted_kargs=$(printf '"%s", ' "${KARGS[@]}")
 formatted_kargs=${formatted_kargs%, }
 
 ARCH=$(echo "${1}" | jq -r 'try .["arch"]')
-# Default architecture to x86_64 if no value is provided
-if [[ -z "${ARCH}" || "${ARCH}" == "null" ]]; then
-  ARCH="x86_64"
-fi
 formatted_arch=$(echo "${ARCH}" | sed 's/[^, ]\+/"&"/g')
 
 if [[ ${#KARGS[@]} -gt 0 ]]; then
@@ -36,11 +32,11 @@ if [[ ${#KARGS[@]} -gt 0 ]]; then
   fi
   # Write kargs to toml file
   echo "Writing following kernel arguments to kargs.d TOML file: ${formatted_kargs}"
-  echo "Those kernel arguments are applied to the following OS architecture(s): ${formatted_arch}"
-  cat <<EOF >> "${BLUEBUILD_TOML}"
-kargs = [${formatted_kargs}]
-match-architectures = [${formatted_arch}]
-EOF
+  echo "kargs = [${formatted_kargs}]" > "${BLUEBUILD_TOML}"
+  if [[ -n "${ARCH}" || "${ARCH}" != "null" ]]; then
+    echo "Those kernel arguments are applied to the following specific OS architecture(s): ${formatted_arch}"
+    echo "match-architectures = [${formatted_arch}]" >> "${BLUEBUILD_TOML}"
+  fi
 else
   echo "ERROR: You did not include any kernel arguments to inject in the image."
   exit 1
