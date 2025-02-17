@@ -1,0 +1,4 @@
+type: kargs
+source: local
+kargs:
+  - preempt=full

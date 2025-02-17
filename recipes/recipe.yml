@@ -12,6 +12,7 @@ image-version: 41 # latest is also supported if you want new updates ASAP
 modules:
   - from-file: base.yml
   - from-file: module-recipes/files.yml
+  - from-file: module-recipes/kargs.yml
   - from-file: module-recipes/rpm-ostree.yml
   - from-file: module-recipes/gnome-extensions.yml
   - from-file: module-recipes/justfiles.yml
