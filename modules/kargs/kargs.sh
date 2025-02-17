@@ -35,8 +35,8 @@ if [[ ${#KARGS[@]} -gt 0 ]]; then
     BLUEBUILD_TOML="${new_filename}"
   fi
   # Write kargs to toml file
-  echo "Writing following kernel arguments to kargs.d TOML file: '${KARGS[*]}'"
-  echo "Those kernel arguments are applied to the following OS architecture(s): '${ARCH}'"
+  echo "Writing following kernel arguments to kargs.d TOML file: ${formatted_kargs}"
+  echo "Those kernel arguments are applied to the following OS architecture(s): ${formatted_arch}"
   cat <<EOF >> "${BLUEBUILD_TOML}"
 kargs = [${formatted_kargs}]
 match-architectures = [${formatted_arch}]
