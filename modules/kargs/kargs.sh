@@ -35,8 +35,13 @@ if [[ ${#KARGS[@]} -gt 0 ]]; then
     BLUEBUILD_TOML="${new_filename}"
   fi
   # Write kargs to toml file
+  echo "Writing following kernel arguments to kargs.d TOML file: '${KARGS[*]}'"
+  echo "Those kernel arguments are applied to the following OS architecture(s): '${ARCH}'"
   cat <<EOF >> "${BLUEBUILD_TOML}"
 kargs = [${formatted_kargs}]
 match-architectures = [${formatted_arch}]
 EOF
+else
+  echo "ERROR: You did not include any kernel arguments to inject in the image."
+  exit 1
 fi
