@@ -1,4 +1,10 @@
 type: kargs
 source: local
 kargs:
-  - preempt=full
+  # Use Vulkan driver for AMD GCN 1.0 & GCN 2.0 GPUs (HD 7000-8000 series)
+  - radeon.si_support=0
+  - radeon.cik_support=0
+  - amdgpu.si_support=1
+  - amdgpu.cik_support=1
+  # Enable Nvidia GSP firmware
+  - nouveau.config=NvGspRm=1
