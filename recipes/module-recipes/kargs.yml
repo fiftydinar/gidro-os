@@ -10,3 +10,26 @@ kargs:
   - amdgpu.cik_support=1
   # Enable Nvidia GSP firmware for Nouveau driver
   - nouveau.config=NvGspRm=1
+  # Increase inotify limit
+  - sysctl.fs.inotify.max_user_instances=8192
+  - sysctl.fs.inotify.max_user_watches=524288
+  # Disable split-lock mitigate (prevents certain Windows games performance drop)
+  - split_lock_detect=off
+  # Use BBR TCP algorithm & FQ packet scheduler
+  - sysctl.net.core.default_qdisc=fq
+  - sysctl.net.ipv4.tcp_congestion_control=bbr
+  # Memory tweaks
+  #
+  ## ZRAM tweaks (PopOS defaults)
+  - sysctl.vm.swappiness=180
+  ## Also PopOS defaults, but also recommended by @ahydronous
+  - sysctl.vm.watermark_boost_factor=0
+  - sysctl.vm.watermark_scale_factor=125
+  - sysctl.vm.page-cluster=0
+  ## Increase memory maps (SteamOS default)
+  - sysctl.vm.max_map_count=2147483642
+  ## https://gist.github.com/ahydronous/7ceaa00df96ef99131600edd4c2c73f2#file-vm-settings-L30
+  ## https://gitlab.com/cscs/maxperfwiz
+  ## Lowering it from the default value of 100 makes the kernel less inclined to reclaim VFS cache, improved responsiveness
+  ## "66" is between Arch (50) and Maxperfwiz (75) optimum, "0" causes Out of Memory errors
+  - sysctl.vm.vfs_cache_pressure=66
