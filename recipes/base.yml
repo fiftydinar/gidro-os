@@ -49,7 +49,7 @@ modules:
       - echo -e "\033[90mExcluding motd tips, Ublue justfiles, distrobox+podman manifest files & brew profile.d script (not needed)\033[0m"
       ## Add function to invoke ujust when typing just (not done in Ublue)
       - echo -e "\033[90mAdd function to execute ujust when typing just (not done in Ublue)\033[0m"      
-      - echo -e "\n# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list --alias-style separate | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \"; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
+      - echo -e "\n# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list --alias-style separate | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \" || [[ \"\${1}\" == \"--choose\" ]]; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
       ## Copy 60-custom.just template & ublue-os justfile template
       - mkdir -p /usr/share/ublue-os/just/
       - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
