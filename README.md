@@ -78,6 +78,7 @@ Installed flatpaks:
 - [Maps](https://apps.gnome.org/en/Maps/)
 - [Text Editor](https://apps.gnome.org/en/TextEditor/)
 - [Gapless Music Player](https://flathub.org/apps/com.github.neithern.g4music)
+- [Reco Audio Recorder](https://flathub.org/apps/com.github.ryonakano.reco)
 - [Clapper Video Player](https://flathub.org/apps/com.github.rafostar.Clapper)
 - [Image Viewer](https://apps.gnome.org/en/Loupe/)
 - [Fotema](https://flathub.org/apps/app.fotema.Fotema)

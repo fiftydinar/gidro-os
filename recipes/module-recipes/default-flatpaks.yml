@@ -16,6 +16,7 @@ system:
     - org.gnome.Maps
     - org.gnome.TextEditor
     - com.github.neithern.g4music
+    - com.github.ryonakano.reco
     - com.github.rafostar.Clapper
     - org.gnome.Loupe
     - app.fotema.Fotema
