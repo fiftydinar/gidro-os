@@ -83,21 +83,20 @@ modules:
     remove:
       packages:
         - mesa-libglapi
-    install:
-      packages:
-        - repo: fedora-multimedia
-          packages:
-            - libheif
-            - libva
-            - libva-intel-media-driver
-            - mesa-dri-drivers mesa-filesystem
-            - mesa-libEGL
-            - mesa-libGL
-            - mesa-libgbm
-            - mesa-libxatracker
-            - mesa-va-drivers
-            - mesa-vulkan-drivers
-
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - libheif
+          - libva
+          - libva-intel-media-driver
+          - mesa-dri-drivers mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libgbm
+          - mesa-libxatracker
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
+        
   - type: script
     snippets:
       # Remove chsh
@@ -186,8 +185,7 @@ modules:
     remove:
       packages:
         - OpenCL-ICD-Loader
-    install:
-      packages:
-        - repo: fedora
-          packages:
-            - ocl-icd
+    replace:
+      - from-repo: fedora
+        packages:
+          - ocl-icd
