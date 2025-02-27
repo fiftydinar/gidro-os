@@ -120,6 +120,7 @@ modules:
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
+      auto-remove: false
       packages:
         - fdk-aac-free
         - ffmpeg-free
