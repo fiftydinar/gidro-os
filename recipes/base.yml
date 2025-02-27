@@ -77,6 +77,7 @@ modules:
   # Remove chsh & install oversteer-udev rules, as I don't want to rely on potentially outdated RPM
   # The operations below cannot be covered in rpm-ostree module, so it's used as a script
   - type: dnf
+    source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
     remove:
@@ -115,6 +116,7 @@ modules:
       - rm /usr/share/thumbnailers/avif.thumbnailer
       
   - type: dnf
+    source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
       packages:
         - fdk-aac-free
@@ -179,6 +181,7 @@ modules:
     # Workaround OpenCL bug
     # https://github.com/ublue-os/main/pull/692
   - type: dnf
+    source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
       packages:
         - OpenCL-ICD-Loader
