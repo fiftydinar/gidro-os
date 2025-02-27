@@ -83,7 +83,7 @@ modules:
 
   - type: script
     scripts:
-      - "dnf5 upgrade --repo fedora-multimedia libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers"
+      - "dnf5 upgrade --repoid fedora-multimedia libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers"
         
   - type: script
     snippets:
