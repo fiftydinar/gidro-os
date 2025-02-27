@@ -80,20 +80,22 @@ modules:
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
-    remove:
+    install:
       packages:
-        - mesa-libglapi
+        - repo: fedora-multimedia
+          packages:
+            - libheif
+            - mesa-libxatracker
     replace:
       - from-repo: fedora-multimedia
         packages:
-          - libheif
           - libva
           - libva-intel-media-driver
-          - mesa-dri-drivers mesa-filesystem
+          - mesa-dri-drivers
+          - mesa-filesystem
           - mesa-libEGL
           - mesa-libGL
           - mesa-libgbm
-          - mesa-libxatracker
           - mesa-va-drivers
           - mesa-vulkan-drivers
         
@@ -182,10 +184,8 @@ modules:
     # https://github.com/ublue-os/main/pull/692
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
-    remove:
+    install:
       packages:
-        - OpenCL-ICD-Loader
-    replace:
-      - from-repo: fedora
-        packages:
-          - ocl-icd
+        - repo: fedora
+          packages:
+            - ocl-icd
