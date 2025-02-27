@@ -4,7 +4,7 @@ scripts:
   - sleep-through-notifications.sh
   - disable-layering.sh
   - prefer-bootc-over-rpm-ostree.sh
-  - trivalent-disable-network-sandbox.sh
+  - trivalent-patches.sh
 
 snippets:
   # Clear font cache
