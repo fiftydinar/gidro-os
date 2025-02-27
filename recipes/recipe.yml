@@ -13,7 +13,7 @@ modules:
   - from-file: base.yml
   - from-file: module-recipes/files.yml
   - from-file: module-recipes/kargs.yml
-  - from-file: module-recipes/rpm-ostree.yml
+  - from-file: module-recipes/dnf.yml
   - from-file: module-recipes/gnome-extensions.yml
   - from-file: module-recipes/justfiles.yml
   - type: yafti
