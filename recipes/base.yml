@@ -85,17 +85,17 @@ modules:
         - mesa-libglapi
     replace:
       - from-repo: fedora-multimedia
-      packages:
-        - libheif
-        - libva
-        - libva-intel-media-driver
-        - mesa-dri-drivers mesa-filesystem
-        - mesa-libEGL
-        - mesa-libGL
-        - mesa-libgbm
-        - mesa-libxatracker
-        - mesa-va-drivers
-        - mesa-vulkan-drivers
+        packages:
+          - libheif
+          - libva
+          - libva-intel-media-driver
+          - mesa-dri-drivers mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libgbm
+          - mesa-libxatracker
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
         
   - type: script
     snippets:
@@ -187,5 +187,5 @@ modules:
         - OpenCL-ICD-Loader
     replace:
       - from-repo: fedora
-      packages:
-        - ocl-icd
+        packages:
+          - ocl-icd
