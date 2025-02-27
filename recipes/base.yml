@@ -80,10 +80,22 @@ modules:
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
-
-  - type: script
-    scripts:
-      - "dnf5 upgrade --repo fedora-multimedia libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers"
+    remove:
+      packages:
+        - mesa-libglapi
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - libheif
+          - libva
+          - libva-intel-media-driver
+          - mesa-dri-drivers mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libgbm
+          - mesa-libxatracker
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
         
   - type: script
     snippets:
