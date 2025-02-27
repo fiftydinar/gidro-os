@@ -1,5 +1,5 @@
 modules:
-# Covering ublue-os config here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
+# Covering ublue-os config packages here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
 # Added:
 # - ublue-os-udev-rules
 # - android-udev-rules
@@ -7,15 +7,15 @@ modules:
 # - ublue-os-just (stripped version: without motd tips, Ublue justfiles, non-needed brew profile.d script & Ublue distrobox+podman manifest files)
   - type: script
     snippets:
-      # Download Universal Blue config zip
-      - echo -e "\033[90mDownloading Universal Blue config zip file\033[0m"
-      - curl -fLs --create-dirs https://github.com/ublue-os/config/archive/refs/heads/main.zip -o /tmp/ublue-config/main.zip
+      # Download Universal Blue packages config zip
+      - echo -e "\033[90mDownloading Universal Blue packages config zip file\033[0m"
+      - curl -fLs --create-dirs https://github.com/ublue-os/packages/archive/refs/heads/main.zip -o /tmp/ublue-config/packages.zip
       - echo -e "\033[90mUnzipping the file\033[0m"
-      - unzip -q /tmp/ublue-config/main.zip -d /tmp/ublue-config/
-      - rm /tmp/ublue-config/main.zip
+      - unzip -q /tmp/ublue-config/packages.zip -d /tmp/ublue-config/
+      - rm /tmp/ublue-config/packages.zip
       # Universal Blue udev rules    
       - echo -e "\033[90mCopying udev rules from Universal Blue\033[0m"
-      - cp /tmp/ublue-config/config-main/files/etc/udev/rules.d/*.rules /usr/lib/udev/rules.d/
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-udev-rules/src/udev-rules.d/*.rules /usr/lib/udev/rules.d/
       ## Add plugdev group to sysusers.d (needed for Yubikey udev rules) (not done in Ublue)
       - echo -e "\033[90mAdd plugdev group to sysusers.d (not done in Ublue)\033[0m"      
       - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
@@ -37,10 +37,10 @@ modules:
       # flatpak updaters (rpm-ostree updater ommited because bootc update is used instead)
       ## flatpak updater
       - echo -e "\033[90mCopying flatpak updater\033[0m"
-      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
-      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
-      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
-      - cp /tmp/ublue-config/config-main/files/usr/lib/systemd/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
       - echo -e "\033[90mEnabling systemd timers for flatpak updaters\033[0m"
       - systemctl --system enable flatpak-system-update.timer
       - systemctl --global enable flatpak-user-update.timer
@@ -52,8 +52,7 @@ modules:
       - echo -e "\n# Alias ujust to just, so using \`just\` command works\njust() {\n  if [ \${#} -eq 0 ]; then\n    /usr/bin/ujust\n  elif [ -n \"\${1}\" ]; then\n    ujust_commands=\$(/usr/bin/just --justfile /usr/share/ublue-os/justfile --list --alias-style separate | awk 'NR>1 {printf \"%s \", \$1} END {print \"\"}')\n    if echo \" \${ujust_commands} \" | grep -q \" \${1} \" || [[ \"\${1}\" == \"--choose\" ]]; then\n      /usr/bin/ujust \"\${@}\"\n    else\n      /usr/bin/just \"\${@}\"\n    fi\n  else\n    /usr/bin/just \"\${@}\"\n  fi\n}\nexport -f just" >> /etc/profile.d/ublue-os-just.sh
       ## Copy 60-custom.just template & ublue-os justfile template
       - mkdir -p /usr/share/ublue-os/just/
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/60-custom.just /usr/share/ublue-os/just/
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/header.just /usr/share/ublue-os/justfile
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-just/src/header.just /usr/share/ublue-os/justfile
       ## Don't show link for Universal Blue documentation when invoking `ujust` (not done in Ublue)
       - echo -e "\033[90mDon't show link for Ublue docs when executing ujust (not done in Ublue)\033[0m"      
       - sed -i '/^[[:space:]]*echo "\$(Urllink/d' /usr/share/ublue-os/justfile      
@@ -61,13 +60,13 @@ modules:
       - echo -e "\033[90mOnly including Gidro-OS justfile\033[0m"
       - echo "import \"/usr/share/ublue-os/just/60-custom.just\"" >> /usr/share/ublue-os/justfile
       ## Copy ujust & ugum binary
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ujust /usr/bin/ujust
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-just/src/ujust /usr/bin/ujust
       - chmod 755 /usr/bin/ujust
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/ugum /usr/bin/ugum
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-just/src/ugum /usr/bin/ugum
       - chmod 755 /usr/bin/ugum
       ## Copy ujust libraries
       - mkdir -p /usr/lib/ujust/
-      - cp /tmp/ublue-config/config-main/build/ublue-os-just/lib-ujust/* /usr/lib/ujust/
+      - cp /tmp/ublue-config/packages-main/packages/ublue-os-just/src/lib-ujust/* /usr/lib/ujust/
       # Use ZSTD compression for initramfs
       - echo "compress=\"zstd\"" > /usr/lib/dracut/dracut.conf.d/10-compression.conf
       # Remove temporary directory
