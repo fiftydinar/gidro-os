@@ -81,6 +81,7 @@ modules:
     repos:
       nonfree: negativo17
     remove:
+      auto-remove: false
       packages:
         - mesa-libglapi
     replace:
@@ -183,6 +184,7 @@ modules:
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
+      auto-remove: false
       packages:
         - OpenCL-ICD-Loader
     replace:
