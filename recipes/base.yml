@@ -80,9 +80,11 @@ modules:
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
+    remove:
+      packages:
+        - mesa-libglapi
     replace:
       - from-repo: fedora-multimedia
-        allow-erasing: true
         packages:
           - libheif
           - libva
@@ -180,8 +182,10 @@ modules:
     # https://github.com/ublue-os/main/pull/692
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
+    remove:
+      packages:
+        - OpenCL-ICD-Loader
     replace:
       - from-repo: fedora
-        allow-erasing: true
         packages:
           - ocl-icd
