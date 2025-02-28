@@ -50,3 +50,5 @@ modules:
       - "rpm-ostree uninstall rpmfusion-free-release"
       - "curl -fLs --create-dirs -O https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/repo/fedora-$(rpm -E %fedora)/sassam-dr14_tmeter-fedora-$(rpm -E %fedora).repo --output-dir /etc/yum.repos.d/"
       - "rpm-ostree install dr14_t.meter"
+      # Replace kernel with 6.12.15 release, as 6.13 had very bad bugs
+      - "rpm-ostree override replace https://koji.fedoraproject.org/koji/buildinfo?buildID=2661636"
