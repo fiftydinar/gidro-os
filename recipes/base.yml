@@ -121,6 +121,8 @@ modules:
     remove:
       packages:
         - gnome-software-rpm-ostree
+        - default-fonts-cjk-sans
+        - google-noto-sans-cjk-vf-fonts
     install:
       packages:
         # Font stuff
@@ -137,7 +139,6 @@ modules:
         # Thumbnailing
         - ffmpegthumbnailer
         # Codecs
-        - libfdk-aac
         - heif-pixbuf-loader
         # Just
         - just
@@ -164,6 +165,24 @@ modules:
         packages:
           - old: ffmpeg-free
             new: ffmpeg
+          - old: libfdk-aac-free
+            new: libfdk-aac
+          - old: libavcodec-free
+            new: libavcodec
+          - old: libavdevice-free
+            new: libavdevice
+          - old: libavfilter-free
+            new: libavfilter
+          - old: libavformat-free
+            new: libavformat
+          - old: libavutil-free
+            new: libavutil
+          - old: libpostproc-free
+            new: libpostproc
+          - old: libswresample-free
+            new: libswresample
+          - old: libswscale-free
+            new: libswscale
       # Workaround OpenCL bug
       # https://github.com/ublue-os/main/pull/692
       - from-repo: fedora
