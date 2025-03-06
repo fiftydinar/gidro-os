@@ -83,7 +83,7 @@ modules:
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
     install:
       packages:
-        - liheif
+        - libheif
         - mesa-libxatracker
     replace:
       - from-repo: fedora-multimedia
