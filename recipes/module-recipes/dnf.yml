@@ -84,3 +84,4 @@ modules:
         - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-modules-extra-6.12.15-200.fc41.x86_64.rpm
         - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-tools-6.12.15-200.fc41.x86_64.rpm
         - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-tools-libs-6.12.15-200.fc41.x86_64.rpm
+        - virtualbox-guest-additions
