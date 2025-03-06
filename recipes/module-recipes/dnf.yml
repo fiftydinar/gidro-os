@@ -68,6 +68,13 @@ modules:
     # Replace kernel with 6.12.15 release, as 6.13 has very bad bugs
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
+    remove:
+      packages:
+        - kernel
+        - kernel-core
+        - kernel-modules
+        - kernel-modules-core
+        - kernel-modules-extra
     install:
       packages:
         - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-6.12.15-200.fc41.x86_64.rpm
