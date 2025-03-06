@@ -76,15 +76,29 @@ modules:
   # Add negativo repo, modify its repo priority & replace some packages like HEIF & mesa
   # Remove chsh & install oversteer-udev rules, as I don't want to rely on potentially outdated RPM
   # The operations below cannot be covered in rpm-ostree module, so it's used as a script
+  - type: dnf
+    repos:
+      nonfree: negativo17
+    # Replace Fedora packages with Negativos (Mesa & HEIF)  
+    install:
+      packages:
+        - liheif
+        - mesa-libxatracker
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - libva
+          - libva-intel-media-driver
+          - mesa-dri-drivers
+          - mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libgbm
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
+          
   - type: script
     snippets:
-      # Install Negativo repo
-      - echo -e "\033[90mInstalling Negativo repo\033[0m"
-      - curl -fLs --create-dirs https://negativo17.org/repos/fedora-multimedia.repo -o /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-      - sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-      # Replace Fedora packages with Negativos (Mesa & HEIF)
-      - echo -e "\033[90mReplacing Fedora packages with Negativos\033[0m"
-      - rpm-ostree override replace --experimental --from repo='fedora-multimedia' libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-libxatracker mesa-va-drivers mesa-vulkan-drivers
       # Remove chsh
       - echo -e "\033[90mRemoving chsh\033[0m"
       - rm /usr/bin/chsh
@@ -101,65 +115,61 @@ modules:
       - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
       - rm /usr/share/thumbnailers/avif.thumbnailer
       
-  - type: rpm-ostree
+  - type: dnf
     remove:
-      - fdk-aac-free
-      - ffmpeg-free
-      - libavcodec-free
-      - libavdevice-free
-      - libavfilter-free
-      - libavformat-free
-      - libavutil-free
-      - libpostproc-free
-      - libswresample-free
-      - libswscale-free
-      - default-fonts-cjk-sans
-      - google-noto-sans-cjk-vf-fonts
-      - gnome-software-rpm-ostree
+      packages:
+        - gnome-software-rpm-ostree
     install:
-      # Font stuff
-      - google-noto-sans-balinese-fonts
-      - google-noto-sans-cjk-fonts
-      - google-noto-sans-javanese-fonts
-      - google-noto-sans-sundanese-fonts
-      # Graphic stuff
-      - intel-vaapi-driver
-      - libva-utils
-      # Audio stuff
-      - alsa-firmware
-      - pipewire-libs-extra
-      # Thumbnailing
-      - ffmpegthumbnailer
-      - ffmpeg
-      - ffmpeg-libs
-      # Codecs
-      - libfdk-aac
-      - heif-pixbuf-loader
-      # Just
-      - just
-      - fzf
-      # Some additional udev rules
-      - openrgb-udev-rules
-      - solaar-udev
-      # Yubikey stuff
-      - pam-u2f
-      - pam_yubico
-      - pamu2fcfg
-      - yubikey-manager 
-      # Gnome-specific
-      - adw-gtk3-theme
-      - gnome-epub-thumbnailer
-      - gvfs-nfs
-      # Regular packages    
-      - openssl
-      - libratbag-ratbagd
-      - zstd
-      - wireguard-tools
+      packages:
+        # Font stuff
+        - google-noto-sans-balinese-fonts
+        - google-noto-sans-cjk-fonts
+        - google-noto-sans-javanese-fonts
+        - google-noto-sans-sundanese-fonts
+        # Graphic stuff
+        - intel-vaapi-driver
+        - libva-utils
+        # Audio stuff
+        - alsa-firmware
+        - pipewire-libs-extra
+        # Thumbnailing
+        - ffmpegthumbnailer
+        # Codecs
+        - libfdk-aac
+        - heif-pixbuf-loader
+        # Just
+        - just
+        - fzf
+        # Some additional udev rules
+        - openrgb-udev-rules
+        - solaar-udev
+        # Yubikey stuff
+        - pam-u2f
+        - pam_yubico
+        - pamu2fcfg
+        - yubikey-manager 
+        # Gnome-specific
+        - adw-gtk3-theme
+        - gnome-epub-thumbnailer
+        - gvfs-nfs
+        # Regular packages    
+        - openssl
+        - libratbag-ratbagd
+        - zstd
+        - wireguard-tools
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - old: ffmpeg-free
+            new: ffmpeg
+      # Workaround OpenCL bug
+      # https://github.com/ublue-os/main/pull/692
+      - from-repo: fedora
+        packages:
+          - old: OpenCL-ICD-Loader
+            new: ocl-icd
 
   - type: script
     snippets:
       # Workaround non-working Chinese, Japanese & Korean fonts
       - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
-      # Workaround OpenCL bug
-      # https://github.com/ublue-os/main/pull/692
-      - "rpm-ostree override replace --from repo='fedora' --experimental --remove=OpenCL-ICD-Loader ocl-icd || true"
