@@ -65,11 +65,15 @@ modules:
       packages:
         - dr14_t.meter
 
-    # Replace kernel with 6.12.15 release, as 6.13 had very bad bugs
+    # Replace kernel with 6.12.15 release, as 6.13 has very bad bugs
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
-    replace:
-      - from-repo: fedora
-        packages:
-          - old: kernel
-            new: kernel-6.12.15-200
+    install:
+      packages:
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-core-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-modules-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-modules-core-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-modules-extra-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-tools-6.12.15-200.fc41.x86_64.rpm
+        - https://kojipkgs.fedoraproject.org//packages/kernel/6.12.15/200.fc41/x86_64/kernel-tools-libs-6.12.15-200.fc41.x86_64.rpm
