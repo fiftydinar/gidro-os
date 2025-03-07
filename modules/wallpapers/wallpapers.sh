@@ -6,7 +6,7 @@ set -euo pipefail
 
 if ! command -v yq &> /dev/null; then
   echo "Installing 'yq', as it's not installed & is necessary for manipulating XML files"
-  rpm-ostree install yq
+  dnf5 -y install yq
 fi
 
 ############################### VARIABLE FUNCTIONS ###################################
