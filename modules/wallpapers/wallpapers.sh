@@ -3,11 +3,8 @@
 set -euo pipefail    
 
 # Install `yq` dependency if it's not installed (needed for manipulation of XML files)
-
-if ! command -v yq &> /dev/null; then
-  echo "Installing 'yq', as it's not installed & is necessary for manipulating XML files"
-  dnf5 -y install yq
-fi
+echo "Installing 'yq', as it's not installed & is necessary for manipulating XML files"
+dnf5 -y install yq
 
 ############################### VARIABLE FUNCTIONS ###################################
 
