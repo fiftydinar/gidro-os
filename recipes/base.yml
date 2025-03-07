@@ -153,7 +153,6 @@ modules:
         - yubikey-manager 
         # Gnome-specific
         - adw-gtk3-theme
-        - gnome-epub-thumbnailer
         - gvfs-nfs
         # Regular packages    
         - openssl
@@ -175,6 +174,11 @@ modules:
         packages:
           - old: OpenCL-ICD-Loader
             new: ocl-icd
+  - type: dnf
+    source: ghcr.io/blue-build/modules/dnf:dnf-module
+    install:
+      packages:
+        - ffmpeg-libs
 
   - type: script
     snippets:
