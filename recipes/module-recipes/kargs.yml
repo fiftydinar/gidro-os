@@ -1,5 +1,5 @@
 type: kargs
-source: local
+source: ghcr.io/blue-build/modules/kargs:kargs-module
 kargs:
   # Enable full kernel preemption
   - preempt=full
