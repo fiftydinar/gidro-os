@@ -44,6 +44,8 @@ jobs:
       - name: Build ISO
         uses: jasonn3/build-container-installer@v1.2.4
         id: build
+        env:
+          LANG: en_US.UTF-8
         with:
           arch: x86_64
           version: ${{ matrix.major_version }}
