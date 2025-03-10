@@ -35,7 +35,6 @@ modules:
         - printer-driver-brlaser
         - epson-inkjet-printer-escpr
         - epson-inkjet-printer-escpr2
-        - hplip
         - foo2zjs
         - uld
         - sg3_utils
