@@ -135,7 +135,8 @@ modules:
             # Codecs
             - heif-pixbuf-loader
             # Audio stuff (Negativo)
-            - pipewire-libs-extra            
+            - pipewire-libs-extra
+            - ffmpeg-libs
         # Font stuff
         - google-noto-sans-balinese-fonts
         - google-noto-sans-cjk-fonts
@@ -179,11 +180,6 @@ modules:
         packages:
           - old: OpenCL-ICD-Loader
             new: ocl-icd
-  - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
-    install:
-      packages:
-        - ffmpeg-libs
 
   - type: script
     snippets:
