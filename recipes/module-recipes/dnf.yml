@@ -30,7 +30,6 @@ modules:
         - rom-properties-gtk3
         - nautilus-python
         - python3-icoextract
-        - langpacks-en
         - zsync
         - miniaturo
         - printer-driver-brlaser
