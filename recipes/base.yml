@@ -83,8 +83,10 @@ modules:
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
     install:
       packages:
-        - libheif
-        - mesa-libxatracker
+        - repo: fedora-multimedia
+          packages:
+            - libheif
+            - mesa-libxatracker
     replace:
       - from-repo: fedora-multimedia
         packages:
@@ -125,21 +127,24 @@ modules:
         - google-noto-sans-cjk-vf-fonts
     install:
       packages:
+        - repo: fedora-multimedia
+          packages:
+            # Graphic stuff
+            - intel-vaapi-driver
+            - libva-utils
+            # Codecs
+            - heif-pixbuf-loader
+            # Audio stuff (Negativo)
+            - pipewire-libs-extra
         # Font stuff
         - google-noto-sans-balinese-fonts
         - google-noto-sans-cjk-fonts
         - google-noto-sans-javanese-fonts
         - google-noto-sans-sundanese-fonts
-        # Graphic stuff
-        - intel-vaapi-driver
-        - libva-utils
-        # Audio stuff
+        # Audio stuff (Fedora)
         - alsa-firmware
-        - pipewire-libs-extra
         # Thumbnailing
         - ffmpegthumbnailer
-        # Codecs
-        - heif-pixbuf-loader
         # Just
         - just
         - fzf
@@ -178,7 +183,9 @@ modules:
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     install:
       packages:
-        - ffmpeg-libs
+        - repo: fedora-multimedia
+          packages:
+            - ffmpeg-libs
 
   - type: script
     snippets:
