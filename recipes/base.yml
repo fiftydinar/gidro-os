@@ -180,12 +180,12 @@ modules:
           - old: OpenCL-ICD-Loader
             new: ocl-icd
   - type: dnf
-     source: ghcr.io/blue-build/modules/dnf:dnf-module
-     install:
-       packages:
-         - repo: fedora-multimedia
-           packages:
-             - ffmpeg-libs
+    source: ghcr.io/blue-build/modules/dnf:dnf-module
+    install:
+      packages:
+        - repo: fedora-multimedia
+          packages:
+            - ffmpeg-libs
 
   - type: script
     snippets:
