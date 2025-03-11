@@ -11,7 +11,8 @@ You can see my changes to the base recipe [here](https://github.com/fiftydinar/g
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
-[**Why did I make the custom image?**](https://github.com/fiftydinar/gidro-os/wiki/1.-OS-Scope-&-Vision)
+[**Why did I make the custom image?**](https://github.com/fiftydinar/gidro-os/wiki/1.-OS-Scope-&-Vision)  
+[**Note for downstream custom image maintainers**](https://github.com/fiftydinar/gidro-os/wiki/8.-Note-for-downstream-custom-image-maintainers)
 
 ## Modifications
 
