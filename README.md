@@ -163,6 +163,9 @@ Settings applied by default:
   - Telegram
   - Deluge
   - TutaMail
+- Set Trivalent to:
+  - disable Network Sandbox (solves data persistence bug)
+  - enable mouse middle-click autoscroll (also disables middle-click to paste)
 - Set Text Editor to:
   - use Nokia Pure Text font
   - increase the font size to 16
