@@ -7,6 +7,6 @@ set -euo pipefail
 
 echo -e '\nCHROMIUM_FLAGS+=" --disable-features=NetworkServiceSandbox"' >> /etc/trivalent/trivalent.conf
 
-# Enable middle-click auto-scroll (also disables middle-click to paste)
+# Disable search engine choice screen
 
-echo -e '\nCHROMIUM_FLAGS+=" --enable-features=MiddleClickAutoscroll"' >> /etc/trivalent/trivalent.conf
+echo -e '\nCHROMIUM_FLAGS+=" --disable-search-engine-choice-screen"' >> /etc/trivalent/trivalent.conf

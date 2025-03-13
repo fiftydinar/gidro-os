@@ -165,7 +165,7 @@ Settings applied by default:
   - TutaMail
 - Set Trivalent to:
   - disable Network Sandbox (solves data persistence bug)
-  - enable mouse middle-click autoscroll (also disables middle-click to paste)
+  - disable search choice pop-up
 - Set Text Editor to:
   - use Nokia Pure Text font
   - increase the font size to 16
