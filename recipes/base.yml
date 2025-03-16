@@ -6,7 +6,7 @@ modules:
     replace:
       - from-repo: updates-archive
         packages:
-          - "dnf5-5.2.10.0-2.fc41"
+          - dnf5-5.2.10.0-2.fc41
 # Covering ublue-os config packages here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
 # Added:
 # - ublue-os-udev-rules
