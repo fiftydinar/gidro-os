@@ -1,13 +1,7 @@
 modules:
-  # Work around the regression with dnf5
-  # Revert when it's fixed
-  # https://github.com/rpm-software-management/dnf5/issues/2134
-  - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
-    replace:
-      - from-repo: updates-archive
-        packages:
-          - dnf5-5.2.10.0-2.fc41
+  - type: script
+    snippets:
+      - "rpm -q dnf5"
 # Covering ublue-os config packages here for my needs (using scripts, because grabbing Containerfile would bloat the image size + I have more control this way)
 # Added:
 # - ublue-os-udev-rules
