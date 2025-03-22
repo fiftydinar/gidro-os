@@ -86,7 +86,6 @@ modules:
         - repo: fedora-multimedia
           packages:
             - libheif
-            - mesa-libxatracker
     replace:
       - from-repo: fedora-multimedia
         packages:
