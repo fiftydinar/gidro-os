@@ -17,4 +17,4 @@ snippets:
   # Using tabular version of the font because it's more suitable for the numbers, as that's what extension is showing
   - "sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text T;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css"
   # Remove non-ASCII files or directories in /usr, as it causes issues with the installation ISO
-- "find /usr -name '*[![:ascii:]]*' -print0 | xargs -0 rm -rf"
+  - "find /usr -name '*[![:ascii:]]*' -print0 | xargs -0 rm -rf"
