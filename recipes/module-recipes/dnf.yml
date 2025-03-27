@@ -30,8 +30,6 @@ modules:
         - nautilus-python
         - python3-icoextract
         - miniaturo
-        - epson-inkjet-printer-escpr
-        - epson-inkjet-printer-escpr2
         - foo2zjs
         - uld
         - sg3_utils
