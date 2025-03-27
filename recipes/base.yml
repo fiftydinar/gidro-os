@@ -145,7 +145,7 @@ modules:
             # Codecs
             # - heif-pixbuf-loader
             # Audio stuff (Negativo)
-            #- pipewire-libs-extra
+            - pipewire-libs-extra
         # Font stuff
         - google-noto-sans-balinese-fonts
         - google-noto-sans-cjk-fonts
