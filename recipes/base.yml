@@ -190,5 +190,3 @@ modules:
     snippets:
       # Workaround non-working Chinese, Japanese & Korean fonts
       - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
-      # Rename chinese just README to not contain UTF-8, due to a bug with ISO installer
-      - mv "/usr/share/doc/just/README.中文.md" "/usr/share/doc/just/README.zh-cn.md"
