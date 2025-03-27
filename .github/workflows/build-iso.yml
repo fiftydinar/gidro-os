@@ -73,5 +73,5 @@ jobs:
         with:
           access-key: ${{ secrets.IA_ACCESS_KEY }}
           secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}-test
           files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
