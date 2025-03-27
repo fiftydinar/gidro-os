@@ -143,7 +143,7 @@ modules:
             - intel-vaapi-driver
             - libva-utils
             # Codecs
-            - heif-pixbuf-loader
+            # - heif-pixbuf-loader
             # Audio stuff (Negativo)
             - pipewire-libs-extra
         # Font stuff
