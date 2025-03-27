@@ -318,7 +318,7 @@ scheduled-reboot ACTION="prompt":
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
         systemctl disable nightly-reboot.timer
-        systemctl stop nightly-reboot.timer"
+        systemctl stop nightly-reboot.timer
         echo 'Reverted setting "nightly scheduled reboot" to defaults (Disabled).'
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
