@@ -6,7 +6,6 @@ modules:
         - https://repo.secureblue.dev/secureblue.repo
       copr:
         - kylegospo/rom-properties
-        - elxreno/zsync
         - decathorpe/miniaturo
         - hyperreal/better_fonts
         - secureblue/trivalent
@@ -30,7 +29,6 @@ modules:
         - rom-properties-gtk3
         - nautilus-python
         - python3-icoextract
-        - zsync
         - miniaturo
         - printer-driver-brlaser
         - epson-inkjet-printer-escpr
