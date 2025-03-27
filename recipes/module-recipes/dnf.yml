@@ -30,7 +30,6 @@ modules:
         - nautilus-python
         - python3-icoextract
         - miniaturo
-        - printer-driver-brlaser
         - epson-inkjet-printer-escpr
         - epson-inkjet-printer-escpr2
         - foo2zjs
