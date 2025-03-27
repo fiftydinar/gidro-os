@@ -81,11 +81,11 @@ modules:
     repos:
       nonfree: negativo17
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
-    #install:
-      #packages:
-        #- repo: fedora-multimedia
-          #packages:
-            #- libheif
+    install:
+      packages:
+        - repo: fedora-multimedia
+          packages:
+            - libheif
     replace:
       - from-repo: fedora-multimedia
         packages:
