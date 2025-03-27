@@ -116,6 +116,14 @@ modules:
       # Remove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)
       - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
       - rm /usr/share/thumbnailers/avif.thumbnailer
+      # Install just manually until ISO problem is solved
+      - echo -e "\033[90mInstalling just manually until ISO issue is fixed (not done in Ublue)\033[0m"
+      - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/casey/just/releases/latest)) && curl -fLs --create-dirs https://github.com/casey/just/releases/download/${VER}/just-${VER}-x86_64-unknown-linux-musl.tar.gz -o /tmp/just-x86_64-unknown-linux-musl.tar.gz"
+      - "mkdir -p /tmp/just && tar -xzf /tmp/just-x86_64-unknown-linux-musl.tar.gz -C /tmp/just/"
+      - cp /tmp/just/just /usr/bin/just && chmod 0755 /usr/bin/just
+      - cp /tmp/just/completions/just.bash /usr/share/bash-completion/completions/just
+      - rm /tmp/just-x86_64-unknown-linux-musl.tar.gz
+      - rm -r /tmp/just/
       
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
@@ -144,8 +152,8 @@ modules:
         - alsa-firmware
         # Thumbnailing
         - ffmpegthumbnailer
-        # Just
-        - just
+        # Just is installed manually because of its chinese README causing issues with installation ISO
+        #- just
         - fzf
         # Some additional udev rules
         - openrgb-udev-rules
@@ -190,5 +198,3 @@ modules:
     snippets:
       # Workaround non-working Chinese, Japanese & Korean fonts
       - ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk"
-      # Rename chinese just README to not contain UTF-8, due to a bug with ISO installer
-      - mv "/usr/share/doc/just/README.中文.md" "/usr/share/doc/just/README.zh-cn.md"
