@@ -28,14 +28,14 @@ ADW_GTK3_FLATPAKS=("org.gtk.Gtk3theme.adw-gtk3" "org.gtk.Gtk3theme.adw-gtk3-dark
 
 for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
 
-  if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user list --columns=application)")" ]]; then
+  if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user list --columns=application)")" ]]; then
     echo "Uninstalling outdated flatpak theme '${flatpak_theme}'"
     flatpak --user uninstall -y --delete-data "${flatpak_theme}"
   else
     echo "Flatpak theme '${flatpak_theme}' is already uninstalled"  
   fi
 
-  if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user mask)")" ]]; then
+  if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user mask)")" ]]; then
     echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
     flatpak --user mask "${flatpak_theme}"
   else
