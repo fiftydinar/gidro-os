@@ -15,7 +15,7 @@ for theme_name in "${THEME_NAMES[@]}"; do
     overwrite=false
   fi
   if ${overwrite}; then
-    echo "Installing/Updating adw-gtk3 theme"
+    echo "Installing/Updating adw-gtk3 theme '${theme_name}'"
     if [[ -d  "${HOME_THEME}/${theme_name}" ]]; then
       rm -r "${HOME_THEME}/${theme_name}"
     fi
