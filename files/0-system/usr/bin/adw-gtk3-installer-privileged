@@ -13,7 +13,7 @@ for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
     echo "Flatpak theme '${flatpak_theme}' is already uninstalled"  
   fi
 
-  if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --system mask)")" ]]; then
+  if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --system mask)")" ]]; then
     echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
     flatpak --system mask "${flatpak_theme}"
   else
