@@ -8,6 +8,7 @@ modules:
       - Bluetooth Battery Meter
       - Night Theme Switcher
       - RebootToUEFI
+      - Gnome 4x UI Improvements
       - Quick Settings Audio Devices Renamer
       - Quick Settings Audio Devices Hider
       - Remove World Clocks
@@ -17,6 +18,5 @@ modules:
     source: local
     install:
       - OpenWeather Refined
-      - Gnome 4x UI Improvements
       - Media Progress
       - Sleep Through Notifications
