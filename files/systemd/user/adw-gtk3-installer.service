@@ -1,0 +1,10 @@
+[Unit]
+Description=Install & update adw-gtk3 theme
+ConditionUser=!@system
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/adw-gtk3-installer
+
+[Install]
+WantedBy=graphical-session.target

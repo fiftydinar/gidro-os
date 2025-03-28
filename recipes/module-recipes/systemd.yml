@@ -7,6 +7,7 @@ system:
     - adbusers-append.service
     - plugdev-append.service
     - bootc-auto-update-without-reboot.timer
+    - adw-gtk3-installer-privileged.service
 user:
   enabled:
     - flatpak-gidro@deluge.service
@@ -15,3 +16,4 @@ user:
     - flatpak-gidro@steam.service
     - flatpak-gidro@telegram.service
     - flatpak-gidro@tutamail.service
+    - adw-gtk3-installer.service

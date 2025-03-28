@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SKEL_THEME="/usr/etc/skel/.local/share/themes"
+HOME_THEME="${HOME}/.local/share/themes"
+
+THEME_NAMES=($(find "${SKEL_THEME}" -mindepth 1 -maxdepth 1 -type d -printf "%f\n"))
+
+for theme_name in "${THEME_NAMES[@]}"; do
+  mkdir -p "${HOME_THEME}/${theme_name}"
+  if [[ -n $(diff -r "${SKEL_THEME}/${theme_name}" "${HOME_THEME}/${theme_name}") ]]; then
+    overwrite=true
+  else
+    overwrite=false
+  fi
+  if ${overwrite}; then
+    if [[ -d  "${HOME_THEME}/${theme_name}" ]]; then
+      rm -r "${HOME_THEME}/${theme_name}"
+    fi
+    cp -r "${SKEL_THEME}/${theme_name}" "${HOME_THEME}/${theme_name}"
+  else
+    echo "Theme '${theme_name}' is already updated to the latest version"  
+  fi
+done
+
+ADW_GTK3_FLATPAKS=("org.gtk.Gtk3theme.adw-gtk3" "org.gtk.Gtk3theme.adw-gtk3-dark")
+
+for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
+
+  if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user list --columns=application)")" ]]; then
+    echo "Uninstalling outdated flatpak theme '${flatpak_theme}'"
+    flatpak --user uninstall -y --delete-data "${flatpak_theme}"
+  else
+    echo "Flatpak theme '${flatpak_theme}' is already uninstalled"  
+  fi
+
+  if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user mask)")" ]]; then
+    echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
+    flatpak --user mask "${flatpak_theme}"
+  else
+    echo "Flatpak theme '${flatpak_theme}' is already masked"  
+  fi
+
+done
+
+echo "Setting user override for adw-gtk3 theme to apply on flatpaks"
+flatpak --user override --filesystem=xdg-data/themes
