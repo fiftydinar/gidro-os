@@ -14,7 +14,10 @@ for theme_name in "${THEME_NAMES[@]}"; do
     overwrite=false
   fi
   if ${overwrite}; then
-    rm -r "${HOME_THEME}/${theme_name}"
+    if [[ -d  "${HOME_THEME}/${theme_name}" ]]; then
+      rm -r "${HOME_THEME}/${theme_name}"
+    fi
+    mkdir -p "${HOME_THEME}"
     cp -r "${SKEL_THEME}/${theme_name}" "${HOME_THEME}/${theme_name}"
   else
     echo "Theme '${theme_name}' is already updated to the latest version"  
