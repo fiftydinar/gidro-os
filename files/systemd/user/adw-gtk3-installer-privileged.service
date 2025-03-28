@@ -1,0 +1,11 @@
+[Unit]
+Description=Privileged service to ensure that adw-gtk3 theme is applied for system flatpaks
+After=rpm-ostreed.service
+Before=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/adw-gtk3-installer-privileged
+
+[Install]
+WantedBy=multi-user.target
