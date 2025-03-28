@@ -127,7 +127,12 @@ modules:
       - cp /tmp/just/completions/just.bash /usr/share/bash-completion/completions/just
       - rm /tmp/just-x86_64-unknown-linux-musl.tar.gz
       - rm -r /tmp/just/
-      
+      # Install adw-gtk3 to skel
+      - echo -e "\033[90mInstalling adw-gtk3 theme to skel (not done in Ublue)\033[0m"
+      - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/lassekongo83/adw-gtk3/releases/latest)) && curl -fLs --create-dirs https://github.com/lassekongo83/adw-gtk3/releases/download/${VER}/adw-gtk3${VER}.tar.xz -o /tmp/adw-gtk3.tar.gz"
+      - "mkdir -p /etc/skel/.local/share/themes/ && tar -xf /tmp/adw-gtk3.tar.gz -C /etc/skel/.local/share/themes/"
+      - "rm /tmp/adw-gtk3.tar.gz"
+
   - type: dnf
     source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
@@ -167,7 +172,8 @@ modules:
         - pamu2fcfg
         - yubikey-manager 
         # Gnome-specific
-        - adw-gtk3-theme
+        # adw-gtk3 theme is installed in user directory instead, to better support flatpaks, since flatpak package is dead
+        #- adw-gtk3-theme
         - gvfs-nfs
         # Regular packages    
         - openssl
