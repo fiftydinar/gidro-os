@@ -5,10 +5,10 @@ modules:
       files:
         - https://repo.secureblue.dev/secureblue.repo
       copr:
-        - kylegospo/rom-properties
+        #- kylegospo/rom-properties
         - decathorpe/miniaturo
         - hyperreal/better_fonts
-        - secureblue/trivalent
+        #- secureblue/trivalent
     remove:
       packages:
         - tuned
@@ -26,13 +26,10 @@ modules:
         - gnome-classic-session
     install:
       packages:
-        - rom-properties-gtk3
+        #- rom-properties-gtk3
         - nautilus-python
         - python3-icoextract
         - miniaturo
-        - printer-driver-brlaser
-        - epson-inkjet-printer-escpr
-        - epson-inkjet-printer-escpr2
         - foo2zjs
         - uld
         - sg3_utils
@@ -41,7 +38,7 @@ modules:
         - power-profiles-daemon
         - fontconfig-font-replacements
         - trivalent
-        - trivalent-subresource-filter
+        #- trivalent-subresource-filter
 
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
