@@ -1,10 +1,8 @@
 [Unit]
 Description=Privileged service to ensure that adw-gtk3 theme is applied for system flatpaks
 After=adw-gtk3-installer.service
+ConditionEnvironment=DISPLAY
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/adw-gtk3-installer-privileged
-
-[Install]
-WantedBy=multi-user.target
