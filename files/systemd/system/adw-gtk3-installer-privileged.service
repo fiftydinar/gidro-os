@@ -6,3 +6,6 @@ Before=adw-gtk3-installer.service
 [Service]
 Type=simple
 ExecStart=/usr/bin/adw-gtk3-installer-privileged
+
+[Install]
+WantedBy=multi-user.target
