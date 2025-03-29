@@ -2,7 +2,7 @@
 Description=Timer to ensure that adw-gtk3 theme is applied for system flatpaks
 
 [Timer]
-OnBootSec=20
+OnBootSec=30
 
 [Install]
 WantedBy=timers.target
