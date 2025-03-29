@@ -15,7 +15,7 @@ for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
 
   if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --system mask)")" ]]; then
     echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
-    flatpak --system mask "${flatpak_theme}"
+    dbus-run-session flatpak --system mask "${flatpak_theme}"
   else
     echo "Flatpak theme '${flatpak_theme}' is already masked"  
   fi

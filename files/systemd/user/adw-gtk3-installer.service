@@ -1,6 +1,7 @@
 [Unit]
 Description=Install & update adw-gtk3 theme
 ConditionUser=!@system
+After=adw-gtk3-installer-privileged.service
 
 [Service]
 Type=simple
