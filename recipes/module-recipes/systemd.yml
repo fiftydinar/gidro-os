@@ -7,7 +7,7 @@ system:
     - adbusers-append.service
     - plugdev-append.service
     - bootc-auto-update-without-reboot.timer
-    - adw-gtk3-installer-privileged.service
+    - adw-gtk3-installer-privileged.timer
 user:
   enabled:
     - flatpak-gidro@deluge.service
