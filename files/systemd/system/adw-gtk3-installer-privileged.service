@@ -2,7 +2,6 @@
 Description=Privileged service to ensure that adw-gtk3 theme is applied for system flatpaks
 After=systemd-user-sessions.service
 Before=adw-gtk3-installer.service
-ConditionEnvironment=DISPLAY
 
 [Service]
 Type=simple
