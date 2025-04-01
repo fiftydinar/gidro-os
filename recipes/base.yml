@@ -81,11 +81,12 @@ modules:
     repos:
       nonfree: negativo17
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
-    #install:
-      #packages:
-        #- repo: fedora-multimedia
-          #packages:
-            #- libheif
+    install:
+      packages:
+        - libopenjph # Manually install dependency for `libheif`, as Negativo upstreamed it
+        - repo: fedora-multimedia
+          packages:
+            - libheif
     replace:
       - from-repo: fedora-multimedia
         packages:
@@ -148,7 +149,7 @@ modules:
             - intel-vaapi-driver
             - libva-utils
             # Codecs
-            # - heif-pixbuf-loader
+            - heif-pixbuf-loader
             # Audio stuff (Negativo)
             - pipewire-libs-extra
         # Font stuff
