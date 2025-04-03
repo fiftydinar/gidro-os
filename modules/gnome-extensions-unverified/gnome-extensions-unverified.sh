@@ -123,7 +123,7 @@ for INSTALL_EXT in "${INSTALL[@]}"; do
     fi
     # Modify metadata.json to support latest Gnome version
     echo "Modifying metadata.json to support Gnome ${GNOME_VER}"      
-    jq ".\"shell-version\" += [\"${GNOME_VER}\"]" "/usr/share/gnome-shell/extensions/${EXT_UUID}/metadata.json" > "/tmp/temp-metadata.json"
+    jq --arg gnome_ver "${GNOME_VER}" 'if (.["shell-version"] | index($gnome_ver) | not) then .["shell-version"] += [$gnome_ver] else . end' "/usr/share/gnome-shell/extensions/${EXT_UUID}/metadata.json" > "/tmp/temp-metadata.json"
     mv "/tmp/temp-metadata.json" "/usr/share/gnome-shell/extensions/${EXT_UUID}/metadata.json"
     # Delete the temporary directory
     echo "Cleaning up the temporary directory"
