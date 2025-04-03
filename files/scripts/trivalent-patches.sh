@@ -7,6 +7,7 @@ set -euo pipefail
 dnf5 -y config-manager setopt fedora-cdrtools.enabled=0
 dnf5 -y config-manager setopt fedora-multimedia.enabled=0
 dnf5 -y install selinux-policy-devel
+mkdir -p ./selinux/trivalent
 cd ./selinux/trivalent
 SELINUX_POLICY_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/selinux/trivalent"
 curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.fc" --output-dir "${PWD}"
