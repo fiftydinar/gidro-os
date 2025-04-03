@@ -83,6 +83,7 @@ modules:
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
     install:
       packages:
+        - libopenjph # Manually install dependency for `libheif`, as Negativo upstreamed it
         - repo: fedora-multimedia
           packages:
             - libheif
