@@ -18,9 +18,9 @@ document-font-name='Nokia Pure Text 11'
 font-hinting='none'
 font-rendering='manual'
 font-name='Nokia Pure Text 11'
+gtk-enable-primary-paste=false
 gtk-theme='adw-gtk3'
 icon-theme='MoreWaita'
-gtk-enable-primary-paste=false
 
 [org.gnome.desktop.peripherals.keyboard]
 delay=uint32 226
