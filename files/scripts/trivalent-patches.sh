@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Install Trivalent selinux policy (fixes Trivalent not launching since v135)
-dnf -y install selinux-policy-devel
+dnf5 -y install selinux-policy-devel
 mkdir -p ./selinux/trivalent
 cd ./selinux/trivalent
 SELINUX_POLICY_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/selinux/trivalent"
