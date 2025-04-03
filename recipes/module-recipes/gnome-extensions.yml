@@ -1,17 +1,22 @@
-type: gnome-extensions
-install:
-  - Blur my Shell
-  - Caffeine
-  - Quick Close in Overview
-  - OpenWeather Refined
-  - Notifications Alert
-  - Bluetooth Battery Meter
-  - Night Theme Switcher
-  - RebootToUEFI
-  - Gnome 4x UI Improvements
-  - Media Progress
-  - Quick Settings Audio Devices Renamer
-  - Quick Settings Audio Devices Hider
-  - Remove World Clocks
-  #- Sleep Through Notifications
-  - Unblank lock screen
+modules:
+  - type: gnome-extensions
+    install:
+      - Blur my Shell
+      - Caffeine
+      - Quick Close in Overview
+      - OpenWeather Refined
+      - Notifications Alert
+      - Bluetooth Battery Meter
+      - Night Theme Switcher
+      - RebootToUEFI
+      - Gnome 4x UI Improvements
+      - Media Progress
+      - Quick Settings Audio Devices Renamer
+      - Quick Settings Audio Devices Hider
+      - Remove World Clocks
+      - Unblank lock screen
+
+  - type: gnome-extensions-unverified
+    source: local
+    install:
+      - Sleep Through Notifications
