@@ -2,6 +2,18 @@
 
 set -euo pipefail
 
+# Install Trivalent selinux policy (fixes Trivalent not launching since v135)
+dnf -y install selinux-policy-devel
+mkdir -p ./selinux/trivalent
+cd ./selinux/trivalent
+SELINUX_POLICY_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/selinux/trivalent"
+curl -fLs "${SELINUX_POLICY_URL}/trivalent.fc"
+curl -fLs "${SELINUX_POLICY_URL}/trivalent.if"
+curl -fLs "${SELINUX_POLICY_URL}/trivalent.te"
+curl -sSL "${SELINUX_POLICY_URL}/trivalent.sh" | bash
+cd
+dnf -y remove selinux-policy-devel
+
 # Assure that network sandbox is always disabled by default (to ensure that login data remains)
 # https://github.com/fedora-silverblue/issue-tracker/issues/603
 
