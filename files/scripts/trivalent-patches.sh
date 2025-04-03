@@ -15,7 +15,7 @@ curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.if" --output-dir "${
 curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.te" --output-dir "${PWD}"
 curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.sh" --output-dir "${PWD}"
 bash "${PWD}/trivalent.sh"
-cd
+cd ../..
 dnf5 -y remove selinux-policy-devel
 dnf5 -y config-manager setopt fedora-cdrtools.enabled=1
 dnf5 -y config-manager setopt fedora-multimedia.enabled=1
