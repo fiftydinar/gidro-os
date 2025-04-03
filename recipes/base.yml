@@ -143,15 +143,6 @@ modules:
         - google-noto-sans-cjk-vf-fonts
     install:
       packages:
-        - repo: fedora-multimedia
-          packages:
-            # Graphic stuff
-            - intel-vaapi-driver
-            - libva-utils
-            # Codecs
-            - heif-pixbuf-loader
-            # Audio stuff (Negativo)
-            - pipewire-libs-extra
         # Font stuff
         - google-noto-sans-balinese-fonts
         - google-noto-sans-cjk-fonts
@@ -181,6 +172,15 @@ modules:
         - libratbag-ratbagd
         - zstd
         - wireguard-tools
+        - repo: fedora-multimedia
+          packages:
+            # Graphic stuff
+            - intel-vaapi-driver
+            - libva-utils
+            # Codecs
+            - heif-pixbuf-loader
+            # Audio stuff (Negativo)
+            - pipewire-libs-extra
     replace:
       - from-repo: fedora-multimedia
         packages:
