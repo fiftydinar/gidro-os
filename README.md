@@ -163,6 +163,7 @@ Settings applied by default:
 - Set Trivalent to:
   - disable Network Sandbox (solves data persistence bug)
   - disable search choice pop-up
+  - use secureblue's selinux policy
 - Set Text Editor to:
   - use Nokia Pure Text font
   - increase the font size to 16
@@ -187,9 +188,9 @@ Settings applied by default:
 > [!CAUTION]
 > This ISO installation guide assumes that you want to install Gidro-OS on single-boot single-disk setup.
 
-### [DOWNLOAD LINK](https://archive.org/download/gidro-os_01-12-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_01-12-2024.iso)
-### [TORRENT LINK](https://archive.org/download/gidro-os_01-12-2024/gidro-os_01-12-2024_archive.torrent)<br/>(higher download speed)
-### [ISO CHECKSUM](https://archive.org/download/gidro-os_01-12-2024/home/runner/work/gidro-os/gidro-os/upload/gidro-os_01-12-2024.iso-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
+### [DOWNLOAD LINK](https://archive.org/download/gidro-os_01-04-2025/home/runner/work/gidro-os/gidro-os/upload/gidro-os_01-04-2025.iso)
+### [TORRENT LINK](https://archive.org/download/gidro-os_01-04-2025/gidro-os_01-04-2025_archive.torrent)<br/>(higher download speed)
+### [ISO CHECKSUM](https://archive.org/download/gidro-os_01-04-2025/home/runner/work/gidro-os/gidro-os/upload/gidro-os_01-04-2025.iso-CHECKSUM)<br/>(verify the checksum if ISO is downloaded correctly with apps like [Collision](https://flathub.org/apps/dev.geopjr.Collision))
 
 - ISO doesn't require an active internet connection during its usage (but it is recommended to have it, to make NTP working).
 - Download the ISO & proceed with installation.
