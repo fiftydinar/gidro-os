@@ -8,10 +8,6 @@ dnf5 -y config-manager setopt fedora-cdrtools.enabled=0
 dnf5 -y config-manager setopt fedora-multimedia.enabled=0
 echo "Install 'selinux-policy-devel' build package & it's dependencies"
 dnf5 -y install selinux-policy-devel
-echo "Make empty '/etc/ld.so.preload' file if it doesn't exist, as bwrap fails without it"
-if [[ ! -f "/etc/ld.so.preload" ]]; then
-  touch "/etc/ld.so.preload"
-fi
 echo "Downloading secureblue Trivalent selinux policy"
 mkdir -p ./selinux/trivalent
 cd ./selinux/trivalent
