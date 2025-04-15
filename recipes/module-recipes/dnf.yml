@@ -26,7 +26,7 @@ modules:
         - gnome-classic-session
     install:
       packages:
-        #- rom-properties-gtk3
+        - rom-properties-gtk3
         - nautilus-python
         - python3-icoextract
         - miniaturo
