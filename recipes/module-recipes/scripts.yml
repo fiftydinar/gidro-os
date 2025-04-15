@@ -12,6 +12,3 @@ snippets:
   - "echo 'Hidden=true' >> /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop"
   # python3-icoextract EXE thumbnailer  
   - "wget https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -O /usr/share/thumbnailers/exe-thumbnailer.thumbnailer"
-  # Patch Media Progress Gnome extension to use system Nokia Pure Text T font instead of the hardcoded one
-  # Using tabular version of the font because it's more suitable for the numbers, as that's what extension is showing
-  - "sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text T;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css"

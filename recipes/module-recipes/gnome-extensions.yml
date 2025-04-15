@@ -18,5 +18,4 @@ modules:
     source: local
     install:
       - OpenWeather Refined
-      - Media Progress
       - Sleep Through Notifications
