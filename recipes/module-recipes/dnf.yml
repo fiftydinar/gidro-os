@@ -5,7 +5,7 @@ modules:
       files:
         - https://repo.secureblue.dev/secureblue.repo
       copr:
-        #- kylegospo/rom-properties
+        - bazzite-org/rom-properties
         - decathorpe/miniaturo
         - hyperreal/better_fonts
         - secureblue/trivalent

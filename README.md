@@ -232,7 +232,7 @@ To rebase an existing installation to the latest build:
   (don't worry if you didn't finish it before, 1st-time setup remembers the setup state & it will be present until finished)
 
 ## COPR repos used for some installed RPM packages
-- [ROM Properties](https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/)
+- [ROM Properties](https://copr.fedorainfracloud.org/coprs/bazzite-org/rom-properties/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
 - [Trivalent subresource filter](https://copr.fedorainfracloud.org/coprs/secureblue/trivalent/)
