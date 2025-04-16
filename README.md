@@ -45,6 +45,9 @@ Installed packages (RPMs):
 - [fontconfig-font-replacements](https://github.com/hyperreal64/fedora-better-fonts) (Also known as `better-fonts`. It fills the gap of missing proprietary fonts with the open-source font replacements)
 - [dr14_t.meter](https://github.com/simon-r/dr14_t.meter) (support for reading dynamic range of audio files)
 
+Installed packages (AppImages/static binaries):
+- [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)
+
 Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
@@ -93,7 +96,6 @@ Installed flatpaks:
 Optional just config:
 - [Hide close button from windows](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-apply-hide-close-button-from-windows-config) (useful for mouses which have a special key for closing applications window)
 - [Scheduled nightly reboot](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-apply-scheduled-nightly-reboot-config) (useful for applying system updates if you're leaving your PC turned on 24/7)
-- [Management of official Android platform-tools](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-manage-android-platform-tools) (useful for easy installing, updating & removing of Android platform-tools pulled from official Google source. `android-tools` official package is broken, so relying on this solution is better + it pairs nicely with existing Android udev rules)
 - [Disable Bluetooth headset profile (HSP/HFP)](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-disable-bluetooth-headset-profile) (useful if you don't use mic from Bluetooth headphones, so you don't get surprisingly switched to lower audio quality headset profile)
 
 Settings applied by default:
