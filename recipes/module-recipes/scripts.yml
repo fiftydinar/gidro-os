@@ -11,9 +11,11 @@ snippets:
   # Hide ROM Properties desktop shortcut  
   - "echo 'Hidden=true' >> /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop"
   # python3-icoextract EXE thumbnailer  
-  - "wget https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -O /usr/share/thumbnailers/exe-thumbnailer.thumbnailer"
+  - "curl -fLs --create-dirs https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -o /usr/share/thumbnailers/exe-thumbnailer.thumbnailer"
   # Install Android platform-tools AppImage
   - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/android-tools-AppImage/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/${VER}/Android-platform-tools-${VER}-x86_64.AppImage -o /usr/bin/android-tools && chmod +x /usr/bin/android-tools"
+  # Install AM AppImage manager
+  - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/ivan-hc/AM/releases/latest)) && curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/tags/${VER}.tar.gz -o /tmp/am/am-${VER}.tar.gz && tar -xzvf /tmp/am/am-${VER}.tar.gz -C /tmp/am/ && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-${VER}/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && cp /tmp/am/AM-${VER}/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && rm -r /tmp/am/"
   # Patch Media Progress Gnome extension to use system Nokia Pure Text T font instead of the hardcoded one
   # Using tabular version of the font because it's more suitable for the numbers, as that's what extension is showing
   - "sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text T;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css"
