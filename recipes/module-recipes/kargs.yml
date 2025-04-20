@@ -10,3 +10,6 @@ kargs:
   - amdgpu.cik_support=1
   # Enable Nvidia GSP firmware for Nouveau driver
   - nouveau.config=NvGspRm=1
+  # Workaround this bug since composefs is enabled in F42:
+  # https://discussion.fedoraproject.org/t/root-mount-options-are-ignored-in-fedora-atomic-desktops-42/148562
+  - rootflags=subvol=root,compress=zstd:1
