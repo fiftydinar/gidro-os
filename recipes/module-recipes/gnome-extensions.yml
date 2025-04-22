@@ -1,5 +1,6 @@
 modules:
   - type: gnome-extensions
+    source: ghcr.io/fiftydinar/modules/gnome-extensions:test
     install:
       - Blur my Shell
       - Caffeine
