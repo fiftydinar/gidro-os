@@ -154,7 +154,7 @@ Settings applied by default:
 - Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
 - [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
-- Hide ROM Properties & HP printer desktop shortcut
+- Hide ROM Properties desktop shortcut
 - Enable silent auto-start on boot for those applications:
   - Steam
   - Discord

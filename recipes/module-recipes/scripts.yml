@@ -8,10 +8,8 @@ scripts:
 snippets:
   # Clear font cache
   - "fc-cache --system-only --really-force /usr/share/fonts/nokia-font"
-  # Hide ROM Properties & HP printer stuff desktop shortcut  
+  # Hide ROM Properties desktop shortcut  
   - "echo 'Hidden=true' >> /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop"
-  - "echo 'Hidden=true' >> /usr/share/applications/hplip.desktop"
-  - "echo 'Hidden=true' >> /usr/share/applications/hp-uiscan.desktop"
   # python3-icoextract EXE thumbnailer  
   - "wget https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -O /usr/share/thumbnailers/exe-thumbnailer.thumbnailer"
   # Install Android platform-tools AppImage
