@@ -136,7 +136,6 @@ modules:
   # Use older version of Gnome Software until that annoying notification pop-up gets fixed
   - type: dnf
     repos:
-      cleanup: true
       copr:
         - ublue-os/staging
     remove:
