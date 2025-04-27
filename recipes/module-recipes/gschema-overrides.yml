@@ -2,6 +2,6 @@ modules:
   - type: script
     snippets:
       # Workaround any mutter experimental features not applying, like VRR
-      - rm /usr/share/glib-2.0/org.gnome.mutter.fedora.gschema.override
+      - rm /usr/share/glib-2.0/schemas/org.gnome.mutter.fedora.gschema.override
 
   - type: gschema-overrides
