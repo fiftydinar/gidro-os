@@ -85,6 +85,7 @@ color='rgb(138,156,184)'
 
 [org.gnome.shell.extensions.Bluetooth-Battery-Meter]
 enable-battery-level-text=true
+enable-upower-level-icon=true
 
 [org.gnome.shell.extensions.nightthemeswitcher.time]
 offset=0
