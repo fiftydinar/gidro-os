@@ -156,6 +156,7 @@ Settings applied by default:
 - Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
 - Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
+- Use F41 version of Gnome Software until [annoying notification pop-up is fixed](https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2802)
 - [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
 - Enable silent auto-start on boot for those applications:

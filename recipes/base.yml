@@ -133,6 +133,17 @@ modules:
       - "mkdir -p /etc/skel/.local/share/themes/ && tar -xf /tmp/adw-gtk3.tar.gz -C /etc/skel/.local/share/themes/"
       - "rm /tmp/adw-gtk3.tar.gz"
 
+  # Use older version of Gnome Software until that annoying notification pop-up gets fixed
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - ublue-os/staging
+    replace:
+        - from-repo: copr:copr.fedorainfracloud.org:ublue-os:staging
+          packages:
+            - gnome-software
+
   - type: dnf
     remove:
       packages:
