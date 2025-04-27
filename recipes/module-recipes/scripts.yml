@@ -17,3 +17,5 @@ snippets:
   # Patch Media Progress Gnome extension to use system Nokia Pure Text T font instead of the hardcoded one
   # Using tabular version of the font because it's more suitable for the numbers, as that's what extension is showing
   - "sed -i 's/font-family: [^;]*;/font-family: Nokia Pure Text T;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css"
+  # Enable experimental Bluetooth features to make it more compatible with Bluetooth Battery Meter extension
+  - "sed -i 's/#Experimental = false/Experimental = true/; s/#Experimental = true/Experimental = true/; s/Experimental = false/Experimental = true/; s/#KernelExperimental = false/KernelExperimental = true/; s/#KernelExperimental = true/KernelExperimental = true/; s/KernelExperimental = false/KernelExperimental = true/; s/#Experimental=false/Experimental = true/; s/#Experimental=true/Experimental = true/; s/Experimental=false/Experimental = true/; s/#KernelExperimental=false/KernelExperimental = true/; s/#KernelExperimental=true/KernelExperimental = true/; s/KernelExperimental=false/KernelExperimental = true/' /etc/bluetooth/main.conf"
