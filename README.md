@@ -37,8 +37,6 @@ Installed packages (RPMs):
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
-- [BrLaser](https://github.com/Owl-Maintain/brlaser) (Driver which supports additional Brother printers)
-- Epson-inkjet-printer-escpr 1 & 2 (Driver which supports some additional Epson printers)
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
 - [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
@@ -123,6 +121,7 @@ Settings applied by default:
 - Set font hinting to "None"
 - Force font hinting to be manual, instead of automatic based on display resolution
 - Set Nokia Pure Text font as the default
+- Set Source Code Pro font as the monospace default (Gnome <=47 monospace font)
 - Set a beautiful Symbian^3 picture as a wallpaper, including dark variant
 - [Set light & dark theme to AdwGtk3 for GTK3 applications](https://github.com/lassekongo83/adw-gtk3) (to make Adwaita design more consistent)
 - [Use MoreWaita icon pack](https://github.com/somepaulo/MoreWaita) (to extend Adwaita theme icon language)
