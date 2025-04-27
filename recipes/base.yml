@@ -139,8 +139,12 @@ modules:
       cleanup: true
       copr:
         - ublue-os/staging
-    replace:
-        - from-repo: copr:copr.fedorainfracloud.org:ublue-os:staging
+    remove:
+      packages:
+        - gnome-software
+    install:
+      packages:
+        - repo: copr:copr.fedorainfracloud.org:ublue-os:staging
           packages:
             - gnome-software
 
