@@ -6,6 +6,6 @@ modules:
       - |
         awk '/flags='\''org.gnome.mutter.MetaExperimentalFeature'\''>/ {print; print "      <default>[\"variable-refresh-rate\", \"scale-monitor-framebuffer\", \"xwayland-native-scaling\"]</default>"; next}1' /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml > /tmp/temp.xml && mv /tmp/temp.xml /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml
       - |
-awk '/<default>\["variable-refresh-rate", "scale-monitor-framebuffer", "xwayland-native-scaling"\]<\/default>/ {found=1} /<default>\[\]<\/default>/ && found {next} {print}' /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml > /tmp/temp.xml && mv /tmp/temp.xml /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml
+        awk '/<default>\["variable-refresh-rate", "scale-monitor-framebuffer", "xwayland-native-scaling"\]<\/default>/ {found=1} /<default>\[\]<\/default>/ && found {next} {print}' /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml > /tmp/temp.xml && mv /tmp/temp.xml /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 
   - type: gschema-overrides
