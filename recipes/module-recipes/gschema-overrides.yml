@@ -4,6 +4,6 @@ modules:
       # Workaround VRR gsetting not applying since Gnome 48 for some reason
       - rm /usr/share/glib-2.0/schemas/org.gnome.mutter.fedora.gschema.override
       - |
-        awk '/flags='\''org.gnome.mutter.MetaExperimentalFeature'\''>/ {print; print "      <default>[\"variable-refresh-rate\", \"scale-monitor-framebuffer\", \"xwayland-native-scaling\"]</default>"; next}1' /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml > /tmp/temp.xml && mv temp.xml /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml && rm /tmp/temp.xml
+        awk '/flags='\''org.gnome.mutter.MetaExperimentalFeature'\''>/ {print; print "      <default>[\"variable-refresh-rate\", \"scale-monitor-framebuffer\", \"xwayland-native-scaling\"]</default>"; next}1' /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml > /tmp/temp.xml && mv /tmp/temp.xml /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml && rm /tmp/temp.xml
 
   - type: gschema-overrides
