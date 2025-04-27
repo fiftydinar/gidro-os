@@ -77,7 +77,6 @@ modules:
   # Remove chsh & install oversteer-udev rules, as I don't want to rely on potentially outdated RPM
   # The operations below cannot be covered in rpm-ostree module, so it's used as a script
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
     # Replace Fedora packages with Negativos (Mesa & HEIF)  
@@ -135,7 +134,6 @@ modules:
       - "rm /tmp/adw-gtk3.tar.gz"
 
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     remove:
       packages:
         - gnome-software-rpm-ostree
@@ -197,7 +195,6 @@ modules:
           - old: OpenCL-ICD-Loader
             new: ocl-icd
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     install:
       packages:
         - repo: fedora-multimedia

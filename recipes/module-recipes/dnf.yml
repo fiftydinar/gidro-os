@@ -1,6 +1,5 @@
 modules:
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       files:
         - https://repo.secureblue.dev/secureblue.repo
@@ -42,14 +41,12 @@ modules:
 
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: rpmfusion
     install:
       packages:
         - faad2
   - type: dnf
-    source: ghcr.io/blue-build/modules/dnf:dnf-module
     repos:
       nonfree: negativo17
       copr:
