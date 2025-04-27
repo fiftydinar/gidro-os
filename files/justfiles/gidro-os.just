@@ -192,27 +192,27 @@ factory-reset ACTION="prompt":
       done    
       dconf reset -f /
         echo 'Factory-reset of all Gidro-OS settings completed.'
-      if [[ -f "${HOME}/.config/gtk-3.0/gtk.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-3.0/gtk.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-3.0/gtk.css"
       fi
-      if [[ -f "${HOME}/.config/gtk-3.0/colors.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-3.0/colors.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-3.0/colors.css"
       fi
-      if [[ -f "${HOME}/.config/gtk-3.0/window_decorations.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-3.0/window_decorations.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-3.0/window_decorations.css"
       fi
-      if [[ -f "${HOME}/.config/gtk-4.0/gtk.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-4.0/gtk.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-4.0/gtk.css"
       fi
-      if [[ -f "${HOME}/.config/gtk-4.0/colors.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-4.0/colors.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-4.0/colors.css"
       fi
-      if [[ -f "${HOME}/.config/gtk-4.0/window_decorations.css"; then ]]
+      if [[ -f "${HOME}/.config/gtk-4.0/window_decorations.css" ]]; then
         custom_theming=true
         rm "${HOME}/.config/gtk-4.0/window_decorations.css"
       fi
