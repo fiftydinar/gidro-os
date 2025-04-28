@@ -22,7 +22,8 @@ modules:
   - type: script
     snippets:
       # Nuke flatpak autostart units
-      - "echo -e "\e[1;31mNuking flatpak autostart units\e[0m""
+      - |
+        echo -e "\e[1;31mNuking flatpak autostart units\e[0m"
       - "systemctl --global disable flatpak-gidro@tutamail.service"
       - "systemctl --global disable flatpak-gidro@telegram.service"
       - "systemctl --global disable flatpak-gidro@steam.service"
@@ -31,7 +32,8 @@ modules:
       - "systemctl --global disable flatpak-gidro@deluge.service"
       - "rm -r /usr/lib/systemd/user/flatpak-gidro@*"
       # Nuke flatpak systemd update timers
-      - "echo -e "\e[1;31mNuking flatpak systemd update timers\e[0m""
+      - |
+        echo -e "\e[1;31mNuking flatpak systemd update timers\e[0m"
       - "systemctl --system disable flatpak-system-update.timer"
       - "systemctl --global enable flatpak-user-update.timer"
       - "rm /usr/lib/systemd/system/flatpak-system-update.timer"
@@ -39,7 +41,8 @@ modules:
       - "rm /usr/lib/systemd/user/flatpak-user-update.timer"
       - "rm /usr/lib/systemd/user/flatpak-user-update.service"
       # Nuke `default-flatpaks` module
-      - "echo -e "\e[1;31mNuking 'default-flatpaks' module\e[0m""
+      - |
+        echo -e "\e[1;31mNuking 'default-flatpaks' module\e[0m"
       - "systemctl --global disable user-flatpak-setup.timer"
       - "systemctl --system disable system-flatpak-setup.timer"
       - "rm /usr/lib/systemd/system/system-flatpak-setup.timer"
@@ -49,8 +52,11 @@ modules:
       - "rm -r /usr/share/bluebuild/default-flatpaks/"
       - "rm -r /etc/bluebuild/default-flatpaks/"
       # Nuke unrelevant section for flatpaks in yafti
-      - "echo -e "\e[1;31mNuking unrelevant flatpak section in 'yafti'\e[0m""
-      - "sed -i '/^  applications:/,/^  configure-gidro-os:/ { /^  configure-gidro-os:/!d }' /usr/share/ublue-os/firstboot/yafti.yml"
+      - |
+        echo -e "\e[1;31mNuking unrelevant flatpak section in 'yafti'\e[0m"
+      - |
+        sed -i '/^  applications:/,/^  configure-gidro-os:/ { /^  configure-gidro-os:/!d }' /usr/share/ublue-os/firstboot/yafti.yml
       # Install 'am' AppImage manager
-      - "echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"" 
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/ivan-hc/AM/releases/latest)) && curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/tags/${VER}.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-${VER}/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-${VER}/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
