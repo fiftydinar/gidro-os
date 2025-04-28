@@ -13,12 +13,17 @@ modules:
   - from-file: general.yml
   # Remove Gnome Software, as it doesn't support AppImage installation
   # Nuke flatpaks & anything related to it, like Fedora 3rd party repos
+  # Flatpak selinux policy doesn't harm, so it won't be removed
   - type: dnf
     remove:
       packages:
         - gnome-software
         - flatpak
+        - flatpak-libs
+        - flatpak-session-helper
+        - fedora-flathub-remote
         - fedora-third-party
+        - fedora-workstation-repositories
   - type: script
     snippets:
       # Nuke flatpak autostart units
@@ -56,6 +61,15 @@ modules:
         echo -e "\e[1;31mNuking unrelevant flatpak section in 'yafti'\e[0m"
       - |
         sed -i '/^  applications:/,/^  configure-gidro-os:/ { /^  configure-gidro-os:/!d }' /usr/share/ublue-os/firstboot/yafti.yml
+      # Nuke flatpak related skel
+      - |
+        echo -e "\e[1;31mNuking flatpak-related skel\e[0m"
+      - "rm -r /etc/skel/.var/"
+      # Nuke flatpak & fedora-third-party tmpfiles.d entries
+      - |
+        echo -e "\e[1;31mNuking flatpak & fedora-third-party tmpfiles.d entries\e[0m"
+      - |
+        sed -i '/\/var\/lib\/flatpak/d; /\/var\/lib\/fedora-third-party/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
       # Install 'am' AppImage manager
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"
