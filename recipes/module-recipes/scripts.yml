@@ -2,7 +2,6 @@ type: script
 scripts:
   - morewaita.sh
   - trivalent-patches.sh
-  - disable-layering.sh
   - prefer-bootc-over-rpm-ostree.sh
 
 snippets:
