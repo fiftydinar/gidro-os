@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image_name: [gidro-os]
+        image_name: [gidro-os-appimages]
         major_version: [42]
         image_tag: [latest]
 
@@ -54,9 +54,6 @@ jobs:
           iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
-          enable_flatpak_dependencies: "false"
-          flatpak_remote_name: "flathub-system"
-          flatpak_remote_url: "https://flathub.org/repo/flathub.flatpakrepo"
 
       - name: Move ISO to Upload Directory
         id: upload-directory
