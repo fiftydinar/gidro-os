@@ -1,7 +1,7 @@
 # image will be published to ghcr.io/<user>/<name>
 name: gidro-os-appimages
 # description will be included in the image's metadata
-description: My personalized custom OS image with flatpak removed & replaced with AppImage integration.
+description: "My personalized custom OS image with flatpak removed & replaced with AppImage integration."
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: quay.io/fedora-ostree-desktops/silverblue
