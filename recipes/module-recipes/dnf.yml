@@ -25,6 +25,7 @@ modules:
         - gnome-classic-session
     install:
       packages:
+        - binutils
         - rom-properties-gtk3
         - nautilus-python
         - python3-icoextract

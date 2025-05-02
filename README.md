@@ -33,6 +33,7 @@ Replaced packages (RPMs) with flatpaks:
    (it is a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
+- GNU Binutils (has some useful stuff)
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
