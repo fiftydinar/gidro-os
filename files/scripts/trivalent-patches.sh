@@ -31,3 +31,6 @@ echo -e '\nCHROMIUM_FLAGS+=" --disable-features=NetworkServiceSandbox"' >> /etc/
 
 echo "Disable search engine choice screen"
 echo -e '\nCHROMIUM_FLAGS+=" --disable-search-engine-choice-screen"' >> /etc/trivalent/trivalent.conf
+
+echo "Enable middle-click scrolling by default"
+sed -i '/CHROMIUM_FLAGS+=" --disable-breakpad"/a\FEATURES+=",MiddleClickAutoscroll"' /etc/trivalent/trivalent.conf

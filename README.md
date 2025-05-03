@@ -170,6 +170,7 @@ Settings applied by default:
 - Set Trivalent to:
   - disable Network Sandbox (solves data persistence bug)
   - disable search choice pop-up
+  - enable middle-click mouse scrolling
   - use secureblue's selinux policy
 - Set Text Editor to:
   - use Nokia Pure Text font
