@@ -8,6 +8,7 @@ on:
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
       - ".github/workflows/build-iso.yml"
+      - ".github/workflows/build-iso-appimages.yml"
 
   pull_request:
   workflow_dispatch: # allow manually triggering builds
