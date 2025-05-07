@@ -1,0 +1,77 @@
+name: Build ISO
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Build & upload ISO every month
+
+  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build-iso.yml'
+
+env:
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        image_name: [gidro-os-appimages]
+        major_version: [42]
+        image_tag: [latest]
+
+    steps:
+      - name: Fetch current date
+        shell: bash
+        run: |
+          TIMESTAMP="$(date +%d-%m-%Y)"
+          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@v1.3.0
+        id: build
+        with:
+          arch: x86_64
+          version: ${{ matrix.major_version }}
+          image_repo: ${{ env.IMAGE_REGISTRY }}
+          image_name: ${{ matrix.image_name }}
+          image_tag: ${{ matrix.image_tag }}
+          variant: 'Kinoite'
+          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
+          enable_cache_dnf: "false"
+          enable_cache_skopeo: "false"
+          enable_flatpak_dependencies: "false"
+          flatpak_remote_name: "flathub-system"
+          flatpak_remote_url: "https://flathub.org/repo/flathub.flatpakrepo"
+
+      - name: Move ISO to Upload Directory
+        id: upload-directory
+        shell: bash
+        run: |
+          ISO_UPLOAD_DIR=${{ github.workspace }}/upload
+          mkdir ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
+          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
+
+      - name: Upload ISO to archive.org
+        uses: RoyalOughtness/internet-archive-upload@v7
+        with:
+          access-key: ${{ secrets.IA_ACCESS_KEY }}
+          secret-key: ${{ secrets.IA_SECRET_KEY }}
+          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
+          files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
