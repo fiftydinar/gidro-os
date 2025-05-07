@@ -1,4 +1,4 @@
-name: Build ISO
+name: Build ISO AppImage variant
 
 on:
   schedule:
