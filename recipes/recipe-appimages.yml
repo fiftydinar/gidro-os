@@ -69,6 +69,10 @@ modules:
         sed -i '0,/description: |/{//!b; n; d;}' /usr/share/ublue-os/firstboot/yafti.yml
       - |
         sed -i 's/        Explore useful apps and options!/        Explore useful options!/g' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i 's/      title: Additional Gidro-OS packages & configs/      title: Additional Gidro-OS configs/g' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i '/- "Install More Applications":/d; /run: \/usr\/bin\/gnome-software/d' /usr/share/ublue-os/firstboot/yafti.yml
       # Nuke flatpak related skel
       - |
         echo -e "\e[1;31mNuking flatpak-related skel\e[0m"
