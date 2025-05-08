@@ -13,7 +13,6 @@ modules:
   - from-file: general.yml
   # Remove Gnome Software, as it doesn't support AppImage installation
   # Nuke flatpaks & anything related to it, like Fedora 3rd party repos
-  # Flatpak selinux policy doesn't harm, so it won't be removed
   - type: dnf
     remove:
       packages:
@@ -21,6 +20,7 @@ modules:
         - flatpak
         - flatpak-libs
         - flatpak-session-helper
+        - flatpak-selinux
         - fedora-flathub-remote
         - fedora-third-party
         - fedora-workstation-repositories
