@@ -56,6 +56,8 @@ modules:
       - "rm /usr/lib/systemd/user/user-flatpak-setup.service"
       - "rm -r /usr/share/bluebuild/default-flatpaks/"
       - "rm -r /etc/bluebuild/default-flatpaks/"
+      - "rm /usr/bin/system-flatpak-setup"
+      - "rm /usr/bin/user-flatpak-setup"
       # Nuke unrelevant section for flatpaks in yafti
       - |
         echo -e "\e[1;31mNuking unrelevant flatpak section in 'yafti'\e[0m"
