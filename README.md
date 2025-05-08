@@ -8,6 +8,8 @@ Gidro-OS was based on [Universal Blue's](https://universal-blue.org/) `silverblu
 Reasoning for that is to have more control over the Universal Blue's base, which would make it possible for me to react immediately with changes if needed, to avoid some questionable additions to the base, to make image smaller (and with it, updates faster) etc.  
 You can see my changes to the base recipe [here](https://github.com/fiftydinar/gidro-os/blob/main/recipes/base.yml).
 
+`gidro-os-appimages` is an experimental version of Gidro-OS with flatpak-related stuff removed & with `AM` AppImage manager installed, to see if AppImage-only usage can replace flatpaks in the future.
+
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
 
