@@ -72,6 +72,7 @@ modules:
         echo -e "\e[1;31mNuking flatpak & fedora-third-party tmpfiles.d entries\e[0m"
       - |
         sed -i '/\/var\/lib\/flatpak/d; /\/var\/lib\/fedora-third-party/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
+      - "rm /usr/lib/rpm-ostree/tmpfiles.d/flatpak.conf"
       # Install 'am' AppImage manager
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"
