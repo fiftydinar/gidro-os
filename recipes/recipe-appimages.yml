@@ -40,7 +40,7 @@ modules:
       - |
         echo -e "\e[1;31mNuking flatpak systemd update timers\e[0m"
       - "systemctl --system disable flatpak-system-update.timer"
-      - "systemctl --global enable flatpak-user-update.timer"
+      - "systemctl --global disable flatpak-user-update.timer"
       - "rm /usr/lib/systemd/system/flatpak-system-update.timer"
       - "rm /usr/lib/systemd/system/flatpak-system-update.service"
       - "rm /usr/lib/systemd/user/flatpak-user-update.timer"
