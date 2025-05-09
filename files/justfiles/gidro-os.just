@@ -17,6 +17,8 @@ update:
       flatpak --user update -y
     else
       echo
+      echo "----------Flatpak update section----------"
+      echo
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
     if command -v am > /dev/null; then
@@ -26,6 +28,8 @@ update:
       am update
     else
       echo
+      echo "----------AppImage update section----------"
+      echo
       echo "- AM AppImage Manager is not installed, so no AppImages to update"
     fi
 
@@ -33,7 +37,7 @@ update:
 changelog:
     #!/usr/bin/env bash
     echo "----------System update changelog----------"
-    echo ""
+    echo
     rpm-ostree db diff --changelogs
 
 alias toggle-upgrades := toggle-updates
