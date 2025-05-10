@@ -2,8 +2,14 @@
 
 set -euo pipefail
 
-SKEL_THEME="/usr/etc/skel/.local/share/themes"
-HOME_THEME="${HOME}/.local/share/themes"
+if [[ -z "${XDG_DATA_DIR}" ]]; then
+  THEME_DIR="/.local/share/themes"
+else
+  THEME_DIR="${XDG_DATA_DIR/#$HOME/}/themes"
+fi
+
+SKEL_THEME="/usr/etc/skel${THEME_DIR}"
+HOME_THEME="${HOME}${THEME_DIR}"
 
 THEME_NAMES=($(find "${SKEL_THEME}" -mindepth 1 -maxdepth 1 -type d -printf "%f\n"))
 
