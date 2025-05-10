@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 if [[ -z "${XDG_DATA_DIR}" ]]; then
   THEME_DIR="/.local/share/themes"
