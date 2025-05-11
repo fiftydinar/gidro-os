@@ -103,12 +103,6 @@ Optional just config:
 - [Disable Bluetooth headset profile (HSP/HFP)](https://github.com/fiftydinar/gidro-os/wiki/6.-Gidro%E2%80%90OS-useful-commands-&-config#how-to-disable-bluetooth-headset-profile) (useful if you don't use mic from Bluetooth headphones, so you don't get surprisingly switched to lower audio quality headset profile)
 
 Settings applied by default:
-- Change `${HOME}` directory structure to be cleaner, as much as possible without dotfiles (some programs won't respect it, no matter what)
-  - `Local` folder instead of `.local` (including subfolders like `config`, `share`, `state` & `cache`)
-  - Add `Applications` folder & add it to `PATH` (`${HOME}/.local/bin/` is still supported in `PATH`)
-  - Add `Games` folder
-  - Add `Volatile` folder (useful for testing temporary stuff, which are gone after system reboot)
-  - Ensure that some programs respect XDG directory structure, to not mess the `${HOME}` directory
 - [Disabled option for installing system packages, aka layering through `rpm-ostree` & `dnf`](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-rpm-ostree-installremove-or-dnf-installremove-doesnt-work-to-installremove-some-applications-) (to ensure that system integrity & reliability remains untouched)
 - [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
 - [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
