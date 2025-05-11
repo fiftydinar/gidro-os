@@ -67,3 +67,4 @@ EOF
 
 # Patch Trivalent to fully support custom config directory
 sed -i 's|\$HOME/.config|\$HOME/Local/config|g' /usr/lib64/trivalent/trivalent.sh
+sed -i 's|\$HOME/.config|\$HOME/Local/config|g' /usr/lib64/trivalent/install_filter.sh
