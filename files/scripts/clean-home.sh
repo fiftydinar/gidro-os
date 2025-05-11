@@ -64,3 +64,6 @@ if [ "$(id -u)" != "0" ] && [ ! -z "$HOME" ] && [ -d "$HOME" ]; then
     fi
 fi
 EOF
+
+# Patch Trivalent to fully support custom config directory
+sed -i 's|\$HOME/.config|\$HOME/Local/config|g' /usr/lib64/trivalent/trivalent.sh
