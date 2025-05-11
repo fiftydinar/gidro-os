@@ -130,7 +130,7 @@ modules:
       # Install adw-gtk3 to skel
       - echo -e "\033[90mInstalling adw-gtk3 theme to skel (not done in Ublue)\033[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/lassekongo83/adw-gtk3/releases/latest)) && curl -fLs --create-dirs https://github.com/lassekongo83/adw-gtk3/releases/download/${VER}/adw-gtk3${VER}.tar.xz -o /tmp/adw-gtk3.tar.gz"
-      - "mkdir -p /etc/skel/.local/share/themes/ && tar -xf /tmp/adw-gtk3.tar.gz -C /etc/skel/Local/share/themes/"
+      - "mkdir -p /etc/skel/Local/share/themes/ && tar -xf /tmp/adw-gtk3.tar.gz -C /etc/skel/Local/share/themes/"
       - "rm /tmp/adw-gtk3.tar.gz"
 
   # Use older version of Gnome Software until that annoying notification pop-up gets fixed
