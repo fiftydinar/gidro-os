@@ -17,8 +17,8 @@ curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.if" --output-dir "${
 curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.te" --output-dir "${PWD}"
 curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.sh" --output-dir "${PWD}"
 echo "Patching policy to respect custom home directory"
-sed -i 's|HOME_DIR/\\.cache|HOME_DIR/Local/cache|g' trivalent.fc
-sed -i 's|HOME_DIR/\\.config|HOME_DIR/Local/config|g' trivalent.fc
+sed -i 's|HOME_DIR/\\.cache|HOME_DIR/Local/cache|g' "${PWD}/trivalent.fc"
+sed -i 's|HOME_DIR/\\.config|HOME_DIR/Local/config|g' "${PWD}/trivalent.fc"
 echo "Executing trivalent.sh script"
 bash "${PWD}/trivalent.sh"
 cd ../..
