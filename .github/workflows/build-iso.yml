@@ -32,6 +32,12 @@ jobs:
         image_tag: [latest]
 
     steps:
+      - name: Set timezone to Rome
+        uses: MathRobin/timezone-action@v1.1
+        with:
+          timezoneLinux: 'Europe/Rome'
+
+
       - name: Fetch current date
         shell: bash
         run: |
