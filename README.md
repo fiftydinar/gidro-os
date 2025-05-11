@@ -238,10 +238,6 @@ To rebase an existing installation to the latest build:
   ```
   sudo bootc switch --enforce-container-sigpolicy --apply ghcr.io/fiftydinar/gidro-os:latest
   ```
-- Do the factory-reset
-  ```
-  just factory-reset all
-  ```
 - 1st-time setup should pop-up, just follow the instructions of it & finish it  
   (don't worry if you didn't finish it before, 1st-time setup remembers the setup state & it will be present until finished)
 
