@@ -51,7 +51,7 @@ jobs:
           image_name: ${{ matrix.image_name }}
           image_tag: ${{ matrix.image_tag }}
           variant: 'Kinoite'
-          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}_2.iso
+          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
