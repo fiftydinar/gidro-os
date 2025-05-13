@@ -20,3 +20,22 @@ rpm-ostree() {
 
 export -f rpm-ostree
 EOF
+
+# Patch bootc to not need sudo for updating
+
+cat << 'EOF' > /etc/profile.d/bootc.sh
+if [ "$EUID" -ne 0 ]; then
+    bootc() {
+        # Check if the command is already running with sudo
+        if [ "$EUID" -eq 0 ]; then
+            /usr/bin/bootc "$@"
+        else
+            sudo /usr/bin/bootc "$@"
+        fi
+    }
+fi
+EOF
+
+cat << 'EOF' > /etc/sudoers.d/001-bootc
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/bootc status
+EOF
