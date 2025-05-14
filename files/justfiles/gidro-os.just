@@ -5,7 +5,7 @@ update:
     #!/usr/bin/env bash
     echo "----------System update section----------"
     echo
-    sudo bootc upgrade
+    bootc upgrade
     if command -v flatpak > /dev/null; then
       echo
       echo "----------System flatpak update section----------"
