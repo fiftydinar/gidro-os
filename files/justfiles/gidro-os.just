@@ -3,9 +3,6 @@ alias upgrade := update
 # Update system & flatpaks
 update:
     #!/usr/bin/env bash
-    echo "----------System update section----------"
-    echo
-    sudo bootc upgrade
     if command -v flatpak > /dev/null; then
       echo
       echo "----------System flatpak update section----------"
@@ -37,6 +34,9 @@ update:
       echo
       echo "- AM AppImage Manager is not installed, so no AppImages to update"
     fi
+    echo "----------System update section----------"
+    echo
+    sudo bootc upgrade
 
 # Show changelog & history for system & flatpak updates
 changelog:
