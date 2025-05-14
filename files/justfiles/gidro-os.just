@@ -12,7 +12,6 @@ update:
       echo
       flatpak --user update -y
     else
-      echo
       echo "----------Flatpak update section----------"
       echo
       echo "- Flatpak is not installed, so no flatpaks to update"
