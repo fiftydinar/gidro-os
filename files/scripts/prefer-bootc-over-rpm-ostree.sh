@@ -37,5 +37,5 @@ fi
 EOF
 
 cat << 'EOF' > /etc/sudoers.d/001-bootc
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/boorc upgrade, /usr/bin/bootc status
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/bootc upgrade, /usr/bin/bootc status
 EOF
