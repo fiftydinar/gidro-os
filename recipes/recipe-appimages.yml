@@ -12,7 +12,7 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 modules:
   - from-file: general.yml
   # Remove Gnome Software, as it doesn't support AppImage installation
-  # Nuke flatpaks & anything related to it, like Fedora 3rd party repos
+  # Nuke flatpaks & anything related to it
   - type: dnf
     remove:
       packages:
@@ -21,9 +21,6 @@ modules:
         - flatpak-libs
         - flatpak-session-helper
         - flatpak-selinux
-        - fedora-flathub-remote
-        - fedora-third-party
-        - fedora-workstation-repositories
   - type: script
     snippets:
       # Nuke flatpak autostart units

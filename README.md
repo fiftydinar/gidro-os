@@ -33,6 +33,7 @@ Replaced packages (RPMs):
 Replaced packages (RPMs) with flatpaks:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
    (it is a much better looking task manager with more useful functionality)
+- Fedora third-party repos & built-in Fedora flatpak repo
 
 Installed packages (RPMs):
 - GNU Binutils (has some useful stuff)

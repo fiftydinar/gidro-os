@@ -23,6 +23,9 @@ modules:
         - gnome-shell-extension-places-menu
         - gnome-shell-extension-window-list
         - gnome-classic-session
+        - fedora-third-party
+        - fedora-flathub-remote
+        - fedora-workstation-repositories
     install:
       packages:
         - binutils
