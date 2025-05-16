@@ -18,3 +18,7 @@ snippets:
     sed -i 's/    font-size: 14px;/    font-size: 14px;\n    font-family: Nokia Pure Text T;/' /usr/share/gnome-shell/extensions/media-progress@krypion17/stylesheet.css
   # Enable experimental Bluetooth features to make it more compatible with Bluetooth Battery Meter extension
   - "sed -i 's/#Experimental = false/Experimental = true/; s/#Experimental = true/Experimental = true/; s/Experimental = false/Experimental = true/; s/#KernelExperimental = false/KernelExperimental = true/; s/#KernelExperimental = true/KernelExperimental = true/; s/KernelExperimental = false/KernelExperimental = true/; s/#Experimental=false/Experimental = true/; s/#Experimental=true/Experimental = true/; s/Experimental=false/Experimental = true/; s/#KernelExperimental=false/KernelExperimental = true/; s/#KernelExperimental=true/KernelExperimental = true/; s/KernelExperimental=false/KernelExperimental = true/' /etc/bluetooth/main.conf"
+  # Remove some redundant tmpfiles.d for fedora-third-party package
+  - |  
+    sed -i '/\/var\/lib\/fedora-third-party/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
+  - "rm /usr/lib/rpm-ostree/tmpfiles.d/fedora-third-party.conf"

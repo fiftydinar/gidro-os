@@ -76,9 +76,9 @@ modules:
       - "rm -r /etc/skel/.var/"
       # Nuke flatpak & fedora-third-party tmpfiles.d entries
       - |
-        echo -e "\e[1;31mNuking flatpak & fedora-third-party tmpfiles.d entries\e[0m"
+        echo -e "\e[1;31mNuking flatpak tmpfiles.d entries\e[0m"
       - |
-        sed -i '/\/var\/lib\/flatpak/d; /\/var\/lib\/fedora-third-party/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
+        sed -i '/\/var\/lib\/flatpak/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
       - "rm /usr/lib/rpm-ostree/tmpfiles.d/flatpak.conf"
       # Install 'am' AppImage manager
       - |
