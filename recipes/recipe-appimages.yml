@@ -13,6 +13,7 @@ modules:
   - from-file: general.yml
   # Remove Gnome Software, as it doesn't support AppImage installation
   # Nuke flatpaks & anything related to it
+  # Replace wget2 with wget for better AM compatibility
   - type: dnf
     remove:
       packages:
@@ -21,6 +22,9 @@ modules:
         - flatpak-libs
         - flatpak-session-helper
         - flatpak-selinux
+        - wget2
+      install:
+        - wget
   - type: script
     snippets:
       # Nuke flatpak autostart units
@@ -99,4 +103,6 @@ modules:
       - |
         echo -e "[Unit]\nDescription=AM Automatic Update Trigger\n\n[Timer]\nRandomizedDelaySec=10m\nOnBootSec=2m\nOnCalendar=*-*-* 4:00:00\nPersistent=true\n\n[Install]\nWantedBy=timers.target" > /usr/lib/systemd/user/am-update.timer
       - systemctl --global enable am-update.timer
+      # Install appimageupdatetool for AppImage diff updates
+      - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
   - from-file: shared.yml
