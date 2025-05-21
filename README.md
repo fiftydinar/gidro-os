@@ -29,11 +29,11 @@ Replaced packages (RPMs):
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
 - [Trivalent](https://github.com/secureblue/Trivalent) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
    (it is a more secure browser, has support for web applications, working hardware-accelerated video decoding + encoding out-of-the-box & ads blocker)
+- Fedora third-party repos & built-in Fedora flatpak repo
 
 Replaced packages (RPMs) with flatpaks:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
    (it is a much better looking task manager with more useful functionality)
-- Fedora third-party repos & built-in Fedora flatpak repo
 
 Installed packages (RPMs):
 - GNU Binutils (has some useful stuff)
