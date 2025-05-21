@@ -23,6 +23,8 @@ modules:
         - flatpak-session-helper
         - flatpak-selinux
         - wget2
+      install:
+        - wget1
   - type: script
     snippets:
       # Nuke flatpak autostart units
@@ -102,7 +104,7 @@ modules:
         echo -e "[Unit]\nDescription=AM Automatic Update Trigger\n\n[Timer]\nRandomizedDelaySec=10m\nOnBootSec=2m\nOnCalendar=*-*-* 4:00:00\nPersistent=true\n\n[Install]\nWantedBy=timers.target" > /usr/lib/systemd/user/am-update.timer
       - systemctl --global enable am-update.timer
       # Install appimageupdatetool for AppImage diff updates
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'appimageupdatetool' for AppImage diff updates\e[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
-      # Install wget from pkgforge
-      - "curl -fLs --create-dirs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/wget/wget/raw.dl -o /usr/bin/wget && chmod +x /usr/bin/wget"
   - from-file: shared.yml
