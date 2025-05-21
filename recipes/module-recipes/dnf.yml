@@ -29,6 +29,8 @@ modules:
     install:
       packages:
         - binutils
+        - strace
+        - patchelf
         - rom-properties-gtk3
         - nautilus-python
         - python3-icoextract
