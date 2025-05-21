@@ -21,6 +21,7 @@ It is similar to making custom ROMs in the Android community, but in a much easi
 Removed packages (RPMs):
 - [Gnome classic session](https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en)
 - Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
+- Fedora third-party repos & built-in Fedora flatpak repo
 
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
@@ -29,7 +30,6 @@ Replaced packages (RPMs):
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
 - [Trivalent](https://github.com/secureblue/Trivalent) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
    (it is a more secure browser, has support for web applications, working hardware-accelerated video decoding + encoding out-of-the-box & ads blocker)
-- Fedora third-party repos & built-in Fedora flatpak repo
 
 Replaced packages (RPMs) with flatpaks:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
