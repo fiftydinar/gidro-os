@@ -1,14 +1,14 @@
 name: Build ISO AppImage variant
 
 on:
-  schedule:
-    - cron: "0 0 1 * *" # Build & upload ISO every month
+  #schedule:
+    #- cron: "0 0 1 * *" # Build & upload ISO every month
 
   workflow_dispatch:
     branches:
       - main
     paths:
-      - '.github/workflows/build-iso.yml'
+      - '.github/workflows/build-iso-appimages.yml'
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
