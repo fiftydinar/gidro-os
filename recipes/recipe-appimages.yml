@@ -104,5 +104,5 @@ modules:
       # Install appimageupdatetool for AppImage diff updates
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
       # Install wget from pkgforge
-      - "curl -fLs --create-dirs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/busybox/glibc/wget/raw.dl -o /usr/bin/wget && chmod +x /usr/bin/wget"
+      - "curl -fLs --create-dirs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/wget/wget/raw.dl -o /usr/bin/wget && chmod +x /usr/bin/wget"
   - from-file: shared.yml
