@@ -26,6 +26,7 @@ modules:
     install:
       packages:
         - wget1
+        - wget1-wget
   - type: script
     snippets:
       # Nuke flatpak autostart units
