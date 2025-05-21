@@ -23,7 +23,8 @@ modules:
         - flatpak-session-helper
         - flatpak-selinux
         - wget2
-      install:
+    install:
+      packages:
         - wget1
   - type: script
     snippets:
