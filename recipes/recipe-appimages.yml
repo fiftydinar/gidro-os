@@ -87,13 +87,17 @@ modules:
         sed -i '/\/var\/lib\/flatpak/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
       - "rm /usr/lib/rpm-ostree/tmpfiles.d/flatpak.conf"
       # Install 'am' AppImage manager
-      - |
-        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"
       # Versioned AM installation
+      #- |
+        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"      
       #- "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/ivan-hc/AM/releases/latest)) && curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/tags/${VER}.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-${VER}/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-${VER}/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       # 'main' AM installation
+      #- |
+        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'main' repo\e[0m"      
       #- "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/main.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-main/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-main/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       # 'dev' AM installation
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'dev' repo\e[0m"      
       - "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/dev.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-dev/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-dev/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       # Disable 'am' notifications on updates by default
       - |
@@ -111,4 +115,8 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'appimageupdatetool' for AppImage diff updates\e[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'aisap' sandboxing tool for AppImages\e[0m"
+      - |
+      URL=$(curl -Ls https://api.github.com/repos/mgord9518/aisap/releases | sed 's/[()",{} ]/\n/g' | grep -oi "https.*$APP.*x86_64.*mage$" | head -1) && curl -fLs --create-dirs "${URL}" -o /usr/bin/aisap && chmod +x /usr/bin/aisap
   - from-file: shared.yml
