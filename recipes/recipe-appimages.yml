@@ -119,6 +119,7 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'appimageupdatetool' for AppImage diff updates\e[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
+      # Install aisap for AppImage sandboxing      
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'aisap' sandboxing tool for AppImages\e[0m"
       - |
