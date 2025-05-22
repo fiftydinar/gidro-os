@@ -95,12 +95,12 @@ modules:
       #
       # 'main' AM installation
       - |
-        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'main' repo\e[0m"      
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'main' branch\e[0m"      
       - "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/main.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-main/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-main/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       #
       # 'dev' AM installation
       #- |
-        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'dev' repo\e[0m"      
+        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'dev' branch\e[0m"      
       #- "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/dev.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-dev/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-dev/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       #
       # Disable 'am' notifications on updates by default
