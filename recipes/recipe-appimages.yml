@@ -118,5 +118,5 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'aisap' sandboxing tool for AppImages\e[0m"
       - |
-      URL=$(curl -Ls https://api.github.com/repos/mgord9518/aisap/releases | sed 's/[()",{} ]/\n/g' | grep -oi "https.*$APP.*x86_64.*mage$" | head -1) && curl -fLs --create-dirs "${URL}" -o /usr/bin/aisap && chmod +x /usr/bin/aisap
+        URL=$(curl -Ls https://api.github.com/repos/mgord9518/aisap/releases | sed 's/[()",{} ]/\n/g' | grep -oi "https.*$APP.*x86_64.*mage$" | head -1) && curl -fLs --create-dirs "${URL}" -o /usr/bin/aisap && chmod +x /usr/bin/aisap
   - from-file: shared.yml
