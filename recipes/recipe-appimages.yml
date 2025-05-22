@@ -80,7 +80,7 @@ modules:
       - |
         echo -e "\e[1;31mNuking flatpak-related skel\e[0m"
       - "rm -r /etc/skel/.var/"
-      # Nuke flatpak & fedora-third-party tmpfiles.d entries
+      # Nuke flatpak tmpfiles.d entries
       - |
         echo -e "\e[1;31mNuking flatpak tmpfiles.d entries\e[0m"
       - |
