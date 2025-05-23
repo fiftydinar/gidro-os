@@ -107,7 +107,7 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'am' bash completion\e[0m"      
       - |
-        mkdir -p "/usr/share/bash-completion/completions/" && echo 'complete -W "$(cat "$HOME/.local/share/AM/list" 2>/dev/null)" am' > "/usr/share/bash-completion/completions/am"
+        mkdir -p "/usr/share/bash-completion/completions/" && echo 'complete -W "$(cat "${XDG_DATA_HOME:-$HOME/.local/share}/AM/list" 2>/dev/null)" am' > "/usr/share/bash-completion/completions/am"
       # Disable 'am' notifications on updates by default
       - |
         echo -e "\e[1;31mDisabling 'am' update notifications\e[0m"
