@@ -103,6 +103,11 @@ modules:
         #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'dev' branch\e[0m"      
       #- "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/dev.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-dev/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-dev/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
       #
+      # Install 'am' bash completion
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' bash completion\e[0m"      
+      - |
+        mkdir -p "/usr/share/bash-completion/completions/" && echo 'complete -W "$(cat "$HOME/.local/share/AM/list" 2>/dev/null)" am' > "/usr/share/bash-completion/completions/am"
       # Disable 'am' notifications on updates by default
       - |
         echo -e "\e[1;31mDisabling 'am' update notifications\e[0m"
