@@ -204,6 +204,8 @@ Settings applied by default:
 > This ISO installation guide assumes that you want to install Gidro-OS on single-boot single-disk setup.
 
 ### [DOWNLOAD LINK](https://github.com/fiftydinar/gidro-os/actions/runs/15229518427/artifacts/3190985348)
+I may not update the download link to the ISO every time for users who can't login to GitHub,  
+but if you can, you can download the latest ISO release artifact in ISO action.
 
 - ISO doesn't require an active internet connection during its usage (but it is recommended to have it, to make NTP working).
 - Download the ISO & proceed with installation.
