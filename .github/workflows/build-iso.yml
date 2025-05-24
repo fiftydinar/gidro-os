@@ -76,7 +76,7 @@ jobs:
       - name: Upload ISO and Checksum to Job Artifacts
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ steps.build.outputs.iso-upload-dir }}
+          path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
           if-no-files-found: error
           retention-days: 90
           compression-level: 0
