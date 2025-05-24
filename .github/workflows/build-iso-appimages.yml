@@ -60,8 +60,6 @@ jobs:
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
-          flatpak_remote_name: "flathub-system"
-          flatpak_remote_url: "https://flathub.org/repo/flathub.flatpakrepo"
 
       - name: Move ISO to Upload Directory
         id: upload-directory
@@ -73,10 +71,11 @@ jobs:
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
 
-      - name: Upload ISO to archive.org
-        uses: RoyalOughtness/internet-archive-upload@v7
+      - name: Upload ISO and Checksum to Job Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          access-key: ${{ secrets.IA_ACCESS_KEY }}
-          secret-key: ${{ secrets.IA_SECRET_KEY }}
-          identifier: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}
-          files: ${{ steps.upload-directory.outputs.iso-upload-dir }}
+          path: ${{ steps.build.outputs.iso-upload-dir }}
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+          overwrite: true
