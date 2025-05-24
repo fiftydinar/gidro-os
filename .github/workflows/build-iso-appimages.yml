@@ -1,8 +1,8 @@
 name: Build ISO AppImage variant
 
 on:
-  #schedule:
-    #- cron: "0 0 1 * *" # Build & upload ISO every month
+  schedule:
+    - cron: "0 0 1 * *" # Build & upload ISO every month
 
   workflow_dispatch:
     branches:
