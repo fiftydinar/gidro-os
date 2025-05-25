@@ -31,25 +31,27 @@ for theme_name in "${THEME_NAMES[@]}"; do
   fi
 done
 
-ADW_GTK3_FLATPAKS=("org.gtk.Gtk3theme.adw-gtk3" "org.gtk.Gtk3theme.adw-gtk3-dark")
+if command -v flatpak &> /dev/null; then
+  ADW_GTK3_FLATPAKS=("org.gtk.Gtk3theme.adw-gtk3" "org.gtk.Gtk3theme.adw-gtk3-dark")
 
-for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
+  for flatpak_theme in "${ADW_GTK3_FLATPAKS[@]}"; do
 
-  if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user list --columns=application)")" ]]; then
-    echo "Uninstalling outdated flatpak theme '${flatpak_theme}'"
-    flatpak --user uninstall -y --delete-data "${flatpak_theme}"
-  else
-    echo "Flatpak theme '${flatpak_theme}' is already uninstalled"  
-  fi
+    if [[ -n "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user list --columns=application)")" ]]; then
+      echo "Uninstalling outdated flatpak theme '${flatpak_theme}'"
+      flatpak --user uninstall -y --delete-data "${flatpak_theme}"
+    else
+      echo "Flatpak theme '${flatpak_theme}' is already uninstalled"  
+    fi
 
-  if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user mask)")" ]]; then
-    echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
-    flatpak --user mask "${flatpak_theme}"
-  else
-    echo "Flatpak theme '${flatpak_theme}' is already masked"  
-  fi
+    if [[ -z "$(awk '/(^|\s)('${flatpak_theme}')($|\s)/' <<< "$(flatpak --user mask)")" ]]; then
+      echo "Masking outdated flatpak theme '${flatpak_theme}' so it doesn't get installed on updates"
+      flatpak --user mask "${flatpak_theme}"
+    else
+      echo "Flatpak theme '${flatpak_theme}' is already masked"  
+    fi
 
-done
+  done
 
-echo "Setting user override for adw-gtk3 theme to apply on flatpaks"
-flatpak --user override --filesystem=xdg-data/themes
+  echo "Setting user override for adw-gtk3 theme to apply on flatpaks"
+  flatpak --user override --filesystem=xdg-data/themes
+fi

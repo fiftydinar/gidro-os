@@ -86,6 +86,11 @@ modules:
       - |
         sed -i '/\/var\/lib\/flatpak/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
       - "rm /usr/lib/rpm-ostree/tmpfiles.d/flatpak.conf"
+      # Nuke flatpak-related stuff for installing adw-gtk3 theme
+      - |
+        echo -e "\e[1;31mNuking flatpak-related logic for installing adw-gtk3 theme\e[0m"      
+      - systemctl --system disable adw-gtk3-installer-privileged.service
+      - rm /usr/bin/adw-gtk3-installer-privileged
       # Install 'am' AppImage manager
       #
       # Versioned AM installation
