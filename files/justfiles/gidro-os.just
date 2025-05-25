@@ -87,6 +87,9 @@ toggle-updates ACTION="prompt":
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl enable --global flatpak-user-update.timer
         fi
+        if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
+          systemctl enable --global am-update.timer
+        fi
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
@@ -99,6 +102,9 @@ toggle-updates ACTION="prompt":
         fi
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl disable --global flatpak-user-update.timer
+        fi
+        if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
+          systemctl disable --global am-update.timer
         fi
         echo 'Disable automatic updates setting applied.'
       else
