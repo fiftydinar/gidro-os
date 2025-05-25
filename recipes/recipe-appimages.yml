@@ -15,6 +15,8 @@ modules:
   # Nuke flatpaks & anything related to it
   # Replace wget2 with wget for better AM compatibility
   # Install libxcrypt-compat for AppImages which depend on glibc on the host & require this package, like Mission Center
+  # Ideally, this shouldn't be done & all needed dependencies would be bundled in the AppImage, like AnyLinux-AppImages do, but this is the reality
+  # I won't bundle every single dependency that app would ask from the host, only small & non-harming ones, like libxcrypt-compat
   - type: dnf
     remove:
       packages:
