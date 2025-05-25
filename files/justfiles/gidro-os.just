@@ -16,11 +16,23 @@ update:
       echo
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
-    if command -v am > /dev/null; then
+    if command -v /usr/bin/am > /dev/null; then
+      if ! systemctl --user is-active --quiet am-update.service; then
+        echo
+        echo "----------AppImage update section----------"
+        echo
+        am update
+      else
+        echo
+        echo "----------AppImage update section----------"
+        echo
+        echo "AM update is already running in the background"
+      fi
+    elif command -v /usr/local/bin/am > /dev/null; then
       echo
       echo "----------AppImage update section----------"
       echo
-      am update
+      am update    
     elif command -v appman > /dev/null; then
       echo
       echo "----------AppImage update section----------"
