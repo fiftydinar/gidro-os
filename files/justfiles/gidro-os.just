@@ -17,7 +17,7 @@ update:
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
     if command -v /usr/bin/am > /dev/null; then
-      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am" || [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
+      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am" && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
         echo
         echo "----------AppImage update section----------"
         echo
