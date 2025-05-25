@@ -14,6 +14,7 @@ modules:
   # Remove Gnome Software, as it doesn't support AppImage installation
   # Nuke flatpaks & anything related to it
   # Replace wget2 with wget for better AM compatibility
+  # Install libxcrypt-compat for AppImages which depend on glibc on the host & require this package, like Mission Center
   - type: dnf
     remove:
       packages:
@@ -27,6 +28,7 @@ modules:
       packages:
         - wget1
         - wget1-wget
+        - libxcrypt-compat
   - type: script
     snippets:
       # Nuke flatpak autostart units
