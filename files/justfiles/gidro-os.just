@@ -17,7 +17,7 @@ update:
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
     if command -v /usr/bin/am > /dev/null; then
-      if ! ps aux | grep -v grep | grep -q "$(which am)"; then
+      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am"; then
         echo
         echo "----------AppImage update section----------"
         echo
