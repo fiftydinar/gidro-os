@@ -32,7 +32,7 @@ update:
       echo
       echo "----------AppImage update section----------"
       echo
-      am update    
+      am update
     elif command -v appman > /dev/null; then
       echo
       echo "----------AppImage update section----------"
