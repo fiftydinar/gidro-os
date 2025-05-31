@@ -44,7 +44,14 @@ modules:
         - fontconfig-font-replacements
         - trivalent
         - trivalent-subresource-filter
-
+    # Replace kernel with older one, as 6.14.8 (and .7) have issues with AMD GPU crashes
+    replace:
+    - from-repo: fedora-updates-archive
+      packages:
+        - kernel-6.14.6
+        - kernel-modules-6.14.6
+        - kernel-modules-extra-6.14.6
+ 
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
     repos:
