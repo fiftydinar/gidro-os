@@ -54,7 +54,7 @@ modules:
         - kernel-modules-6.14.6
         - kernel-modules-extra-6.14.6
         - kernel-tools-6.14.6
-        - mutter-48.2-2
+        - mutter-48.2
  
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
