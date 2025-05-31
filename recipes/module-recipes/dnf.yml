@@ -46,7 +46,7 @@ modules:
         - trivalent-subresource-filter
     # Replace kernel with older one, as 6.14.8 (and .7) have issues with AMD GPU crashes
     replace:
-    - from-repo: fedora-updates-archive
+    - from-repo: updates-archive
       packages:
         - kernel-6.14.6
         - kernel-modules-6.14.6
