@@ -45,6 +45,8 @@ modules:
         - trivalent
         - trivalent-subresource-filter
     # Replace kernel with older one, as 6.14.8 (and .7) have issues with AMD GPU crashes
+    # Also downgrade mutter because of this issue
+    # https://gitlab.gnome.org/GNOME/mutter/-/issues/4138
     replace:
     - from-repo: updates-archive
       packages:
@@ -52,6 +54,7 @@ modules:
         - kernel-modules-6.14.6
         - kernel-modules-extra-6.14.6
         - kernel-tools-6.14.6
+        - mutter-48.2-2
  
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
