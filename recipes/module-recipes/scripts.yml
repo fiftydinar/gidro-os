@@ -22,3 +22,5 @@ snippets:
   - |  
     sed -i '/\/var\/lib\/fedora-third-party/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
   - "rm /usr/lib/rpm-ostree/tmpfiles.d/fedora-third-party.conf"
+  # Symlink sh to dash
+  - "ln -sf /usr/bin/dash /usr/bin/sh"

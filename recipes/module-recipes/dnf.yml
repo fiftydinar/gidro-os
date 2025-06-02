@@ -28,6 +28,7 @@ modules:
         - fedora-workstation-repositories
     install:
       packages:
+        - dash
         - binutils
         - strace
         - patchelf

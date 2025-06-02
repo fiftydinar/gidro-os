@@ -37,6 +37,7 @@ Replaced packages (RPMs) with flatpaks:
    (it is a much better looking task manager with more useful functionality)
 
 Installed packages (RPMs):
+- Dash shell (only used for `sh`, as it's faster - `bash` is still the login shell)
 - GNU Binutils (has some useful stuff)
 - Strace (related to something I would use with binutils)
 - Patchelf (related to something I would use with binutils)
