@@ -61,6 +61,7 @@ update:
       echo "----------Soar update section----------"
       echo
       soar update
+      soar self update
     else
       echo
       echo "----------Soar update section----------"
