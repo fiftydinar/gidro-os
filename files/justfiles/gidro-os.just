@@ -17,7 +17,7 @@ update:
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
     if command -v /usr/bin/am > /dev/null; then
-      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am" && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
+      if ! ps aux | grep -v grep | grep -E -q " /sbin/am | /bin/am | /usr/sbin/am | /usr/bin/am | am " && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
         echo
         echo "----------AppImage update section----------"
         echo
@@ -44,10 +44,41 @@ update:
       echo
       echo "- AM AppImage Manager is not installed, so no AppImages to update"
     fi
-    echo
-    echo "----------System update section----------"
-    echo
-    sudo bootc upgrade
+    if command -v /usr/bin/soar> /dev/null; then
+      if ! ps aux | grep -v grep | grep -E -q " /sbin/soar | /bin/soar | /usr/sbin/soar | /usr/bin/soar | soar " && [[ "$(systemctl --user is-active soar-upgrade-packages.service)" == "inactive" ]]; then
+        echo
+        echo "----------Soar update section----------"
+        echo
+        soar update
+      else
+        echo
+        echo "----------Soar update section----------"
+        echo
+        echo "Soar update or other conflicting processes are already running in the background"
+      fi
+    elif command -v "${XDG_BIN_HOME:-$HOME/.local/bin}/soar" > /dev/null; then
+      echo
+      echo "----------Soar update section----------"
+      echo
+      soar update
+      soar self update
+    else
+      echo
+      echo "----------Soar update section----------"
+      echo
+      echo "- Soar is not installed, so no packages to update"
+    fi
+    if ! ps aux | grep -v grep | grep -E -q " /sbin/bootc | /bin/bootc | /usr/sbin/bootc | /usr/bin/bootc | bootc " && [[ "$(systemctl --system is-active bootc-auto-update-without-reboot.service)" == "inactive" ]]; then
+      echo
+      echo "----------System update section----------"
+      echo
+      sudo bootc upgrade
+    else
+      echo
+      echo "----------System update section----------"
+      echo
+      echo "System update or other related bootc process is already running in the background"
+    fi
 
 # Show changelog & history for system & flatpak updates
 changelog:
