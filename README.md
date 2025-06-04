@@ -8,7 +8,8 @@ Gidro-OS was based on [Universal Blue's](https://universal-blue.org/) `silverblu
 Reasoning for that is to have more control over the Universal Blue's base, which would make it possible for me to react immediately with changes if needed, to avoid some questionable additions to the base, to make image smaller (and with it, updates faster) etc.  
 You can see my changes to the base recipe [here](https://github.com/fiftydinar/gidro-os/blob/main/recipes/base.yml).
 
-`gidro-os-appimages` is an experimental version of Gidro-OS with flatpak-related stuff removed & with [`AM` AppImage manager](https://github.com/ivan-hc/AM) installed, to see if AppImage-only usage can replace flatpaks in the future.
+`gidro-os-appimages` is an experimental version of Gidro-OS with flatpak-related stuff removed & with [`AM` AppImage manager](https://github.com/ivan-hc/AM) installed, to see if AppImage-only usage can replace flatpaks in the future.  
+If you want to try it, you can download the latest ISO artifact in Actions.
 
 This image is created using the easy & robust [BlueBuild](https://blue-build.org/) tooling for creating & maintaining container-based Linux desktop images.  
 It is similar to making custom ROMs in the Android community, but in a much easier & more reliable way.
@@ -21,6 +22,7 @@ It is similar to making custom ROMs in the Android community, but in a much easi
 Removed packages (RPMs):
 - [Gnome classic session](https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en)
 - Gnome system extensions (some are from Fedora, some are from Gnome classic session, which are not needed)
+- Fedora third-party repos & built-in Fedora flatpak repo
 
 Replaced packages (RPMs):
 - [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
@@ -33,10 +35,12 @@ Replaced packages (RPMs):
 Replaced packages (RPMs) with flatpaks:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
    (it is a much better looking task manager with more useful functionality)
-- Fedora third-party repos & built-in Fedora flatpak repo
 
 Installed packages (RPMs):
+- Dash shell (only used for `sh`, as it's faster - `bash` is still the login shell)
 - GNU Binutils (has some useful stuff)
+- Strace (related to something I would use with binutils)
+- Patchelf (related to something I would use with binutils)
 - [Additional Game ROM Properties for Nautilus](https://github.com/GerbilSoft/rom-properties)
 - [Nautilus Python](https://github.com/GNOME/nautilus-python) (for Python Nautilus extensions)
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
@@ -201,7 +205,9 @@ Settings applied by default:
 > [!CAUTION]
 > This ISO installation guide assumes that you want to install Gidro-OS on single-boot single-disk setup.
 
-### [DOWNLOAD LINK](https://archive.org/details/@fifty_dinar)<br/>(ISOs are in DD-MM-YYYY date format)
+### [DOWNLOAD LINK](https://github.com/fiftydinar/gidro-os/actions/runs/15368958463/artifacts/3235005871)
+I may not update the download link to the ISO every time for users who can't login to GitHub,  
+but if you can login, you can download the latest ISO release artifact in ISO action.
 
 - ISO doesn't require an active internet connection during its usage (but it is recommended to have it, to make NTP working).
 - Download the ISO & proceed with installation.

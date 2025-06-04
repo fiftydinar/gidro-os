@@ -16,7 +16,19 @@ update:
       echo
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
-    if command -v am > /dev/null; then
+    if command -v /usr/bin/am > /dev/null; then
+      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am" && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
+        echo
+        echo "----------AppImage update section----------"
+        echo
+        am update
+      else
+        echo
+        echo "----------AppImage update section----------"
+        echo
+        echo "AM update or other conflicting processes are already running in the background"
+      fi
+    elif command -v /usr/local/bin/am > /dev/null; then
       echo
       echo "----------AppImage update section----------"
       echo
@@ -75,6 +87,9 @@ toggle-updates ACTION="prompt":
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl enable --global flatpak-user-update.timer
         fi
+        if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
+          systemctl enable --global am-update.timer
+        fi
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
@@ -87,6 +102,9 @@ toggle-updates ACTION="prompt":
         fi
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl disable --global flatpak-user-update.timer
+        fi
+        if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
+          systemctl disable --global am-update.timer
         fi
         echo 'Disable automatic updates setting applied.'
       else
