@@ -125,7 +125,7 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mWriting & enabling 'am' AppImages auto-update timer\e[0m"
       - |
-        echo -e "[Unit]\nDescription=AM Automatic Update\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nEnvironment=\"NO_COLOR=1\"\nExecCondition=/bin/bash -c 'if ps aux | grep -v grep | grep -E -q \"/usr/sbin/am|/usr/bin/am\"; then exit 1; else exit 0; fi'\nExecCondition=/bin/bash -c '[[ \"\$(busctl get-property org.freedesktop.NetworkManager /org/freedesktop/NetworkManager org.freedesktop.NetworkManager Metered | cut -c 3-)\" == @(2|4) ]]'\nExecStart=/usr/bin/am update" > /usr/lib/systemd/user/am-update.service
+        echo -e "[Unit]\nDescription=AM Automatic Update\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nEnvironment=\"NO_COLOR=1\"\nExecCondition=/bin/bash -c 'if ps aux | grep -v grep | grep -E -q \"/sbin/am|/bin/am|/usr/sbin/am|/usr/bin/am\"; then exit 1; else exit 0; fi'\nExecCondition=/bin/bash -c '[[ \"\$(busctl get-property org.freedesktop.NetworkManager /org/freedesktop/NetworkManager org.freedesktop.NetworkManager Metered | cut -c 3-)\" == @(2|4) ]]'\nExecStart=/usr/bin/am update" > /usr/lib/systemd/user/am-update.service
       - |
         echo -e "[Unit]\nDescription=AM Automatic Update Trigger\n\n[Timer]\nRandomizedDelaySec=10m\nOnBootSec=2m\nOnCalendar=*-*-* 4:00:00\nPersistent=true\n\n[Install]\nWantedBy=timers.target" > /usr/lib/systemd/user/am-update.timer
       - systemctl --global enable am-update.timer
