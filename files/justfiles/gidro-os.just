@@ -17,7 +17,7 @@ update:
       echo "- Flatpak is not installed, so no flatpaks to update"
     fi
     if command -v /usr/bin/am > /dev/null; then
-      if ! ps aux | grep -v grep | grep -E -q "/usr/sbin/am|/usr/bin/am" && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
+      if ! ps aux | grep -v grep | grep -E -q " /sbin/am | /bin/am | /usr/sbin/am | /usr/bin/am | am " && [[ "$(systemctl --user is-active am-update.service)" == "inactive" ]]; then
         echo
         echo "----------AppImage update section----------"
         echo
@@ -44,10 +44,17 @@ update:
       echo
       echo "- AM AppImage Manager is not installed, so no AppImages to update"
     fi
-    echo
-    echo "----------System update section----------"
-    echo
-    sudo bootc upgrade
+    if ! ps aux | grep -v grep | grep -E -q " /sbin/bootc | /bin/bootc | /usr/sbin/bootc | /usr/bin/bootc | bootc " && [[ "$(systemctl --system is-active bootc-auto-update-without-reboot.service)" == "inactive" ]]; then
+      echo
+      echo "----------System update section----------"
+      echo
+      sudo bootc upgrade
+    else
+      echo
+      echo "----------System update section----------"
+      echo
+      echo "System update or other related bootc process is already running in the background"
+    fi
 
 # Show changelog & history for system & flatpak updates
 changelog:
