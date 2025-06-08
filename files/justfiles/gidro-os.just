@@ -113,10 +113,10 @@ toggle-updates ACTION="prompt":
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
         run0 --background="" sh -c 'systemctl enable --now bootc-auto-update-without-reboot.timer && systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer' && systemctl enable --now flatpak-system-update.timer'
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
-          systemctl enable --global flatpak-user-update.timer
+          run0 systemctl enable --global flatpak-user-update.timer
         fi
         if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
-          systemctl enable --global am-update.timer
+          run0 systemctl enable --global am-update.timer
         fi
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
@@ -126,10 +126,10 @@ toggle-updates ACTION="prompt":
       if [ "${CURRENT_STATE}" == "Enabled (Default)" ]; then
         run0 --background="" sh -c 'systemctl disable --now bootc-auto-update-without-reboot.timer && systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer' && systemctl disable --now flatpak-system-update.timer'
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
-          systemctl disable --global flatpak-user-update.timer
+          run0 systemctl disable --global flatpak-user-update.timer
         fi
         if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
-          systemctl disable --global am-update.timer
+          run0 systemctl disable --global am-update.timer
         fi
         echo 'Disable automatic updates setting applied.'
       else
