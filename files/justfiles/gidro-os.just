@@ -2,7 +2,7 @@ alias upgrade := update
 
 # Update system & flatpaks
 update:
-    #!/usr/bin/env bash
+    #!/usr/bin/bash
     if command -v flatpak > /dev/null; then
       echo "----------System flatpak update section----------"
       echo
@@ -82,7 +82,7 @@ update:
 
 # Show changelog & history for system & flatpak updates
 changelog:
-    #!/usr/bin/env bash
+    #!/usr/bin/bash
     echo "----------System update changelog----------"
     echo
     rpm-ostree db diff --changelogs
@@ -91,7 +91,7 @@ alias toggle-upgrades := toggle-updates
 
 # Turn automatic updates on or off
 toggle-updates ACTION="prompt":
-    #!/usr/bin/run0 /usr/bin/bash
+    #!/usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled"
     if systemctl -q is-enabled bootc-auto-update-without-reboot.timer; then
@@ -111,10 +111,7 @@ toggle-updates ACTION="prompt":
     fi
     if [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ "${CURRENT_STATE}" == "Disabled" ]; then
-        systemctl enable --now bootc-auto-update-without-reboot.timer
-        if systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer'; then
-          systemctl enable --now flatpak-system-update.timer
-        fi
+        run0 --background="" sh -c 'systemctl enable --now bootc-auto-update-without-reboot.timer && systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer' && systemctl enable --now flatpak-system-update.timer'
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl enable --global flatpak-user-update.timer
         fi
@@ -127,10 +124,7 @@ toggle-updates ACTION="prompt":
       fi
     elif [ "${OPTION,,}" == "disable" ]; then
       if [ "${CURRENT_STATE}" == "Enabled (Default)" ]; then
-        systemctl disable --now bootc-auto-update-without-reboot.timer
-        if systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer'; then
-          systemctl disable --now flatpak-system-update.timer
-        fi
+        run0 --background="" sh -c 'systemctl disable --now bootc-auto-update-without-reboot.timer && systemctl list-units --type=timer --all | grep -q 'flatpak-system-update.timer' && systemctl disable --now flatpak-system-update.timer'
         if systemctl --user list-units --type=timer --all | grep -q 'flatpak-user-update.timer'; then
           systemctl disable --global flatpak-user-update.timer
         fi
@@ -148,29 +142,25 @@ alias upgrade-firmware := update-firmware
 # Update device firmware
 [no-exit-message]
 update-firmware:
-    #!/usr/bin/env bash
     fwupdmgr refresh --force
     fwupdmgr get-updates
     fwupdmgr update
 
 # Show all messages from this boot
 logs-this-boot:
-    #!/usr/bin/run0 /usr/bin/bash
-    journalctl -b 0
+    run0 --background="" sh -c 'journalctl -b 0'
 
 # Show all messages from last boot
 logs-last-boot:
-    #!/usr/bin/run0 /usr/bin/bash
-    journalctl -b -1
+    run0 --background="" sh -c 'journalctl -b -1'
 
 # Check for local overrides in /etc/ vs /usr/etc/
 check-local-overrides:
-    #!/usr/bin/run0 /usr/bin/bash
-    ostree admin config-diff
+    run0 --background="" sh -c 'ostree admin config-diff'
 
 # Clean up old + unused podman images, volumes & flatpak packages
 clean-system:
-    #!/usr/bin/env bash
+    #!/usr/bin/bash
     if command -v podman > /dev/null; then
       podman image prune -af
       podman volume prune -f
@@ -186,7 +176,7 @@ clean-system:
 
 # Configure window close button
 configure-close-button ACTION="prompt":
-    #!/usr/bin/env bash
+    #!/usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Present (Default)"
     if gsettings get org.gnome.desktop.wm.preferences button-layout | grep -q "'appmenu:'"; then
@@ -224,12 +214,12 @@ configure-close-button ACTION="prompt":
 
 # Configure scheduled nightly reboot
 scheduled-reboot ACTION="prompt":
-    #!/usr/bin/run0 /usr/bin/bash
+    #!/usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Disabled (Default)"
     if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
       CURRENT_STATE="Enabled"
-    fi  
+    fi
     OPTION={{ ACTION }}
     if [ "$OPTION" == "prompt" ]; then
       echo "${bold}Configuring scheduled nightly reboot${normal}"    
@@ -246,16 +236,14 @@ scheduled-reboot ACTION="prompt":
     fi
     if [ "${OPTION,,}" == "enable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q disabled; then
-        systemctl enable nightly-reboot.timer
-        systemctl start nightly-reboot.timer
+        run0 --background="" sh -c 'systemctl enable nightly-reboot.timer; systemctl start nightly-reboot.timer'
         echo "Nightly scheduled reboot is enabled!"
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already enabled, no change is made.\e[0m\n" 1>&2
       fi  
     elif [ "$OPTION" == "Disable (Default)" ] || [ "${OPTION,,}" == "disable" ]; then
       if systemctl is-enabled nightly-reboot.timer | grep -q enabled; then
-        systemctl disable nightly-reboot.timer
-        systemctl stop nightly-reboot.timer
+        run0 --background="" sh -c 'systemctl disable nightly-reboot.timer; systemctl stop nightly-reboot.timer'
         echo 'Reverted setting "nightly scheduled reboot" to defaults (Disabled).'
       else
         printf "\e[1;31mERROR: Nightly scheduled reboot is already disabled, no change is made.\e[0m\n" 1>&2
@@ -264,7 +252,7 @@ scheduled-reboot ACTION="prompt":
 
 # Configure Bluetooth headset profile
 configure-bluetooth-headset-profile ACTION="prompt":
-    #!/usr/bin/run0 /usr/bin/bash
+    #!/usr/bin/bash
     source /usr/lib/ujust/ujust.sh
     CURRENT_STATE="Enabled (Default)"
     FILE_CONF="/usr/share/bluebuild/gidro-os/51-disable-bluetooth-headphone-profile-switch.conf"
@@ -289,8 +277,7 @@ configure-bluetooth-headset-profile ACTION="prompt":
     fi    
     if [ "${OPTION,,}" == "disable" ]; then
       if ! [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        mkdir -p "${WIREPLUMBER_DIR}"
-        cp "${FILE_CONF}" "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        run0 --background="" sh -c "mkdir -p ${WIREPLUMBER_DIR}; cp ${FILE_CONF} ${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
           echo 'Disable Bluetooth headset profile setting applied.'
       else
@@ -298,11 +285,11 @@ configure-bluetooth-headset-profile ACTION="prompt":
       fi  
     elif [ "$OPTION" == "Enable (Default)" ] || [ "${OPTION,,}" == "enable" ]; then
       if [ $(find "${WIREPLUMBER_DIR}" -type f | wc -l) -eq 1 ] && [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        rm -r "${WIREPLUMBER_DIR}"
+        run0 --background="" rm -r "${WIREPLUMBER_DIR}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults.'
       elif [ -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
-        rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
+        run0 --background="" rm "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}"
         systemctl --user restart wireplumber
           echo 'Reverted setting "Bluetooth headset profile" to defaults (Enabled).'
       elif [ ! -f "${WIREPLUMBER_DIR}/${WIREPLUMBER_FILE}" ]; then
