@@ -45,7 +45,9 @@ modules:
         - fontconfig-font-replacements
         - trivalent
         - trivalent-subresource-filter
-    # Replace kernel with older one, as 6.14.8 (and .7) have issues with AMD GPU crashes
+    # Replace kernel with older one, as 6.14.8 (and .7) have issues with AMD GPU crashesŽ
+    # mutter was downgraded before, that issue was solved
+    # but now there is an issue which looks similar, but it's with mesa-dri-drivers instead...
     replace:
     - from-repo: updates-archive
       packages:
@@ -53,7 +55,7 @@ modules:
         - kernel-modules-6.14.6
         - kernel-modules-extra-6.14.6
         - kernel-tools-6.14.6
- 
+        - mesa-dri-drivers-25.0.2
   # Workaround needed dependency faad2 for dr14_t.meter package
   - type: dnf
     repos:
