@@ -137,7 +137,7 @@ modules:
       # Downloading a script instead of the AppImage, as it's more secure for regular binaries to be sandboxed without SUID libfuse dependency that 'sas' AppImage has
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'simple-appimage-sandbox', aka 'sas' sandboxing tool for AppImages\e[0m"
-      - "curl -fLs https://github.com/Samueru-sama/simple-appimage-sandbox/blob/main/sas.sh -o /usr/bin/sas && chmod +x /usr/bin/simple-appimage-sandbox"
+      - "curl -fLs https://github.com/Samueru-sama/simple-appimage-sandbox/blob/main/sas.sh -o /usr/bin/simple-appimage-sandbox && chmod +x /usr/bin/simple-appimage-sandbox"
       - "ln -sf /usr/bin/simple-appimage-sandbox /usr/bin/sas"
       # Downloading some missing dependencies for 'sas'
       - "curl -fLs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/dwarfs/standalone/dwarfs/raw.dl -o /usr/bin/dwarfs && chmod +x /usr/bin/dwarfs"
