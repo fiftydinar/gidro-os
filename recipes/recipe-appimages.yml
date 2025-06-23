@@ -133,9 +133,13 @@ modules:
       - |
         echo -e "\e[1m\e[38;5;214mInstalling 'appimageupdatetool' for AppImage diff updates\e[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
-      # Install aisap for AppImage sandboxing      
+      # Install 'simple-appimage-sandbox' for AppImage sandboxing
+      # Downloading a script instead of the AppImage, as it's more secure for regular binaries to be sandboxed without SUID libfuse dependency that 'sas' AppImage has
       - |
-        echo -e "\e[1m\e[38;5;214mInstalling 'aisap' sandboxing tool for AppImages\e[0m"
-      - |
-        URL=$(curl -Ls https://api.github.com/repos/mgord9518/aisap/releases | sed 's/[()",{} ]/\n/g' | grep -oi "https.*$APP.*x86_64.*mage$" | head -1) && curl -fLs --create-dirs "${URL}" -o /usr/bin/aisap && chmod +x /usr/bin/aisap
+        echo -e "\e[1m\e[38;5;214mInstalling 'simple-appimage-sandbox', aka 'sas' sandboxing tool for AppImages\e[0m"
+      - "curl -fLs https://github.com/Samueru-sama/simple-appimage-sandbox/blob/main/sas.sh -o /usr/bin/sas && chmod +x /usr/bin/simple-appimage-sandbox"
+      - "ln -sf /usr/bin/simple-appimage-sandbox /usr/bin/sas"
+      # Downloading some missing dependencies for 'sas'
+      - "curl -fLs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/dwarfs/standalone/dwarfs/raw.dl -o /usr/bin/dwarfs && chmod +x /usr/bin/dwarfs"
+      - "curl -fLs https://pkgs.pkgforge.dev/dl/bincache/x86_64-linux/squashfuse/nixpkgs/squashfuse/raw.dl -o /usr/bin/squashfuse && chmod +x /usr/bin/squashfuse"
   - from-file: shared.yml
