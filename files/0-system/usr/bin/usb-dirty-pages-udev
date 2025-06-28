@@ -5,6 +5,10 @@ set -x
 # Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
 block_device="${1}"
+# apply strict limit to dirty bytes
+strict_limit=1
+echo "${strict_limit}" > "/sys/block/${block_device}/bdi/strict_limit"
+
 vendor_id="${2}"
 model_id="${3}"
 
@@ -25,10 +29,6 @@ if [[ -z "${current_usb_speed}" ]] || [[ ! "${current_usb_speed}" =~ ^-?[0-9]+(\
   echo "Exiting"
   exit 1
 fi
-
-# apply strict limit to dirty bytes
-strict_limit=1
-echo "${strict_limit}" > "/sys/block/${block_device}/bdi/strict_limit"
 
 buffer_time="0.05"
 safety_factor="1.3"
