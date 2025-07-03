@@ -10,9 +10,9 @@ get_usb_path() {
     idV=${1%:*}
     idP=${1#*:}
     for path in $(find /sys/ -name idVendor | rev | cut -d/ -f 2- | rev); do
-        if grep -q $idV $path/idVendor; then
-            if grep -q $idP $path/idProduct; then
-                basename "$(realpath --relative-base=$path /sys/block/* | grep -vm 1 "^/")" 2>/dev/null
+        if grep -q "$idV" "$path/idVendor"; then
+            if grep -q "$idP" "$path/idProduct"; then
+                basename "$(realpath --relative-base="$path" /sys/block/* | grep -vm 1 "^/")" 2>/dev/null
             fi
         fi
     done
@@ -25,7 +25,7 @@ fi
 for usb_vendor_model in "${USB_VENDOR_MODEL[@]}"; do
     usb_vendor="$(echo "$usb_vendor_model" | awk -F':' '{print $1}')"
     usb_model="$(echo "$usb_vendor_model" | awk -F':' '{print $2}')"
-    block_device="$(get_usb_path $usb_vendor:$usb_model)"
+    block_device="$(get_usb_path "$usb_vendor:$usb_model")"
     strict_limit=1
     # apply strict limit to dirty bytes
     if [ -e "/sys/block/${block_device}" ]; then
