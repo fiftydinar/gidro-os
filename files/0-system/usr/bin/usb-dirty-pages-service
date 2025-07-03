@@ -12,7 +12,7 @@ get_usb_path() {
     for path in $(find /sys/ -name idVendor | rev | cut -d/ -f 2- | rev); do
         if grep -q $idV $path/idVendor; then
             if grep -q $idP $path/idProduct; then
-                echo "$(basename $(realpath --relative-base=$path /sys/block/* | grep -vm 1 "^/"))" 2>/dev/null
+                basename "$(realpath --relative-base=$path /sys/block/* | grep -vm 1 "^/")" 2>/dev/null
             fi
         fi
     done
