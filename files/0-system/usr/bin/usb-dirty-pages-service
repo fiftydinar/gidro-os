@@ -18,7 +18,7 @@ get_usb_path() {
     done
 }
 
-USB_VENDOR_MODEL=("$(lsusb -v -t | awk '/Driver=usb-storage/{getline; gsub(/^[ \t]+|[ \t]+$/, "", $0); print $0}' | awk '/ID/{print $2}')")
+readarray -t USB_VENDOR_MODEL < <(lsusb -v -t | awk '/Driver=usb-storage/{getline; gsub(/^[ \t]+|[ \t]+$/, "", $0); print $0}' | awk '/ID/{print $2}')
 if [ "${#USB_VENDOR_MODEL[@]}" -eq 0 ]; then
   exit 0
 fi
