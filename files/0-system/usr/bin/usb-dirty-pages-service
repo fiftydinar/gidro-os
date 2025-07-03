@@ -7,8 +7,8 @@ set -x
 # Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
 
 get_usb_path() {
-    idV=${1%:*}
-    idP=${1#*:}
+    idV="${1%:*}"
+    idP="${1#*:}"
     for path in $(find /sys/ -name idVendor | rev | cut -d/ -f 2- | rev); do
         if grep -q "$idV" "$path/idVendor"; then
             if grep -q "$idP" "$path/idProduct"; then
