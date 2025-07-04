@@ -2,10 +2,18 @@
 
 set -x
 
-# Reduce dirty bytes for USB devices, to make it write more directly to storage, instead to cache
+# udev rule for usb-storage-optimized-async
+
+# Limit the amount of disk cache for USB storage devices, to ensure that writing speed is correct, as opposed to async
+# sync is too slow & has a risk for deteorating USB storage data health, so that's why this balanced solution is being done
+# See the link below for more details
+# https://github.com/ublue-os/packages/issues/677
+#
+# Credits:
+# - Megavolt (from Manjaro forums): for making it possible through his benchmarks, testings, findings & initial udev rule + script
 
 block_device="${1}"
-# apply strict limit to dirty bytes
+# apply strict limit to max_bytes of disk cache
 strict_limit=1
 echo "${strict_limit}" > "/sys/block/${block_device}/bdi/strict_limit"
 
@@ -15,7 +23,7 @@ model_id="${3}"
 # Determine current USB device speed, as ATTRS{speed} is unreliable - it detects xHCI USB speed instead of proper USB speed
 current_usb_speed=$(lsusb -t -v | awk -v vendor_id="${vendor_id}" -v model_id="${model_id}" '$0 ~ vendor_id ":" model_id {split(prev, a, " "); print a[length(a)]} {prev=$0}' | grep -o '[0-9]*\.[0-9]*\|[0-9]*')
 
-# Handle the case if float is with , as decimal separator
+# Handle the case if float is with , as a decimal separator
 if [[ $(echo "${current_usb_speed}" | wc -l) -gt 1 ]]; then
   echo "Cannot determine current USB speed for the device to write custom max_bytes dirty value"
   echo "Exiting"
