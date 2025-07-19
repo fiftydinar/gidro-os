@@ -4,7 +4,7 @@ Before=systemd-user-sessions.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/usb-dirty-pages-service
+ExecStart=/usr/bin/usb-storage-optimized-async-service
 
 [Install]
 WantedBy=multi-user.target
