@@ -52,6 +52,7 @@ Installed packages (RPMs):
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
 - [fontconfig-font-replacements](https://github.com/hyperreal64/fedora-better-fonts) (Also known as `better-fonts`. It fills the gap of missing proprietary fonts with the open-source font replacements)
 - [dr14_t.meter](https://github.com/simon-r/dr14_t.meter) (support for reading dynamic range of audio files)
+- vulkan-tools (useful for debugging)
 
 Installed packages (AppImages/static binaries):
 - [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)

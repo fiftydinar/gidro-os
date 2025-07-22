@@ -45,6 +45,7 @@ modules:
         - fontconfig-font-replacements
         - trivalent
         - trivalent-subresource-filter
+        - vulkan-tools
     # Example of replacing older packages like kernel in case of regressions
     #replace:
     #- from-repo: updates-archive
