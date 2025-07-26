@@ -12,5 +12,6 @@ modules:
   - type: gschema-overrides
   - from-file: module-recipes/wallpapers.yml
   - from-file: module-recipes/scripts.yml
+  - from-file: module-recipes/soar.yml
   - type: initramfs
   - type: signing
