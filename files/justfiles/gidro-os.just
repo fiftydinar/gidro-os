@@ -118,6 +118,9 @@ toggle-updates ACTION="prompt":
         if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
           run0 systemctl enable --global am-update.timer
         fi
+        if systemctl --user list-units --type=timer --all | grep -q 'soar-upgrade-packages.timer'; then
+          run0 systemctl enable --global soar-upgrade-packages.timer
+        fi
         echo 'Reverted setting "automatic updates" to defaults (Enabled).'
       else
         printf "\e[1;31mERROR: Automatic updates are already enabled, no change is made.\e[0m\n" 1>&2
@@ -130,6 +133,9 @@ toggle-updates ACTION="prompt":
         fi
         if systemctl --user list-units --type=timer --all | grep -q 'am-update.timer'; then
           run0 systemctl disable --global am-update.timer
+        fi
+        if systemctl --user list-units --type=timer --all | grep -q 'soar-upgrade-packages.timer'; then
+          run0 systemctl disable --global soar-upgrade-packages.timer
         fi
         echo 'Disable automatic updates setting applied.'
       else
