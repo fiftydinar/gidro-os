@@ -4,6 +4,7 @@ modules:
       - Blur my Shell
       - Caffeine
       - Quick Close in Overview
+      - SimpleWeather
       - Notifications Alert
       - Bluetooth Battery Meter
       - Night Theme Switcher
@@ -18,5 +19,4 @@ modules:
   - type: gnome-extensions-unverified
     source: local
     install:
-      - OpenWeather Refined
       - Sleep Through Notifications

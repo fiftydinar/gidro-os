@@ -62,7 +62,7 @@ Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
-- [OpenWeather Refined](https://github.com/penguin-teal/gnome-openweather)
+- [SimpleWeather](https://github.com/romanlefler/SimpleWeather)
 - [Notifications Alert](https://extensions.gnome.org/extension/258/notifications-alert-on-user-menu/)
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
@@ -146,14 +146,8 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste & touchpad 3-click to paste for GTK applications
 - Set Blur my Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
-- Set OpenWeather Refined to:
-  - show conditions in top bar
+- Set SimpleWeather to:
   - show sunrise/sunset in top bar
-  - use "mbar" as pressure unit
-  - use arrows for wind direction
-  - use packaged icons
-  - use custom OpenWeatherMap API key (solves "too many users" issue)
-  - use OpenWeatherMap provider by default
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to:
   - Show battery percentage

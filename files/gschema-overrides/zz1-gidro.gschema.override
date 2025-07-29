@@ -40,7 +40,7 @@ titlebar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org.gnome.shell]
-enabled-extensions=['openweather-extension@penguin-teal.github.io', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com', 'gnome-ui-tune@itstime.tech', 'media-progress@krypion17']
+enabled-extensions=['simple-weather@romanlefler.com', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com', 'gnome-ui-tune@itstime.tech', 'media-progress@krypion17']
 favorite-apps=['trivalent.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 
 [org.gnome.shell.extensions.blur-my-shell]
@@ -71,14 +71,9 @@ sigma=8
 [org.gnome.shell.extensions.blur-my-shell.window-list]
 sigma=8
 
-[org.gnome.shell.extensions.openweatherrefined]
-custom-keys=['d590dd084a24e33ee2198033e927543e', '', '']
-use-system-icons=false
-pressure-unit='mbar'
-show-comment-in-panel=true
-show-sunsetrise-in-panel=true
-wind-direction=true
-weather-provider='openweathermap'
+[org.gnome.shell.extensions.simple-weather]
+is-activated=true
+show-suntime=true
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
