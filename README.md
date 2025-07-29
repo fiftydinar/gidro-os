@@ -146,8 +146,9 @@ Settings applied by default:
 - Set mouse acceleration to flat
 - Disabled mouse middle-click to paste & touchpad 3-click to paste for GTK applications
 - Set Blur my Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
-- Set SimpleWeather to:
+- Set SimpleWeather to do these things by default:
   - show sunrise/sunset in top bar
+  - disable automatic location check
 - Set Notifications Alert to use less distracting, but still noticeable color for the alert instead of default bright red. This color also fits the top bar blur much better.
 - Set Bluetooth Battery Meter to:
   - Show battery percentage
