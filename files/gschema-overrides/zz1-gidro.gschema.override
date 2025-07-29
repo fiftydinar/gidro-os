@@ -74,6 +74,7 @@ sigma=8
 [org.gnome.shell.extensions.simple-weather]
 is-activated=true
 show-suntime=true
+my-loc-provider='disable'
 
 [org.gnome.shell.extensions.notifications-alert]
 color='rgb(138,156,184)'
