@@ -44,7 +44,7 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build ISO
         uses: jasonn3/build-container-installer@v1.3.0
