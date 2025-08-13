@@ -137,6 +137,7 @@ Settings applied by default:
 - Set Nokia Pure Text font as the default
 - Set Source Code Pro font as the monospace default (Gnome <=47 monospace font)
 - Set a beautiful Symbian^3 picture as a wallpaper, including dark variant
+- Append `XDG_DATA_HOME` variable to `XDG_DATA_DIRS` (useful for integrating local applications to the system applications not respecting the `XDG_DATA_HOME` variable, like `gnome-shell` in some cases)
 - [Set light & dark theme to AdwGtk3 for GTK3 applications](https://github.com/lassekongo83/adw-gtk3) (to make Adwaita design more consistent)
 - [Use MoreWaita icon pack](https://github.com/somepaulo/MoreWaita) (to extend Adwaita theme icon language)
 - Set Serbian Latin language as the locale (display language remains English)
