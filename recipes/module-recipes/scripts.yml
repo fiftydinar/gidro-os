@@ -1,6 +1,7 @@
 type: script
 scripts:
   - morewaita.sh
+  - android-tools.sh
   - trivalent-patches.sh
   - prefer-bootc-over-rpm-ostree.sh
 snippets:
@@ -10,8 +11,6 @@ snippets:
   - "echo 'Hidden=true' >> /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop"
   # python3-icoextract EXE thumbnailer  
   - "wget https://raw.githubusercontent.com/jlu5/icoextract/master/exe-thumbnailer.thumbnailer -O /usr/share/thumbnailers/exe-thumbnailer.thumbnailer"
-  # Install Android platform-tools AppImage
-  - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/android-tools-AppImage/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/${VER}/Android_Tools-${VER%@*}-anylinux-x86_64.AppImage -o /usr/bin/android-tools && chmod +x /usr/bin/android-tools"
   # Patch Media Progress Gnome extension to use system Nokia Pure Text T font instead of the hardcoded one
   # Using tabular version of the font because it's more suitable for the numbers, as that's what extension is showing
   - |
