@@ -8,7 +8,7 @@ mkdir -p /tmp/android-tmp/
  cd /tmp/android-tmp/
  /usr/bin/android-tools --appimage-extract
 )
-readarray -t BINS < <(find /tmp/android-tmp/AppDir/shared/bin/ -type f)
+readarray -t BINS < <(find /tmp/android-tmp/AppDir/bin/ -type f)
 rm -rf /tmp/android-tmp/
 for bin in "${BINS[@]}"; do
   case "$bin" in
