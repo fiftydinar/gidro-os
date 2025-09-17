@@ -9,16 +9,17 @@ dnf5 -y config-manager setopt fedora-multimedia.enabled=0
 echo "Install 'selinux-policy-devel' build package & it's dependencies"
 dnf5 -y install selinux-policy-devel
 echo "Downloading secureblue Trivalent selinux policy"
-mkdir -p ./selinux/trivalent
-cd ./selinux/trivalent
-SELINUX_POLICY_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/selinux/trivalent"
-curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.fc" --output-dir "${PWD}"
-curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.if" --output-dir "${PWD}"
-curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.te" --output-dir "${PWD}"
-curl -fLs --create-dirs -O "${SELINUX_POLICY_URL}/trivalent.sh" --output-dir "${PWD}"
+TRIVALENT_POLICY_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/selinux/trivalent"
+SELINUX_SCRIPT_URL="https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/files/scripts/installselinuxpolicies.sh"
+curl -fLs --create-dirs -O "${TRIVALENT_POLICY_URL}/trivalent.fc" --output-dir ./selinux/trivalent
+curl -fLs --create-dirs -O "${TRIVALENT_POLICY_URL}/trivalent.if" --output-dir ./selinux/trivalent
+curl -fLs --create-dirs -O "${TRIVALENT_POLICY_URL}/trivalent.te" --output-dir ./selinux/trivalent
+curl -fLs --create-dirs -O "${SELINUX_SCRIPT_URL}" --output-dir "${PWD}"
+echo "Patching selinux script to only do Trivalent-related changes"
+sed -i 's/^policy_modules=.*/policy_modules=(trivalent)/' "${PWD}/installselinuxpolicies.sh"
+sed -i '/\${cil_policy_modules\[\@\]}/d' "${PWD}/installselinuxpolicies.sh"
 echo "Executing trivalent.sh script"
-bash "${PWD}/trivalent.sh"
-cd ../..
+bash "${PWD}/installselinuxpolicies.sh"
 echo "Cleaning up build package 'selinux-policy-devel' & it's dependencies"
 dnf5 -y remove selinux-policy-devel
 echo "Enabling Negativo repos (as default state)"
