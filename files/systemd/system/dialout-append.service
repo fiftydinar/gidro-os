@@ -1,10 +1,10 @@
 [Unit]
-Description=Append user to adbusers group to make Android udev rules working
+Description=Append user to mtk dialout group to make dialout udev rules working
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/adbusers-append
+ExecStart=/usr/bin/dialout-append
 
 [Install]
 WantedBy=multi-user.target
