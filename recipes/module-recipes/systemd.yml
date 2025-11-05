@@ -6,6 +6,7 @@ system:
     - memory-tweaks-gidro.service
     - adbusers-append.service
     - plugdev-append.service
+    - dialout-append.service
     - bootc-auto-update-without-reboot.timer
     - adw-gtk3-installer-privileged.service
     - usb-storage-optimized-async-service.service
