@@ -19,8 +19,6 @@ modules:
       ## Add plugdev group to sysusers.d (needed for Yubikey udev rules) (not done in Ublue)
       - echo -e "\033[90mAdd plugdev group to sysusers.d (not done in Ublue)\033[0m"      
       - echo "g plugdev -" > /usr/lib/sysusers.d/30-append-plugdev-group.conf
-      ## This is for mtk devices flashing
-      - echo "g dialout - -" > /usr/lib/sysusers.d/mtk-dialout.conf
       # Game-device-udev rules
       - echo -e "\033[90mDownloading game-device-udev zip file\033[0m"    
       - curl -fLs --create-dirs https://codeberg.org/fabiscafe/game-devices-udev/archive/main.zip -o /tmp/ublue-config/game-devices-udev/main.zip
