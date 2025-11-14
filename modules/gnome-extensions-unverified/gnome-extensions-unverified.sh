@@ -53,7 +53,7 @@ for INSTALL_EXT in "${INSTALL[@]}"; do
         exit 1
       fi        
       # Gets latest extension version for latest available Gnome version
-      SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | jq -r '.shell_version_map | to_entries | max_by(.key | tonumber) | .value.version')
+      SUITABLE_VERSION=$(echo "${QUERIED_EXT}" | jq -r '.shell_version_map | to_entries | sort_by(.key) | last | .value.version')
     else
       # PK ID extension config fallback if specified
       URL_QUERY=$(curl -sf "https://extensions.gnome.org/extension-info/?pk=${INSTALL_EXT}")
@@ -67,7 +67,7 @@ for INSTALL_EXT in "${INSTALL[@]}"; do
       EXT_UUID=$(echo "${URL_QUERY}" | jq -r '.["uuid"]')
       EXT_NAME=$(echo "${URL_QUERY}" | jq -r '.["name"]')
       # Gets latest extension version for latest available Gnome version
-      SUITABLE_VERSION=$(echo "${URL_QUERY}" | jq -r '.shell_version_map | to_entries | max_by(.key | tonumber) | .value.version')
+      SUITABLE_VERSION=$(echo "${URL_QUERY}" | jq -r '.shell_version_map | to_entries | sort_by(.key) | last | .value.version')
     fi  
     # Removes every @ symbol from UUID, since extension URL doesn't contain @ symbol
     URL="https://extensions.gnome.org/extension-data/${EXT_UUID//@/}.v${SUITABLE_VERSION}.shell-extension.zip"
