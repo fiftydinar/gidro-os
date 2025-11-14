@@ -9,4 +9,3 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 
 modules:
   - from-file: general.yml
-  - from-file: shared.yml
