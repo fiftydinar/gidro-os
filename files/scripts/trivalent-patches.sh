@@ -28,11 +28,10 @@ dnf5 -y config-manager setopt fedora-multimedia.enabled=1
 
 echo "Assure that network sandbox is always disabled by default (to ensure that login data remains)"
 echo "https://github.com/fedora-silverblue/issue-tracker/issues/603"
-echo -e '\nCHROMIUM_FLAGS+=" --disable-features=NetworkServiceSandbox"' >> /etc/trivalent/trivalent.conf
+echo -e '\nCHROMIUM_FLAGS+=" --disable-features=NetworkServiceSandbox"' >> /etc/trivalent/trivalent.conf.d/gidro-os.conf
 
 echo "Disable search engine choice screen"
-echo -e '\nCHROMIUM_FLAGS+=" --disable-search-engine-choice-screen"' >> /etc/trivalent/trivalent.conf
+echo -e '\nCHROMIUM_FLAGS+=" --disable-search-engine-choice-screen"' >> /etc/trivalent/trivalent.conf.d/gidro-os.conf
 
 echo "Enable middle-click scrolling by default"
-sed -i '/CHROMIUM_FLAGS+=" --enable-features=\$FEATURES"/d' /etc/trivalent/trivalent.conf
-echo -e '\nFEATURES+=",MiddleClickAutoscroll"\nCHROMIUM_FLAGS+=" --enable-features=$FEATURES"' >> /etc/trivalent/trivalent.conf
+echo -e '\nFEATURES+=",MiddleClickAutoscroll"\nCHROMIUM_FLAGS+=" --enable-features=$FEATURES"' >> /etc/trivalent/trivalent.conf.d/gidro-os.conf
