@@ -72,7 +72,7 @@ jobs:
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
 
       - name: Upload ISO and Checksum to Job Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
           if-no-files-found: error
