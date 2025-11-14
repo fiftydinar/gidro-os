@@ -117,7 +117,7 @@ modules:
       - rm -r /tmp/oversteer-udev/
       # Remove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)
       - echo -e "\033[90mRemove avif thumbnailer, as HEIF thumbnailer already covers it (not done in Ublue)\033[0m"      
-      - "[ -f /usr/share/thumbnailers/heif.thumbnailer ] && rm -f /usr/share/thumbnailers/avif.thumbnailer"
+      - "if [ -f /usr/share/thumbnailers/heif.thumbnailer ] && [ -f /usr/share/thumbnailers/avif.thumbnailer ]; then rm -f /usr/share/thumbnailers/avif.thumbnailer; fi"
       # Install just manually until ISO problem is solved
       - echo -e "\033[90mInstalling just manually until ISO issue is fixed (not done in Ublue)\033[0m"
       - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/casey/just/releases/latest)) && curl -fLs --create-dirs https://github.com/casey/just/releases/download/${VER}/just-${VER}-x86_64-unknown-linux-musl.tar.gz -o /tmp/just-x86_64-unknown-linux-musl.tar.gz"
