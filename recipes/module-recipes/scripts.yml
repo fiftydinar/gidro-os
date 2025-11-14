@@ -4,6 +4,7 @@ scripts:
   - android-tools.sh
   - trivalent-patches.sh
   - prefer-bootc-over-rpm-ostree.sh
+  - disable-layering.sh
 snippets:
   # Clear font cache
   - "fc-cache --system-only --really-force /usr/share/fonts/nokia-font"
