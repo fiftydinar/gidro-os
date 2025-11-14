@@ -19,4 +19,3 @@ modules:
     install:
       - Notifications Alert
       - Remove World Clocks
-      - Sleep Through Notifications
