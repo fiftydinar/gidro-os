@@ -2,7 +2,7 @@
 # shellcheck disable=SC2128,SC2178
 
 # Tell build process to exit if there are any errors.
-set -euo pipefail
+set -euxo pipefail
 
 get_json_array INSTALL 'try .["install"][]' "$1"
 
