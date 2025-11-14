@@ -57,7 +57,6 @@ Installed packages (RPMs):
 
 Installed packages (AppImages/static binaries):
 - [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)
-- [soar](https://github.com/pkgforge/soar) (Package manager for static + pseudo-static binaries & AppImages. Auto-updates are integrated)
 
 Installed extensions:
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
