@@ -113,6 +113,9 @@ logo='/usr/share/pixmaps/gidro-gdm-logo.png'
 [org.gnome.Ptyxis]
 restore-session=false
 
+[org.gnome.settings-daemon.plugins.housekeeping]
+donation-reminder-enabled=false
+
 #-------------- RELOCATABLE SCHEMAS IN THIS SECTION ARE LOCATED IN DCONF --------------#
 
 [org.gnome.desktop.app-folders]
