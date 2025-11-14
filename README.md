@@ -22,8 +22,6 @@ Removed packages (RPMs):
 - Fedora third-party repos & built-in Fedora flatpak repo
 
 Replaced packages (RPMs):
-- [Yafti](https://github.com/ublue-os/yafti) instead of [Gnome Initial Setup](https://gitlab.gnome.org/GNOME/gnome-initial-setup) & [Gnome Tour](https://gitlab.gnome.org/GNOME/gnome-tour)  
-   (for better, more suitable first-time install experience)
 - [Power Profiles Daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon) instead of [Tuned](https://tuned-project.org/)  
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
 - [Trivalent](https://github.com/secureblue/Trivalent) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
@@ -43,11 +41,9 @@ Installed packages (RPMs):
 - [Python3-icoextract](https://github.com/jlu5/icoextract) (for .exe icons thumbnailing support)
 - [Miniaturo](https://github.com/dbrgn/miniaturo) (RAW pictures thumbnailing for Nautilus)
 - [Foo2zjs](https://www.openprinting.org/driver/foo2zjs/) (Driver which supports some additional Konica Minolta printers)
-- [Uld](https://www.bchemnet.com/suldr/) (Driver which supports some additional Samsung printers)
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
-- [fontconfig-font-replacements](https://github.com/hyperreal64/fedora-better-fonts) (Also known as `better-fonts`. It fills the gap of missing proprietary fonts with the open-source font replacements)
 - [dr14_t.meter](https://github.com/simon-r/dr14_t.meter) (support for reading dynamic range of audio files)
 - vulkan-tools (useful for debugging)
 - zenity (useful for showing dialogs & it's something crucial that the base image should have imo, but it's shot down as a suggestion)
@@ -69,7 +65,6 @@ Installed extensions:
 - [Quick Settings Audio Devices Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/) (disabled by default)
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
 - [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
-- [Sleep Through Notifications](https://gitlab.gnome.org/rhendric/sleep-through-notifications) (disabled by default, useful for setups where screen wake on new notifications is annoying, while retaining notifications functionality)
 - [Unblank lock screen](https://github.com/sunwxg/gnome-shell-extension-unblank) (disabled by default, useful if you don't want the behavior of locking the screen to also turn off your screen)
 
 Installed flatpaks:
@@ -243,6 +238,5 @@ To rebase an existing installation to the latest build:
 ## COPR repos used for some installed RPM packages
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/bazzite-org/rom-properties/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
-- [Better Fonts](https://copr.fedorainfracloud.org/coprs/hyperreal/better_fonts/)
 - [Trivalent subresource filter](https://copr.fedorainfracloud.org/coprs/secureblue/trivalent/)
 - [DR14 T Meter](https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/)

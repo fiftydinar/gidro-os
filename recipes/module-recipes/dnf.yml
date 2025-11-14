@@ -6,7 +6,6 @@ modules:
       copr:
         - bazzite-org/rom-properties
         - decathorpe/miniaturo
-        - hyperreal/better_fonts
         - secureblue/trivalent
     remove:
       packages:
@@ -37,12 +36,10 @@ modules:
         - python3-icoextract
         - miniaturo
         - foo2zjs
-        - uld
         - sg3_utils
         - rar
         - pandoc
         - power-profiles-daemon
-        - fontconfig-font-replacements
         - trivalent
         - trivalent-subresource-filter
         - vulkan-tools
