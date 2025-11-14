@@ -36,7 +36,6 @@ modules:
         - python3-icoextract
         - miniaturo
         - foo2zjs
-        - uld
         - sg3_utils
         - rar
         - pandoc
