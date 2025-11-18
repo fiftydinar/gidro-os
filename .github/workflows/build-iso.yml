@@ -28,7 +28,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [gidro-os]
-        major_version: [41]
+        major_version: [43]
         image_tag: [latest]
 
     steps:
