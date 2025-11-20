@@ -15,7 +15,6 @@ modules:
   - from-file: module-recipes/gnome-extensions.yml
   - from-file: module-recipes/justfiles.yml
   - type: yafti
-    source: local
   - from-file: module-recipes/default-flatpaks.yml
   - from-file: module-recipes/bling.yml
   - from-file: module-recipes/systemd.yml
