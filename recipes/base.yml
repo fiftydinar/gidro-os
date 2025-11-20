@@ -141,6 +141,8 @@ modules:
         - google-noto-sans-cjk-vf-fonts
     install:
       packages:
+        # Easy container stuff
+        - distrobox
         # Font stuff
         - google-noto-sans-balinese-fonts
         - google-noto-sans-cjk-fonts
