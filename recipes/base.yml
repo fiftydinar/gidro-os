@@ -7,6 +7,7 @@ modules:
 # - ublue-os-just (stripped version: without motd tips, Ublue justfiles, non-needed brew profile.d script & Ublue distrobox+podman manifest files)
   - type: script
     snippets:
+      - echo "$TARGETARCH"
       # Download Universal Blue packages config zip
       - echo -e "\033[90mDownloading Universal Blue packages config zip file\033[0m"
       - curl -fLs --create-dirs https://github.com/ublue-os/packages/archive/refs/heads/main.zip -o /tmp/ublue-config/packages.zip
