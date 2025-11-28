@@ -13,9 +13,9 @@ modules:
       - Quick Settings Audio Devices Renamer
       - Quick Settings Audio Devices Hider
       - Unblank lock screen
+      - Notifications Alert
 
   - type: gnome-extensions-unverified
     source: local
     install:
-      - Notifications Alert
       - Remove World Clocks
