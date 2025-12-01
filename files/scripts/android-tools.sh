@@ -12,7 +12,6 @@ readarray -t BINS < <(find /tmp/android-tmp/AppDir/bin/ -type f -printf "%f\n")
 rm -rf /tmp/android-tmp/
 for bin in "${BINS[@]}"; do
   case "$bin" in
-    *xdg-open|*.hook|*.conf) continue;;
+    adb|fastboot|etc1tool|hprof-conv|make_f2fs|make_f2fs_casefold) ln -fs /usr/bin/android-tools /usr/bin/"$bin";;
   esac
-  ln -fs /usr/bin/android-tools /usr/bin/"$bin"
 done
