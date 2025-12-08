@@ -46,7 +46,6 @@ Installed packages (RPMs):
 - [sg3_utils](https://sg.danny.cz/sg/sg3_utils.html) (Package which contains utilities that send SCSI commands to devices - used by Apple SuperDrive)
 - [rar](https://www.win-rar.com/rar-linux-mac.html?&L=0) (RAR CLI package)
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
-- [dr14_t.meter](https://github.com/simon-r/dr14_t.meter) (support for reading dynamic range of audio files)
 - vulkan-tools (useful for debugging)
 - zenity (useful for showing dialogs & it's something crucial that the base image should have imo, but it's shot down as a suggestion)
 
@@ -241,4 +240,3 @@ To rebase an existing installation to the latest build:
 - [ROM Properties](https://copr.fedorainfracloud.org/coprs/bazzite-org/rom-properties/)
 - [Miniaturo](https://copr.fedorainfracloud.org/coprs/decathorpe/miniaturo/)
 - [Trivalent subresource filter](https://copr.fedorainfracloud.org/coprs/secureblue/trivalent/)
-- [DR14 T Meter](https://copr.fedorainfracloud.org/coprs/sassam/dr14_tmeter/)
