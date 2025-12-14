@@ -48,6 +48,7 @@ Installed packages (RPMs):
 - [pandoc](https://github.com/jgm/pandoc) (CLI Document converter)
 - vulkan-tools (useful for debugging)
 - zenity (useful for showing dialogs & it's something crucial that the base image should have imo, but it's shot down as a suggestion)
+- [AppImage thumbnailer](https://github.com/kem-a/appimage-thumbnailer) (for showing the thumbnails of AppImages in file manager)
 
 Installed packages (AppImages/static binaries):
 - [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)

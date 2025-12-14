@@ -2,6 +2,7 @@ type: script
 scripts:
   - morewaita.sh
   - android-tools.sh
+  - appimage-thumbnailer.sh
   - trivalent-patches.sh
   - prefer-bootc-over-rpm-ostree.sh
   - disable-layering.sh
