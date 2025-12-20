@@ -153,6 +153,7 @@ Settings applied by default:
 - Set Gnome 4x UI Improvements to only enable wallpaper thumbnails in workspace switcher
 - Set Media Progress to use Nokia Pure Text T font instead of the hardcoded one
 - Enabled Nautilus "Sort folders before files"
+- Set Nautilus to show transparent thumbnails without checker patterns
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
 - Add Nautilus "New Document" to context menu
