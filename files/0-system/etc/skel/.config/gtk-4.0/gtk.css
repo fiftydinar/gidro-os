@@ -1,4 +1,7 @@
-.nautilus-window.view .thumbnail {
+/*Clear Nautilus thumbnail background*/
+.thumbnail,
+.icon .thumbnail,
+.grid-view .thumbnail {
   background: none;
   box-shadow: none;
 }
