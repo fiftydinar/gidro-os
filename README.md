@@ -116,7 +116,7 @@ Settings applied by default:
 - [Increased vm.max_map_count value to match SteamOS](https://www.reddit.com/r/linux_gaming/comments/10x1e6u/fix_hogwarts_legacy_loading_screen_crash/) (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - [Disabled kernel split-lock mitigate](https://github.com/doitsujin/dxvk/issues/2938) (for restoring performance of affected games)
 - [Enabled full kernel preemption](https://lwn.net/Articles/944686/) (increases system responsiveness with negligible cost of some throughput)
-- [Reduced dirty pages for USB devices](https://github.com/fiftydinar/usb-storage-optimized-async) (for solving the problem of USB storage devices incomplete data sync during ejecting )
+- [Optimized the data writing RAM cache for USB storage devices](https://github.com/fiftydinar/usb-storage-optimized-async) (for solving the problem of USB storage devices incomplete data sync during ejecting)
 - [Enabled Nvidia GSP firmware for Nouveau GPU driver](https://nouveau.freedesktop.org/PowerManagement.html) (to enable power-management for Nvidia GTX 1650+ GPUs)
 - [Enabled NTSync by default](https://docs.kernel.org/userspace-api/ntsync.html)
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
