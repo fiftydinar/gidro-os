@@ -28,6 +28,7 @@ Replaced packages (RPMs):
    (because Power Profiles Daemon is simpler & more reliable than Tuned for power-management)
 - [Trivalent](https://github.com/secureblue/Trivalent) instead of [Firefox](https://www.mozilla.org/en-US/firefox/)  
    (it is a more secure browser, has support for web applications, working hardware-accelerated video decoding + encoding out-of-the-box & ads blocker)
+- `wget` instead of `wget2`, as it has less bugs and is more reliable
 
 Replaced packages (RPMs) with flatpaks:
 - [Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter) instead of [Gnome System Monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)  
@@ -115,7 +116,7 @@ Settings applied by default:
 - [Increased vm.max_map_count value to match SteamOS](https://www.reddit.com/r/linux_gaming/comments/10x1e6u/fix_hogwarts_legacy_loading_screen_crash/) (to allow some memory-hungry applications such as games to use more memory maps, which allows them to run & not crash)
 - [Disabled kernel split-lock mitigate](https://github.com/doitsujin/dxvk/issues/2938) (for restoring performance of affected games)
 - [Enabled full kernel preemption](https://lwn.net/Articles/944686/) (increases system responsiveness with negligible cost of some throughput)
-- [Reduced dirty pages for USB devices](https://gitlab.manjaro.org/fhdk/udev-usb-sync) (for showing real transfer speed of USB devices, rather than speed of writing to cache. Thanks to the user Megavolt from Manjaro forums for the [useful benchmark](https://forum.manjaro.org/t/strict-limit-of-write-cache-0s-sync-time-policy-for-usb-devices-by-default/166934))
+- [Optimized the data writing RAM cache (async) for USB storage devices](https://github.com/fiftydinar/usb-storage-optimized-async) (for solving the problem of USB storage devices incomplete data sync during ejecting)
 - [Enabled Nvidia GSP firmware for Nouveau GPU driver](https://nouveau.freedesktop.org/PowerManagement.html) (to enable power-management for Nvidia GTX 1650+ GPUs)
 - [Enabled NTSync by default](https://docs.kernel.org/userspace-api/ntsync.html)
 - [Increased inotify limits](https://www.suse.com/support/kb/doc/?id=000020048) (for preventing errors like "too many open files" when installing/using some huge applications & games)
@@ -153,6 +154,7 @@ Settings applied by default:
 - Set Gnome 4x UI Improvements to only enable wallpaper thumbnails in workspace switcher
 - Set Media Progress to use Nokia Pure Text T font instead of the hardcoded one
 - Enabled Nautilus "Sort folders before files"
+- Set Nautilus to show transparent thumbnails without checker patterns
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
 - Add Nautilus "New Document" to context menu

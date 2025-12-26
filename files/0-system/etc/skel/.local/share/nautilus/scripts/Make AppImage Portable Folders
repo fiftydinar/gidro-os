@@ -1,0 +1,7 @@
+#!/bin/sh
+for f in "$@"; do
+  if grep -E -q 'github.com/AppImage/AppImageKit/wiki/FUSE' "$f"; then
+    chmod a+x "$f"
+    mkdir -p "$f.home" "$f.share" "$f.config" "$f.cache"
+  fi
+done

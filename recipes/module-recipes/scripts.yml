@@ -4,6 +4,7 @@ scripts:
   - android-tools.sh
   - appimage-thumbnailer.sh
   - trivalent-patches.sh
+  - usb-storage-optimized-async.sh
   - prefer-bootc-over-rpm-ostree.sh
   - disable-layering.sh
 snippets:
