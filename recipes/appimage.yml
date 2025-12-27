@@ -1,0 +1,117 @@
+name: gidro-os-appimages
+description: My personalized custom OS image with flatpak removed.
+
+base-image: ghcr.io/fiftydinar/gidro-os
+image-version: 43
+
+modules:
+  - type: dnf
+    remove:
+      packages:
+        - gnome-software
+        - flatpak
+        - flatpak-libs
+        - flatpak-session-helper
+        - flatpak-selinux
+  - type: script
+    snippets:
+      # Nuke flatpak autostart units
+      - |
+        echo -e "\e[1;31mNuking flatpak autostart units\e[0m"
+      - "systemctl --global disable flatpak-gidro@tutamail.service"
+      - "systemctl --global disable flatpak-gidro@telegram.service"
+      - "systemctl --global disable flatpak-gidro@steam.service"
+      - "systemctl --global disable flatpak-gidro@armcord.service"
+      - "systemctl --global disable flatpak-gidro@discord.service"
+      - "systemctl --global disable flatpak-gidro@deluge.service"
+      - "rm -r /usr/lib/systemd/user/flatpak-gidro@*"
+      # Nuke flatpak systemd update timers
+      - |
+        echo -e "\e[1;31mNuking flatpak systemd update timers\e[0m"
+      - "systemctl --system disable flatpak-system-update.timer"
+      - "systemctl --global disable flatpak-user-update.timer"
+      - "rm /usr/lib/systemd/system/flatpak-system-update.timer"
+      - "rm /usr/lib/systemd/system/flatpak-system-update.service"
+      - "rm /usr/lib/systemd/user/flatpak-user-update.timer"
+      - "rm /usr/lib/systemd/user/flatpak-user-update.service"
+      # Nuke `default-flatpaks` module
+      - |
+        echo -e "\e[1;31mNuking 'default-flatpaks' module\e[0m"
+      - "systemctl --global disable user-flatpak-setup.timer"
+      - "systemctl --system disable system-flatpak-setup.timer"
+      - "rm /usr/lib/systemd/system/system-flatpak-setup.timer"
+      - "rm /usr/lib/systemd/system/system-flatpak-setup.service"
+      - "rm /usr/lib/systemd/user/user-flatpak-setup.timer"
+      - "rm /usr/lib/systemd/user/user-flatpak-setup.service"
+      - "rm -r /usr/share/bluebuild/default-flatpaks/"
+      - "rm -r /etc/bluebuild/default-flatpaks/"
+      - "rm /usr/bin/system-flatpak-setup"
+      - "rm /usr/bin/user-flatpak-setup"
+      # Nuke unrelevant section for flatpaks in yafti
+      - |
+        echo -e "\e[1;31mNuking unrelevant flatpak section in 'yafti'\e[0m"
+      - |
+        sed -i '/^  applications:/,/^  configure-gidro-os:/ { /^  configure-gidro-os:/!d }' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i '/ATTENTION!/d; /Please wait for notification that all flatpaks are installed before proceeding!/d' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i '0,/description: |/{//!b; n; d;}' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i 's/        Explore useful apps and options!/        Explore useful options!/g' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i 's/      title: Additional Gidro-OS packages & configs/      title: Additional Gidro-OS configs/g' /usr/share/ublue-os/firstboot/yafti.yml
+      - |
+        sed -i '/- "Install More Applications":/d; /run: \/usr\/bin\/gnome-software/d' /usr/share/ublue-os/firstboot/yafti.yml
+      # Nuke flatpak related skel
+      - |
+        echo -e "\e[1;31mNuking flatpak-related skel\e[0m"
+      - "rm -r /etc/skel/.var/"
+      # Nuke flatpak tmpfiles.d entries
+      - |
+        echo -e "\e[1;31mNuking flatpak tmpfiles.d entries\e[0m"
+      - |
+        sed -i '/\/var\/lib\/flatpak/d' /usr/lib/tmpfiles.d/rpm-ostree-autovar.conf
+      - "rm /usr/lib/rpm-ostree/tmpfiles.d/flatpak.conf"
+      # Nuke flatpak-related stuff for installing adw-gtk3 theme
+      - |
+        echo -e "\e[1;31mNuking flatpak-related logic for installing adw-gtk3 theme\e[0m"      
+      - systemctl --system disable adw-gtk3-installer-privileged.service
+      - rm /usr/bin/adw-gtk3-installer-privileged
+      # Install 'am' AppImage manager
+      #
+      # Versioned AM installation
+      #- |
+        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager\e[0m"      
+      #- "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/ivan-hc/AM/releases/latest)) && curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/tags/${VER}.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-${VER}/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-${VER}/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
+      #
+      # 'main' AM installation
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'main' branch\e[0m"      
+      - "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/main.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-main/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-main/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
+      #
+      # 'dev' AM installation
+      #- |
+        #echo -e "\e[1m\e[38;5;214mInstalling 'am' AppImage manager from 'dev' branch\e[0m"      
+      #- "curl -fLs --create-dirs https://github.com/ivan-hc/AM/archive/refs/heads/dev.zip -o /tmp/am.zip && mkdir -p /tmp/am && unzip -q /tmp/am.zip -d /tmp/am/ && cp /tmp/am/AM-dev/APP-MANAGER /usr/bin/am && chmod +x /usr/bin/am && mkdir -p /usr/lib/am/modules/ && cp /tmp/am/AM-dev/modules/* /usr/lib/am/modules/ && chmod +x /usr/lib/am/modules/* && rm -r /tmp/am/ && rm /tmp/am.zip"
+      #
+      # Install 'am' bash completion
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'am' bash completion\e[0m"      
+      - |
+        mkdir -p "/usr/share/bash-completion/completions/" && echo 'complete -W "$(cat "${XDG_DATA_HOME:-$HOME/.local/share}/AM/list" 2>/dev/null)" am' > "/usr/share/bash-completion/completions/am"
+      # Disable 'am' notifications on updates by default
+      - |
+        echo -e "\e[1;31mDisabling 'am' update notifications\e[0m"
+      - "mkdir -p /etc/skel/.local/share/AM/ && touch /etc/skel/.local/share/AM/disable-notifications"
+      # Add auto-update systemd timer for AM
+      - |
+        echo -e "\e[1m\e[38;5;214mWriting & enabling 'am' AppImages auto-update timer\e[0m"
+      - |
+        echo -e "[Unit]\nDescription=AM Automatic Update\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nEnvironment=\"NO_COLOR=1\"\nExecCondition=/bin/bash -c 'if ps aux | grep -v grep | grep -E -q \" /sbin/am | /bin/am | /usr/sbin/am | /usr/bin/am | am \"; then exit 1; else exit 0; fi'\nExecCondition=/bin/bash -c '[[ \"\$(busctl get-property org.freedesktop.NetworkManager /org/freedesktop/NetworkManager org.freedesktop.NetworkManager Metered | cut -c 3-)\" == @(2|4) ]]'\nExecStart=/usr/bin/am update" > /usr/lib/systemd/user/am-update.service
+      - |
+        echo -e "[Unit]\nDescription=AM Automatic Update Trigger\n\n[Timer]\nRandomizedDelaySec=10m\nOnBootSec=2m\nOnCalendar=*-*-* 4:00:00\nPersistent=true\n\n[Install]\nWantedBy=timers.target" > /usr/lib/systemd/user/am-update.timer
+      - systemctl --global enable am-update.timer
+      # Install appimageupdatetool for AppImage diff updates
+      - |
+        echo -e "\e[1m\e[38;5;214mInstalling 'appimageupdatetool' for AppImage diff updates\e[0m"
+      - "VER=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest)) && curl -fLs --create-dirs https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/download/${VER}/appimageupdatetool+validate-x86_64.AppImage -o /usr/bin/appimageupdatetool && chmod +x /usr/bin/appimageupdatetool"
