@@ -1,0 +1,83 @@
+name: Build ISO
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Build & upload ISO every month
+
+  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build-iso.yml'
+
+env:
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        image_name: [gidro-os-appimages]
+        major_version: [43]
+        image_tag: [latest]
+
+    steps:
+      - name: Set timezone to Rome
+        uses: MathRobin/timezone-action@v1.1
+        with:
+          timezoneLinux: 'Europe/Rome'
+
+      - name: Fetch current date
+        shell: bash
+        run: |
+          TIMESTAMP="$(date +%d-%m-%Y)"
+          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
+
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@v1.4.0
+        id: build
+        with:
+          arch: x86_64
+          version: ${{ matrix.major_version }}
+          image_repo: ${{ env.IMAGE_REGISTRY }}
+          image_name: ${{ matrix.image_name }}
+          image_tag: ${{ matrix.image_tag }}
+          variant: 'Kinoite'
+          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
+          enable_cache_dnf: "false"
+          enable_cache_skopeo: "false"
+          enable_flatpak_dependencies: "false"
+          flatpak_remote_name: ""
+          flatpak_remote_url: ""
+
+      - name: Move ISO to Upload Directory
+        id: upload-directory
+        shell: bash
+        run: |
+          ISO_UPLOAD_DIR=${{ github.workspace }}/upload
+          mkdir ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
+          mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
+          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
+
+      - name: Upload ISO and Checksum to Job Artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+          overwrite: true
