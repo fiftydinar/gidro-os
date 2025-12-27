@@ -14,11 +14,11 @@ package_managers=(
 )
 
 for pkg_mgr in "${package_managers[@]}"; do
-cat << EOF > "${pkg_mgr}"
+cat << 'EOF' > "${pkg_mgr}"
 #!/usr/bin/env bash
 
 if systemd-detect-virt -cq || { [[ -e /run/.containerenv || -e /.dockerenv ]]; }; then
-  exec "$pkg_mgr" "${@}"
+  exec "${pkg_mgr}" "${@}"
 else
   echo "Package/application layering is disabled in Gidro-OS to ensure that reliability & integrity of the system remains untouched,"
   echo "Please install applications through 'Software' application only."
