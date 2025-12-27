@@ -24,5 +24,6 @@ else
   echo "Please install applications through 'Software' application only."
   echo "Also see Gidro-OS wiki for more details about this:"
   echo "https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-rpm-ostree-installremove-or-dnf-installremove-doesnt-work-to-installremove-some-applications-"
+fi
 EOF
 done
