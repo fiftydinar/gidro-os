@@ -2,7 +2,7 @@ name: gidro-os-appimages
 description: My personalized custom OS image with flatpak removed.
 
 base-image: ghcr.io/fiftydinar/gidro-os
-image-version: 43
+image-version: latest
 
 modules:
   - type: dnf
@@ -13,6 +13,9 @@ modules:
         - flatpak-libs
         - flatpak-session-helper
         - flatpak-selinux
+  - type: gnome-extensions
+    install:
+      - AppIndicator and KStatusNotifierItem Support
   - type: script
     snippets:
       # Nuke flatpak autostart units
