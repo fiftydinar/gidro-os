@@ -82,7 +82,11 @@ modules:
       - |
         echo -e "\e[1;31mNuking flatpak-related logic for installing adw-gtk3 theme\e[0m"      
       - systemctl --system disable adw-gtk3-installer-privileged.service
+      - rm /usr/lib/systemd/system/adw-gtk3-installer-privileged.service
       - rm /usr/bin/adw-gtk3-installer-privileged
+      - systemctl --global disable adw-gtk3-installer.service
+      - rm /usr/lib/systemd/user/adw-gtk3-installer.service
+      - rm /usr/bin/adw-gtk3-installer
       - rm -r /etc/skel/.local/share/themes/
       # Install 'am' AppImage manager
       #
