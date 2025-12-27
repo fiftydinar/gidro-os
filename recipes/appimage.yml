@@ -13,6 +13,9 @@ modules:
         - flatpak-libs
         - flatpak-session-helper
         - flatpak-selinux
+    install:
+      packages:
+        - adw-gtk3-theme
   - type: gnome-extensions
     install:
       - AppIndicator and KStatusNotifierItem Support
@@ -80,6 +83,7 @@ modules:
         echo -e "\e[1;31mNuking flatpak-related logic for installing adw-gtk3 theme\e[0m"      
       - systemctl --system disable adw-gtk3-installer-privileged.service
       - rm /usr/bin/adw-gtk3-installer-privileged
+      - rm -r /etc/skel/.local/share/themes/
       # Install 'am' AppImage manager
       #
       # Versioned AM installation
