@@ -32,4 +32,5 @@ else
   echo "https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-rpm-ostree-installremove-or-dnf-installremove-doesnt-work-to-installremove-some-applications-"
 fi
 EOF
+chmod +x "${pkg_mgr}"
 done
