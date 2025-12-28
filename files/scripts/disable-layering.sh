@@ -18,9 +18,7 @@ package_managers=(
 
 for pkg_mgr in "${package_managers[@]}"; do
 base_name=$(basename "$pkg_mgr")
-if [ -e "$pkg_mgr" ]; then
-    mv "$pkg_mgr" "$REAL_PATH/$base_name"
-fi
+mv "$pkg_mgr" "$REAL_PATH/$base_name"
 
 cat << EOF > "${pkg_mgr}"
 #!/usr/bin/env bash
