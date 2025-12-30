@@ -26,8 +26,3 @@ snippets:
   - "rm /usr/lib/rpm-ostree/tmpfiles.d/fedora-third-party.conf"
   # Symlink sh to dash
   - "ln -sf /usr/bin/dash /usr/bin/sh"
-  # Add metered network condition to the soar update timer
-  - "mkdir -p /usr/lib/systemd/user/soar-upgrade-packages.service.d/"
-  # Add XDG_DATA_HOME to XDG_DATA_DIRS
-  - |
-    echo -e 'case "$XDG_DATA_DIRS" in\n  *"${XDG_DATA_HOME:-$HOME/.local/share}:"*);;\n  *) export XDG_DATA_DIRS="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS}";;\nesac' > /etc/profile.d/xdgdatadirs.sh
