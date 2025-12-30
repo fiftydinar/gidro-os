@@ -54,7 +54,8 @@ Installed packages (RPMs):
 Installed packages (AppImages/static binaries):
 - [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)
 
-Installed extensions:
+Installed extensions:Update gnome-extensions.yml
+- [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support) (Gnome's "Background apps" is restricted to flatpaks and is inferior to system tray)
 - [Blur my Shell](https://github.com/aunetx/blur-my-shell)
 - [Caffeine](https://github.com/eonpatapon/gnome-shell-extension-caffeine)
 - [Quick Close in Overview](https://github.com/p91paul/middleclickclose)
