@@ -67,7 +67,6 @@ Installed extensions:
 - [Media Progress](https://github.com/Krypion17/media-progress)
 - [Quick Settings Audio Devices Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/) (disabled by default)
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
-- [Remove World Clocks](https://extensions.gnome.org/extension/6973/remove-world-clocks/) (disabled by default)
 - [Unblank lock screen](https://github.com/sunwxg/gnome-shell-extension-unblank) (disabled by default, useful if you don't want the behavior of locking the screen to also turn off your screen)
 
 Installed flatpaks:
