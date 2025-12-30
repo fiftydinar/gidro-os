@@ -1,6 +1,7 @@
 modules:
   - type: gnome-extensions
     install:
+      - AppIndicator and KStatusNotifierItem Support
       - Blur my Shell
       - Caffeine
       - Quick Close in Overview
