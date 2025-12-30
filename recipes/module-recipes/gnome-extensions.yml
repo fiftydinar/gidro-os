@@ -14,8 +14,3 @@ modules:
       - Quick Settings Audio Devices Hider
       - Unblank lock screen
       - Notifications Alert
-
-  - type: gnome-extensions-unverified
-    source: local
-    install:
-      - Remove World Clocks
