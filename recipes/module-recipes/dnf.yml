@@ -47,7 +47,6 @@ modules:
         - trivalent-subresource-filter
         - vulkan-tools
         - zenity
-        - qemu-user-static
     # Example of replacing older packages like kernel in case of regressions
     #replace:
     #- from-repo: updates-archive
