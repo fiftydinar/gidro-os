@@ -26,7 +26,7 @@ modules:
       - unzip -q /tmp/ublue-config/game-devices-udev/main.zip -d /tmp/ublue-config/game-devices-udev/
       - rm /tmp/ublue-config/game-devices-udev/main.zip
       - echo -e "\033[90mCopying udev rules from Game-device-udev\033[0m"
-      - cp /tmp/ublue-config/game-devices-udev/game-devices-udev/*.rules /usr/lib/udev/rules.d/
+      - find /tmp/ublue-config/game-devices-udev -type f -name '*.rules' -exec cp {} /usr/lib/udev/rules.d/ \;
       - echo -e "\033[90mPutting uinput to be loaded as a module in modules-load.d\033[0m"
       - echo "uinput" > /usr/lib/modules-load.d/uinput.conf
       # Android udev rule
