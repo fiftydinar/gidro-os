@@ -30,12 +30,16 @@ if [ "$EUID" -ne 0 ]; then
         if [ "$EUID" -eq 0 ]; then
             /usr/bin/bootc "$@"
         else
+          if [ "$1" = "update" ] || [ "$1" = "upgrade" ] || [ "$1" = "status" ]; then
             sudo /usr/bin/bootc "$@"
+          else
+            /usr/bin/bootc "$@"
+          fi
         fi
     }
 fi
 EOF
 
 cat << 'EOF' > /etc/sudoers.d/001-bootc
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/bootc upgrade, /usr/bin/bootc status, /usr/bin/bootc status --booted, /usr/bin/bootc --help, /usr/bin/bootc help, /usr/bin/bootc -h, /usr/bin/bootc --version, /usr/bin/bootc -V
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/bootc upgrade, /usr/bin/bootc status, /usr/bin/bootc status --booted
 EOF
