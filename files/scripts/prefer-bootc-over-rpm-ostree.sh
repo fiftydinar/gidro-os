@@ -36,6 +36,12 @@ if [ "$EUID" -ne 0 ]; then
 fi
 EOF
 
-cat << 'EOF' > /etc/sudoers.d/001-bootc
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/bootc update, /usr/bin/bootc upgrade, /usr/bin/bootc status, /usr/bin/bootc status --booted
+cat << 'EOF' > /usr/share/polkit-1/rules.d/10-bootc.rules
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.policykit.exec" &&
+        action.lookup("program") == "/usr/bin/bootc" &&
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});
 EOF
