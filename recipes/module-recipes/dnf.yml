@@ -45,6 +45,7 @@ modules:
         - power-profiles-daemon
         - trivalent
         - trivalent-subresource-filter
+        - trivalent-selinux
         - vulkan-tools
         - zenity
     # Example of replacing older packages like kernel in case of regressions
