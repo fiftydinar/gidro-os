@@ -48,6 +48,7 @@ modules:
         - trivalent-selinux
         - vulkan-tools
         - zenity
+        - clinfo
     # Example of replacing older packages like kernel in case of regressions
     #replace:
     #- from-repo: updates-archive
