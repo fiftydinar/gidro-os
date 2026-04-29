@@ -45,8 +45,11 @@ modules:
         - power-profiles-daemon
         - trivalent
         - trivalent-subresource-filter
+        - trivalent-selinux
         - vulkan-tools
         - zenity
+        - clinfo
+        - gamescope
     # Example of replacing older packages like kernel in case of regressions
     #replace:
     #- from-repo: updates-archive
