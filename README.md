@@ -110,8 +110,6 @@ Settings applied by default:
 - [Disabled option for installing system packages, aka layering through `rpm-ostree` & `dnf`](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-rpm-ostree-installremove-or-dnf-installremove-doesnt-work-to-installremove-some-applications-) (to ensure that system integrity & reliability remains untouched)
 - Prefer `bootc` for updating the system
   - Applied fix to update it without invoking `sudo`
-- [Enabled experimental support for Variable Refresh Rate on supported screens](https://global.samsungdisplay.com/31137) (improves video & gaming experience by dynamically matching screen refresh rate with the content framerate)
-- [Enabled Vulkan support for AMD GCN 1.0 & GCN 2.0 GPUs](https://thespecter.net/blog/technology/enabling-amdgpu-on-fedora-31-for-using-vulkan-with-r7-and-r9-radeon-cards/) (for better performance & compatibility with those GPUs)
 - [Kyber I/O scheduler for SSDs/NVMEs, BFQ I/O scheduler for HDDs/microSDs/eMMCs](https://github.com/pop-os/default-settings/pull/149) (for improved responsiveness under I/O load)
 - [ZSTD I/O scheduler for ZRAM & better ZRAM values suited for desktop](https://github.com/pop-os/default-settings/pull/163) (avoids OOM situations better & it also improves responsiveness under I/O load. Also thanks to [MaxPerfWiz](https://gitlab.com/cscs/maxperfwiz) & [@ahydronous](https://gist.github.com/ahydronous/7ceaa00df96ef99131600edd4c2c73f2) for some good research & values.)
 - [Set memlock limit from 64kb to 2GB](https://github.com/RPCS3/rpcs3/issues/9328#issuecomment-732712084) (maps maximum locked value of 2GB per operation, needed for RPCS3 emulator)
@@ -142,7 +140,6 @@ Settings applied by default:
 - Power button powers off PC instead of suspending it
 - Enabled "Remove Old Trash files automatically" in Nautilus (every 30 days by default in Gnome)
 - Set mouse acceleration to flat
-- Disabled mouse middle-click to paste & touchpad 3-click to paste for GTK applications
 - Set Blur my Shell blur radius value to 8, as default value is too strong & looks cheap when using default background
 - Set SimpleWeather to do these things by default:
   - show sunrise/sunset in top bar
@@ -163,7 +160,6 @@ Settings applied by default:
 - Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
 - Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
 - Disable Gnome Software "Software Repositories" option (Warehouse implements the same functionality)
-- Use F41 version of Gnome Software until [annoying notification pop-up is fixed](https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2802)
 - [Lock some settings to prevent users messing with the system reliability, while still remaining customizable](https://github.com/fiftydinar/gidro-os/wiki/2.-Unsupported-Operations#why-are-some-setting-toggles-grayed-out-i-cant-change-them)
 - Hide ROM Properties desktop shortcut
 - Enable silent auto-start on boot for those applications:

@@ -18,7 +18,6 @@ document-font-name='Nokia Pure Text 11'
 font-hinting='none'
 font-rendering='manual'
 font-name='Nokia Pure Text 11'
-gtk-enable-primary-paste=false
 gtk-theme='adw-gtk3'
 icon-theme='MoreWaita'
 monospace-font-name='Source Code Pro 10'
@@ -105,7 +104,7 @@ region='sr_RS.UTF-8@latin'
 
 [org.gnome.mutter:GNOME]
 check-alive-timeout=uint32 20000
-experimental-features=['variable-refresh-rate', 'scale-monitor-framebuffer', 'xwayland-native-scaling']
+experimental-features=['xwayland-native-scaling']
 
 [org.gnome.login-screen]
 logo='/usr/share/pixmaps/gidro-gdm-logo.png'
