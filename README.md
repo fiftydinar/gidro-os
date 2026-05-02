@@ -156,6 +156,7 @@ Settings applied by default:
 - Set Nautilus to show transparent thumbnails without checker patterns
 - Set keyboard delay to be much lower, as Gnome defaults are too slow
 - ["Window not responding" dialog extended to 20s](https://github.com/ValveSoftware/csgo-osx-linux/issues/669) (to prevent constant dialog showup in some games)
+- Always show log-out button (reverts nonsense change from Gnome 50)
 - Add Nautilus "New Document" to context menu
 - Set Gnome Software to use Flathub-user remote by default (makes separation between OS flatpaks & user flatpaks much better)
 - Disable Gnome Software flatpak auto-updater (not needed since Gidro-OS uses included [ublue-os flatpak auto-updater](https://github.com/ublue-os/config/blob/main/rpmspec/ublue-os-update-services.spec))
