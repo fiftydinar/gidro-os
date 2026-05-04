@@ -28,7 +28,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [gidro-os]
-        major_version: [43]
+        major_version: [44]
         image_tag: [latest]
 
     steps:
@@ -55,7 +55,7 @@ jobs:
           image_repo: ${{ env.IMAGE_REGISTRY }}
           image_name: ${{ matrix.image_name }}
           image_tag: ${{ matrix.image_tag }}
-          variant: 'Kinoite'
+          variant: 'Server'
           iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
