@@ -9,9 +9,12 @@ modules:
       - Bluetooth Battery Meter
       - Night Theme Switcher
       - RebootToUEFI
-      - Gnome 4x UI Improvements
-      - Media Progress
+      #- Media Progress
       - Quick Settings Audio Devices Renamer
       - Quick Settings Audio Devices Hider
       - Unblank lock screen
       - Notifications Alert
+  - type: gnome-extensions-unverified
+    source: local
+    install:
+      - Media Progress

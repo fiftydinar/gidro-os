@@ -168,7 +168,6 @@ modules:
         #- adw-gtk3-theme
         - gvfs-nfs
         # Regular packages    
-        - openssl
         - libratbag-ratbagd
         - zstd
         - wireguard-tools
