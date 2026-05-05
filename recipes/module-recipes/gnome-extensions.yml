@@ -13,9 +13,8 @@ modules:
       - Quick Settings Audio Devices Renamer
       - Quick Settings Audio Devices Hider
       - Unblank lock screen
-      #- Notifications Alert
+      - Notifications Alert
   - type: gnome-extensions-unverified
     source: local
     install:
       - Media Progress
-      - Notifications Alert
