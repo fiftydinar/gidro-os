@@ -18,3 +18,8 @@ modules:
     source: local
     install:
       - Media Progress
+      - Gnome 4x UI Improvements
+  - type: script
+    snippets:
+      # Patch Gnome 50 support for Gnome 4x UI Improvements
+      - "wget https://raw.githubusercontent.com/mrenvoize/gnome-ui-tune/refs/heads/issue_50/src/modRestoreThumbnailsBackground.js -O /usr/share/gnome-shell/extensions/gnome-ui-tune@itstime.tech/src/modRestoreThumbnailsBackground.js"

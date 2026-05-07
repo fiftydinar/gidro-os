@@ -39,7 +39,7 @@ titlebar-font='Nokia Pure Text Bold 11'
 power-button-action='interactive'
 
 [org.gnome.shell]
-enabled-extensions=['simple-weather@romanlefler.com', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com', 'media-progress@krypion17', 'appindicatorsupport@rgcjonas.gmail.com']
+enabled-extensions=['simple-weather@romanlefler.com', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'middleclickclose@paolo.tranquilli.gmail.com', 'notifications-alert-on-user-menu@hackedbellini.gmail.com', 'Bluetooth-Battery-Meter@maniacx.github.com', 'nightthemeswitcher@romainvigier.fr', 'reboottouefi@ubaygd.com', 'gnome-ui-tune@itstime.tech', 'media-progress@krypion17', 'appindicatorsupport@rgcjonas.gmail.com']
 favorite-apps=['trivalent.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
 always-show-log-out=true
 
@@ -86,6 +86,12 @@ enable-upower-level-icon=true
 [org.gnome.shell.extensions.nightthemeswitcher.time]
 offset=0
 manual-schedule=true
+
+[org.gnome.shell.extensions.gnome-ui-tune]
+increase-thumbnails-size='100%'
+hide-search=false
+always-show-thumbnails=false
+overview-firefox-pip=false
 
 [org.gnome.software]
 allow-updates=false
