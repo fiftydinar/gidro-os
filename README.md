@@ -66,7 +66,7 @@ Installed extensions:Update gnome-extensions.yml
 - [Bluetooth Battery Meter](https://maniacx.github.io/Bluetooth-Battery-Meter/)
 - [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension)
 - [RebootToUEFI](https://github.com/UbayGD/reboottouefi)
-- [Gnome 4x UI Improvements](https://github.com/axxapy/gnome-ui-tune)
+- [Gnome 4x, 5x UI Improvements](https://github.com/axxapy/gnome-ui-tune)
 - [Media Progress](https://github.com/Krypion17/media-progress)
 - [Quick Settings Audio Devices Renamer](https://extensions.gnome.org/extension/6000/quick-settings-audio-devices-renamer/) (disabled by default)
 - [Quick Settings Audio Devices Hider](https://extensions.gnome.org/extension/5964/quick-settings-audio-devices-hider/) (disabled by default)
