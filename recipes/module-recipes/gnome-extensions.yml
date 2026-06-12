@@ -15,7 +15,3 @@ modules:
       - Quick Settings Audio Devices Hider
       - Unblank lock screen
       - Notifications Alert
-  - type: script
-    snippets:
-      # Patch Gnome 50 support for Gnome 4x UI Improvements
-      - "wget https://raw.githubusercontent.com/mrenvoize/gnome-ui-tune/refs/heads/issue_50/src/modRestoreThumbnailsBackground.js -O /usr/share/gnome-shell/extensions/gnome-ui-tune@itstime.tech/src/modRestoreThumbnailsBackground.js"
